@@ -1,0 +1,577 @@
+﻿# YAPILACAKLAR
+
+## GÃ¼ncel Ã§alÄ±ÅŸma: Yetki ve finansal gizlilik (17 Ekim 2026)
+
+- [x] Åirket geneli maliyet, kÃ¢r, marj ve kur gÃ¶rÃ¼nÃ¼rlÃ¼ÄŸÃ¼nÃ¼ yalnÄ±z `yonetici` ve `finans` departmanlarÄ±yla sÄ±nÄ±rla; kullanÄ±cÄ±/departman istisnalarÄ± bu sÄ±nÄ±rÄ± aÅŸamaz.
+- [x] `muhasebe` rolÃ¼nÃ¼n satÄ±n alma/Ã¶deme Ã¶zetleri eriÅŸimini korurken Ã¼rÃ¼n ve sipariÅŸ kÃ¢r/marj analizlerini kapat.
+- [x] Finansal rapor alt menÃ¼lerini ve hedef marj ayarÄ±nÄ± yetkisiz rolden gizle; yetkisiz ekran geÃ§iÅŸinde uyarÄ± vermeden izinli ilk sayfaya dÃ¶n.
+- [x] ABC raporunda `baz=kar` isteÄŸini sunucu tarafÄ±nda `kar_maliyet` yetkisine baÄŸla.
+- [x] GÃ¼ncel Dashboard, finansal API ve yetki regresyonlarÄ±: **346/346 test baÅŸarÄ±lÄ±**; Python ve JavaScript sÃ¶zdizimi doÄŸrulandÄ±.
+- [ ] GiriÅŸ yapÄ±lmÄ±ÅŸ satÄ±ÅŸ/Ã¼retim/depo/finans kullanÄ±cÄ±larÄ±yla gÃ¶rsel ekran kontrolÃ¼: son yenilemede oturum kapandÄ±ÄŸÄ± iÃ§in kullanÄ±cÄ± manuel giriÅŸi bekleniyor.
+
+
+## Veri altyapÄ±sÄ± saÄŸlamlaÅŸtÄ±rma ve SQLite geÃ§iÅŸi (16 Ekim 2026)
+
+- [x] SQL Ã¶ncesi tam dosya/veri yedeÄŸi alÄ±ndÄ± ve 230 dosyanÄ±n SHA-256 toplamlarÄ± doÄŸrulandÄ±: `yedekler_v2/saglamlastirma_oncesi_20261016_060311`.
+- [x] Bozuk/eriÅŸilemeyen JSON artÄ±k boÅŸ veri gibi ele alÄ±nmÄ±yor; yazÄ±mlar aynÄ± klasÃ¶rde geÃ§ici dosya + fsync + atomik deÄŸiÅŸtirme kullanÄ±yor.
+- [x] SQLite saklama katmanÄ± eklendi: WAL, tam dayanÄ±klÄ±lÄ±k, belge SHA-256 denetimi, tek iÅŸlemde Ã§oklu belge yazÄ±mÄ± ve Ã§evrimiÃ§i yedek/geri yÃ¼kleme.
+- [x] SQLite geÃ§iÅŸi 15 etkin JSON belgesinin kopyasÄ±yla prova edildi; iÃ§erikler kaynakla birebir eÅŸleÅŸti ve `PRAGMA integrity_check` sonucu `ok` oldu.
+- [x] MasaÃ¼stÃ¼ baÅŸlatÄ±cÄ±sÄ± ilk geÃ§iÅŸte SQLite modunu seÃ§iyor; kaynak JSON'lar korunuyor ve geÃ§iÅŸ bir kez yapÄ±lÄ±yor.
+- [x] Tam veritabanÄ± yedekleri ayarlar ekranÄ±nda ayrÄ± gÃ¶steriliyor; geri yÃ¼kleme tÃ¼m uygulama durumunu yeniliyor.
+- [x] Flask debug/reloader Ã¼retim baÅŸlatmasÄ±nda kapatÄ±ldÄ±; yerel gÃ¼nlÃ¼k dizini baÅŸlatma sÄ±rasÄ±nda oluÅŸturuluyor.
+- [x] Test paketi 232/232 geÃ§ti; geÃ§ici SQL aktarÄ±mÄ±, iÅŸlem ve geri yÃ¼kleme regresyonlarÄ± eklendi.
+- [x] CanlÄ± SQLite geÃ§iÅŸi tamamlandÄ±: uygulama kapalÄ±yken 15 veri belgesi `%LOCALAPPDATA%\LUMISPAC\data\lumispac.sqlite3` konumuna birebir aktarÄ±ldÄ±; `integrity_check=ok`. Hammadde belgeleri yerel veri klasÃ¶rÃ¼ne kopyalandÄ±; kaynak JSON'lar korundu.
+- [x] Kapatma sonrasÄ± yedek `yedekler_v2/sqlite_canli_gecis_oncesi_20261016_061724` (15 JSON + 1 belge, SHA-256 doÄŸrulandÄ±) ve ilk tam SQLite yedeÄŸi `%LOCALAPPDATA%\LUMISPAC\backups\lumispac_full_20261016_061740.sqlite3` oluÅŸturuldu.
+- [x] MasaÃ¼stÃ¼ baÅŸlatÄ±cÄ±sÄ±yla uygulama yeniden aÃ§Ä±ldÄ±; ana sayfa HTTP 200, oturumsuz kimlik endpoint'i HTTP 401 dÃ¶ndÃ¼rdÃ¼; Ã§alÄ±ÅŸan veritabanÄ±nda 15 belge ve bÃ¼tÃ¼nlÃ¼k `ok` doÄŸrulandÄ±.
+
+Kurulum SQLite gerektirmez; Python'Ä±n standart `sqlite3` modÃ¼lÃ¼ kullanÄ±lÄ±r. VeritabanÄ± ve yedek yollarÄ± ile geÃ§iÅŸ notlarÄ± `VERI_ALTYAPISI.md` iÃ§indedir. Uygulama Ã§alÄ±ÅŸÄ±rken JSON'dan SQL'e canlÄ± geÃ§iÅŸ yapÄ±lmaz.
+
+## Ãœretim kuyruÄŸu â†’ depo kabulÃ¼ (15 Ekim 2026)
+
+- [x] SipariÅŸ stok aÃ§Ä±ÄŸÄ± ve minimum stok ihtiyacÄ±nÄ± Ã¼retim panosunda izleme
+- [x] Tek makine/tek kalÄ±p Ã¼zerinde Ã¼retimi baÅŸlatma, durdurma (yÃ¶netici tanÄ±mlÄ± neden), sÃ¼rdÃ¼rme ve tamamlama
+- [x] KullanÄ±cÄ±, zaman, miktar, Ã¶nceki/yeni durum ve gerekÃ§eyle iÅŸlem geÃ§miÅŸi
+- [x] KullanÄ±cÄ±nÄ±n girdiÄŸi fire/Ä±skartayÄ± geri dÃ¶nÃ¼ÅŸÃ¼m stoÄŸunda kullanÄ±labilir Ã¼retimden ayrÄ± tutma
+- [x] Ãœretimden depo kabul talebi; deponun tÃ¼m miktarÄ± kabul etmesi veya gerekÃ§eli ret vermesi
+- [x] Ret sonrasÄ± dÃ¼zeltme ve yeniden kabul talebi; kabul edilen stoÄŸu idempotent biÃ§imde yalnÄ±zca bir kez ekleme
+- [x] Ã‡oklu JSON yazÄ±m hatasÄ±nda geri alma; geri alma da baÅŸarÄ±sÄ±zsa kÄ±smi gÃ¼ncellemeyi aÃ§Ä±kÃ§a raporlama
+- [x] ÃœrÃ¼n reÃ§etelerini kullanÄ±cÄ± girdisiyle KG/koli olarak tanÄ±mlama; reÃ§ete yokken otomatik hammadde tÃ¼ketmeme
+
+## Hammadde tanÄ±mlama ve satÄ±n alma (15 Ekim 2026)
+
+- [x] PET/PP ve diÄŸer hammaddeleri KG birimi ve elle girilen KG fiyatÄ±yla tanÄ±mlama
+- [x] Bayilerden ayrÄ± hammadde tedarikÃ§isi kaydÄ±
+- [x] SatÄ±n alma belgesi ekleme ve Ã¶zel klasÃ¶rde saklama
+- [x] Depo kabul kuyruÄŸu; tam kabul stoÄŸa tek seferde eklenir, gerekÃ§eli ret stoÄŸu deÄŸiÅŸtirmez
+- [x] Hammadde kataloÄŸu, satÄ±n alma ve depo kabulÃ¼ iÃ§in sunucu tarafÄ± modÃ¼l izinleri ve arayÃ¼z
+- [x] ÃœrÃ¼n reÃ§etesini kullanÄ±cÄ± tarafÄ±ndan girilebilir yapma; reÃ§ete varsa Ã¼retim tamamlamada KG tÃ¼ketimini doÄŸrulama
+
+Hammadde kayÄ±t dosyasÄ± ilk iÅŸlemde oluÅŸturulur; uygulama aÃ§Ä±lÄ±ÅŸÄ±nda demo/baÅŸlangÄ±Ã§ stoÄŸu eklenmez. SatÄ±n alma iÅŸlemi harici Ã¶deme veya mesaj servisine baÄŸlanmaz. KullanÄ±m adÄ±mlarÄ± `HAMMADDE_SATINALMA_KULLANIM.md` iÃ§indedir.
+
+## Hammadde alÄ±m Ã¶demesi (15 Ekim 2026)
+
+- [x] TL/USD satÄ±n alma toplamÄ± ve Ã§oklu, deÄŸiÅŸtirilemez manuel Ã¶deme hareketi
+- [x] Finans modÃ¼l yetkisi; yÃ¶netici tam, muhasebe yazabilir, diÄŸer roller kapalÄ±
+- [x] Ã–denen/kalan/durum Ã¶zeti; idempotency anahtarÄ±yla yinelenen isteÄŸi tekilleÅŸtirme
+- [x] DÃ¶vizli Ã¶demede elle girilen kur, kur kaynaÄŸÄ±, kur tarihi, yÃ¶ntem, Ã¶deme tarihi, kullanÄ±cÄ± ve geÃ§miÅŸ kaydÄ±
+- [x] %100 Ã¶deme tamamlanmadan sunucu sevk/depo kabul kuyruÄŸu talebini reddeder; depo kabulinde yeniden kontrol
+- [x] Ã–demeli kayÄ±t deÄŸiÅŸikliklerinde para birimini sabit tutma ve yeni toplamÄ± kaydedilmiÅŸ Ã¶demeden dÃ¼ÅŸÃ¼k yapmama
+- [x] Eski satÄ±n alma kayÄ±tlarÄ±nÄ± TL ve Ã¶denmemiÅŸ varsayÄ±lanÄ±yla okuma; bekleyen eski Ã¶demesiz alÄ±mÄ± depodan gizleyip kabulini engelleme
+- [x] Harici banka/Ã¶deme baÅŸlatmama; kur saÄŸlayÄ±cÄ±sÄ±ndan otomatik kur Ã§ekmeme
+
+ArayÃ¼z: **Ãœretim & Depo**. Ä°ÅŸlem kayÄ±t dosyasÄ± `lumispac_uretim.json` ilk yazma anÄ±nda oluÅŸturulur; baÅŸlangÄ±Ã§ta veri yÃ¼klemez. Ãœretim miktarlarÄ± koli olarak elle girilir; fire oranÄ± varsayÄ±lmaz.
+
+## Bugun Yapilanlar (15 Ekim 2026) - BUYUK GUN
+
+### Temizlik Operasyonu TAMAM
+
+- [x] Kok dizin temizligi (78 py silindi, 94 -> 16)
+- [x] 244 .bak dosyasi silindi (7.34 MB)
+- [x] 6 cache klasoru silindi (0.36 MB)
+- [x] 43 eski temizlik arsivi silindi (284 KB)
+- [x] 3 log yedegi silindi (2.86 MB)
+- [x] 8 eski yedek_v2 silindi (8.73 MB)
+- [x] 4 bos dosya silindi
+- [x] **Toplam kazanc: ~19.6 MB**
+
+### Merkezi Hesap Sistemi TAMAM
+
+- [x] services/hesap_service.py (tek dogruluk kaynagi)
+- [x] 5 endpoint (/api/hesap/...)
+- [x] Urunler -> stok baglantisi (readonly, merkezi)
+- [x] Stok -> otomatik senkron
+- [x] Siparis -> stok dusme (Onaylandi/Iptal)
+- [x] Akilli urun kodu (LUM-{hacim}{tip})
+- [x] Kod cakismasi temizligi
+- [x] 27 urun kod yenileme
+
+### Sorunlar Cozuldu
+
+- [x] Port 5000 TIME_WAIT (5001'e tasindi)
+- [x] "+" isareti bug (veri temizlendi)
+- [x] lineSnap kayip (geri eklendi)
+- [x] _siparis_stok_hareket eksik (eklendi)
+- [x] Flask "Running on..." gorunmuyor (tarayicidan test)
+
+---
+
+## Faz 7: Veri Merkezi Tamamlama (SIRADAKI - BASLADI 15.10.2026)
+
+**Amac:** Tum moduller merkezi hesap kullansin.
+
+**Kapsam:**
+- [x] 7-1: reports/base.py â†’ merkezi (`hesap_service.birim_maliyet` ve `satis_metrikleri`)
+- [x] 7-2: Dashboard â†’ /api/hesap/dashboard
+- [x] 7-3: Benim â†’ hesap_service
+- [x] 7-4: Bayiler â†’ hesap_service
+- [x] 7-5: Test + DokÃ¼mantasyon + bÃ¼tÃ¼nleÅŸtirme denetimi (16 Ekim 2026)
+
+**Sure:** ~4 saat
+
+**Neden:** Raporlar, dashboard ve diÄŸer sayfalar ayrÄ± hesaplar yapabiliyor â†’ tutarsÄ±zlÄ±k riski. 7-1 rapor maliyet/marj Ã§ekirdeÄŸini merkezileÅŸtirir; kalan ekranlar sÄ±radaki maddelerdir.
+
+7-2 tamamlandÄ± ve kullanÄ±mda doÄŸrulandÄ±: Dashboard kartlarÄ± ve grafik veri kÃ¼meleri `services/hesap_service.py` iÃ§indeki `/api/hesap/dashboard` Ã¶zetine baÄŸlandÄ±. ÃœrÃ¼n maliyeti ve satÄ±ÅŸ marjÄ± yalnÄ±zca `birim_maliyet` / `satis_metrikleri` ile hesaplanÄ±r; satÄ±ÅŸ kÃ¢r karÅŸÄ±laÅŸtÄ±rmasÄ± da API'nin merkezi `profit_net` alanÄ±nÄ± kullanÄ±r. SatÄ±ÅŸ kullanÄ±cÄ±sÄ±nÄ±n sipariÅŸ ve teklif metrikleri aÃ§Ä±k bayi/kayÄ±t sahipliÄŸi kapsamÄ±na uyar. API `genel_bakis: okur` yetkisini korur.
+
+7-3 kodu ve testleri tamamlandÄ±: Benim Sayfam stok ve sipariÅŸ metriklerini `hesap_service`, finans Ã¶zetini `finans_service`, Ã¼retim kuyruÄŸu sayÄ±larÄ±nÄ± `production_service` Ã¼zerinden alÄ±r. Rol kartlarÄ± ilgili modÃ¼lÃ¼n sunucu tarafÄ± `okur` yetkisi yoksa Ã¼retilmez. SatÄ±ÅŸ Ã¶zeti yalnÄ±z atanan bayi ve sahipliÄŸi eÅŸleÅŸen sipariÅŸ/tekliflerden oluÅŸur; aktivite listesi yalnÄ±z oturum sahibinin loglarÄ±nÄ± dÃ¶ndÃ¼rÃ¼r. Ä°zin/sahiplik regresyonlarÄ± `tests/test_security.py`, rol kartÄ± ve merkezi servis testleri `tests/test_benim.py` iÃ§indedir. Yetki aÃ§Ä±klamasÄ± `YETKI_KATALOGU.md` iÃ§inde gÃ¼ncellendi. 5001'de yÃ¶netici ekranÄ± aÃ§Ä±ldÄ±; Ã§alÄ±ÅŸan API eski dashboard_service yanÄ±tÄ±nÄ± dÃ¶ndÃ¼rdÃ¼ÄŸÃ¼ iÃ§in yeni kodun arayÃ¼zdeki son doÄŸrulamasÄ± sunucunun gÃ¼ncel dosyalarla yeniden baÅŸlatÄ±lmasÄ±nÄ± bekliyor.
+
+7-4 tamamlandÄ±: Bayi listesi ve panel ciro/kÃ¢r deÄŸerleri `hesap_service.siparis_satis_ozeti` ile tek formÃ¼le baÄŸlandÄ±; bayi sahipliÄŸi yalnÄ±z yÃ¶neticinin Ã¶zel uÃ§ noktasÄ±ndan deÄŸiÅŸtirilir ve iÅŸlem geÃ§miÅŸine yazÄ±lÄ±r. SatÄ±ÅŸ rolÃ¼nÃ¼n bayi listesi, bayi paneli, baÄŸlÄ± sipariÅŸleri ve teklifleri sahiplik kapsamÄ±yla sÄ±nÄ±rlÄ±dÄ±r; istemci kaynaklÄ± sahiplik alanlarÄ± dikkate alÄ±nmaz. Yinelenen bayi kimliÄŸi reddedilir. Genel Dashboard satÄ±ÅŸ rolÃ¼ne ÅŸirket geneli maliyet/kÃ¢r/marj alanlarÄ±nÄ± API yanÄ±tÄ±nda vermez; arayÃ¼z kartlarÄ± ve hedef marj banner'Ä± da kapatÄ±r. AyrÄ±ntÄ±lar `FAZ7_BAYILER.md` iÃ§indedir.
+
+7-5 bÃ¼tÃ¼nleÅŸtirme/test/dokÃ¼mantasyon tamamlandÄ±: bayi Ã¶zetindeki merkezi iptal denetiminin son sipariÅŸler ve aylÄ±k trenddeki ham `Iptal` filtresiyle tutarsÄ±zlÄ±ÄŸÄ± giderildi. `hesap_service.siparis_iptal_mi` TÃ¼rkÃ§e aksan/kasa varyasyonlarÄ±nÄ±, eski `Iptal` ve bozuk kodlama deÄŸerini, ayrÄ±ca `cancelled`/`canceled` durumlarÄ±nÄ± tanÄ±r. `siparis_finans_metrikleri` sipariÅŸ ciro/maliyet/kÃ¢rÄ±nÄ± ortak hesaplar; bayi paneli Ã¶zeti, detaylarÄ± ve trendi bu deÄŸerleri kullanÄ±r. Regresyon testi iptal varyasyonlarÄ±nÄ±n panel gÃ¶rÃ¼nÃ¼mlerinden Ã§Ä±karÄ±ldÄ±ÄŸÄ±nÄ± ve aktif sipariÅŸ toplamlarÄ±nÄ±n aynÄ± kaldÄ±ÄŸÄ±nÄ± denetler. Entegrasyon denetiminde Dashboard maliyet/kÃ¢r kartlarÄ±nÄ±n eksik API gÃ¶rÃ¼nÃ¼rlÃ¼k bayraÄŸÄ±nda aÃ§Ä±k kaldÄ±ÄŸÄ± gÃ¶rÃ¼ldÃ¼; arayÃ¼z ÅŸimdi bu alanlarÄ± yalnÄ±zca sunucudan aÃ§Ä±k `true` geldiÄŸinde gÃ¶sterir. Yetki kataloÄŸu ve sÃ¼reÃ§ notlarÄ± gÃ¶zden geÃ§irildi; Ã¼retim/depo, satÄ±n alma/Ã¶deme, sipariÅŸ/stok, bayi sahipliÄŸi ve eski kayÄ±t testleri tam paket iÃ§inde geÃ§ti. AyrÄ±ntÄ±lar `FAZ7_BAYILER.md` iÃ§indedir.
+
+**Hedef:** %100 merkezi â€” tum sayfalar ayni veriyi gosterir.
+
+### Faz 6 (Denetim Ä°zi) - TAMAMLANDI (16.10.2026)
+
+Faz 7 sonrasi yapilacak.
+
+---
+
+## Faz 6: Denetim Ä°zi â€” TAMAMLANDI (16 Ekim 2026)
+
+- Yazma API istekleri gÃ¶vde/baÅŸlÄ±k/IP kaydedilmeden zaman, oturum sahibi, yÃ¶ntem, yol ve yanÄ±t koduyla append-only `lumispac_audit.json` dosyasÄ±na kaydedilir. GiriÅŸ ve kullanÄ±cÄ±/departman iÅŸlemlerinin var olan loglarÄ± korunur; eski kayÄ±tlar yeni listede normalize edilir.
+- YÃ¶neticiye Ã¶zel Denetim Ä°zi ekranÄ± arama, kullanÄ±cÄ±, iÅŸlem ve tarih filtresi, sayfalama, ekran aÃ§Ä±kken 5 saniyelik yenileme ve filtreli CSV sunar. Eski log temizleme endpoint'i 410 dÃ¶ndÃ¼rÃ¼r; denetim izi silinemez.
+- Benim Sayfam aktivite listesi yalnÄ±z giriÅŸ yapan kullanÄ±cÄ±nÄ±n kayÄ±tlarÄ±nÄ± dÃ¶ndÃ¼rÃ¼r.
+- Audit diske yazÄ±lamazsa baÅŸarÄ±lÄ± API yanÄ±tÄ± sessizce bÄ±rakÄ±lmaz; `AUDIT_WRITE_FAILED`, `retry_safe: false` ve iÅŸlemin tamamlanmÄ±ÅŸ olabileceÄŸi aÃ§Ä±k bir 500 yanÄ±tÄ± dÃ¶ner.
+- API, servis, dashboard kiÅŸisel kapsamÄ±, gizlilik, filtre/CSV, baÅŸarÄ±sÄ±z log yazÄ±mÄ± ve rol sÄ±nÄ±rlarÄ± iÃ§in regresyon testleri eklendi.
+- Denetim ekranÄ±na bayi, Ã¼rÃ¼n ve teklif deÄŸiÅŸiklikleri iÃ§in yÃ¶neticiye Ã¶zel geri alma dÃ¼ÄŸmesi eklendi. DÃ¼zenlemelerde yalnÄ±z deÄŸiÅŸen alanlarÄ±n eski deÄŸerleri, silmelerde kaydÄ± geri yÃ¼klemek iÃ§in gerekli kayÄ±t saklanÄ±r. DÃ¼zenlenmiÅŸ kayÄ±tlarÄ±n sonraki iÃ§eriÄŸi yerine Ã§akÄ±ÅŸma kontrolÃ¼ parmak izi tutulur; parola/oturum/token alanlarÄ± saklanmaz. KayÄ±t sonradan deÄŸiÅŸmiÅŸse geri alma reddedilir. Her geri alma denemesi ayrÄ±ca denetim kaydÄ±na yazÄ±lÄ±r. SipariÅŸ, stok, Ã¼retim, satÄ±n alma ve finans henÃ¼z kapsam dÄ±ÅŸÄ±dÄ±r.
+- Geri alma gÃ¼nlÃ¼kleme ve API regresyon testleri: 40/40 geÃ§ti.
+
+### Ã–nerilen sonraki aÅŸama: AI Ãœretim
+
+Faz 6 sonrasÄ± yol haritasÄ±ndaki sÄ±raya gÃ¶re AI Ãœretim'e geÃ§ilebilir. Ãœretim planlama ve malzeme ihtiyacÄ± tahmini; kullanÄ±cÄ± tarafÄ±ndan tanÄ±mlÄ± reÃ§eteler/tÃ¼ketim miktarlarÄ±, mevcut Ã¼retim kuyruÄŸu ve stok verisi Ã¼zerinde, kayÄ±tlÄ± iÅŸ akÄ±ÅŸÄ±nÄ± deÄŸiÅŸtirmeyen karar destek Ã¶zellikleri olarak kapsamlandÄ±rÄ±lmalÄ±dÄ±r.
+
+---
+
+Son gÃ¼ncelleme: 2026-10-16 (Faz 6 Denetim Ä°zi TAMAM)
+
+
+## SipariÅŸ ekranÄ± akÄ±ÅŸ dÃ¼zeltmesi (16 Ekim 2026)
+
+- [x] Durum menÃ¼sÃ¼ kullanÄ±cÄ± rolÃ¼ne ve mevcut sipariÅŸ durumuna gÃ¶re yalnÄ±zca izinli sonraki adÄ±mlarÄ± gÃ¶sterir.
+- [x] Silme dÃ¼ÄŸmesi yalnÄ±z yÃ¶neticiye ve Taslak sipariÅŸe gÃ¶sterilir; sunucu kuralÄ± korunur.
+- [x] YÃ¶netici iptal sipariÅŸini zorunlu gerekÃ§e ve kullanÄ±cÄ±/zaman geÃ§miÅŸiyle Taslak'a aÃ§abilir; eski depo kontrolÃ¼ temizlenerek yeniden kontrol zorunlu tutulur.
+- [x] Teslim edilmiÅŸ sipariÅŸ terminal kalÄ±r; stok ve finans iadesi akÄ±ÅŸÄ± olmadan geriye alÄ±nmaz.
+
+## Yetki ve finansal gizlilik yÃ¶netimi (16 Ekim 2026)
+
+- [x] Åirket geneli kÃ¢r/marj/maliyet alanlarÄ±nÄ± sabit yÃ¶netici/finans sÄ±nÄ±rÄ± ve `kar_maliyet` izniyle koru; yetkisiz JSON/API, ekran hesaplarÄ± ve dÄ±ÅŸa aktarÄ±mlardan Ã§Ä±kar; maliyet ayarlarÄ±nÄ± da kÄ±sÄ±tla.
+- [x] SatÄ±ÅŸ cirosunu korurken finansal kÃ¢rlÄ±lÄ±k verilerini varsayÄ±lan satÄ±ÅŸ/Ã¼retim/depo profillerinde kapalÄ± tut.
+- [x] SatÄ±ÅŸ, Ã¼retim, depo ve finans iÃ§in hazÄ±r modÃ¼l izin profilleri; yÃ¶netici iÃ§in deÄŸiÅŸtirilemez sistem profili.
+- [x] Departman ve kullanÄ±cÄ± bazÄ±nda modÃ¼l dÃ¼zeyi okuma/yazma/tam yetki; kullanÄ±cÄ± istisnasÄ±, departman varsayÄ±lanÄ±nÄ±n Ã¶nÃ¼ne geÃ§er.
+- [x] 30 gÃ¼ne kadar geÃ§ici kullanÄ±cÄ± izni, verildi/kaldÄ±rÄ±ldÄ± iÅŸlem kaydÄ± ve departman yetkisi iÃ§in etki Ã¶nizlemesi.
+- [x] Excel/CSV dÄ±ÅŸa aktarmayÄ± ekrana eriÅŸimden ayrÄ± izinle koru.
+- [x] SipariÅŸ, bayi, teklif, hammadde, stok ve finans kaydÄ± silme; elle stok deÄŸiÅŸimi ve TL karÅŸÄ±lÄ±ÄŸÄ± 50.000 â‚º Ã¼zeri sipariÅŸ/hammadde alÄ±m Ã¶demesinde ikinci yetkili onayÄ±; kendi isteÄŸini onaylayamama, gerekÃ§eli ret ve bekleyen isteÄŸi iptal.
+- [x] KullanÄ±cÄ±ya oturumlarÄ±nÄ± gÃ¶rme/diÄŸerini kapatma olanaÄŸÄ±, son etkinlik bilgisi ve son yÃ¶netici hesabÄ±nÄ± koruma.
+- [x] Yeni departman kaydÄ±ndaki yetki seviyesi doÄŸrulama hatasÄ±nÄ± gider.
+- [ ] YÃ¶netici ve en az iki test kullanÄ±cÄ±sÄ±yla finans gizliliÄŸi, geÃ§ici izin, ikinci onay ve oturum kapatma akÄ±ÅŸlarÄ±nÄ± uygulamada birlikte doÄŸrula.
+
+AyrÄ±ntÄ±lÄ± yetki kurallarÄ± ve manuel senaryo `YETKI_KATALOGU.md` iÃ§inde. Bu dilim sonunda test paketi Ã§alÄ±ÅŸtÄ±rÄ±lmadÄ±; yalnÄ±z Python/JavaScript sÃ¶zdizimi doÄŸrulamasÄ± yapÄ±ldÄ±.
+
+
+### Yetki yÃ¶netimi â€” hiyerarÅŸik kalÄ±cÄ± izinler
+- [x] YÃ¶netici â†’ ekip yÃ¶neticisi â†’ personel amir baÄŸlantÄ±sÄ± ve ekip yÃ¶neticisi iÅŸareti
+- [x] Ekip yÃ¶neticisinin yalnÄ±z alt ekibinin izinlerini sunucu tarafÄ±ndan sÄ±nÄ±rlÄ± ÅŸekilde dÃ¼zenlemesi
+- [x] KiÅŸi bazlÄ± izinlerde departman ve yÃ¶neticinin sahip olduÄŸu yetkilerin Ã¼st sÄ±nÄ±r olmasÄ±
+- [x] GeÃ§ici izin arayÃ¼zÃ¼ ve APIâ€™sinin kaldÄ±rÄ±lmasÄ±; eski kayÄ±tlarÄ±n etkisiz ve korunur kalmasÄ±
+- [ ] Departman ve kullanÄ±cÄ± iÅŸ akÄ±ÅŸlarÄ± iÃ§in kendi kayÄ±tlarÄ± / ekip / ÅŸirket kapsamlarÄ±nÄ±n veri uÃ§ noktalarÄ±na yaygÄ±nlaÅŸtÄ±rÄ±lmasÄ±
+
+## Ä°liÅŸkisel SQL altyapÄ±sÄ± â€” 22 fazlÄ± geÃ§iÅŸ
+
+- [x] Faz 1â€“9: belge deposu, ana veriler, sÄ±ralama, kullanÄ±cÄ±/departman, sipariÅŸ/teklif, stok, hammadde satÄ±n alma, Ã¼retim, finans/onay tablolarÄ±.
+- [x] **Faz 10 â€” Denetim izi ve geri alma:** olaylar, geri alÄ±nabilir iÅŸlem baÅŸlÄ±klarÄ±/deÄŸiÅŸiklikleri ve geri alma denetim olaylarÄ± iliÅŸkisel tablolara taÅŸÄ±ndÄ±. Olay kimliÄŸi sabit; eski denetim olayÄ±nÄ±n deÄŸiÅŸtirilmesi/silinmesi reddediliyor. Okuma, yazma ve bÃ¼tÃ¼nlÃ¼k denetimi SQL projeksiyonuyla karÅŸÄ±laÅŸtÄ±rÄ±lÄ±yor.
+- [x] Faz 10 doÄŸrulamasÄ±: izole SQLite regresyonlarÄ± ve uygulama kalite kapÄ±sÄ± baÅŸarÄ±lÄ±; canlÄ± veritabanÄ± ÅŸema sÃ¼rÃ¼mÃ¼ 10, SQL integrity `ok`, denetim/geri alma projeksiyonlarÄ± eÅŸit; uygulama HTTP `/` 200 ve anonim `/api/auth/me` 401 yanÄ±tÄ± verdi.
+- [x] **Faz 11 â€” Ä°zin atamalarÄ±:** departman modÃ¼l seviyeleri ve kullanÄ±cÄ± izin istisnalarÄ± `department_permissions` / `user_permission_overrides` tablolarÄ±nda saklanÄ±yor. DÃ¶rt dÃ¼zey (`gormez`, `okur`, `yazar`, `tam`) korunuyor; kullanÄ±cÄ± ve departman belgeleri iliÅŸkisel satÄ±rlardan yeniden kurulup kaynak payload ile karÅŸÄ±laÅŸtÄ±rÄ±lÄ±yor.
+- [x] Faz 11 doÄŸrulamasÄ±: 15 SQL store testi, tam kalite kapÄ±sÄ± 243/243; canlÄ± ÅŸema v11, 15 belge, 5 departman, 7 kullanÄ±cÄ±, 114 departman izin satÄ±rÄ±; bÃ¼tÃ¼nlÃ¼k ve belge paritesi `ok`; uygulama HTTP `/` 200, anonim `/api/auth/me` 401.
+- [x] **Faz 12 â€” SQL depo/sorgu katmanÄ±:** sipariÅŸ listesi `orders`/`order_lines`/`order_payments`; bayi ve teklif listeleri de iliÅŸkisel tablolardan okunuyor. SipariÅŸlerde isteÄŸe baÄŸlÄ± `page`/`limit` SQLâ€™de uygulanÄ±yor; sayfa toplamÄ± ve satÄ±ÅŸ kullanÄ±cÄ±sÄ±nÄ±n sipariÅŸ+atanmÄ±ÅŸ bayi kapsamÄ± SQLâ€™de hesaplanÄ±yor. Eski API dizi yanÄ±tÄ± deÄŸiÅŸmiyor. DiÄŸer modÃ¼ller mevcut SQL belge projeksiyonunu kullanmayÄ± sÃ¼rdÃ¼rÃ¼yor.
+- [x] Faz 12 doÄŸrulamasÄ±: sipariÅŸ/bayi/teklif projeksiyonlarÄ± round-trip, sÄ±ralama, sahiplik ve sayfalama testlerinden geÃ§ti; tam kalite kapÄ±sÄ± 244/244, Python AST 87 ve JavaScript 32 dosya baÅŸarÄ±lÄ±; canlÄ± Ã¼Ã§ liste SQL ile eÅŸleÅŸti, DB integrity `ok`; uygulama `/` 200, anonim `/api/auth/me` 401 verdi.
+- [x] **Faz 13 â€” Rapor ve Ã¶zet sorgularÄ±:** rapor/dashboard sipariÅŸ-teklif girdileri doÄŸrudan SQLâ€™den okunuyor. Dashboard ciro ve sipariÅŸ sayÄ±sÄ± iliÅŸkisel `orders` Ã¼zerinden SQLâ€™de toplanÄ±yor; sipariÅŸ baÅŸÄ±na `net_sales_total`, merkezi `siparis_finans_metrikleri` ile yuvarlanÄ±p kaydediliyor, SQL iÅŸ formÃ¼lÃ¼nÃ¼ kopyalamÄ±yor. Ä°ptal durumu mevcut merkezi `siparis_iptal_mi` kuralÄ±na baÄŸlÄ± SQLite fonksiyonuyla filtreleniyor. AylÄ±k ciro tarih doÄŸrulamasÄ±nÄ±, aylÄ±k sipariÅŸ adedi ise mevcut tarih-Ã¶nek davranÄ±ÅŸÄ±nÄ± koruyor. SatÄ±ÅŸ rolÃ¼ kapsamÄ± bayi sahipliÄŸi JOINâ€™i ile sorgu iÃ§inde uygulanÄ±yor. Maliyet/kÃ¢r hesaplarÄ± merkezi Python servisinde kalÄ±yor.
+- [x] Faz 13 doÄŸrulamasÄ±: iptal varyasyonu, yuvarlama, hatalÄ± tarih, bayi kapsamÄ± ve SQL/merkezi ciro eÅŸitliÄŸi test edildi; tam kalite kapÄ±sÄ± 245/245, Python AST 87 ve JavaScript 32 dosya baÅŸarÄ±lÄ±; canlÄ± ÅŸema v12, sipariÅŸ toplamÄ± birebir eÅŸit, DB integrity `ok`; uygulama `/` 200, anonim `/api/auth/me` 401.
+- [x] **Faz 14 â€” TaÅŸÄ±nabilir veri eriÅŸim sÄ±nÄ±rÄ±:** iÅŸ servisleri sipariÅŸ, bayi, teklif ve dashboard Ã¶zet okumalarÄ±nda `data_repository.py` sÃ¶zleÅŸmesini kullanÄ±yor; JSON uyumluluk adaptÃ¶rÃ¼ ve SQLite adaptÃ¶rÃ¼ aynÄ± Ã§aÄŸrÄ± yÃ¼zeyinde. PostgreSQL sÃ¼rÃ¼cÃ¼sÃ¼ veya SQL dialect'i eklenmedi; PostgreSQL geÃ§iÅŸi ayrÄ± uygulama/entegrasyon fazÄ± olarak kalÄ±r.
+- [x] Faz 14 doÄŸrulamasÄ±: JSON adaptÃ¶rÃ¼nde sÄ±ralama, sayfalama, bayi sahipliÄŸi, iptal ve merkezi ciro kurallarÄ±; SQLite adaptÃ¶rÃ¼nde iliÅŸkisel sorgu/parite testleri geÃ§ti. Tam kalite kapÄ±sÄ± 249/249, Python AST 89 ve JavaScript 32 dosya baÅŸarÄ±lÄ±.
+- [x] **Faz 15 â€” Yedek, geri yÃ¼kleme ve iÅŸletim dayanÄ±klÄ±lÄ±ÄŸÄ±:** SQLite Backup API ile tutarlÄ± geÃ§ici snapshot, integrity ve belge/projeksiyon kontrolÃ¼, doÄŸrulama sonrasÄ± atomik dosya deÄŸiÅŸimi; bozuk veya etkin DB ile aynÄ± yola geri yÃ¼klemeyi reddetme. YazÄ±mlar `BEGIN IMMEDIATE`, WAL, 20 saniye busy timeout ve tam senkron dayanÄ±klÄ±lÄ±k kullanÄ±yor.
+- [x] Faz 15 doÄŸrulamasÄ±: bozuk snapshot reddi sÄ±rasÄ±nda etkin veri korundu; aynÄ± hedefe yedekleme reddedildi; doÄŸrulanmÄ±ÅŸ snapshot geri yÃ¼klemesi ve 32 paralel yazma senaryosu izole testte baÅŸarÄ±lÄ±. CanlÄ± DB ÅŸema v12, 15 belge, integrity `ok`.
+- [x] **Faz 16 â€” Tam sistem denetimi:** API uÃ§larÄ±, iÅŸ servisleri, repository/SQLite geÃ§iÅŸleri, izin ve finans gizliliÄŸi testleri, SQL bypass/direct I/O noktalarÄ±, animasyon/arayÃ¼z JS parse kapÄ±sÄ± ve canlÄ± uygulama saÄŸlÄ±k uÃ§larÄ± tarandÄ±. Bulunan aktif hesap servisindeki genel `except` daraltÄ±ldÄ±; geÃ§ersiz tarih girdileri iÃ§in regresyon eklendi. SQLite eÅŸzamanlÄ± yazma dayanÄ±klÄ±lÄ±ÄŸÄ± testi de eklendi.
+- [x] Faz 16 doÄŸrulamasÄ±: o tarihteki tam kalite kapÄ±sÄ± 251/251; Python AST 89 dosya ve JavaScript 32 dosya baÅŸarÄ±lÄ±. Ä°lgili hesaplama/yedek testleri 24/24; canlÄ± DB bÃ¼tÃ¼nlÃ¼ÄŸÃ¼ `ok` (15 belge), uygulama `/` 200 ve anonim `/api/auth/me` 401. Faz 17 deÄŸiÅŸiklikleri sonrasÄ± aynÄ± kapÄ± 252/252 geÃ§ti.
+- [x] Kapsam notu: PostgreSQL sÃ¼rÃ¼cÃ¼sÃ¼/ÅŸemasÄ± henÃ¼z eklenmedi; uygulama SQLite Ã¼zerinde Ã§alÄ±ÅŸÄ±yor ve `data_repository.py` yalnÄ±zca okuma sÄ±nÄ±rÄ±nÄ± hazÄ±rlÄ±yor. 15 JSON uyumluluk belgesi SQLite iÃ§inde tutuluyor ve aynÄ± iÅŸlemde iliÅŸkisel projeksiyonlarla eÅŸitleniyor; bunlar kaldÄ±rÄ±lmadan tam iliÅŸkisel kaynak-hedef dÃ¶nÃ¼ÅŸÃ¼mÃ¼ tamamlanmÄ±ÅŸ sayÄ±lmaz. Test ortamÄ±nda `coverage` modÃ¼lÃ¼ bulunmadÄ±ÄŸÄ±ndan satÄ±r/branch coverage yÃ¼zdesi Ã¼retilmedi. Tam arayÃ¼z doÄŸrulamasÄ± oturum aÃ§madan yapÄ±lmadÄ±.
+
+## SQL geÃ§iÅŸinin devamÄ± â€” iliÅŸkisel kaynak ve PostgreSQL hazÄ±rlÄ±ÄŸÄ±
+
+- [x] **Faz 17 â€” Yazma repository sÃ¶zleÅŸmesi (ilk alanlar):** Ã¼rÃ¼n, bayi ve ayar okumalarÄ± iliÅŸkisel SQLite tablolarÄ±ndan; kayÄ±t komutlarÄ± transaction tabanlÄ± `data_repository.py` sÃ¶zleÅŸmesinden geÃ§iyor. `products`, `dealers` ve `application_settings` gÃ¼ncellemeleri ile geÃ§ici uyumluluk belgeleri aynÄ± transaction iÃ§inde yazÄ±lÄ±yor; JSON kÃ¶prÃ¼sÃ¼nÃ¼n kaldÄ±rÄ±lmasÄ± Faz 20 kapsamÄ±ndadÄ±r. Migration v13 ayarlarÄ± anahtar/deÄŸer satÄ±rlarÄ±na taÅŸÄ±yor.
+- [x] Faz 17 doÄŸrulamasÄ±: migration 13 eski ayarlarÄ± korudu; SQL yazma/okuma parity ve doÄŸrulama testleri geÃ§ti. Hedefli testler 91/91, tam paket 254/254; Python AST ve 32 JavaScript dosyasÄ± baÅŸarÄ±lÄ±. CanlÄ± DB v13, 15 belge; eski Ã§alÄ±ÅŸan sunucunun ayar belgesini gÃ¼ncel olmayan SQL koduyla yazdÄ±ÄŸÄ± tespit edildi. Ä°ÅŸlem Ã¶ncesi `yedekler_v2/faz17_canli_ayar_uzlastirma_oncesi_20261016_101500` tutarlÄ± yedeÄŸi alÄ±ndÄ±; gÃ¼ncel sunucu yeniden baÅŸlatÄ±ldÄ±, ayar belgesi iliÅŸkisel tabloya eÅŸitlendi. Integrity Ã¼Ã§ ardÄ±ÅŸÄ±k Ã¶lÃ§Ã¼mde `ok`; `/` 200, anonim `/api/auth/me` 401. `integrity_check` artÄ±k tek tutarlÄ± SQLite snapshot'Ä±nda Ã¶lÃ§Ã¼yor.
+- [x] **Faz 18 â€” SipariÅŸ, teklif ve stok yazÄ±mlarÄ±:** `data_repository.mutate_documents` seÃ§ili kayÄ±tlarÄ± SQLite `BEGIN IMMEDIATE` iÃ§inde okuyor/deÄŸiÅŸtiriyor ve uyumluluk belgesiyle iliÅŸkisel projeksiyonlarÄ± aynÄ± transaction'da yazÄ±yor. SipariÅŸ/teklif ekleme-silme, sipariÅŸ dÃ¼zenleme/Ã¶deme/silme/sahip atamasÄ±, sipariÅŸ durum geÃ§iÅŸi + stok hareketi, depo uygunluk kontrolÃ¼, stok hareket ekleme-silme/idempotency temizliÄŸi ve eÅŸik deÄŸiÅŸtirme bu sÄ±nÄ±ra taÅŸÄ±ndÄ±. JSON kÃ¶prÃ¼sÃ¼nÃ¼n kaldÄ±rÄ±lmasÄ± Faz 20 kapsamÄ±ndadÄ±r. Faz Ã¶ncesi yedek: `yedekler_v2/iliskisel_sql_faz18_oncesi_20261016_103000`.
+- [x] Faz 18 doÄŸrulamasÄ±: mutation rollback/parity, SQLite'ta sipariÅŸ durumuyla stok Ã§Ä±kÄ±ÅŸÄ±nÄ±n birlikte kaydÄ±, paralel stok ekleme ve sipariÅŸ numarasÄ± Ã§akÄ±ÅŸma testleri; stok, API, gÃ¼venlik, sahiplik ve geri alma testleri geÃ§ti. Tam paket 261/261; Python AST 89 dosya ve JavaScript 32 dosya baÅŸarÄ±lÄ±. CanlÄ± kod yeniden yÃ¼klendi; DB v13, 15 belge, bÃ¼tÃ¼nlÃ¼k Ã¼Ã§ kontrolde `ok`; HTTP `/` 200 ve anonim `/api/auth/me` 401.
+- [x] **Faz 19 â€” SatÄ±n alma, Ã¼retim ve finans yazÄ±mlarÄ±:** finans ekle/sil, onay kuyruÄŸu ekle/iptal/karar, hammadde katalog/satÄ±n alma/Ã¶deme/kabul/reÃ§ete ve Ã¼retim mutasyonlarÄ± `document_transaction` ile read-modify-write transaction'Ä±na taÅŸÄ±ndÄ±. Ãœretim tamamlama hammadde tÃ¼ketimini; depo kabulÃ¼ stok hareketi, sipariÅŸ fulfillment ve Ã¼retim kaydÄ±nÄ± aynÄ± transactionâ€™da yazÄ±yor. Onay isteÄŸi yinelenme kontrolÃ¼ aynÄ± yazma transactionâ€™Ä±nda. Geri dÃ¶nÃ¼ÅŸ uyumluluÄŸu JSON kipinde Ã§oklu belge yazÄ±m hatasÄ±nda Ã¶nceki byteâ€™larÄ± geri yÃ¼klÃ¼yor. Yeni iÅŸlem adaptÃ¶rÃ¼ yazma Ã¶ncesi ilgili migration sÃ¼rÃ¼mÃ¼nÃ¼ de doÄŸruluyor. Faz Ã¶ncesi yedek: `yedekler_v2/iliskisel_sql_faz19_oncesi_20261016_111000`.
+- [x] Faz 19 doÄŸrulamasÄ±: eÅŸzamanlÄ± SQLite transactionâ€™larÄ±nda 16 paralel eklemede kayÄ±p gÃ¼ncelleme olmadÄ±; exception rollbackâ€™i, dÃ¼ÅŸÃ¼k ÅŸema sÃ¼rÃ¼mÃ¼nde yazÄ±nÄ±n reddi, hammadde/Ã¼retim/stok/sipariÅŸ/finans/onay relational projection parity ve JSON fallback yazÄ±m hatasÄ± geri yÃ¼kleme testleri geÃ§ti. Tam paket **263/263**; deÄŸiÅŸen 9 Python dosyasÄ±nÄ±n AST kontrolÃ¼ baÅŸarÄ±lÄ±. Etkin SQLite dosyasÄ±nÄ±n salt okunur integrity kontrolÃ¼ `ok`, 15 belge, tutarsÄ±z projeksiyon yok. CanlÄ± iÅŸ verisine yazÄ±lmadÄ±. Denetim izi, iÅŸ isteÄŸinden sonra ayrÄ± transactionâ€™da kaydediliyor; hata halinde `AUDIT_WRITE_FAILED` kullanÄ±cÄ±ya belirsiz/tekrar gÃ¼venli olmayan durumu aÃ§Ä±kÃ§a bildiriyor. Bu sÄ±nÄ±r ve canlÄ± UI davranÄ±ÅŸÄ± Faz 22â€™de ayrÄ±ca denetlenecek.
+- [ ] **Faz 20 â€” JSON uyumluluk kÃ¶prÃ¼sÃ¼nÃ¼ kapatma:** tÃ¼m modÃ¼llerde parity kanÄ±tÄ± ve geri dÃ¶nÃ¼ÅŸ provasÄ± sonrasÄ± `data_documents` iÅŸ verisi kaynaÄŸÄ±nÄ± kaldÄ±rma; yalnÄ±z gerekiyorsa aÃ§Ä±kÃ§a tanÄ±mlÄ± arÅŸiv dÄ±ÅŸa aktarÄ±mÄ± bÄ±rakma.
+- [ ] Faz 20 ilerleme kaydÄ±: migration v14 stok/hammadde metadata, geÃ§miÅŸ ve reÃ§etelerini; v15 iliÅŸkisel belge kaydÄ±nÄ± ekliyor. Desteklenen belgelerin SQL projeksiyonlarÄ± ek metadata alanlarÄ±yla birlikte mirror olmadan okunabiliyor; servis transaction'larÄ± SQL snapshot'Ä±ndan baÅŸlÄ±yor ve mirror varsa parity kontrolÃ¼ kullanÄ±yor. v13â†’v15 upgrade provasÄ±, faz Ã¶ncesi tam yedeÄŸin geÃ§ici kopyasÄ±nda yapÄ±ldÄ±: ortak 36 tablonun tamamÄ±nda satÄ±r sayÄ±larÄ± birebir aynÄ± kaldÄ±; 15 belgenin SHA-256 Ã¶zetleri deÄŸiÅŸmedi, SQLite `integrity_check=ok`, uygulama belge/projeksiyon denetimi 15/15 geÃ§erli, yeni belge kaydÄ± 14 satÄ±r. Yeniden baÅŸlatmada eski mirrorÄ± kaynak alÄ±p SQL tablolarÄ±nÄ± boÅŸaltma kusuru giderildi; ilk geÃ§iÅŸ projeksiyonu yalnÄ±zca kurulumda veya schema migration sonrasÄ± Ã§alÄ±ÅŸÄ±yor. Ä°zole SQLite/store + stok/hammadde testleri 64/64, tam paket 265/265 geÃ§ti. Mirrorâ€™sÄ±z izole DBâ€™de belge okuma, bÃ¼tÃ¼nlÃ¼k, tam yedek ve geri yÃ¼kleme regresyonu eklendi; yedek/geri yÃ¼kleme sonrasÄ± kayÄ±tlar ve mirror yokluÄŸu doÄŸrulandÄ±. ÃœrÃ¼n/bayi/ayar, kullanÄ±cÄ±/izin, sipariÅŸ/teklif, stok, hammadde, Ã¼retim, finans/onay, denetim ve geri alma iÅŸlemleri mirror satÄ±rlarÄ± kaldÄ±rÄ±lmÄ±ÅŸ izole DB Ã¼zerinde iliÅŸkisel tablolardan Ã§alÄ±ÅŸtÄ±rÄ±lÄ±p doÄŸrulandÄ±. Ä°lgili backup/mirrorless kesinti testleriyle tam kalite kapÄ±sÄ± 268/268; Python AST 89 proje dosyasÄ± ve JavaScript 32 dosya baÅŸarÄ±lÄ±. Kod taramasÄ±nda `lumispac_demo_uretim.json` yalnÄ±z demo/test yardÄ±mcÄ±larÄ±nda kullanÄ±lÄ±yor; iÅŸ verisi deÄŸil. TÃ¼m paket ayrÄ±ca `LUMISPAC_STORAGE=sqlite` ile denendi: 172 geÃ§ti, 93 test mevcut JSON odaklÄ± fixtureâ€™larÄ±n `test_*.json` gibi uygulama-belgesi olmayan dosya adlarÄ± ve kÃ¼resel DB izolasyonu varsayÄ±mlarÄ± nedeniyle baÅŸarÄ±sÄ±z oldu; bu koÅŸum geÃ§erli bir SQLite kalite kapÄ±sÄ± deÄŸil, Ã¼rÃ¼n hatasÄ± olarak sÄ±nÄ±flandÄ±rÄ±lmadÄ±. Faz 22â€™ye baÄŸÄ±msÄ±z DB kÃ¶kÃ¼ kullanan gerÃ§ek SQLite uygulama uÃ§tan uca paketi eklenmeli. Yedek APIâ€™si artÄ±k yedek Ã¶ncesi pending migration Ã§alÄ±ÅŸtÄ±rmÄ±yor; v13 yedek snapshotâ€™Ä±nÄ±n v13 kaldÄ±ÄŸÄ± ve bÃ¼tÃ¼nlÃ¼kten geÃ§tiÄŸi regresyonla doÄŸrulandÄ±. V13 integrity denetimi v14 metadata tablosu yokken de gÃ¼venli Ã§alÄ±ÅŸÄ±yor. Yazma yollarÄ± `data_documents` mirrorâ€™Ä±nÄ± hÃ¢lÃ¢ aynÄ± transactionâ€™da yazÄ±yor ve bu tablo tÃ¼mden kaldÄ±rÄ±lmadÄ±. Faz 20 aÃ§Ä±k kalacak.
+- [x] Faz 20 adÄ±mÄ± 1: `replace_product_records` Ã¶nce Ã¼rÃ¼n satÄ±rlarÄ±nÄ± `products` tablosuna yazar ve SQL payload paritesini aynÄ± transaction iÃ§inde doÄŸrular. Parite geÃ§erse ve v15 `relational_source=1` etkinse yalnÄ±z `lumispac_data.json` aynasÄ± kaldÄ±rÄ±lÄ±r; diÄŸer belge aynalarÄ± korunur. Parite/validation hatasÄ±nda transaction rollback ile Ã¶nceki mirror korunur. KayÄ±t/okuma, `document_exists`, integrity ve diÄŸer aynalarÄ±n byte-paritesi test edildi. SQLite store 37/37, tam kalite kapÄ±sÄ± 270/270; AST 89 ve JS 32 dosya baÅŸarÄ±lÄ±. Ã–ncesi tam yedek `yedekler_v2/faz20_canli_kesim_oncesi_20261016_083855`, 267 dosya hash doÄŸrulamasÄ± ve yedek DB integrity `ok`; manifest kaynak ÅŸema sÃ¼rÃ¼mÃ¼ v13. CanlÄ± uygulama aÃ§Ä±k ve canlÄ± DB v13 olduÄŸundan canlÄ± ÅŸemaya/iÅŸ verisine yazÄ±lmadÄ±. Faz 20 devam ediyor; diÄŸer belge yazÄ±mlarÄ± halen kÃ¶prÃ¼ kullanÄ±yor.
+- [x] Faz 20 adÄ±mÄ± 2: ayar yazÄ±mÄ±nÄ±n tÃ¼m Ã§aÄŸrÄ±larÄ± `data_repository.save_settings` Ã¼zerinden doÄŸrulandÄ±. `replace_settings_records` SQL anahtar/deÄŸerlerini transaction iÃ§inde yazÄ±p eÅŸitliÄŸi doÄŸruluyor; yalnÄ±z parity baÅŸarÄ±lÄ±ysa v15+ iliÅŸkisel kaynak kipinde `lumispac_settings.json` aynasÄ±nÄ± kaldÄ±rÄ±yor. JSON biÃ§imi geÃ§ersiz olduÄŸunda Ã¶nceki ayna korunuyor; diÄŸer belge aynalarÄ±nÄ±n byte-paritesi de doÄŸrulandÄ±. SQLite store 39/39, tam kalite kapÄ±sÄ± **272/272**; Python AST 89 ve JavaScript 32 dosya baÅŸarÄ±lÄ±. ÃœrÃ¼nler ve ayarlar artÄ±k ayrÄ± doÄŸrulanmÄ±ÅŸ SQL yazma yollarÄ±nda; genel document/stock/order/finance ve diÄŸer kÃ¶prÃ¼ yollarÄ± hÃ¢lÃ¢ aÃ§Ä±k.
+- [x] Faz 20 cutover gÃ¼vence dÃ¼zeltmesi: Ã¼rÃ¼n/ayar Ã¶zel yazÄ±mlarÄ± kendi aynalarÄ±nÄ± kaldÄ±rÄ±nca geri alma veya baÅŸka genel belge yazÄ±mÄ± aynÄ± aynayÄ± yeniden oluÅŸturabiliyordu. `app_metadata` iÃ§indeki belge bazlÄ± emekli-mirror iÅŸaretleri ve ortak `write_documents` / `document_transaction` / `mutate_documents` filtresi eklendi. Ä°ÅŸaretli SQL-kaynak belgeler genel yazÄ±mla gÃ¼ncelleniyor fakat geÃ§iÅŸ aynasÄ± yeniden oluÅŸmuyor; diÄŸer belge tÃ¼rleri aynalarÄ±nÄ± yazmayÄ± sÃ¼rdÃ¼rÃ¼yor. Regresyon testi Ã¼rÃ¼n+ayar gÃ¼ncelleme, marker, okuma ve integrity doÄŸruluyor. SQLite store 40/40; tam kalite kapÄ±sÄ± **273/273**; Python AST 89 ve JS 32 dosya baÅŸarÄ±lÄ±.
+- [x] Faz 20 adÄ±mÄ± 3: bayi kayÄ±tlarÄ±nÄ±n bÃ¼tÃ¼n yazma yollarÄ± incelendi: bayi liste kaydetme/silme ve bayi sahip atama `replace_dealer_records` veya `document_transaction` Ã¼zerinden; geri alma genel `write_documents` Ã¼zerinden Ã§alÄ±ÅŸÄ±yor. Bayi SQL tablosu yazÄ±mÄ± sonrasÄ± payload paritesi doÄŸrulanÄ±p yalnÄ±z bu belgenin aynasÄ± emekli ediliyor; ortak marker hem sahip atama hem geri alma sonrasÄ± aynanÄ±n yeniden oluÅŸmasÄ±nÄ± Ã¶nlÃ¼yor. Yinelenen bayi kimliÄŸinde ayna korunuyor. SQLite store 42/42, tam paket **275/275**; Python AST 89 ve JS 32 dosya baÅŸarÄ±lÄ±. ÃœrÃ¼n, ayarlar ve bayiler geÃ§iÅŸte; sipariÅŸ/teklif, stok/hammadde, kullanÄ±cÄ±/izin, Ã¼retim, finans/onay ve audit/undo genel kÃ¶prÃ¼ yollarÄ± sÃ¼rÃ¼yor.
+- [x] Faz 20 adÄ±mÄ± 4: `mutate_documents` sipariÅŸ ve teklif yazÄ±mlarÄ±nda `_sync_relational_documents` sonrasÄ± tam servis belgesi paritesini (baÅŸlÄ±k, kalem ve sipariÅŸ Ã¶demeleri) aynÄ± transaction iÃ§inde doÄŸruluyor; eÅŸleÅŸmezse rollback ile ayna kalÄ±yor, eÅŸleÅŸirse yalnÄ±z ilgili aynalarÄ± kaldÄ±rÄ±p emekli marker yazÄ±yor. Marker sonrasÄ± undo/genel yazÄ±m aynalarÄ± geri getirmiyor. OdaklÄ± SQLite store 43/43, tam kalite kapÄ±sÄ± **276/276**; Python AST 89 / JS 32 baÅŸarÄ±lÄ±. ÃœrÃ¼n, ayar, bayi, sipariÅŸ ve teklif SQL kaynaklÄ± yazÄ±mlara taÅŸÄ±ndÄ±; stok, hammadde, kullanÄ±cÄ±/izin, Ã¼retim, finans/onay ve audit/undo belgeleri sÄ±rada.
+- [x] Faz 20 adÄ±mÄ± 5: tekrarlanabilir `_retire_verified_document_mirror` transaction yardÄ±mcÄ±sÄ± eklendi; iliÅŸkisel yeniden kurma gelen iÅŸ belgesiyle tam eÅŸleÅŸmeden silme/marker yapmÄ±yor. Stok iÃ§in hem `mutate_documents` hem Ã¼retim servisinin `document_transaction` yolu parity sonrasÄ± aynayÄ± emekli ediyor. AÃ§Ä±lÄ±ÅŸ hareketi korunmasÄ±, eÅŸik, movement satÄ±rÄ±, Ã¼retimle eÅŸzamanlÄ± stok hareketi, aynasÄ±z okuma ve integrity doÄŸrulandÄ±. SQLite store 44/44; tam kalite kapÄ±sÄ± **277/277**; Python AST 89 ve JS 32 dosya baÅŸarÄ±lÄ±. ÃœrÃ¼n, ayar, bayi, sipariÅŸ, teklif ve stok kademeli SQL kaynak geÃ§iÅŸinde; hammadde, Ã¼retim, kullanÄ±cÄ±/izin, finans/onay ve audit/undo hÃ¢lÃ¢ sÄ±rada.
+- [x] Faz 20 adÄ±mÄ± 6: `document_transaction` iÃ§indeki hammadde ve Ã¼retim belgeleri de iliÅŸkisel yeniden kurma tam eÅŸitliÄŸinden sonra ayna emekliliÄŸine alÄ±ndÄ±. Ãœretim transactionâ€™Ä±nda hammadde malzeme fiyatÄ±/geÃ§miÅŸi, Ã¼retim iÅŸi ve stok hareketinin birlikte yazÄ±lmasÄ±; Ã¼Ã§ aynanÄ±n kaldÄ±rÄ±lmasÄ±, marker, SQL okuma ve bÃ¼tÃ¼nlÃ¼k doÄŸrulandÄ±. SQLite store 44/44; tam kalite kapÄ±sÄ± **277/277**; AST 89 ve JS 32 baÅŸarÄ±lÄ±. ÃœrÃ¼n, ayar, bayi, sipariÅŸ, teklif, stok, hammadde ve Ã¼retim artÄ±k doÄŸrulanmÄ±ÅŸ kademeli SQL kaynak yollarÄ±nda. KullanÄ±cÄ±/izin, finans/onay ve audit/undo belge aileleri kaldÄ±.
+- [x] Faz 20 adÄ±mÄ± 7: kullanÄ±cÄ±/departman ve izin yazÄ±mlarÄ± `write_documents` SQL projeksiyonu sonrasÄ±nda tam belge paritesiyle doÄŸrulanÄ±yor. `users`, `departments`, departman izinleri, kullanÄ±cÄ± izin istisnalarÄ± ve metadata okuma eÅŸitliÄŸi; sonraki giriÅŸ/log gÃ¼ncellemesinde aynanÄ±n yeniden oluÅŸmamasÄ± test edildi. SQLite store 45/45; tam paket **278/278**; AST 89 ve JS 32 baÅŸarÄ±lÄ±. SQL kaynaklÄ± yazÄ±m yollarÄ±nda kullanÄ±cÄ±/izin de taÅŸÄ±ndÄ±; finans/onay ve audit/undo belge aileleri sÄ±rada.
+- [x] Faz 20 adÄ±mÄ± 8: finans ve onay belgeleri hem `mutate_documents` hem genel `write_documents` yollarÄ±nda SQL paritesi sonrasÄ± aynasÄ±z kaynak oldu. Finans kayÄ±t/kategori deÄŸerleri ve onay kuyruÄŸu aynasÄ±z okunup yazÄ±ldÄ±; sonraki undo/import tarzÄ± genel yazÄ±m aynalarÄ± canlandÄ±rmadÄ±. OdaklÄ± SQLite store 46/46; tam kalite kapÄ±sÄ± **279/279**; AST 89 / JS 32 baÅŸarÄ±lÄ±. Bu adÄ±mla yalnÄ±z audit/undo belge ailesi henÃ¼z cutover listesinde deÄŸil.
+- [ ] CanlÄ± durum notu: etkin veritabanÄ± salt okunur kontrolde SQLite integrity `ok`, ÅŸema v13; v14/v15 tablolarÄ± henÃ¼z canlÄ± veritabanÄ±na uygulanmadÄ±. Faz 20 yedeÄŸi `yedekler_v2/iliskisel_sql_faz20_oncesi_20261016_130000` bu geÃ§iÅŸ Ã¶ncesinde alÄ±ndÄ±. CanlÄ± migration ancak yeni kodla baÅŸlangÄ±Ã§/yedek/geri yÃ¼kleme kontrolleri hazÄ±r olduÄŸunda yÃ¼rÃ¼tÃ¼lecek.
+- [ ] **Faz 21 â€” PostgreSQL adaptÃ¶rÃ¼ ve migration uyumu:** PostgreSQL sÃ¼rÃ¼cÃ¼sÃ¼, migration dialect'i, transaction/lock davranÄ±ÅŸÄ±, izole entegrasyon testi ve SQLiteâ†’PostgreSQL aktarÄ±m provasÄ±. Ã‡ok bilgisayarlÄ± daÄŸÄ±tÄ±m ancak bu fazdan sonra.
+- [ ] **Faz 22 â€” Nihai uÃ§tan uca denetim:** Faz 17â€“21 tamamlanÄ±nca tÃ¼m API, izin, finans gizliliÄŸi, modÃ¼l akÄ±ÅŸlarÄ±, yedek/geri yÃ¼kleme, eÅŸzamanlÄ±lÄ±k ve UI senaryolarÄ±nÄ± tekrar test et; coverage Ã¶lÃ§Ã¼mÃ¼ dahil aÃ§Ä±k bulgularÄ± kapat.
+
+### Faz 22 ara doÄŸrulamasÄ± (16 Ekim 2026)
+
+- [x] Genel JSON kalite kapÄ±sÄ±na ayrÄ± sÃ¼reÃ§te Ã§alÄ±ÅŸan SQLite Flask API E2E testi eklendi. Test kendi geÃ§ici veri kÃ¶kÃ¼nÃ¼ ve DB'sini kuruyor; yÃ¶netici oturumuyla giriÅŸ, sipariÅŸ ve finans kaydÄ± oluÅŸturma, Ã¼rÃ¼n/sipariÅŸ/teklif/bayi/stok/hammadde-satÄ±n alma/Ã¼retim/finans/onay/denetim/merkezi hesap/Benim Sayfam okuma uÃ§larÄ±nÄ± doÄŸruluyor. AyrÄ±ca saha satÄ±ÅŸ oturumunun yalnÄ±zca kendisine atanmÄ±ÅŸ sipariÅŸi gÃ¶rdÃ¼ÄŸÃ¼nÃ¼ ve dashboard yanÄ±tÄ±nda maliyet/kÃ¢r verisi bulunmadÄ±ÄŸÄ±nÄ± kontrol ediyor; sonunda DB bÃ¼tÃ¼nlÃ¼ÄŸÃ¼nÃ¼ doÄŸruluyor. Stok yazÄ±mÄ± ayrÄ± ikinci onay gerektirdiÄŸi iÃ§in rol onayÄ±nÄ± atlamÄ±yor; bu kritik yazma akÄ±ÅŸÄ± mevcut onay testlerinde kalÄ±yor. CanlÄ± veritabanÄ±na veya proje JSON'larÄ±na yazmaz.
+- [x] SQLite E2E + depolama regresyonlarÄ± 50/50; tam kalite kapÄ±sÄ± **283/283**. Python AST 90 dosya, JavaScript 32 dosya baÅŸarÄ±lÄ±.
+- [ ] Faz 22 geniÅŸletilecek: modÃ¼l bazlÄ± yazma/geri alma, departman gÃ¶rÃ¼nÃ¼rlÃ¼ÄŸÃ¼, finans gizliliÄŸi, yedek/geri yÃ¼kleme ve tarayÄ±cÄ± akÄ±ÅŸlarÄ±nÄ±n E2E kapsamÄ± henÃ¼z tamamlanmadÄ±.
+
+Ä°liÅŸkisel SQL kÃ¶prÃ¼sÃ¼ kapanma kodu v16â€™da hazÄ±rdÄ±r; canlÄ± veritabanÄ± yedekli ve uygulama kapalÄ± bir pencerede gÃ¼ncellenecektir. `lumispac_v3` bu Ã§alÄ±ÅŸma kapsamÄ± dÄ±ÅŸÄ±ndadÄ±r.
+
+### Faz 20 devamÄ± (16 Ekim 2026)
+
+- [x] Geri alma gÃ¼nlÃ¼klemesi append-only hale getirildi: baÅŸlangÄ±Ã§ ve sonuÃ§ ayrÄ± denetim olaylarÄ±dÄ±r; eski olayÄ±n Ã¼zerine yazÄ±lmaz. GerÃ§ek geri alma dÃ¶ngÃ¼sÃ¼nde regresyonla doÄŸrulandÄ±.
+- [x] Migration v16, tÃ¼m bilinen iÅŸ belgelerinin iliÅŸkisel payload paritesini kontrol edip `data_documents` kÃ¶prÃ¼sÃ¼nÃ¼ ancak doÄŸrulama baÅŸarÄ±lÄ±ysa kaldÄ±rÄ±r. Bilinmeyen eski yardÄ±mcÄ± belgeler checksum kontrolÃ¼yle salt-okunur `legacy_document_archive` tablosunda tutulur.
+- [x] v13â†’v18 izole geÃ§iÅŸ, parite hatasÄ±nda kÃ¶prÃ¼nÃ¼n/verinin korunmasÄ± ve dÃ¼zeltilince yeniden denenmesi, aynasÄ±z okuma/yazma, Ã§oklu Ã¶deme sÄ±rasÄ±, iptal/tarih rapor bayraklarÄ±, integrity, backup/restore doÄŸrulandÄ±.
+- [x] CanlÄ± v18 kesimi (16.10.2026): LUMISPAC launcher/sunucu kapalÄ± ve 5001 dinleyicisi yokken araÃ§ kalÄ±cÄ± yedek aldÄ±, yedek-kaynak belge/tablo sayÄ±sÄ± eÅŸitliÄŸini doÄŸruladÄ± ve v13â†’v18 uyguladÄ±. Yedek `AppData/Local/LUMISPAC/backups/sqlite_v18_canli_oncesi_20261016_095711.sqlite3`, SHA-256 `1734d3be3ccda32aa53d543c1139a3f2a57d1b503574876b5ee6de09cf00ccde`; sonuÃ§ 15/15 belge paritesi, `integrity_check=ok`, 1 eski yardÄ±mcÄ± belge arÅŸivlendi. GerÃ§ek v18 canlÄ± API/arayÃ¼z baÅŸlatma kontrolÃ¼ ayrÄ±ca yapÄ±lmalÄ±.
+- [x] Faz 21 taÅŸÄ±nabilirlik hazÄ±rlÄ±ÄŸÄ±: Ã¶deme sÄ±rasÄ± SQLite `rowid` yerine v17 `order_payments.position` alanÄ±na taÅŸÄ±ndÄ±. Ä°ptal durumu, rapor ayÄ± ve tarih geÃ§erliliÄŸi v18â€™de merkezi Python iÅŸ kurallarÄ±yla SQLâ€™e yazÄ±lÄ±yor; dashboard sorgusu SQLiteâ€™a Ã¶zel fonksiyonsuz bu alanlarÄ± kullanÄ±yor. Eski ÅŸema uyumluluÄŸu, Ã¶deme sÄ±rasÄ±, iptal varyasyonlarÄ± ve geÃ§ersiz tarih davranÄ±ÅŸÄ± hedefli testlerde geÃ§ti.
+- [ ] PostgreSQL entegrasyonu: bu bilgisayarda PostgreSQL sunucusu/istemcisi, Docker ve `psycopg` sÃ¼rÃ¼cÃ¼sÃ¼ bulunmuyor. SQLiteâ€™a Ã¶zgÃ¼ transaction, migration, SQL fonksiyonu ve yedekleme davranÄ±ÅŸlarÄ±nÄ±n PostgreSQL eÅŸdeÄŸerleri gerÃ§ek sunucuda doÄŸrulanmadan adaptÃ¶r hazÄ±r sayÄ±lmayacak.
+- [x] Faz 21 hazÄ±rlÄ±ÄŸÄ±: `storage_adapter.py` ortak backend seÃ§icisi eklendi. `data_repository.py`, `utils.py`, kullanÄ±cÄ±/Ã¼retim/hammadde/stok/hesap servisleri ve uygulama baÅŸlangÄ±cÄ± backend modÃ¼lÃ¼nÃ¼ doÄŸrudan import etmiyor. Yedek/geri yÃ¼kleme de aktif adaptÃ¶rÃ¼n metoduna yÃ¶nleniyor ve dosya uzantÄ±sÄ± adaptÃ¶r sÃ¶zleÅŸmesinden alÄ±nÄ±yor. Bilinmeyen backend kapalÄ± hata verir; PostgreSQL seÃ§ilip adaptÃ¶r bulunmazsa anlaÅŸÄ±lÄ±r hata veriyor. Adapter seÃ§im testleri ve SQLite API E2E/store testleri geÃ§ti; tam kalite kapÄ±sÄ± **287/287**, Python AST 92 ve JS 32 baÅŸarÄ±lÄ±. Bu deÄŸiÅŸiklik PostgreSQL adaptÃ¶rÃ¼nÃ¼n kendisi deÄŸildir.
+- [x] Faz 21 yapÄ±landÄ±rma hazÄ±rlÄ±ÄŸÄ±: `LUMISPAC_DATABASE_URL` DSN giriÅŸi eklendi; PostgreSQL iÃ§in belge dosyalarÄ±, loglar ve yedekler SQL kurulumlarÄ±nda yerel uygulama veri dizinine taÅŸÄ±nÄ±yor. DSN boÅŸken PostgreSQL baÅŸlamÄ±yor. Config/adapter/E2E testleri ve tam kalite kapÄ±sÄ± **288/288** geÃ§ti; AST 92 / JS 32 baÅŸarÄ±lÄ±. GerÃ§ek PostgreSQL adaptÃ¶rÃ¼ ve sunucu doÄŸrulamasÄ± hÃ¢lÃ¢ yok.
+- [x] Kalite kapÄ±sÄ± depolama sÄ±nÄ±rÄ± kontrolÃ¼yle geniÅŸletildi: `tools/check_quality.py`, uygulama ve iÅŸ modÃ¼llerinin `sqlite3`/`sqlite_store` import etmesini reddediyor; SQLite backendâ€™i ve migration katmanÄ± istisna. Tam kapÄ± **288/288**, Python AST 92, depolama sÄ±nÄ±rÄ± ve JS 32 baÅŸarÄ±lÄ±.
+- [x] Adapter yedekleme sÃ¶zleÅŸmesi testi eklendi: elle yedek, etkin adaptÃ¶rÃ¼ kullanÄ±p adaptÃ¶r uzantÄ±sÄ±nÄ± koruyor. GÃ¼ncel kalite kapÄ±sÄ± **289/289**, Python AST 92, depolama sÄ±nÄ±rÄ± ve JS 32 baÅŸarÄ±lÄ±.
+- [x] PostgreSQL backend seÃ§ildiÄŸinde Ã§alÄ±ÅŸma zamanÄ± dosyalarÄ±nÄ±n (belgeler, log ve yedek) `LUMISPAC_DATA_HOME` altÄ±nda kaldÄ±ÄŸÄ± subprocess testi eklendi. GÃ¼ncel kalite kapÄ±sÄ± **290/290**, Python AST 92, depolama sÄ±nÄ±rÄ± ve JS 32 baÅŸarÄ±lÄ±.
+- [x] 16.10.2026 canlÄ± SQLite v13 verisi salt okunur incelendi: `integrity_check=ok`, 15 belge, 26 Ã¼rÃ¼n, 3 bayi, 7 kullanÄ±cÄ±, 5 departman, 1 sipariÅŸ, 1 hammadde kaydÄ±, 2 Ã¼retim iÅŸi; denetim ve geri alma kayÄ±tlarÄ± korunuyor. Ã‡evrimiÃ§i tutarlÄ± yedek `AppData/Local/LUMISPAC/backups/phase21_preflight_20261016_093954.sqlite3` alÄ±ndÄ± ve SHA-256 doÄŸrulandÄ± (`662CAE5EE2C9DA082BEFBC0E10FB5325F65EAB7CAE546F918D43A174366E846C`). Yedek kopyasÄ±nda v13â†’v18 prova geÃ§iÅŸi baÅŸarÄ±lÄ±: 15/15 belge iliÅŸkisel paritesi, tÃ¼m iÅŸ tablosu satÄ±r sayÄ±larÄ±, `integrity_check=ok`, bozuk belge yok.
+- [ ] CanlÄ± v18 kesimi bu kontrolde emniyet nedeniyle yapÄ±lmadÄ±: son kapalÄ±-port kontrolÃ¼nden hemen sonra `pythonw` sÃ¼reÃ§leri yeniden gÃ¶rÃ¼ndÃ¼. CanlÄ± DB tekrar salt okunur doÄŸrulandÄ± ve v13/`integrity_check=ok` kaldÄ±. AÃ§Ä±k olabilecek uygulama sÃ¼reci kapatÄ±lmadan migration Ã§alÄ±ÅŸtÄ±rÄ±lmayacak; uygulama sonrasÄ± API/UI doÄŸrulamasÄ± da gerekli.
+- [x] Tekrarlanabilir `tools/migrate_live_sqlite_v18.py` komutu eklendi: varsayÄ±lan kip yedekten ayrÄ± geÃ§ici v13â†’v18 provasÄ± yapÄ±yor; `--apply` LUMISPAC Python sÃ¼reÃ§leri/5001 portu kontrolÃ¼, yeni kalÄ±cÄ± yedek ve kaynak-yedek eÅŸitliÄŸi olmadan canlÄ± DB'ye yazmÄ±yor. GerÃ§ek v13 DB Ã¼zerinde prova geÃ§ti; sÃ¼reÃ§ aÃ§Ä±kken `--apply` reddedildi ve canlÄ± DB deÄŸiÅŸmedi.
+- [x] Migration aracÄ±nÄ±n Ã§evrimiÃ§i yedekleri baÄŸÄ±msÄ±z SQLite dosyasÄ± olarak sonlandÄ±rmasÄ± ve sÃ¼reÃ§ denetimi hata verince/5001 portu aÃ§Ä±kken canlÄ± yazÄ±mÄ± reddetmesi regresyon testleriyle doÄŸrulandÄ±. GÃ¼ncel kalite kapÄ±sÄ± **293/293**, Python AST 94, depolama sÄ±nÄ±rÄ± ve JavaScript 32 dosya baÅŸarÄ±lÄ±. `--apply` sÃ¼reÃ§ denetiminde durdu; canlÄ± DB v13 ve `integrity_check=ok` kaldÄ±.
+- [x] Ortak SQL adaptÃ¶r sÃ¶zleÅŸmesi `storage_adapter.ADAPTER_METHODS` ile aÃ§Ä±kÃ§a tanÄ±mlandÄ±. SQLite seÃ§ildiÄŸinde tÃ¼m servis/depo/yedekleme fonksiyonlarÄ±nÄ±n varlÄ±ÄŸÄ±, eksik adaptÃ¶rÃ¼n de baÅŸlangÄ±Ã§ta reddi test ediliyor. Tam kalite kapÄ±sÄ± **294/294**, Python AST 94, depolama sÄ±nÄ±rÄ± ve JavaScript 32 baÅŸarÄ±lÄ±. PostgreSQL sunucusu/sÃ¼rÃ¼cÃ¼sÃ¼ kurulmadÄ±; canlÄ± sÃ¼reÃ§ ve port aÃ§Ä±k olduÄŸundan v18 kesimi hÃ¢lÃ¢ bekliyor.
+- [x] CanlÄ± uygulama salt-okunur HTTP kontrolÃ¼: `/` 200, anonim `/api/auth/me` 401. GÃ¼ncel v13 DB Ã¼zerinde geÃ§iÅŸ aracÄ± dry-run provasÄ± baÅŸarÄ±lÄ±; canlÄ± DB deÄŸiÅŸmedi.
+- [x] PostgreSQL dialect baÅŸlangÄ±cÄ± `postgres_dialect.py` eklendi: qmark parametrelerini, schema-catalog sorgularÄ±nÄ±, `BEGIN IMMEDIATE`, bilinen metadata upsert/ignore ve AUTOINCREMENT DDLâ€™ini aÃ§Ä±k dÃ¶nÃ¼ÅŸÃ¼m kurallarÄ±yla iÅŸler; `PRAGMA`, `rowid` ve bilinmeyen REPLACE iÅŸlemlerini reddeder. Hedefli testler 7/7; tam kalite kapÄ±sÄ± **301/301**, Python AST 96, SQLite sÄ±nÄ±rÄ± ve JS 32 baÅŸarÄ±lÄ±. Bu henÃ¼z PostgreSQL store/driver/gerÃ§ek sunucu entegrasyonu deÄŸildir.
+- [x] PostgreSQL DB-API baÄŸlantÄ± sarmalayÄ±cÄ±sÄ± `postgres_connection.py` eklendi: hybrid satÄ±r eriÅŸimi ve `table_info` catalog sorgusu saÄŸlanÄ±yor; yalnÄ±zca SQLite journal/timeout ayarlarÄ± etkisiz kabul ediliyor; `integrity_check` eÅŸdeÄŸeri olmadÄ±ÄŸÄ± iÃ§in aÃ§Ä±k hata veriyor. Dialect + baÄŸlantÄ± hedefli testleri 12/12, tam kalite kapÄ±sÄ± **306/306**, Python AST 98, depolama sÄ±nÄ±rÄ± ve JS 32 baÅŸarÄ±lÄ±. GerÃ§ek psycopg baÄŸlantÄ±sÄ±, PostgreSQL store/migration ve sunucu testi henÃ¼z yok.
+
+
+- [x] PostgreSQL adaptÃ¶r kodu ve SQLiteâ†’PostgreSQL aktarÄ±m aracÄ± hazÄ±rlandÄ±; gerÃ§ek PostgreSQL kurulumu, sunucu Ã¼zerinde entegrasyon/parite testleri ve kontrollÃ¼ canlÄ± hedef kesimi hÃ¢lÃ¢ aÃ§Ä±k.
+
+
+### Faz 21 ilerleme kaydÄ± (16 Ekim 2026)
+
+- [x] Ortak v1â€“v18 migrationâ€‘Ä± PostgreSQL DBâ€‘API baÄŸlantÄ± sarmalÄ±cÄ±sÄ±yla yÃ¼rÃ¼ten `postgres_migrations.py` eklendi. Migration geÃ§miÅŸi sÃ¼rÃ¼m boÅŸluÄŸu/ileri sÃ¼rÃ¼m aÃ§Ä±sÄ±ndan failâ€‘closed denetleniyor; her sÃ¼rÃ¼m ayrÄ± transaction ve hata halinde rollback kullanÄ±yor. `psycopg` baÄŸlantÄ±sÄ± aÃ§Ä±k transaction uyumuyla autocommit kipinde kuruluyor.
+- [x] Sahte DBâ€‘API regresyonlarÄ±: 18 migration SQL dÃ¶nÃ¼ÅŸÃ¼mÃ¼, tekrar baÅŸlatmada migration tekrarlanmamasÄ±, kesintili geÃ§miÅŸin reddi ve hata rollbackâ€™i. PostgreSQL hedefli testler 16/16; tam kalite kapÄ±sÄ± 310/310, Python AST 100, JavaScript 32 baÅŸarÄ±lÄ±.
+- [ ] Bu bilgisayarda PostgreSQL sunucusu/istemcisi ve `psycopg` kurulu deÄŸil; bu testler gerÃ§ek sunucu uyumluluÄŸunun kanÄ±tÄ± deÄŸildir. GerÃ§ek PostgreSQL server/driver Ã¼zerinde migration, SQLiteâ†’PostgreSQL aktarÄ±m paritesi, yedek/geri yÃ¼kleme ve API doÄŸrulamasÄ± Faz 21â€™de tamamlanmalÄ±.
+
+
+### Faz 21 hazÄ±rlÄ±k ilerlemesi (16 Ekim 2026)
+
+- [x] `postgres_store.py` eklendi: ortak relational query/transaction sÃ¶zleÅŸmesi, schema v18 doÄŸrulamasÄ±, aktarÄ±lmamÄ±ÅŸ/boÅŸ hedefte fail-closed baÅŸlatma, bÃ¼tÃ¼n iliÅŸkisel belgelerin okunabilirlik/parite kontrolÃ¼ ve eski arÅŸiv hash doÄŸrulamasÄ±.
+- [x] `tools/migrate_sqlite_to_postgres.py` eklendi: salt-okunur varsayÄ±lan prova; uygulama/port kontrolÃ¼; apply Ã¶ncesi tutarlÄ± SQLite yedeÄŸi; boÅŸ PostgreSQL hedefi ÅŸartÄ±; tek transaction tablo aktarÄ±mÄ±; kimlik dizisi ayarÄ±; her tablonun kolon/satÄ±r/iÃ§erik paritesi ve kaynak deÄŸiÅŸmedi kontrolÃ¼. KaynaÄŸÄ±n gerÃ§ek kuru provasÄ± 42 tablo/595 satÄ±r, v18 ve `integrity_check=ok` verdi; PostgreSQL baÄŸlantÄ±sÄ± olmadan hedefe yazÄ±lmadÄ±.
+- [x] `requirements-postgresql.txt` opsiyonel psycopg baÄŸÄ±mlÄ±lÄ±ÄŸÄ±nÄ± tanÄ±mlar. PostgreSQL DDLâ€™de SQLite REAL/INTEGER geniÅŸlik ve hassasiyeti korunur; v17 Ã¶deme sÄ±rasÄ± migrationâ€™Ä± PostgreSQLâ€™de `rowid` kullanmaz. Credentialâ€™lar pg_dump/restore komut satÄ±rÄ±na konmaz.
+- [x] GÃ¼ncel hedefli PostgreSQL testleri 29/29; tÃ¼m proje 316/316, Python AST 104, JavaScript 32 ve depo sÄ±nÄ±rÄ± baÅŸarÄ±lÄ±.
+- [ ] GerÃ§ek PostgreSQL kurulumu/sunucusu/psycopg bu bilgisayarda yok. Mock testler gerÃ§ek sunucu kanÄ±tÄ± deÄŸildir; izole PG migration/aktarÄ±mÄ±, iÅŸ akÄ±ÅŸlarÄ±, eÅŸzamanlÄ±lÄ±k, yedek/geri yÃ¼kleme ve API smoke testleri tamamlanmadan Faz 21 bitmiÅŸ sayÄ±lmayacak.
+
+- [x] AltyapÄ± denetiminde geri yÃ¼kleme Ã¶ncesi `stamp_backup()` sonucunun kontrol edilmediÄŸi bulundu. GÃ¼venlik yedeÄŸi alÄ±namazsa `/api/restore` artÄ±k 503 ile duruyor; restorasyon Ã§aÄŸrÄ±lmÄ±yor. Regresyon testi ve tam kalite kapÄ±sÄ± 316/316 geÃ§ti.
+- [x] CanlÄ± SQLite v18 uygulamasÄ± masaÃ¼stÃ¼ baÅŸlatÄ±cÄ±sÄ±yla yeniden aÃ§Ä±ldÄ±; HTTP `/` 200 ve anonim `/api/auth/me` 401. CanlÄ± DB integrity `ok`; 42 iliÅŸkisel tablo/595 satÄ±r son kuru aktarÄ±m sayÄ±mÄ±nda doÄŸrulandÄ±. Ã–nceki 594 sayÄ±mÄ± daha eski Ã¶lÃ§Ã¼mdÃ¼r; aktarÄ±m aracÄ± kaynaÄŸa yazmaz.
+- [x] PostgreSQL statik denetiminde SQLite `BEGIN IMMEDIATE` komutunun dÃ¼z `BEGIN` olarak Ã§evrildiÄŸinde yazar yarÄ±ÅŸÄ±nÄ± Ã¶nlemediÄŸi bulundu. AdaptÃ¶r, bu yazma iÅŸlemlerini iÅŸlem kapsamlÄ± ortak advisory lock ile sÄ±raya alÄ±yor; iki regresyon eklendi. Hedefli PostgreSQL baÄŸlantÄ± testleri 8/8, tam kalite kapÄ±sÄ± 318/318; Python AST 104, JavaScript 32 baÅŸarÄ±lÄ±. GerÃ§ek PostgreSQL sunucusunda kilit davranÄ±ÅŸÄ± hÃ¢lÃ¢ sÄ±nanmalÄ±.
+- [x] PostgreSQL 18.6-5 resmi EDB Windows paketi winget kataloÄŸundan indirildi; Authenticode imzasÄ± `Valid`, SHA-256 paket manifestiyle eÅŸleÅŸti. Kurulum henÃ¼z Ã§alÄ±ÅŸtÄ±rÄ±lmadÄ±; mevcut Windows oturumu yÃ¶netici deÄŸil. Windows yÃ¶neticisinin UAC onayÄ± ve servis/veritabanÄ± parolasÄ±nÄ±n kurulum sihirbazÄ±nda kullanÄ±cÄ± tarafÄ±ndan girilmesi gerekiyor. WSL/Docker/Podman ortamÄ± da bulunmuyor. Ä°ndirilen dosya `%LOCALAPPDATA%\LUMISPAC\installers` altÄ±ndadÄ±r.
+- [x] PostgreSQL aktarÄ±mÄ±nÄ±n gerÃ§ekÃ§i kod incelemesinde v1â€“v18 ÅŸemasÄ±nÄ±n eski `data_documents` kÃ¶prÃ¼sÃ¼nÃ¼ ve bekleyen iÅŸaretini hedefte bÄ±raktÄ±ÄŸÄ±, dolayÄ±sÄ±yla parite aktarÄ±mÄ±nÄ±n reddedileceÄŸi bulundu. PostgreSQL baÅŸlangÄ±cÄ± boÅŸ kÃ¶prÃ¼yÃ¼ veri yokluÄŸunu doÄŸruladÄ±ktan sonra kaldÄ±rÄ±yor; veri varsa koruyup hata veriyor. AktarÄ±m Ã¶nkontrolÃ¼ yalnÄ±zca tam v18 migration geÃ§miÅŸi ve tamamen boÅŸ iliÅŸkisel tablolar bulunan hedefte gÃ¼venli yeniden denemeye izin veriyor. Hedefli testler 9/9, tam kalite kapÄ±sÄ± **325/325**, Python AST 105, JavaScript 32 baÅŸarÄ±lÄ±.
+- [ ] PostgreSQL gerÃ§ek sunucu entegrasyonu tamamlandÄ±ktan sonra tÃ¼m modÃ¼l ve fonksiyonlarda son kapsamlÄ± inceleme: API/izin sÄ±nÄ±rlarÄ±, finans hesaplarÄ±, CRUD ve geri alma, SQL kaynak paritesi, yedek/geri yÃ¼kleme, arayÃ¼z akÄ±ÅŸlarÄ±, animasyon/JS ve eÅŸzamanlÄ±lÄ±k. Bulgular dÃ¼zeltilecek, tam kalite kapÄ±sÄ± ve modÃ¼l bazlÄ± E2E sonuÃ§larÄ± kaydedilecek.
+- [x] SQLite kapsam denetimi: izole E2E, oturum aÃ§mÄ±ÅŸ yÃ¶neticiyle bÃ¼tÃ¼n parametresiz `/api/*` GET yollarÄ±nÄ± tarayacak ÅŸekilde geniÅŸletildi. Tarama sipariÅŸ Excel dÄ±ÅŸa aktarmasÄ±nda eski kayÄ±tlarda `customer` alanÄ± olmadÄ±ÄŸÄ±nda oluÅŸan 500 hatasÄ±nÄ± buldu; dÄ±ÅŸa aktarma artÄ±k eksik mÃ¼ÅŸteri/Ã¼rÃ¼n alanlarÄ±na dayanÄ±klÄ±. E2E Ã¼rÃ¼n/sistem ayar fixture'larÄ± uygulamanÄ±n normal ÅŸemasÄ±na tamamlandÄ±. Yeni uÃ§ nokta taramasÄ± izole SQLite Ã¼zerinde geÃ§ti.
+- [x] SQLite canlÄ± salt-okunur saÄŸlÄ±k doÄŸrulamasÄ±: v18, 43 tablo, `integrity_check=ok`; Ã§alÄ±ÅŸan uygulama `/` 200 ve anonim `/api/auth/me` 401. Bu, masaÃ¼stÃ¼/sunum ve PostgreSQL doÄŸrulamasÄ±nÄ±n yerine geÃ§mez.
+
+
+### 17 Ekim 2026 â€” ekran ve onay iyileÅŸtirmeleri
+
+- [x] Ãœretim, depo kabulÃ¼, satÄ±n alma ve bayi ekranlarÄ±nda gÃ¶rÃ¼nen `queued`, `running`, `accepted`, `pending` ve eski ASCII durum deÄŸerleri ortak TÃ¼rkÃ§e etiket katmanÄ±na baÄŸlandÄ±; kayÄ±t/iÅŸ akÄ±ÅŸÄ± kodlarÄ± deÄŸiÅŸtirilmedi.
+- [x] Ãœretim panosunda depo tarafÄ±ndan kabul edilen ve iptal edilen iÅŸler aÃ§Ä±k iÅŸ listesinden Ã§Ä±karÄ±lÄ±p geÃ§miÅŸte tutuluyor; geÃ§miÅŸ ve kabul kayÄ±tlarÄ± gÃ¶rÃ¼nÃ¼r kalÄ±yor.
+- [x] Bildirim kapatma anahtarÄ± sayaÃ§ deÄŸiÅŸince tekrarlayan bildirimi yeniden Ã¼retmiyor; anahtar kullanÄ±cÄ±ya Ã¶zel ve gÃ¼nlÃ¼k bildirimler yeni gÃ¼nde yenileniyor.
+- [x] Kritik onay isteÄŸi kartlarÄ±nda isteÄŸi aÃ§an kiÅŸinin departmanÄ± gÃ¶steriliyor. SipariÅŸ silme talebi sipariÅŸ numarasÄ±, bayi/mÃ¼ÅŸteri, durum ve gerekÃ§eyle aÃ§Ä±lÄ±yor; sunucu gerekÃ§esiz isteÄŸi reddediyor. YÃ¼ksek tutarlÄ± sipariÅŸ/tedarikÃ§i Ã¶deme taleplerinde tutar, yÃ¶ntem ve baÄŸlÄ± sipariÅŸ ya da satÄ±n alma belgesi/tedarikÃ§i Ã¶zeti gÃ¶steriliyor. Maliyet ve marj verileri onay Ã¶zetine eklenmiyor.
+- [x] DoÄŸrulama: hedefli onay/API/gÃ¼venlik grubu 49/49; tam kalite kapÄ±sÄ± **353/353** geÃ§ti. DeÄŸiÅŸen JS modÃ¼llerinde `node --check`, Python modÃ¼llerinde `py_compile` baÅŸarÄ±lÄ±.
+- [ ] GÃ¶rsel arayÃ¼z doÄŸrulamasÄ± bekliyor: aÃ§Ä±k LUMISPAC ekranÄ± oturum aÃ§ma formunda. Bilgisayar kullanÄ±m yÃ¶nergesi kimlik/parola alanlarÄ±nÄ±n otomatik doldurulmasÄ±nÄ± yasakladÄ±ÄŸÄ±ndan kullanÄ±cÄ± giriÅŸ yaptÄ±ktan sonra rol menÃ¼leri, TÃ¼rkÃ§e etiketler ve onay kartlarÄ± canlÄ± ekranda doÄŸrulanmalÄ±. Uygulama kapatÄ±lmadÄ±.
+
+- [x] **Koli miktarÄ± doÄŸrulamasÄ±:** stok giriÅŸ/Ã§Ä±kÄ±ÅŸÄ± ve kritik stok eÅŸiÄŸi artÄ±k yalnÄ±z tam koli kabul ediyor; formdaki adÄ±m 1, toplam/kalan/hareket deÄŸerleri ondalÄ±ksÄ±z gÃ¶steriliyor. Kesirli eski kayÄ±tlar deÄŸiÅŸtirilmedi. Hedefli stok testleri 27/27 geÃ§ti.
+- [x] Ãœretim planÄ±, tamamlanan Ã¼retim ve fire miktarÄ± da stoktaki tam koli kuralÄ±na baÄŸlandÄ±; API kesirli deÄŸerleri reddediyor, Ã¼retim/depo/geri dÃ¶nÃ¼ÅŸÃ¼m ekranlarÄ± miktarlarÄ± ondalÄ±ksÄ±z gÃ¶steriyor. Kesirli Ã¼retim regresyonu eklendi. Ãœretim+stok hedefli testleri 40/40, tam paket 353/353; `tools/check_quality.py` baÅŸarÄ±lÄ±.
+- [x] Bayi detay kartÄ±nda toplam kÃ¢r, kÃ¢r marjÄ±, sipariÅŸ kÃ¢r sÃ¼tunu ve grafik serisi yalnÄ±zca kÃ¢r/maliyet yetkisi olan yÃ¶netici ve finans kullanÄ±cÄ±larÄ±na gÃ¶steriliyor; diÄŸer rollerde bu kart ve grafik elemanlarÄ± hiÃ§ oluÅŸturulmuyor.
+- [x] Saha satÄ±ÅŸ kullanÄ±cÄ±sÄ±na yalnÄ±zca kendisine atanmÄ±ÅŸ sipariÅŸlerin Ã¼retim kuyruÄŸu, Ã¼retimde, durduruldu/dÃ¼zeltme, Ã¼retim tamamlandÄ±, depo kabulÃ¼ ve sevkiyata hazÄ±r aÅŸamalarÄ± bildirim olarak ekleniyor. Bildirim anahtarÄ± sipariÅŸ ve aÅŸama bazÄ±nda; aynÄ± aÅŸama tekrar tekrar gelmiyor, yeni aÅŸamaya geÃ§iÅŸ yeni bildirim Ã¼retiyor. Finans ve diÄŸer departmanlara gÃ¶sterilmiyor.
+- [x] â€œGeÃ§miÅŸ KayÄ±t SahipliÄŸiâ€ kartÄ± Departmanlar gÃ¶rÃ¼nÃ¼mÃ¼nden kaldÄ±rÄ±ldÄ±; yalnÄ±zca yÃ¶neticiye gÃ¶sterilen â€œBayiler â†’ KayÄ±t sahipliÄŸiâ€ alt gÃ¶rÃ¼nÃ¼mÃ¼ne taÅŸÄ±ndÄ±. Bu liste yalnÄ±z sekme aÃ§Ä±ldÄ±ÄŸÄ±nda yÃ¼kleniyor.
+
+- [x] Finans ekranÄ±nÄ±n ilk aÃ§Ä±lÄ±ÅŸÄ±nda kullanÄ±lmayan kategori API isteÄŸi kaldÄ±rÄ±ldÄ±; grafik Ã§izim bloÄŸundaki ikinci kopya temizlendi. Kategoriler yalnÄ±zca yeni finans kaydÄ± aÃ§Ä±lÄ±rken isteniyor. Finans/API/gÃ¼venlik hedefli testleri 88/88 geÃ§ti.
+- [x] Kur gÃ¼ncelleme dÃ¶ngÃ¼sÃ¼ son baÅŸarÄ±lÄ± saÄŸlayÄ±cÄ±yÄ± sonraki yoklamalarda tercih ediyor; tercihli saÄŸlayÄ±cÄ± yanÄ±t vermezse diÄŸer kaynaklarÄ± mevcut sÄ±rayla deniyor. Ä°lk aÃ§Ä±lÄ±ÅŸta kaynak Ã¶nceliÄŸi korunuyor. Kaynak kararlÄ±lÄ±ÄŸÄ± iÃ§in 3 regresyon testi eklendi.
+- [x] Yeni deÄŸiÅŸikliklerin ardÄ±ndan tam regresyon ve kalite kapÄ±sÄ±nÄ± yeniden Ã§alÄ±ÅŸtÄ±r: **356/356** (kur kaynaÄŸÄ±/finans aÅŸamasÄ±).
+
+- [x] SipariÅŸ, irsaliye ve fatura PDF uÃ§larÄ±nÄ±n kullandÄ±ÄŸÄ± `ORDER_FILE` ile teklif PDF uÃ§larÄ±nÄ±n kullandÄ±ÄŸÄ± `QUOTE_FILE` sabitleri eksik import edilmiÅŸti; dÃ¶rt rota Ã§alÄ±ÅŸma anÄ±nda hata verebiliyordu. Importlar tamamlandÄ± ve sahipli satÄ±ÅŸ kullanÄ±cÄ±sÄ±yla dÃ¶rt endpoint PDF MIME tÃ¼rÃ¼ ve `%PDF-` imzasÄ± Ã¼zerinden E2E test edildi.
+- [x] PDF rotasÄ± dÃ¼zeltmesi sonrasÄ± tam regresyon ve kalite kapÄ±sÄ± **357/357** geÃ§ti; Python 111 dosya, JavaScript 32 dosya baÅŸarÄ±lÄ±.
+- [x] Ã–rnek irsaliye PDFâ€™i Poppler ile PNGâ€™ye Ã§evrilerek gÃ¶rsel incelendi. Teslimat tarihi/notu, plaka, ÅŸofÃ¶r, telefon ve 450 koli gÃ¶rÃ¼nÃ¼r; kare kutu olarak render edilen desteklenmeyen emoji ikonlarÄ± kaldÄ±rÄ±ldÄ±.
+- [x] SipariÅŸ tablosunda durum, depo aÅŸamasÄ± ve depo kontrol dÃ¼ÄŸmesi aynÄ± hÃ¼crede Ã¼st Ã¼ste gelebiliyordu; hÃ¼cre artÄ±k dikey akÄ±yor, uzun aÃ§Ä±klamayÄ± sarÄ±yor ve seÃ§im alanÄ±nÄ± hÃ¼cre geniÅŸliÄŸine sÄ±ÄŸdÄ±rÄ±yor.
+- [x] Kur sistemi iki saniyede bir dÄ±ÅŸ saÄŸlayÄ±cÄ±ya, arayÃ¼z ise saniyede bir yerel `/api/rate` ucuna soruyordu. Sunucu aralÄ±ÄŸÄ± 60 saniyeye alÄ±ndÄ±, `lumispac_app.py` iÃ§indeki ayar ezmesi kaldÄ±rÄ±ldÄ±; tarayÄ±cÄ± kur sorgusu 15 saniyeye, yalnÄ±zca ekrandaki yaÅŸ sayacÄ± saniyelik kaldÄ±. AralÄ±k regresyon testi eklendi.
+
+- [x] Son tam doÄŸrulama: **358/358 test**; `tools/check_quality.py` Python 111, JavaScript 32 ve depolama sÄ±nÄ±rÄ±nÄ± baÅŸarÄ±lÄ± doÄŸruladÄ±.
+- [x] Uygulama kapatÄ±lmadan canlÄ± saÄŸlÄ±k kontrolÃ¼: ana sayfa HTTP 200 (130 ms), gÃ¼ncel sipariÅŸ JS 200 (5 ms), CSS 200 (6 ms); anonim `/api/auth/me` beklenen HTTP 401.
+- [x] GiriÅŸteki mÃ¼kerrer yÃ¼k azaltÄ±ldÄ±: ilk aÃ§Ä±lÄ±ÅŸ artÄ±k Ã¼rÃ¼n, teklif, bayi ve sipariÅŸ listelerini beklemiyor; bu bÃ¼yÃ¼k/rol kapsamlÄ± listeler ilgili sayfa aÃ§Ä±ldÄ±ÄŸÄ±nda yÃ¼kleniyor. Oturum verileri (Ã¼rÃ¼n, teklif, bayi, sipariÅŸ, sepet) yÃ¼klemeden Ã¶nce temizleniyor. CanlÄ± statik `ui-init.js` HTTP 200 ve yeni sÃ¼rÃ¼m iÅŸareti doÄŸrulandÄ±; ana sayfa HTTP 200.
+- [x] YÃ¼kleme iyileÅŸtirmesi sonrasÄ± kalite kapÄ±sÄ± tekrar Ã§alÄ±ÅŸtÄ±rÄ±ldÄ±: **358/358 test**, Python 111 ve JavaScript 32 dosya baÅŸarÄ±lÄ±.
+- [x] KayÄ±t kapsamÄ± denetimi, saha satÄ±ÅŸ kullanÄ±cÄ±sÄ±nÄ±n `siparis_depo` yetkisi bulunsa bile baÅŸka satÄ±ÅŸÃ§Ä±nÄ±n sipariÅŸinde `/availability` Ã§aÄŸÄ±rabildiÄŸini ortaya Ã§Ä±kardÄ±. Ortak sahiplik filtresine bu sipariÅŸ alt rotasÄ± eklendi; Ã§apraz sahiplik Ã§aÄŸrÄ±sÄ± 404 dÃ¶ndÃ¼rÃ¼yor ve sipariÅŸ kaydÄ±nÄ± deÄŸiÅŸtirmiyor. Hedefli regresyon ve tam kalite kapÄ±sÄ± geÃ§ti (**359/359 test**, Python 111, JavaScript 32).
+- [x] HiyerarÅŸi dÃ¶ngÃ¼sÃ¼nde ekip yÃ¶neticisi kendi hesabÄ±nÄ± alt kullanÄ±cÄ± olarak gÃ¶rÃ¼p kiÅŸi izinlerini deÄŸiÅŸtirebiliyordu. Alt kullanÄ±cÄ± aramasÄ± artÄ±k kÃ¶k yÃ¶neticiyi `visited` sayÄ±yor, kimliÄŸi olmayan kayÄ±tlarÄ± dÄ±ÅŸarÄ±da bÄ±rakÄ±yor; ayrÄ±ca Ã¶z-yÃ¶netim aÃ§Ä±kÃ§a reddediliyor. DÃ¶ngÃ¼yle kÄ±sÄ±tlÄ± `stok: okur` iznini boÅŸaltma giriÅŸimi 403 veriyor ve izin korunuyor; olaÄŸan alt ekip iÅŸlemi de baÅŸarÄ±lÄ±. Hedefli gÃ¼venlik testleri ve tam kalite kapÄ±sÄ± **360/360** geÃ§ti.
+- [x] Route kapsamÄ± regresyonu, Flask uygulamasÄ±ndaki tÃ¼m dinamik sipariÅŸ/teklif/bayi/PDF rotalarÄ±nÄ±n bir sahiplik eÅŸleÅŸtiricisine baÄŸlÄ± olduÄŸunu doÄŸruluyor; sadece `/owner` atamalarÄ± bunun dÄ±ÅŸÄ±nda (ayrÄ± yÃ¶netici-only yetkisi). Test fixtureâ€™Ä± Ã¼retim eÅŸleÅŸtiricisiyle hizalandÄ±. Tam kalite kapÄ±sÄ± yeniden geÃ§ti: **360/360**.
+- [x] Bildirim filtresinde eÅŸlenmemiÅŸ tÃ¼rler `genel_bakis` izniyle herkese aÃ§Ä±labiliyordu. ArtÄ±k yÃ¶netici tÃ¼m tipleri gÃ¶rebilir; diÄŸer kullanÄ±cÄ±lar yalnÄ±zca aÃ§Ä±kÃ§a modÃ¼le baÄŸlanmÄ±ÅŸ bilinen bildirim tiplerini alÄ±r. Genel bakÄ±ÅŸ izni olan Ã¼retim kullanÄ±cÄ±sÄ±nÄ±n bilinmeyen yeni tipte bildirim alamadÄ±ÄŸÄ± test edildi; bildirim hedefli testleri 3/3, tam kalite kapÄ±sÄ± **360/360** geÃ§ti.
+- [x] Kur API'si, yalnÄ±zca finans modÃ¼l hakkÄ±nÄ± kontrol ettiÄŸi iÃ§in `muhasebe` departmanÄ±na da dÃ¶viz verisi veriyordu; arayÃ¼zdeki gÃ¶rÃ¼nÃ¼rlÃ¼k kuralÄ± ise yalnÄ±zca `yonetici`/`finans` iÃ§indi. Sunucu kapÄ±sÄ± artÄ±k tam olarak bu iki departmanÄ± kabul ediyor. Ä°stemci aÃ§Ä±lÄ±ÅŸta kur isteÄŸini, arka plan yoklamasÄ±nÄ± ve yenilemeyi aynÄ± yetkiyle sÄ±nÄ±rlandÄ±rÄ±yor; yetkisiz `renderRate` Ã§aÄŸrÄ±sÄ± da hiÃ§bir gÃ¶stergeyi gÃ¼ncellemiyor. Muhasebe 403, yÃ¶netici ve finans 200 regresyonuyla doÄŸrulandÄ±. Tam kalite kapÄ±sÄ± **361/361**, Python 111 ve JS 32 baÅŸarÄ±lÄ±.
+- [x] AÃ§Ä±k yerel sunucu kapatÄ±lmadan HTTP kontrolÃ¼: `/`, `scenario.js` ve `ui-init.js` HTTP 200; yeni istemci kur yetkisi kapÄ±sÄ± sunulan JS iÃ§inde mevcut; `pythonw` PID 22228 Ã§alÄ±ÅŸÄ±yor.
+- [ ] Kur API'si ve diÄŸer Python deÄŸiÅŸikliklerinin canlÄ± sunucuya yÃ¼klenmesi iÃ§in uygulama yeniden baÅŸlatÄ±lmalÄ±; aÃ§Ä±k tarayÄ±cÄ± sekmesi ÅŸu an giriÅŸ formunda. Yeniden baÅŸlatma/gÃ¶rsel doÄŸrulama kullanÄ±cÄ± ekranÄ±nÄ± etkileyeceÄŸinden, daha Ã¶nceki "ÅŸimdilik yeniden baÅŸlatma" yÃ¶nlendirmesi geÃ§erliyken kaynak/test doÄŸrulamasÄ±yla devam edilecek.
+- [x] YÃ¶netici bayi silme ve toplu `/api/dealers` yenileme, sipariÅŸ/teklif geÃ§miÅŸi olan bayiyi de kaldÄ±rabiliyordu. Her iki yol artÄ±k ilgili bayi kimliÄŸi sipariÅŸ veya teklifte kullanÄ±lÄ±yorsa 409 ile duruyor; baÄŸlantÄ±sÄ±z bayi silme/geri alma Ã§alÄ±ÅŸmaya devam ediyor. DoÄŸrudan ve toplu silme korumasÄ± test edildi; tam kalite kapÄ±sÄ± **363/363**, Python 111 ve JS 32 baÅŸarÄ±lÄ±.
+- [ ] Oturum gerektiren gÃ¶rsel ekran doÄŸrulamasÄ±: CUA ile aÃ§Ä±k sekme hÃ¢lÃ¢ giriÅŸ formunda. KullanÄ±cÄ± bilgisayarda giriÅŸ yaptÄ±ktan sonra rol bazlÄ± menÃ¼, sipariÅŸ durum hÃ¼cresi, finans/onay ve Ã¼retim ekranlarÄ±nÄ± canlÄ± gÃ¶rsel doÄŸrulamaya devam et.
+
+### 2026-10-17 Salt okunur Ã¼retim ve sipariÅŸ mutabakatÄ± â€” son kontrol
+
+- [x] GerÃ§ek masaÃ¼stÃ¼ baÅŸlatÄ±cÄ±sÄ±nÄ±n 5001'deki PostgreSQL sunucusunu otomatik yeniden baÅŸlattÄ±ÄŸÄ± doÄŸrulandÄ±; aÃ§Ä±k smoke ekranÄ± gÃ¼ncel kaynakta 88/88 geÃ§ti.
+- [x] SIP-2026-0003 geÃ§miÅŸ tahsilatÄ± tek kayÄ±t olarak Ã¶deme `2e04ebf7e91a` ile eÅŸleÅŸiyor; 498.150 TL kabul edilmiÅŸ tahsilat ve aynÄ± tutarda tek `FIN-2026-0003` gelir satÄ±rÄ± var. MÃ¼kerrer gelir yok.
+- [x] TEST-SENARYO-PET-001: 4.575 kg kabul; altÄ± Ã¼rÃ¼n/Ã¼retim iÅŸi toplam 4.575 kg PET tÃ¼ketmiÅŸ; altÄ± depo kabulÃ¼ toplam 450 koli; aynÄ± altÄ± kalem ve miktar SIP-2026-0003 sevkiyat Ã§Ä±kÄ±ÅŸlarÄ±nda var. PET net bakiye 0 kg; ledger mutabÄ±k.
+- [x] Ãœretim panosu kodu `accepted` ve `cancelled` iÅŸleri aktif kuyruktan Ã§Ä±karÄ±p `history_jobs` alanÄ±nda tutuyor; UI bunlarÄ± ayrÄ± â€œÃœretim iÅŸlem geÃ§miÅŸiâ€ baÅŸlÄ±ÄŸÄ±nda gÃ¶steriyor. Depo kabulinden sonra aktif iÅŸ kartÄ±nda kalmÄ±yor. Testte de aynÄ± ayrÄ±m doÄŸrulanÄ±yor; geÃ§miÅŸte gÃ¶rÃ¼nmesi denetim izinin korunmasÄ±dÄ±r.
+- [ ] PP-TEST iÃ§in ayrÄ± kabul edilmiÅŸ TEST-SENARYO-PP-001 alÄ±mÄ± ve ona baÄŸlÄ± 4.575 kg bakiye ile 278.663,25 TL gider kaydÄ± hÃ¢lÃ¢ var. PET'e aktarÄ±lmadÄ±; silme/ters hareket yapÄ±lmadÄ±. PET-only kararÄ± uyarÄ±nca arÅŸivleme veya gerekÃ§eli ters stok + gider dÃ¼zeltmesi test akÄ±ÅŸÄ±nda ayrÄ±ca ele alÄ±nmalÄ±.
+- [ ] SIP-2026-0001 ve SIP-2026-0002 aynÄ± bayi, aynÄ± beÅŸ Ã¼rÃ¼n ve aynÄ± 90'ar koli kalemlerinden oluÅŸan iki taslak; hiÃ§birine stok/sevk hareketi yok. Ã–nceki â€œmÃ¼kerrerliÄŸi netleÅŸmeden silmeâ€ kararÄ± geÃ§erli; bu notta silinmedi.
+- [ ] SIP-2026-0003 teslim edilmiÅŸ ama altÄ± Ã¼rÃ¼n iÃ§eriyor; 23 Ã¼rÃ¼n kataloÄŸunun tamamÄ± bu sipariÅŸ kapsamÄ±nda Ã¼retilmiÅŸ deÄŸil. Ãœretim talimatÄ±nÄ±n â€œtÃ¼m Ã¼rÃ¼nlerâ€ kapsamÄ± ile gerÃ§ekleÅŸen sipariÅŸ miktarÄ±nÄ± karÄ±ÅŸtÄ±rmadan, yeni tam-katalog Ã¼retim testi ayrÄ± senaryo olarak planlanmalÄ±.
+- [ ] GÃ¶rsel ekran bu turda smoke testinde kaldÄ±; kimlik doÄŸrulanmÄ±ÅŸ Finans/SatÄ±ÅŸ/Ãœretim/Depo rol ekranlarÄ± hÃ¢lÃ¢ kullanÄ±cÄ± oturumu Ã¼zerinden incelenmeli.
+
+### 2026-10-17 canlÄ± kontrol ve regresyon kapanÄ±ÅŸÄ±
+
+- [x] Uygulama ekranÄ±ndaki gÃ¶rÃ¼nÃ¼r JS smoke testi: 88/88 baÅŸarÄ±lÄ±, 0 baÅŸarÄ±sÄ±z (5001, masaÃ¼stÃ¼ PostgreSQL baÅŸlatÄ±cÄ±sÄ±).
+- [x] Tam kalite kapÄ±sÄ± yeniden Ã§alÄ±ÅŸtÄ±rÄ±ldÄ±: 367/367 Python testi geÃ§ti; Python sÃ¶zdizimi 112 dosya, JavaScript sÃ¶zdizimi 32 dosya, depolama sÄ±nÄ±rÄ± kontrolÃ¼ baÅŸarÄ±lÄ±.
+- [x] CanlÄ± PostgreSQL'de sipariÅŸ/Ã¶deme/finans ve PET alÄ±m/tÃ¼ketim/kabul/sevk mutabakatÄ± doÄŸrulandÄ±; Ã¼retim kabul kuyruÄŸundan Ã§Ä±kÄ±ÅŸ regresyonu mevcut testte doÄŸrulandÄ±.
+- [ ] KullanÄ±cÄ± oturumlarÄ±yla ekran bazlÄ± rol kontrolÃ¼ ayrÄ±ca bekliyor. Aktif tarayÄ±cÄ±da smoke sayfasÄ± aÃ§Ä±k olduÄŸundan, rol ekranÄ± iÃ§in yeni oturum aÃ§Ä±lmadÄ±.
+
+### 2026-10-17 Ã–deme onay Ã¶zeti yerelleÅŸtirmesi
+
+- [x] Kritik Ã¶deme onay Ã¶zeti, tutarÄ± TÃ¼rkÃ§e sayÄ± biÃ§iminde gÃ¶steriyor (Ã¶r. `75.000,00 TL`); bilinen yÃ¶ntem kodlarÄ± TÃ¼rkÃ§e etikete Ã§evriliyor (Ã¶r. `havale_eft` â†’ `Havale / EFT`). SipariÅŸ/bayi veya satÄ±n alma belgesi/tedarikÃ§i baÄŸlamÄ± korunuyor.
+- [x] Hedefli onay Ã¶zeti testleri: 4/4. Tam kalite kapÄ±sÄ±: 368/368 test; Python sÃ¶zdizimi 112 dosya, JavaScript 32 dosya ve storage-boundary baÅŸarÄ±lÄ±.
+- [x] Kaynak dosyalarÄ± Ã¶ncesi kopya `work/backups/approval-payment-localization-20261017` altÄ±nda. GÃ¼ncel kod masaÃ¼stÃ¼ PostgreSQL baÅŸlatÄ±cÄ±sÄ±nda yÃ¼klenmek Ã¼zere yeniden baÅŸlatÄ±ldÄ± (5001 PID 25304).
+- [x] KullanÄ±cÄ±nÄ±n aÃ§Ä±k tarayÄ±cÄ± sekmesi kapatÄ±lmadÄ±; gÃ¶rÃ¼nÃ¼r smoke ekranÄ± yeniden yÃ¼klendi ve 88/88 baÅŸarÄ±lÄ±, 0 baÅŸarÄ±sÄ±z.
+
+- [x] Onay kuyruÄŸu iÃ§in ek kapsam testi: oluÅŸturulan Ã¶deme Ã¶zeti `gerekce_detay` olarak saklanÄ±yor; yÃ¶netici listesi isteyen kullanÄ±cÄ±/departman ve ayrÄ±ntÄ±yÄ± aynÄ± iÃ§erikle alÄ±yor. Hedefli onay baÄŸlamÄ± testleri artÄ±k 5/5; gÃ¼ncel tam kalite kapÄ±sÄ± 369/369, Python 112 / JavaScript 32 / depolama sÄ±nÄ±rÄ± baÅŸarÄ±lÄ±.
+
+### 2026-10-17 SeÃ§ili depo kabul taleplerini toplu iÅŸleme
+
+- [x] Ãœretimden Ã§Ä±kan birden fazla bekleyen mamul kabul talebi iÃ§in depo ekranÄ±na Ã§oklu seÃ§im ve tek iÅŸlemle kabul eklendi. Tekli kabul de aynÄ± servis mantÄ±ÄŸÄ±na yÃ¶nlendirildi.
+- [x] API yalnÄ±z `uretim_depo` yazma yetkisini kabul ediyor; 1-100 benzersiz talep sÄ±nÄ±rÄ±, geÃ§erli bekleyen durum ve gÃ¼ncel Ã¼retim Ã§alÄ±ÅŸmasÄ± denetleniyor. TÃ¼m stok hareketleri, sipariÅŸin sevkiyata hazÄ±r durumu ve Ã¼retim geÃ§miÅŸi aynÄ± belge transactionâ€™Ä±nda yazÄ±lÄ±yor.
+- [x] Tekrar gÃ¶nderimde mÃ¼kerrer stok hareketi oluÅŸmuyor. Bir seÃ§ili talep geÃ§ersizse diÄŸer talepler de kÄ±smen kabul edilmiyor.
+- [x] Ãœretim/depo hedefli testler 16/16; toplu kabul, idempotent tekrar, yetkisiz eriÅŸim reddi ve karÄ±ÅŸÄ±k-geÃ§ersiz partide atomiklik doÄŸrulandÄ±. Tam kalite kapÄ±sÄ± 372/372; Python sÃ¶zdizimi 112, JavaScript 32 ve storage-boundary baÅŸarÄ±lÄ±.
+- [x] MasaÃ¼stÃ¼ LUMISPAC sunucusu kaynak gÃ¼ncellemesi iÃ§in yeniden baÅŸlatÄ±ldÄ± (5001 PID 19404); ana sayfa ve smoke test HTTP 200. AÃ§Ä±k tarayÄ±cÄ± sekmesinde gÃ¼ncel gÃ¶rÃ¼nÃ¼r smoke ekranÄ± 90/90, 0 hata.
+- [ ] CanlÄ± PostgreSQLâ€™de bekleyen depo kabul talebi olmadÄ±ÄŸÄ±ndan, toplu kabul butonuna oturumlu gerÃ§ek depo ekranÄ±nda tÄ±klama henÃ¼z yapÄ±lmadÄ±. API iÅŸ kuralÄ± izole akÄ±ÅŸta; istemci fonksiyonlarÄ±nÄ±n yÃ¼klenmesi gÃ¶rÃ¼nÃ¼r smokeâ€™ta doÄŸrulandÄ±. KullanÄ±cÄ± oturumuyla rol ekranÄ± E2E kontrolÃ¼ aÃ§Ä±k iÅŸ.
+
+### 2026-10-17 Bildirim temizleme yarÄ±ÅŸ durumu
+
+- [x] Bildirimleri ilk API yoklamasÄ± bitmeden temizleyince aktif kayÄ±t anahtarlarÄ± boÅŸ kalabiliyordu; sonraki yoklama aynÄ± bildirimleri tekrar gÃ¶sterebiliyordu. Temizleme onayÄ±ndan sonra gÃ¼ncel bildirim listesi tekrar alÄ±nÄ±yor, kullanÄ±cÄ±ya Ã¶zel gizleme kayÄ±tlarÄ± birleÅŸtiriliyor ve bildirim sayacÄ±/paneli temizleniyor. API eriÅŸilemezse son baÅŸarÄ±lÄ± liste yedek olarak kullanÄ±lÄ±yor.
+- [x] Tam kalite kapÄ±sÄ± 372/372, Python 112, JavaScript 32 ve storage-boundary baÅŸarÄ±lÄ±. GÃ¶rÃ¼nÃ¼r smoke test 91/91, 0 hata.
+- [ ] GerÃ§ek kullanÄ±cÄ± tarayÄ±cÄ± oturumunda temizle â†’ sonraki 30 saniyelik yoklama zincirini gÃ¶rsel olarak doÄŸrula; smoke ortamÄ± Ã¼retim bildirimi yaratmÄ±yor.
+
+### 2026-10-17 TÄ±r/sipariÅŸ Ã¶zetinden net kÃ¢r satÄ±rÄ±nÄ±n kaldÄ±rÄ±lmasÄ±
+
+- [x] Sepet / tÄ±r ve sipariÅŸ Ã¶zeti iÃ§indeki â€œÄ°skonto sonrasÄ± net kÃ¢râ€ satÄ±rÄ± ve ona yazan DOM gÃ¼ncellemesi kaldÄ±rÄ±ldÄ±. SipariÅŸ verisi hesaplama ve finans/yÃ¶netici yetkili ekranlarÄ± korunuyor.
+- [x] KÃ¢r satÄ±rÄ±nÄ±n tÄ±r Ã¶zetinde bulunmadÄ±ÄŸÄ±nÄ± ve sipariÅŸler tablosundaki â€œTahmini net kÃ¢râ€ alanÄ±nÄ±n sadece yÃ¶netici/finans koÅŸuluyla aÃ§Ä±ldÄ±ÄŸÄ±nÄ± kontrol eden iki regresyon eklendi.
+- [x] Tam kalite kapÄ±sÄ± 374/374; Python sÃ¶zdizimi 113, JavaScript 32 ve storage-boundary baÅŸarÄ±lÄ±.
+- [x] GÃ¼ncel PostgreSQL sunucusunda yÃ¶netici oturumu aÃ§Ä±ldÄ±; tarayÄ±cÄ±da â€œSipariÅŸ OluÅŸturâ€ ekranÄ± aÃ§Ä±larak â€œTÄ±r ve sipariÅŸ Ã¶zetiâ€ doÄŸrulandÄ±. â€œÄ°skonto sonrasÄ± net kÃ¢râ€ satÄ±rÄ± yok; sipariÅŸ kaydÄ± veya sepet verisi deÄŸiÅŸtirilmedi.
+- [x] Ahmet Demir (TEST) satÄ±ÅŸ oturumunda SipariÅŸ OluÅŸtur > TÄ±r ve sipariÅŸ Ã¶zeti incelendi: marj/kÃ¢r alanÄ± yok; yalnÄ±z koli, adet, satÄ±ÅŸ, iskonto, KDV ve genel toplam gÃ¶steriliyor. Sepet boÅŸ kaldÄ±, kayÄ±t oluÅŸturulmadÄ±.
+
+### 2026-10-17 GÃ¶rÃ¼nÃ¼r rol testi ve satÄ±ÅŸ kataloÄŸu dÃ¼zeltmesi
+
+- [x] GÃ¶rÃ¼nÃ¼r uygulamada Ahmet Demir (SatÄ±ÅŸ) hesabÄ±nÄ±n sipariÅŸ ekranÄ±nda Ã¼rÃ¼n listesi boÅŸtu. Sayfa Ã¼rÃ¼n yÃ¶netimi yetkisi isteyen `/api/hesap/urunler-stok` yolunu Ã§aÄŸÄ±rÄ±yordu; satÄ±ÅŸ rolÃ¼ o yolu haklÄ± olarak alamÄ±yordu. SatÄ±ÅŸ sepeti artÄ±k satÄ±ÅŸ kataloÄŸu `/api/products` yolunu Ã§aÄŸÄ±rÄ±yor. Bu uÃ§ nokta satÄ±ÅŸ iÃ§in sunucu tarafÄ±nda yalnÄ±z `id`, `name`, `qty`, `sale` alanlarÄ±nÄ± dÃ¶ndÃ¼rÃ¼yor; Ã¼rÃ¼n kodu, gramaj, maliyet ve marj tarayÄ±cÄ±ya gÃ¶nderilmiyor. `renderProducts()` da Ã¼rÃ¼n yÃ¶netim yetkisi olmayan rolde Ã§izilmiyor.
+- [x] SatÄ±ÅŸ hesabÄ±nda ekran yenilenip sipariÅŸ sayfasÄ± aÃ§Ä±ldÄ±: 23 katalog seÃ§eneÄŸi ve Batman test bayisi yÃ¼klendi; sepet boÅŸ kaldÄ± ve kayÄ±t oluÅŸturulmadÄ±. Maliyet/kÃ¢r alanÄ± yok. AynÄ± adlÄ± farklÄ± fiyatlÄ± / fiyatsÄ±z Ã¼rÃ¼n seÃ§enekleri listede yineleniyor; Ã¼rÃ¼n adlandÄ±rma/SKU ayÄ±rÄ±mÄ± veri kalitesi notu olarak kaldÄ±.
+- [x] BarÄ±ÅŸ YÄ±ldÄ±z (SatÄ±n Alma) gÃ¶rÃ¼nÃ¼r rol testi: sadece â€œBenim Sayfamâ€ ve â€œHammadde & SatÄ±n Almaâ€ menÃ¼sÃ¼ var; Finans, kur, maliyet ve rapor menÃ¼leri gÃ¶rÃ¼nmÃ¼yor. Hammadde stok ve satÄ±n alma belgeleri gÃ¶rÃ¼ntÃ¼leniyor, tutar/fiyat saklÄ±. Hesap doÄŸru bÃ¶lÃ¼mde aÃ§Ä±lÄ±yor.
+- [x] PET-TEST 0 kg gÃ¶rÃ¼nÃ¼mÃ¼ ile TEST-SENARYO-PET-001 â€œDepoya kabul edildiâ€ belgesi Ã§eliÅŸki deÄŸil: Ã¶nceki canlÄ± stok defteri mutabakatÄ±nda 4.575 kg giriÅŸin tamamÄ±nÄ±n altÄ± Ã¼retim iÅŸi tarafÄ±ndan tÃ¼ketildiÄŸi doÄŸrulandÄ±. 4.575 kg PP-TEST senaryosu ise ayrÄ± test verisi olarak kaldÄ±; PET'e aktarÄ±lmadÄ±/silinmedi.
+- [x] SatÄ±ÅŸ kataloÄŸu ve dashboard rol kapÄ±sÄ± UI regresyonu eklendi. GerÃ§ek OneDrive kaynak kalite kapÄ±sÄ±: **376/376 test geÃ§ti**, Python 113 ve JavaScript 32 dosya sÃ¶zdizimi baÅŸarÄ±lÄ±; storage boundary ve SQLite geÃ§iÅŸ testleri baÅŸarÄ±lÄ±.
+- [ ] SatÄ±ÅŸ panosundaki â€œson/en Ã§ok satÄ±lan Ã¼rÃ¼nâ€ kartlarÄ± Ã¼rÃ¼n gramajÄ±nÄ± gÃ¶steriyor. SatÄ±ÅŸ kataloÄŸu sÄ±nÄ±rÄ±ndaki alan listesiyle tutarlÄ± olmasÄ± ve Ã¼retim gramajlarÄ±nÄ±n gereksiz ifÅŸa edilmemesi aÃ§Ä±sÄ±ndan bunu da gÃ¶zden geÃ§ir.
+- [ ] PP-TEST test stoÄŸu ve ona baÄŸlÄ± 278.663,25 TL Ã¶deme/gider, PET-only senaryosunda sonraki test sÄ±fÄ±rlamasÄ±nda temizlenecek/geri alÄ±nacak. AyrÄ± PET alÄ±mÄ±nÄ±n Ã¼retim tÃ¼ketim mutabakatÄ± bozulmasÄ±n.
+- [ ] Finans, yÃ¶netici ve satÄ±n alma dÄ±ÅŸÄ±ndaki departmanlarÄ±n tÃ¼m Ã¶zel ekran/uyarÄ± gizlilik kontrolleri rol bazÄ±nda sÃ¼rÃ¼yor. BaÄŸlantÄ±lÄ± sipariÅŸ senaryosunu yeni test verisi oluÅŸturmadan Ã¶nce test kayÄ±tlarÄ±nÄ±n gerÃ§ekÃ§i adlandÄ±rma/benzersizlik koÅŸullarÄ±yla tekrar yÃ¼rÃ¼t.
+
+### 2026-10-17 SatÄ±ÅŸ gramaj gizleme ve gÃ¶rÃ¼nÃ¼r doÄŸrulama
+
+- [x] SatÄ±ÅŸ panosu `son_satilan_urunler` ve `en_cok_satan` API alanlarÄ±ndan gramaj ve Ã¼rÃ¼n kodu Ã§Ä±karÄ±ldÄ±; kartlar yalnÄ±z Ã¼rÃ¼n adÄ± ve koli sayÄ±sÄ± Ã§iziyor. YÃ¶netici/finans iÃ§eriÄŸi korunuyor.
+- [x] `tests/test_hesap_dashboard.py` satÄ±ÅŸ rolÃ¼ testine gramaj/kodun JSON yanÄ±tÄ±nda bulunmadÄ±ÄŸÄ± kontrolÃ¼ eklendi.
+- [x] GÃ¼ncel PostgreSQL ortamÄ±nda masaÃ¼stÃ¼ baÅŸlatÄ±cÄ±sÄ±yla uyumlu `LUMISPAC_STORAGE=postgresql`, `LUMISPAC_DATABASE_URL` ve `PGPASSFILE` ortamÄ± kullanÄ±larak sunucu yeniden baÅŸlatÄ±ldÄ±; `/` HTTP 200. Ä°lk denemede baÅŸlatÄ±cÄ± ortamÄ± olmadan aÃ§Ä±lan geÃ§ici JSON sÃ¼reÃ§te giriÅŸ reddedildi; PostgreSQL ayarlarÄ±yla yeniden baÅŸlatÄ±nca Ahmet ve Derya test hesaplarÄ± giriÅŸ yaptÄ±. VeritabanÄ± iÃ§eriÄŸinde deÄŸiÅŸiklik yapÄ±lmadÄ±.
+- [x] GÃ¶rÃ¼nÃ¼r test: SatÄ±ÅŸ panosunda 23 Ã¼rÃ¼n/satÄ±ÅŸ metrikleri yÃ¼klendi, son ve Ã§ok satan Ã¼rÃ¼n kartlarÄ±nda gramaj/kod yok. SipariÅŸ sayfasÄ±nda 23 katalog seÃ§eneÄŸi ve test bayisi yÃ¼klendi; sepet boÅŸ, teklif/sipariÅŸ kaydÄ± yaratÄ±lmadÄ±. ÃœrÃ¼n seÃ§eneÄŸi alanlarÄ±nda maliyet, marj ve Ã¼rÃ¼n gramajÄ± yok.
+- [x] GÃ¶rÃ¼nÃ¼r test: Derya KoÃ§ (Finans) hesabÄ±nda kur kartÄ±/ticker, marj uyarÄ±sÄ±, finans metrikleri ve Ã¼rÃ¼n-maliyet raporlarÄ± var. BarÄ±ÅŸ YÄ±ldÄ±z (SatÄ±n Alma) hesabÄ±nda yalnÄ±z Benim Sayfam ve Hammadde & SatÄ±n Alma menÃ¼sÃ¼ var; kur/finans/rapor baÄŸlantÄ±sÄ± yok, maliyet alanlarÄ± gÃ¶sterilmiyor.
+- [x] Tam kalite kapÄ±sÄ± **376/376 test geÃ§ti**; Python 113, JavaScript 32, storage boundary ve SQLite geÃ§iÅŸ kontrolÃ¼ baÅŸarÄ±lÄ±.
+- [x] SatÄ±ÅŸ kataloÄŸundaki 23 seÃ§enek tekrar kontrol edildi. AynÄ± isimli Ã¼rÃ¼nler koli iÃ§i adet veya fiyatla ayrÄ±lÄ±yor; aynÄ± gÃ¶rÃ¼nen ad+adet+fiyat Ã¼Ã§lÃ¼sÃ¼ne sahip seÃ§enek yok. FiyatsÄ±z 4 seÃ§enek devre dÄ±ÅŸÄ±; Ã¼rÃ¼n gramajÄ± ve kodu gÃ¶rÃ¼nmÃ¼yor.
+
+## 2026-10-17 â€” SatÄ±ÅŸ rolÃ¼ gramaj raporu gÃ¶rÃ¼nÃ¼rlÃ¼ÄŸÃ¼
+
+- [x] GÃ¶rÃ¼nÃ¼r testte satÄ±ÅŸ kullanÄ±cÄ±sÄ±nÄ±n â€œMÃ¼ÅŸteri > Gramaj Analiziâ€ baÄŸlantÄ±sÄ±nÄ± gÃ¶rebildiÄŸi, ancak ilgili API'nin `kar_maliyet` yetkisi gerektirdiÄŸi bulundu. MenÃ¼de boÅŸ/yetkisiz sayfa aÃ§tÄ±ran baÄŸlantÄ± gizlenecek ÅŸekilde filtrelendi.
+- [x] `tests/test_ui_privacy.py` regresyonu eklendi; tam kalite kapÄ±sÄ± 377/377 test, Python 113 dosya, JavaScript 32 dosya ve depolama sÄ±nÄ±rÄ± kontrolÃ¼ baÅŸarÄ±lÄ±.
+- [x] AÃ§Ä±k Ahmet Demir test oturumunda sayfa yenilendi; â€œMÃ¼ÅŸteriâ€ alt menÃ¼sÃ¼nde Gramaj Analizi artÄ±k gÃ¶rÃ¼nmÃ¼yor. MÃ¼ÅŸteri Analizi, ABC Analizi ve Kategori DaÄŸÄ±lÄ±mÄ± gÃ¶rÃ¼nÃ¼r; satÄ±ÅŸ sepeti boÅŸ, yeni kayÄ±t yapÄ±lmadÄ±.
+- [x] SatÄ±ÅŸ kataloÄŸundaki 23 seÃ§enek gÃ¶rÃ¼nÃ¼r oturumda kontrol edildi: aynÄ± Ã¼rÃ¼n adÄ±yla gelenler koli iÃ§i adet veya fiyatla ayrÄ±ÅŸÄ±yor; aynÄ± ad+adet+fiyat Ã¼Ã§lÃ¼sÃ¼ tekrarlanmÄ±yor. FiyatsÄ±z dÃ¶rt seÃ§enek devre dÄ±ÅŸÄ±; gramaj ve maliyet gÃ¶rÃ¼nmÃ¼yor.
+
+## 2026-10-17 â€” SipariÅŸ ekranÄ±nÄ±n ilk yÃ¼klenmesi
+
+- [x] Ahmet Demirâ€™in panelindeki 1 teslim edilmiÅŸ sipariÅŸ ve 415.125 TL satÄ±ÅŸ hacmi, sipariÅŸ listesi API verisi gelince SIP-2026-0003 / Batman Ambalaj / 450 koli / Teslim edildi olarak eÅŸleÅŸti.
+- [x] Zeynep Arslan (Depo) hesabÄ±nda aynÄ± sipariÅŸ ve aynÄ± â€œTeslim edildiâ€ / â€œDepo: Teslim edildiâ€ durumu yÃ¼klendi. Yeni kayÄ±t, durum deÄŸiÅŸikliÄŸi veya stok hareketi yapÄ±lmadÄ±.
+- [x] SipariÅŸler ilk yÃ¼klemesinde geÃ§ici â€œSipariÅŸ yokâ€ yerine â€œSipariÅŸler yÃ¼kleniyorâ€¦â€ gÃ¶steriliyor; API hatasÄ±nda yeniden dene seÃ§eneÄŸi var. GÃ¶rÃ¼nÃ¼r depo hesabÄ±nda yenileme sonrasÄ± 3 sipariÅŸ yÃ¼klendi.
+
+## 2026-10-17 â€” SipariÅŸ yÃ¼kleme durumu dÃ¼zeltildi
+
+- [x] SipariÅŸler ekranÄ± artÄ±k ilk yÃ¼klemede yanlÄ±ÅŸ â€œSipariÅŸ yokâ€ yazmÄ±yor; â€œSipariÅŸler yÃ¼kleniyorâ€¦â€ gÃ¶steriyor. Ä°stek hata verirse tekrar deneme baÄŸlantÄ±sÄ± Ã§Ä±kÄ±yor.
+- [x] HazÄ±r sipariÅŸ verisi kullanÄ±cÄ± kimliÄŸiyle eÅŸleÅŸtiriliyor; farklÄ± hesaba geÃ§ince Ã¶nceki hesabÄ±n sipariÅŸleri yÃ¼kleme sÄ±rasÄ±nda gÃ¶sterilmiyor.
+- [x] Regresyonla tam kalite kapÄ±sÄ± **378/378** geÃ§ti; Python 113, JavaScript 32 ve storage-boundary baÅŸarÄ±lÄ±.
+- [x] GÃ¼ncel uygulamada Zeynep Arslan (Depo) ekranÄ± yenilendi: ilk gÃ¶rÃ¼nÃ¼m â€œSipariÅŸler yÃ¼kleniyorâ€¦â€ oldu; veri gelince 3 sipariÅŸ aÃ§Ä±ldÄ±. SIP-2026-0003 450 koli ve â€œTeslim edildi / Depo: Teslim edildiâ€ olarak kaldÄ±.
+
+## 2026-10-17 â€” Ãœretim geÃ§miÅŸi TÃ¼rkÃ§e etiketleri
+
+- [x] Ãœretim rolÃ¼nÃ¼n iÅŸlem geÃ§miÅŸinde ham `receipt_accepted`, `receipt_request`, `complete`, `start` ve benzeri iÅŸlem kodlarÄ± gÃ¶rÃ¼nÃ¼yordu. `production.js` artÄ±k bilinen tÃ¼m Ã¼retim/geri dÃ¶nÃ¼ÅŸÃ¼m olaylarÄ±nÄ± TÃ¼rkÃ§e etiketliyor; bilinmeyen kodlar ham Ä°ngilizce olarak gÃ¶sterilmiyor.
+- [x] `tests/test_ui_privacy.py` regresyonu eklendi; tam kalite kapÄ±sÄ± **379/379 test** geÃ§ti, Python 113 dosya, JavaScript 32 dosya ve depolama sÄ±nÄ±rÄ± baÅŸarÄ±lÄ±.
+- [x] GÃ¶rÃ¼nÃ¼r Murat Kaya (Ãœretim) ekranÄ± yenilendi: geÃ§miÅŸte â€œDepoya kabul edildiâ€, â€œDepo kabul talebiâ€, â€œÃœretim tamamlandÄ±â€, â€œÃœretim baÅŸlatÄ±ldÄ±â€ TÃ¼rkÃ§e gÃ¶rÃ¼nÃ¼yor. Kabul edilen 6 iÅŸ aktif Ã¼retim kuyruÄŸunda yok; kabul talepleri ve geÃ§miÅŸte izlenebiliyor.
+- [x] SatÄ±ÅŸ kataloÄŸundaki 23 seÃ§enek tekrar gÃ¶zden geÃ§irildi: aynÄ± isimli seÃ§enekler fiyat/koli iÃ§i adet bilgisiyle ayrÄ±lÄ±yor; gÃ¶rÃ¼nen ad+adet+fiyatÄ± birebir aynÄ± iki seÃ§enek yok. FiyatsÄ±z dÃ¶rt seÃ§enek seÃ§ilemiyor; gramaj, kod, maliyet ve marj satÄ±ÅŸ kataloÄŸunda gÃ¶sterilmiyor.
+- [x] SipariÅŸ ilk yÃ¼kleme notu: Ã¶nceki â€œ[ ] SipariÅŸ yokâ€ geÃ§ici durumu artÄ±k â€œSipariÅŸler yÃ¼kleniyorâ€¦â€ olarak deÄŸiÅŸtirildi; hata durumunda yeniden dene baÄŸlantÄ±sÄ± var (379/379 kalite kapÄ±sÄ±nda doÄŸrulandÄ±).
+- [x] ÃœrÃ¼n ekranÄ± maliyete eriÅŸimi olmayan roller iÃ§in â€œÃœrÃ¼n Bilgileriâ€ diye adlandÄ±rÄ±ldÄ±; dÃ¼zenleme yetkisi olmayan kullanÄ±cÄ±larÄ±n Ã¼rÃ¼n alanlarÄ± salt okunur. Murat Kaya (TEST) ekranÄ±nda 23 Ã¼rÃ¼n yÃ¼klendi, alanlar disabled, detayda yalnÄ±z kimlik/gramaj/koli/hacim/satÄ±ÅŸ fiyatÄ± gÃ¶rÃ¼ndÃ¼; maliyet/kÃ¢r yok. Kalite kapÄ±sÄ± 381/381 test, Python 113 ve JavaScript 32 dosya baÅŸarÄ±lÄ±.
+
+
+
+## 2026-10-17 â€” Rol bazlÄ± Ã¼rÃ¼n ekranÄ± ve rapor baÄŸlantÄ±sÄ±
+
+- [x] Ãœretim rolÃ¼ndeki Ã¼rÃ¼n tablosu yalnÄ±z gÃ¶rÃ¼ntÃ¼leme yetkisi taÅŸÄ±masÄ±na raÄŸmen dÃ¼zenlenebilir gÃ¶rÃ¼nÃ¼yordu. DÃ¼zenleme yetkisi olmayan hesaplarda Ã¼rÃ¼n girdileri devre dÄ±ÅŸÄ± bÄ±rakÄ±ldÄ±; Ã¼rÃ¼n menÃ¼sÃ¼ maliyet yetkisi olmayanlara â€œÃœrÃ¼n Bilgileriâ€ gÃ¶steriyor.
+- [x] GÃ¶rÃ¼nÃ¼r Murat Kaya (TEST) Ã¼retim oturumunda 23 Ã¼rÃ¼n yÃ¼klendi; Ã¼rÃ¼n adÄ±, gramaj, koli iÃ§i adet, hacim ve satÄ±ÅŸ alanlarÄ± devre dÄ±ÅŸÄ±. Detay penceresinde yalnÄ±z kimlik, Ã¶lÃ§Ã¼ ve satÄ±ÅŸ bilgisi var; maliyet/kÃ¢r yok.
+- [x] SatÄ±ÅŸ kullanÄ±cÄ±sÄ±na sunucu tarafÄ±nda `kar_maliyet` isteyen Anomali Alarm baÄŸlantÄ±sÄ±nÄ±n aÃ§Ä±k olduÄŸu bulundu. Rapor yetki filtresine eklendi; Ahmet Demir (TEST) oturumu yenilendiÄŸinde Analiz menÃ¼sÃ¼nde SatÄ±ÅŸ Trendi ve AI Tahmin kaldÄ±, Anomali Alarm kayboldu.
+- [x] Finans dÄ±ÅŸÄ± satÄ±ÅŸ rolÃ¼nde tÄ±r/sipariÅŸ Ã¶zeti kÃ¢r marjÄ± gÃ¶stermiyor. SatÄ±ÅŸ dashboard metrikleri veri geldikten sonra dolduruldu; kartlarda Ã¼rÃ¼n gramajÄ±/kodu ve maliyet/kÃ¢r gÃ¶rÃ¼nmÃ¼yor.
+- [x] HatalÄ± giriÅŸ auth testleri artÄ±k proje kullanÄ±cÄ± dosyasÄ±na audit log yazmÄ±yor; `USERS_FILE` test baÅŸÄ±na geÃ§ici dizine yÃ¶nlendirildi.
+- [x] UI gizlilik testleri 10/10; tam kalite kapÄ±sÄ± **382/382** test geÃ§ti. Python sÃ¶zdizimi 113, JavaScript 32 dosya, storage boundary ve izole SQLite geÃ§iÅŸ kontrolleri baÅŸarÄ±lÄ±.
+
+
+## 2026-10-17 — Canlı bildirim ve finans ekranı doğrulaması
+
+- [x] Yönetici tarayıcı oturumunda 2 bildirim temizlendi; 30 saniyelik otomatik yoklama sonrası zil sayacı sıfır, panel “Şu an bildirilecek bir şey yok” durumunda kaldı.
+- [x] Finans ekranında tahsilat gelir kaydı olarak doğrulandı: FIN-2026-0003, Mehmet Acar / Batman Ambalaj, 498.150,00 TL gelir. İki hammadde gideri 550.281,00 TL; bakiye -52.131,00 TL.
+- [x] Aylık 2026-10 raporu üç kaydı gösteriyor; gelir, gider, kategori dağılımı ve net tutar finans özetiyle tutarlı. Yeni finans/sipariş kaydı oluşturulmadı.
+
+
+
+## 2026-10-17 — Satış trendi hesaplama ve finans gizliliği
+
+- [x] Satış Trendi raporu sipariş alanı `d` değerini iskonto yüzdesi sanarak toplam satışı yaklaşık -1,72 milyar TL hesaplıyordu. Raporlar artık yüzdeyi `disc` alanından okuyor; eski kayıtlar için sınırlı `d` geri dönüşü ve 0–100 aralığı uygulanıyor. SIP-2026-0003 için doğru KDV hariç satış 415.125 TL, ortalama sepet 415.125 TL oldu.
+- [x] Finans/yönetici dışı raporlarda kâr ve marj KPI, grafik ve tablo sütunları arayüzden kaldırıldı. Satış trend açıklaması ve grafiği satış tutarıyla sınırlandı; yetkisiz API cevabında da kâr/marj alanı yok.
+- [x] Hedefli regresyonlar ve tam kalite kapısı geçti: 387/387. Ahmet Demir (TEST) görünür oturumunda güncel rapor doğrulandı: 1 sipariş, 415.125 TL satış, 415.125 TL ortalama sepet; kâr/marj yok, satış trend grafiği mevcut.
+- [x] Güncel PostgreSQL uygulama sunucusu kod değişikliği için yeniden başlatıldı. Test kaydı veya finans verisi değiştirilmedi; tarayıcı açık ve Satış Trendi ekranında bırakıldı.
+
+
+
+## 2026-10-17 — Sipariş PDF adetleri ve oturumlu önizleme
+
+- [x] Sipariş satırındaki `units` toplam adetti; PDF’in `qty` alanı koli başına adet bekliyordu. Bu yüzden SIP-2026-0003 sipariş formunda “ADET” 0 görünüyordu. Ortak PDF dönüştürücüsü toplam adedi koli sayısına böler; örneğin 75.000 toplam adet / 75 koli = 1.000 adet/koli. Eski `qty_per_box` / `qty` alanları da korunuyor.
+- [x] Etkin PDF endpointleri ilişkilendirilmiş sipariş/teklif yükleyicisini kullanıyor ve sipariş formu, irsaliye, fatura ve teklif için ortak dönüşüm uyguluyor. PDF endpoint yetki ve sahiplik kontrolleri korundu.
+- [x] PDF önizleme/indirme yeni sekmenin oturum başlığını kaybetmemesi için aynı-kaynak oturumlu `fetch` ile blob üzerinden çalışıyor; yetkisiz/bozuk yanıt PDF gibi sessizce açılmıyor.
+- [x] Hedefli PDF/güvenlik/arayüz testleri 68/68; tam kalite kapısı 391/391. Python 113, JavaScript 32 dosya sözdizimi ve depolama sınırı başarılı.
+- [x] Ahmet Demir (TEST) oturumunda SIP-2026-0003 PDF’i gözle kontrol edildi: kalemlerde 75.000 / 75.000 / 45.000 / 45.000 / 30.000 / 45.000 adet, 415.125 TL ara toplam, 83.025 TL KDV ve 498.150 TL genel toplam doğru. Sipariş/finans kaydı değiştirilmedi.
+- [ ] Yeni `blob:` önizlemesinin irsaliye ve fatura içeriği bu oturumda araç güvenlik kuralı nedeniyle okunamadı; bu belge türleri için endpoint/format testleri geçti, görsel kontrol sonraki oturumda kullanıcı ekranında yapılabilir.
+
+
+
+## 2026-10-17 — Eski işlem onaylarında ayrıntı
+
+- [x] Önceden oluşturulmuş ödeme onaylarında saklı açıklama boş olduğunda yönetici listesi artık isteğin kayıtlı gövdesinden ve bağlı tedarik/sipariş belgesinden ayrıntıyı okuma anında yeniden oluşturuyor. Tarihsel onay satırı değiştirilmez; gövde/yol gibi iç istek verileri yanıta sızdırılmaz.
+- [x] Hedefli onay ve güvenlik regresyonları 58/58; tam kalite kapısı **392/392** geçti.
+- [x] Canlı yönetici ekranında iki eski TEST ödeme onayı doğrulandı: isteyen Derya Koç (TEST), Finans; 271.617,75 TL ve 278.663,25 TL; Havale / EFT; TEST-SENARYO-PET-001 / TEST-SENARYO-PP-001; Anadolu Polimer Tedarik (TEST). Onay durumları ve karar notları korundu; işlem kararı veya finans hareketi yapılmadı.
+- [ ] TEST-SENARYO-PP-001 için PET-only senaryoyla tutarsız PP test stoğu ve 278.663,25 TL gideri, sonraki test sıfırlama/ters kayıt tasarımında ele alınacak.
+- [ ] SIP-2026-0001 ve SIP-2026-0002 taslaklarının mükerrerlik durumu netleştirilecek; mevcut turda silinmedi.
+
+- [x] Ahmet Demir (TEST) hesabının Siparişler ekranı yenilenerek rol bazında kontrol edildi: yalnız kendi teslim edilmiş SIP-2026-0003 kaydı görünüyor; kâr/marj sütunları ve finans/kur alanları görünmüyor.
+- [x] SIP-2026-0001 ve SIP-2026-0002 taslakları detaydan salt okunur karşılaştırıldı: aynı TEST bayisi, aynı beş ürün (her biri 90 koli), aynı 390.420,00 TL genel toplam; oluşturulma zamanları 10 dakika aralıklı. SIP-0002 saha ziyaret notu, SIP-0001 genel operasyon notu taşıyor. İkisi de Taslak, ödeme 0,00 TL, sevkiyat/teslimat belirtilmemiş; kayıtlar mevcut durumda silinmedi/iptal edilmedi. Mükerrer taslak bulgusu temizleme kararı için teyitli not olarak eklendi.
+
+## 2026-10-17 — Kur kaynağında ana kaynağa dönüş
+
+- [x] Kur güncellemesi artık en son başarılı sağlayıcıyı öne almıyor. Her yenilemede yapılandırılmış birincil kaynak önce deneniyor; yanıt alamazsa mevcut yedek sırası korunuyor.
+- [x] Önceki sağlayıcı parametresiyle geriye uyumluluk korunurken parametrenin öncelik sırasını değiştirmediği test edildi. Senaryolar: ana kaynak başarılı, ana kaynak hata verince yedeğe geçiş, ana kaynak düzelince ilk sıraya dönüş. `tests/test_rate_sources.py`: 4/4.
+- [x] `state.update_rate()` artık son kaynağı tekrar öncelik parametresi olarak göndermiyor.
+- [x] Tam kalite kapısı 398/398 test geçti; Python sözdizimi 113, JavaScript 32 dosya ve storage-boundary başarılı.
+- [x] Güncel kod PostgreSQL masaüstü sunucusunda 5001 port sahibi doğrulanarak yeniden başlatıldı; HTTP 200. Ahmet Demir (TEST) hesabıyla görünür oturum açıldı; 23 ürün, 1 teslim edilmiş sipariş ve 415.125,00 TL satış kartı yüklendi. Sipariş veya finans verisi değiştirilmedi.
+
+## 2026-10-17 — Rol ekranları ve Türkçe stok durumu
+
+- [x] Derya Koç (Finans) hesabında kasa özeti ve kayıtlar yüklendi: 498.150,00 TL tahsilat geliri, 550.281,00 TL hammadde gideri, bakiye -52.131,00 TL. Sipariş listesinde SIP-2026-0003 “Teslim edildi / Depo: Teslim edildi”; iki taslak da “Taslak” görünüyor.
+- [x] Murat Kaya (Üretim) hesabında ilgili menüler dışında Finans, kur ve rapor görünmüyor. Üretim kuyruğu boş; altı tamamlanan iş depo kabul geçmişinde, yeni kabul bekleyen talep yok. Hammadde sayfası stok ve kg/koli reçetelerini gösteriyor, fiyat/kâr yok.
+- [x] Zeynep Arslan (Depo) hesabında yalnız kendi operasyon menüleri görünüyor; kur ve kâr sütunu yok. Sipariş durumları finans görünümüyle eşleşiyor. Stokta koli miktarları tam sayı (ör. 75; `,00` yok); ekranda “OK” rozeti bulundu.
+- [x] Stok ekranındaki durum etiketleri “OK” → “Uygun”, “KRITIK” → “KRİTİK” olarak Türkçeleştirildi. Hedefli UI regresyonu 16/16; tam kalite kapısı 399/399 test geçti, Python 113, JavaScript 32 ve storage-boundary başarılı.
+- [ ] PET-only senaryoyla tutarsız PP-TEST stoğu (4.575 kg) üretim rolünün hammadde ekranında görünür. İlişkili onaylı alım/gider bulunduğundan bu turda stok veya finans kaydı değiştirilmedi; test verisi temizleme/ters kayıt kararı ayrı.
+- [x] Saha satış sipariş satırına yalnız kendi siparişlerinin kısa üretim aşaması eklendi; miktar, maliyet ve kâr detayları taşınmıyor. Kod ve izole API/UI testleri tamamlandı; açık test verisinde aşama rozetini canlı görsel doğrulamak için bağlı aktif sipariş bekleniyor.
+
+## 2026-10-17 — Saha satışa sipariş üretim aşaması
+
+- [x] Sipariş listesi artık yalnız `uretim_bekliyor` durumundaki siparişler için bağlı üretim işlerinin salt okunur aşamasını ekliyor: üretim sırası, üretimde, duraklatıldı, yeniden üretim gerekiyor, üretim bitti/depo kabulü bekliyor veya depoya kabul edildi. Birden fazla kalem varsa yalnız tamamlanan/toplam ürün kalemi sayısı sunuluyor.
+- [x] Üretim panosu yalnız açık üretim açığı bulunan siparişlerde okunuyor; teslim edilmiş/normal sipariş listeleri için ek iş yükü yok. Alan maliyet, kâr ve kg değerleri taşımıyor.
+- [x] Satış API akışı queued → running geçişinde doğrulandı; üretim testi 17/17, UI/privacy testi 17/17. Tam kalite kapısı **401/401** test geçti; Python 113, JavaScript 32 ve storage-boundary başarılı.
+- [ ] Canlı ekranda aşama değişimini doğrulamak için bağlı aktif bir satış siparişi bulunmuyor. Yeni test siparişi ve süreç oluşturulup tamamlandığında, Ahmet hesabındaki görünür satır da doğrulanacak.
+
+
+## 2026-10-17 — Satın Alma / Finans maliyet ayrımı
+
+- [x] Satın Alma rolünde hammadde ödeme kartının ilk yükleme anındaki boş başlığı kaldırıldı; kart HTML'de baştan gizli ve yalnız maliyet + ödeme okuma yetkisiyle görünür oluyor. Hammadde fiyatı olmayan kullanıcıya “yetkiniz yok” açıklaması yerine alan hiç çizilmiyor.
+- [x] Satın Alma formu fiyat içermeyen talep oluşturuyor; KG ve belge bilgisi kaydediliyor. Birim fiyat/tutar ve ödeme sütunları Satın Alma görünümünden çıkarıldı. Finans/Yönetici taslak belgeyi “Fiyatlandır / düzenle” ile tamamlayabiliyor; depo kabulü ancak ödeme tamamlandıktan sonra sürüyor.
+- [x] Sunucu tarafı da aynı sınırı uyguluyor: Satın Alma maliyetsiz taslak oluşturabilir; maliyet alanları GET/POST/submit/receipt yanıtlarından ayıklanır; fiyat yazma veya maliyetli belgenin düzenlenmesi 403 ile reddedilir. Finans/Yönetici maliyetli taslağı düzenleyebilir.
+- [x] Hedefli API/UI gizlilik testleri 24/24; tam kalite kapısı **395/395** geçti. Python 113 dosya, JavaScript 32 dosya sözdizimi ve storage boundary başarılı.
+- [x] PostgreSQL uygulaması güvenli port-sahibi doğrulamasıyla yeniden başlatıldı (5001, HTTP 200). Barış Yıldız (TEST) ekranında fiyat/ödeme sütunları, birim fiyat girişi ve finans ödeme kartı hiç görünmüyor; maliyetsiz talep formu görünüyor. Derya Koç (TEST) ekranında fiyat, tutar, ödeme satırları ve ödeme kartı görünür. Canlı kayıt/ödeme/stoğa kabul eklenmedi veya değiştirilmedi.
+
+## 2026-10-17 — Satış panosu gramaj görünürlüğü kontrolü
+
+- [x] Ahmet Demir (TEST) satış hesabında Genel Bakış ekranı canlı olarak doğrulandı: “En son satılan ürünler” ve “En çok satılan ürünler” yalnız ürün adı ve koli adedini gösteriyor; gramaj, maliyet, kâr/marj ve kur göstergesi yok. Güncel `dashboard.js` bu kartları `name` ve `boxes` alanlarıyla çiziyor. Bu not için ek kod değişikliği gerekmedi.
+
+## 2026-10-17 — Bildirimlerin olay bazlı temizlenmesi
+
+- [x] Sunucu bildirimleri artık yalnız uyarı türüne değil, ilgili sipariş/ürün/teklif kümesine dayalı sabit bir `dedup_key` taşıyor. Kimlik değerleri istemciye açık metin olarak eklenmiyor; SHA-256 özeti kullanılıyor. Aynı açık olayın sayısı değişse veya kısa süre API listesinden kaybolup geri gelse de temizleme işareti korunuyor; yeni bir sipariş/ürün kümesi yeni olay olarak gösterilebiliyor. Günlük sipariş/teklif uyarıları tarih bazlı anahtar kullanıyor.
+- [x] Bildirim regresyonları 4/4, tam kalite kapısı **396/396** geçti; Python 113, JavaScript 32 ve storage-boundary başarılı.
+- [x] Uygulama 5001 port sahibi doğrulanarak güncel kaynakla yeniden başlatıldı (eski PID 23012, yeni PID 4868); PostgreSQL backend, ana sayfa HTTP 200. Ahmet Demir (TEST) hesabıyla yeniden giriş yapıldı; canlı satış panosu yalnız kendi SIP-2026-0003 siparişini ve satış özetini gösteriyor, gramaj/kâr/maliyet/kur alanı yok. Bu oturumda canlı kayıt veya finans hareketi değişmedi. Bildirim listesi boş olduğundan temizle/geri-gel deneyi canlı aktif olayla yapılamadı; olay anahtarı davranışı izole regresyonla doğrulandı.
+
+- [x] Güncel PostgreSQL kodu yeniden başlatıldıktan sonra Ahmet Demir (TEST) hesabında Raporlar menüsü görsel olarak açıldı: yalnız Satış Trendi, AI Tahmin, Müşteri Analizi, ABC Analizi, Kategori Dağılımı, Sevkiyat Takibi ve Teklif Takibi bağlantıları mevcut. Maliyet Detayı, Kâr Analizi, Fiyat Duyarlılığı ve Anomali Alarm menü öğeleri görünmüyor; Genel Bakış'ta da maliyet/kâr/kur/gramaj alanı yok. Ekran bu görünür durumda bırakıldı.
+
+## 2026-10-17 — Oturumlar arası API önbellek izolasyonu
+
+- [x] Hassas API yanıtlarında `Cache-Control` yoktu; aynı tarayıcı profilinde çıkış yapıp başka departmanla girişte eski finans/sipariş yanıtlarının istemci veya ara önbellekten kalma riski vardı. `/api/*` cevaplarına `Cache-Control: no-store, private`, `Pragma: no-cache`, `Expires: 0` ve `Vary: Cookie, Authorization` eklendi; 401 cevapları da kapsanıyor.
+- [x] Yönetici, Satış, Muhasebe ve oturumsuz 401 için cache başlıklarını denetleyen regresyon eklendi. Hedefli güvenlik testleri 53/53, tam kalite kapısı **397/397** geçti; Python 113, JavaScript 32 ve storage-boundary başarılı.
+- [x] Yalnız doğrulanmış LUMISPAC Python port sahibi yeniden başlatıldı (eski PID 4868, yeni PID 14868); PostgreSQL ana sayfa HTTP 200. Ahmet Demir (TEST) ile yeniden giriş doğrulandı; uygulama ana sayfası açık. Bu işlemde iş/finans kaydı değişmedi.
+
+
+## 2026-10-17 — Açılış gecikmesi ve rol dashboard kapsamı
+- [x] Oturum doğrulaması başlangıçta gereksiz 3 saniye erteleniyordu; arayüz kurulumu biter bitmez başlatıldı. Güncel kodla ekran yenilenince test kullanıcısı doğrudan kendi paneline girdi.
+- [x] Üretim hesabı Genel Bakış ekranında erişimi olmayan sipariş/teklif kartları boş başlık olarak görünüyordu. Dashboard API artık etkin modül izinlerine göre sipariş, teklif ve bayi özet alanlarını çıkartıyor; arayüz de ilgili kartları hiç göstermiyor. Yönetici yetki fallbacki, hedef ve tam kalite testleri geçti.
+- [x] Canlı kontrol: Murat Kaya (TEST) hesabında yalnız Genel Bakış, Benim Sayfam, Ürün Bilgileri, Üretim & Depo, Hammadde & Satın Alma ve Stok menüleri görünüyor; Finans, kur, sipariş ve teklif özet kartları görünmüyor.
+- [x] Derya Koç (TEST) Finans ekranında tahsilat geliri 498.150,00 TL; hammadde giderleri toplamı 550.281,00 TL; bakiye -52.131,00 TL olarak listelendi.
+- [x] Tam kalite kapısı 407/407 geçti; Python 113 dosya, JavaScript 32 dosya sözdizimi ve depolama sınırı kontrolleri başarılı.
+- [x] Yerel 5001 sunucusu doğru başlatıcı ayarlarıyla PostgreSQL üzerinde yeniden başlatıldı (PID 8332; ana sayfa HTTP 200). İlk doğrudan yeniden başlatma PostgreSQL ortam değişkenlerini devralmadığı için test verisine erişemedi; giriş reddinden sonra veri değişikliği olmadı. Başlatıcıdaki STORAGE/DATABASE_URL/PGPASSFILE ayarlarıyla geri alındı.
+- [ ] Rol kapsamı: Depo ve üretim hesaplarında Genel Bakış ve operasyon alt sayfalarının veri kartları, hassas bilgi ve boş durumları rol rol kontrol edilmeye devam edilecek.
+- [x] Üretim kullanıcısında yalnız okur yetkisi olan ürün modülüne rağmen “Yeni ürün” hızlı işlemi çıkıyordu. Sipariş/ürün/bayi oluşturma hızlı işlemleri artık `yazar/tam` yetkisi gerektiriyor; Murat hesabında kart güncel kodla yenilenip tamamen gizlendi.
+- [x] Depo rolü canlı kontrolü: Zeynep hesabında stok toplamı 0 koli; altı üretim kabulü +75 koli ve aynı siparişlerin sevki +75 koli çıkışı hareket kayıtlarıyla eşleşiyor. Miktarlar tam sayı; kur/maliyet/kâr/finans menü ve alanları yok.
+
+
+## 2026-10-17 — Hammadde ekranında yetkisiz alt bölümleri gizleme
+- [x] Satın alma, depo kabulü, reçete ve hammadde katalog kartları başlangıçta gizli; ilgili okuma yetkisi varsa bölüm gösteriliyor. Satın alma listesi hem satın alma hem ödeme okuma rolüne açık; depo kabulü salt okunur izinde görünür ama işlem düğmeleri yalnız yazma izniyle gösterilir.
+- [x] Birleşik hammadde sayfası başlığı kullanıcının yetkili olduğu bölümlere göre oluşturuluyor; başlık erişilemeyen satın alma/reçete bölümlerini artık adlandırmıyor.
+- [x] Canlı Zeynep Arslan (TEST) ekranında başlık “Hammadde · Depo Kabulü”; hammadde kataloğu ve depo kabul kuyruğu görünüyor, satın alma belgeleri, ödemeler ve ürün reçeteleri görünmüyor. PP-TEST 4.575 kg eski test bakiyesi görünür; PET tüketim formülü yalnız aktif PET seçiyor. Bu stok/finans kaydı değiştirilmedi.
+- [x] Hedefli arayüz gizlilik testleri 18/18; tam kalite kapısı **408/408** geçti. Python 113 dosya, JavaScript 32 dosya ve depolama sınırı kontrolleri başarılı.
+- [ ] PP-TEST test stoğunun ve bağlı gider kaydının geri alma/arşivleme kararı açık; PET stokuna aktarım yapılmayacak.
+
+## 2026-10-17 — Yetkisiz dashboard ve rol ekranı kontrolü
+- [x] Dashboard çizimi ve sayfa yenilemesi artık `genel_bakis` okuma iznini ağ isteğinden önce denetliyor; yetkisiz rolde dashboard/rapor hedef uyarısı çağrılmıyor. İstemci izin hatasını toast olarak göstermiyor.
+- [x] Kur yoklaması finans/yönetici rol filtresinde tutuldu; finans izin kontrolü backend kuralıyla aynı.
+- [x] Gizlilik hedefli testleri 18/18; tam kalite kapısı 408/408; Python 113, JavaScript 32 ve depolama sınırı kontrolleri başarılı.
+- [x] Zeynep Arslan (TEST, Depo) ekranı yenilenip görsel kontrol edildi: yalnız depo için ilgili hammadde kataloğu ve kabul kuyruğu görünüyor; satın alma/ödeme/reçete panelleri yok. PP-TEST 4.575 kg ve PET-TEST 0 kg tam okunuyor; ekranda yetki uyarısı çıkmadı.
+- [ ] Yerel sunucu günlüklerinde `/api/rate` için saniyelik 403 kayıtları sürüyor; güncel Zeynep ekranının kaynak kodu bu isteği göndermemeli. Başka bir tarayıcı/uygulama oturumu olasılığı henüz doğrulanmadı; istemci kaynağı ayrıştırılacak.
+- [ ] PP-TEST test bakiyesi ve bağlı gider için önceki temizleme/ters kayıt notu açık kalıyor.
+
+## 2026-10-17 — Dashboard rol görünürlüğü ve rapor grafik yedeği
+
+- [x] Dashboard kart tercihleri kullanıcı kimliğiyle anahtarlanıyor; bir kullanıcının kart seçimi başka role taşınmıyor. İzinli özet kartları kapalıysa kullanıcıya açıklayıcı boş durum ve varsayılana döndürme seçeneği gösteriliyor.
+- [x] Backend dashboard görünürlüğü etkin kullanıcı/departman izin bileşkesinden hesaplanıyor; eski `moduller` alanı izinli raporlamayı geçersiz kılmıyor.
+- [x] Murat Kaya (TEST) ekranında rol kontrolü: 23 ürün ve kategori dağılımı görünür; sipariş/bayi/teklif, maliyet/kâr/marj ve kur bilgileri yok. Kullanıcı kartları varsayılana döndürüldü ve ekranda doğrulandı.
+- [x] Ahmet Demir (TEST) ekranında: sipariş/teklif/satış miktarları görünür; maliyet/kâr/marj/kur alanları ve ürün gramajı görünmüyor. Satış Trendi raporu yalnızca satış serisini gösteriyor; ekran KPI değerleri API ile eşleşiyor (1 sipariş, 415.125,00 TL KDV hariç).
+- [x] Chart.js yüklenemezse rapor grafikleri artık sınırlı sayıda bekledikten sonra veriyi erişilebilir, güvenli biçimli metin/çubuk yedeğiyle gösterecek; sonsuz 500 ms yeniden deneme yok. Hedefli UI/dashboard testleri 24/24, tam kalite kapısı 409/409; Python 113 ve JavaScript 32 dosya sözdizimi, depolama sınırı başarılı.
+- [x] Zeynep Arslan (TEST) depo ekranı doğrulandı: üretim kuyruğu boş; altı önceki kabul, depo kabul geçmişi ve üretim işlem geçmişinde kayıtlı. Bunlar bekleyen kuyrukta değil, doğru biçimde geçmişte gösteriliyor. Hammadde/tüketim alanlarında PP-TEST bakiyesi sonraki PET-only temizleme kararına bırakıldı.
+- [x] Depo kabul ve üretim geçmişindeki UTC damgaları kullanıcı saat diliminde Türkçe kısa tarih/saat biçimine dönüştürüldü; ekranda 17.10.2026 08:34 yerel saatiyle doğrulandı. Hedefli UI/dashboard/üretim regresyonları 47/47, tam kalite kapısı 410/410.
+- [x] Derya Koç (TEST) Finans ekranında görsel doğrulama: 498.150,00 TL gelir, 550.281,00 TL gider, -52.131,00 TL bakiye; üç hareket ve aylık trend/kategori grafikleri mevcut ve birbiriyle tutarlı. Finans rolü için maliyet ve kur menüleri görünür.
+- [ ] Finans dışı departmanların operasyon ekranlarında gösterilen satış tutarlarının iş ihtiyacına göre ayrıca incelenmesi ve kalan rol kapsamı doğrulaması sürüyor.
+
+## 2026-10-17 — Reçete okunabilirliği ve onay geçmişi Türkçe etiketleri
+
+- [x] Murat Kaya (TEST) hammadde/reçete ekranında ürün kodları ile PET tüketim formüllerinin aynı satırda ayrı sütunlarda okunabildiği görsel olarak doğrulandı. 23 ürünün her biri için g/adet × adet/koli ÷ 1.000 = KG/koli hesabı görünür; maliyet ve kâr gösterilmiyor.
+- [x] Eski işlem onaylarında karar sonucu `success` İngilizce koduyla görünüyordu. Onay geçmişi bilinen sonuç kodlarını Türkçe kullanıcı metnine çeviriyor; canlı yönetici ekranında eski kayıt “İşlem başarıyla tamamlandı” olarak doğrulandı. Ayrıntı satırları isteyen kullanıcı/departman, tutar, yöntem, belge ve tedarikçiyi göstermeye devam ediyor.
+- [x] Departmanlar ekranında Yönetici, Satış, Finans, Üretim (TEST), Depo (TEST) ve Satın Alma (TEST) rolleri; görünür izin sayıları ve kullanıcı atamaları salt okunur olarak kontrol edildi. Bu kontrolde yetki veya kullanıcı kaydı değiştirilmedi.
+- [x] Kalite kapısı **412/412 test** geçti; Python 113 dosya, JavaScript 32 dosya sözdizimi ve storage boundary kontrolleri başarılı.
+- [ ] Yönetici ana ekranını yeniledikten hemen sonra kur kartı ile ana kur alanında geçici farklı basamaklar gözlendi; ekran kararlı hale gelince ikisinde de 49,5091 ₺ / Yahoo Finance gösterildi. Muhtemel sayaç animasyonu ile gerçek kaynak değişimini ayırt etmek için sonraki rol oturumlarında yenileme sonrası kararlı değerler karşılaştırılmalı; kalıcı fark yeniden üretilirse `/api/rate` akışı araştırılmalı.
+- [ ] Yönetici bildirimlerinde hedef marj altı (11 ürün) ve maliyet anomalisi (2 ürün) olayları görüldü. Bildirimler temizlenmedi; ilgili ekip görünürlüğü sonraki rol oturumlarında doğrulanacak.
+- [x] Satın Alma rolünde fiyat alanı ve fiyat sütunu gizliydi fakat “Hammadde tanımla / fiyatı güncelle” başlığı yanıltıcıydı. Başlık artık fiyat yetkisi olmayan hesapta “Hammadde tanımla” oluyor; Barış Yıldız (TEST) oturumunda yenileme sonrası doğrulandı. Maliyet yetkili finans/yönetici için fiyat başlığı korunuyor.
+- [x] Barış Yıldız (TEST) Satın Alma bildirim panelinde hedef marj ve maliyet anomalisi bildirimleri görünmedi; panel “Şu an bildirilecek bir şey yok” gösterdi. Bu oturumda test bildirimi temizlenmedi veya yeni kayıt oluşturulmadı.
+
+## 2026-10-17 — Operasyon rollerinde sipariş tutarı gizliliği
+
+- [x] Depo, üretim ve satın alma rollerinin sipariş listesi API yanıtlarından satış, iskonto, KDV, genel toplam, satır birim/toplam fiyatı ve ödeme tutarları kaldırıldı. Satış, Finans ve Yönetici rollerinde satış tutarları korunuyor; maliyet/kâr yetkisi ayrı kural olarak kaldı.
+- [x] Operasyon sipariş detayında satış toplamları ve ödeme tutarları gizli; yazdır menüsünde yalnız sevk irsaliyesi mevcut. Sipariş formu ve fatura PDF uçları operasyon rolleri için 403 döndürüyor.
+- [x] Zeynep Arslan (TEST) Depo oturumunda liste ve sipariş detayı görünür olarak doğrulandı: tutar alanları yok, ürün/koli/adet ve durum bilgileri ile sevk irsaliyesi erişilebilir.
+- [x] Satış ve Yönetici API yanıtlarının satış tutarlarını koruması, operasyon API yanıtlarının tutarları kaldırması ve PDF erişim sınırları için regresyon testi eklendi.
+- [ ] Üretim, finans ve yönetici rol ekranlarında kalan görev kapsamı ve veri görünürlüğü kontrollerine devam et.

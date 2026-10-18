@@ -1,0 +1,805 @@
+# Saha Satışından Teslimata: Uygulama Notları
+
+## Akış hedefi
+
+Saha personeli bayi ziyaretinde karma sipariş oluşturur. Bayi siparişi onaylar ve şirket IBAN'ına havale yapar. Finans havaleyi banka hareketinden doğrular. Depo stok açığını kontrol eder; üretim gerekiyorsa reçete bazında hammadde yeterliliği denetlenir, satın alma/kabul ve üretim/kalite adımları yürür. Mamul hazır olduğunda sipariş tır planına alınır, sevk ve teslim bilgileri siparişe bağlı tutulur.
+
+## Uygulamada bulunan parçalar
+
+- Bayi ve saha kullanıcısı kaydı/ataması; saha kullanıcısının atanmış bayilerle sınırlandırılması.
+- Karma ürün sepeti, koli/adet/tutar hesabı ve ürün hacmine göre tır hacim göstergesi.
+- Sipariş taslak/onay/hazırlık/sevk/teslim statüleri, depo uygunluk kontrolü ve üretim açığı kuyruğu.
+- Finans rolünün siparişe ödeme hareketi yazabilmesi.
+- Üretim iş emri, tamamlanan ürün için depo kabulü ve kabul sonrası stok hareketi.
+- Hammadde tedarikçisi, satın alma, ödeme/kabul ve ürün reçetesi ekranları.
+
+## Gerçekçi TEST senaryosu kadrosu
+
+Bu isimler yalnızca uygulama akışını denemek için oluşturulmuş kurgusal TEST karakterleridir; gerçek çalışan veya müşteri bilgisi değildir. Şu an ayrı giriş hesabı açılmış oldukları anlamına gelmez.
+
+| Birim / rol | TEST adı | Sipariş sürecindeki sorumluluk |
+| --- | --- | --- |
+| Sistem yöneticisi / genel yönetim | Nihat Yılmaz | Tüm birimleri ve yetki sınırlarını gözetir; kritik onaylarda son eskalasyon noktasıdır. |
+| Satış müdürü | Ece Yıldız | Saha ekibini ve bayi atamalarını yönetir; teklif ve sipariş istisnalarını inceler. |
+| Saha satış personeli | Ahmet Demir | Batman bayisini ziyaret eder, ihtiyacı ve ziyaret notunu kaydeder, karma sipariş taslağını hazırlar. |
+| Bayi yetkilisi / sipariş irtibatı | Mehmet Acar | Batman Ambalaj Pazarlama Ltd. Şti. adına sepeti ve teslimat talebini teyit eder. |
+| Finans sorumlusu | Derya Koç | Banka hareketini gerçekten karşılaştırıp havale bildirimini kabul veya reddeder; testte gerçek para gönderilmez. |
+| Satın alma sorumlusu | Burak Şahin | Reçeteden çıkan hammadde açığını tedarikçi teklifi ve satın alma talebine dönüştürür. |
+| Üretim şefi | Murat Kaya | Onaylı ve ödemesi doğrulanmış sipariş için, reçete ve malzeme yeterliyse üretim iş emrini planlar. |
+| Üretim personeli | Can Aydın | Üretim emrindeki miktarları ve gerçekleşen üretimi kaydeder. |
+| Kalite kontrol sorumlusu | Selin Aksoy | Üretilen partiyi kontrol eder; uygun miktarı depoya kabul için serbest bırakır. |
+| Depo yöneticisi | Zeynep Arslan | Mevcut stok ve üretimden kabul edilen miktarı doğrular, sipariş rezervasyonunu ve hazırlığı yönetir. |
+| Sevkiyat / lojistik sorumlusu | Emre Çelik | Araç ve yük planını doğrular, irsaliye/sevk ve teslim bilgisini kaydeder. |
+
+Uygulamadaki mevcut birim karşılıkları `yonetici`, `satis`, `muhasebe`, `uretim` ve `depo` olarak ele alınmalı. Satın alma, kalite ve lojistik henüz ayrı yetki/departman olarak tanımlı değilse bu adımlar mevcut sorumlu birimlerle yürütülmeli; gerçek departman veya kullanıcı kaydı varmış gibi kabul edilmemeli.
+
+## Canlı TEST hesapları
+
+Bu giriş bilgileri yalnızca kullanıcının yerel test uygulaması içindir; gerçek hesaplarda kullanılmamalıdır.
+
+| Kullanıcı | Kullanıcı adı | TEST parolası |
+| --- | --- | --- |
+| Derya Koç (TEST) · Finans | `derya.koc.test` | `[parola kaldırıldı]` |
+
+## Akışın beklenen karar sırası
+
+1. Ahmet Demir ziyaret ve ihtiyaç notunu girer; Mehmet Acar'ın teyidinden sonra sipariş ticari olarak onaylanır.
+2. Finans, bildirilen havaleyi banka hareketiyle eşleştirir. Eşleşmeden önce sipariş ödenmiş kabul edilmez.
+3. Depo, eldeki mamulü ayırır. Açık miktar için üretim şefi reçeteyi, satın alma hammadde açığını kontrol eder.
+4. Hammadde kabulü ve üretim/kalite tamamlanınca depo mamul kabulünü yapar ve sipariş hazırlığa geçer.
+5. Lojistik kapasiteyi doğrular, sevkiyatı kaydeder; bayi teslim teyidiyle sipariş kapanır.
+6. Her adımda sipariş numarası aynı kalır; miktar, aktör, zaman ve karar denetim geçmişinde izlenir. Kısmi işlem varsa kalan miktar ayrıca açık kalır.
+
+## Düzeltilecek / tamamlanacak bağlantılar
+
+1. Bayi teyidinin bayi hesabından mı yoksa saha personelinin teyit kaydından mı yapılacağını ve bunu sipariş üzerinde açıkça göstermek.
+2. Havale bildirimini "bekliyor" olarak kaydetmek; ödenmiş saymadan önce finansın ayrı kabul/ret kararı vermesi.
+3. Sipariş onayı ve ödeme tamamlanmadan sipariş üretiminin başlayamamasını sağlamak.
+4. Depo kontrolü, sipariş üretim açığı, hammadde reçetesi ve satın alma ihtiyacını aynı siparişe bağlamak.
+5. Hammadde yetersizliğini üretim başlamadan göstermek; reçete verisi yoksa belirsiz miktar üretmemek.
+6. Koli hacmi/ağırlığı ve araç kapasitesi doğrulanmadan "tır sığar" sonucu vermemek.
+7. Kısmi üretim, kısmi sevkiyat/teslimat, eksik/hasarlı ürün ve sipariş iptali için miktar mutabakatı.
+8. Her adımda gerçek sorumlu aktörü, ortak sipariş statüsünü ve denetim geçmişini role uygun biçimde göstermek.
+9. Satın alma, kalite kontrol ve lojistik ayrı birimler değilse bu sorumlulukların mevcut rollerle nasıl yürütüldüğünü ekranda anlaşılır kılmak.
+
+## Sonraya bırakılan yetki ve ekran düzenlemeleri
+
+- Tır ve sipariş özetinde görünen üretim maliyeti, net kâr ve marj alanları yalnızca Sistem Yöneticisi (`yonetici`) ve Finans (`finans`) rollerine açık olmalı; diğer tüm rollerde hem ekrandan hem API yanıtlarından gizlenmeli. Kullanıcı bu düzenlemeyi daha sonraki gözden geçirmeye bıraktı.
+- Finans özet tablolarındaki kâr/marj alanları için de aynı rol sınırı uygulanmalı. Bu değişiklik şimdilik yapılmayacak.
+- “Bayi sahibi” alanının etiketi daha sonra “Bayi satış yöneticisi” olarak değiştirilecek.
+- Satış kataloğu erişimi Ahmet Demir için ürün adı, koli içi adet ve müşteriye gösterilen fiyatla sınırlı olmalı; maliyet, kâr, marj, ürün kodu ve ürün ağırlığı görünmemeli.
+
+## Canlı akışta son gözlem
+
+- Birden fazla eski sunucu süreci aynı portu paylaşıyordu; tek güncel sunucu bırakılarak yenilendi. Başlangıçta rapor yetki menüsü eksik bir global değişkene takılıp veri yüklemesini durduruyordu; başlatma hatası düzeltildi.
+- Ahmet Demir'in sınırlı katalog izni doğrulandı: `/api/products` yalnızca ürün adı, koli adedi ve müşteri satış fiyatını döndürüyor. Sepet satırlarında finans hücreleri ilk render'dan sonra görünür kalıyordu; yeniden çizim sonrası gizleme eklendi ve `node --check` başarılı oldu. Canlı ekranda ürün, koli, adet ve satış tutarı görünürken maliyet/kâr sütunları artık görünmüyor.
+- Hacim bilgisinin kaybolma nedeni bulundu: satış kataloğu için güvenlik filtresi ürün alanlarını açıkça `id`, `name`, `qty`, `sale` ile sınırlandırıyor; `volume` bu listeye girmediği için tarayıcıdaki tır hesabına ulaşmıyor. Bu alan maliyet/kâr değil, lojistik kapasite verisi. Satış kataloğuna güvenli biçimde geri ekleme tır özeti düzenlemesi kapsamına girdiğinden sonraki gözden geçirmeye bırakıldı.
+- Batman Ambalaj Pazarlama Ltd. Şti. (TEST) için Ahmet Demir'in satış rolünde SIP-2026-0003 oluşturuldu: 6 ürün çeşidi × 75 koli = 450 koli / 315.000 adet; KDV hariç 415.125 ₺, KDV 83.025 ₺, KDV dahil 498.150 ₺. Alıcı teyidi ve 498.150 ₺ tutarında TEST havale bildirimi kaydedildi; gerçek para transferi yapılmadı. Beklenen teslim 21.10.2026. Hacim üründe satış kataloğuna aktarılmadığından tek tır kapasitesi doğrulanmadı.
+- Tır doluluğu satış rolünde hesaplanmıyor; ekran ürün koli hacminin yetkili kullanıcıda olmadığını bildiriyor. Ürün hacimleri doğrulanmadan bir tıra sığdığı varsayılmamalı; bu gerçekçi test akışında kapasite doğrulaması tamamlanana kadar sipariş gönderilmemeli.
+- Kullanıcı test akışının kendi rol ekranlarından yürütülmesini istiyor. Saha siparişi yönetici ekranından oluşturulmamalı; bayi teyidi, finans, üretim, depo ve sevkiyat ilgili rollerin ekranlarından izlenmeli.
+- 401'in kök nedeni bulundu: ilk giriş parola değişikliği API'si kullanıcının bütün oturumlarını ve mevcut tarayıcı çerezini siliyor; ön yüz ise oturum yenilenmeden panele devam ediyor. `api/auth.py` içinde parola değişimi sonrası eski oturumları iptal edip mevcut tarayıcıya yeni HttpOnly oturum çerezi verme düzeltmesi uygulandı. Çalışan sunucu eski bellekteki kodu tuttuğundan bu düzeltmenin yüklenmesi için sunucu yeniden başlatılmalı. Finans ekranı hâlâ 401 gösterdiği için havale doğrulanmadı; sipariş ilerletilmedi.
+
+## Gerçek iş verisi gerektiren sınırlar
+
+- Uygulama banka hesabına bağlı değil. Havale banka ekstresinden finans personeli tarafından doğrulanacak; dekont veya açıklama tek başına ödeme sayılmayacak.
+- Kullanıcı tarafından girilen ürün gramajı ürün başına gramajdır; hammadde tüketim reçetesi değildir. Üretim için her ürünün kg/koli reçetesi girilmelidir.
+- Tır hacmi ürün koli hacimleri ve ayarlardaki tır m³ değeriyle hesaplanıyor. Ürün koli hacimleri doğrulanmadıysa sistem bir tır sığacağını kesinleştiremez. Ağırlık/aks kapasitesi de ayrıca tanımlanmalı.
+- Finansal işlem entegrasyonu (banka API'si), e-fatura/e-irsaliye gönderimi ve harici kargo/araç takibi mevcut değil; ilk sürümde kayıt ve manuel doğrulama yapılır.
+
+## Uygulama sırası
+
+1. Sipariş ticari onayı ve havale bekleme/doğrulama.
+2. Siparişten stok, üretim ve reçete bazlı hammadde ihtiyacına bağlantı.
+3. Tır planı, sevkiyat, kısmi teslimat ve iade/iptal tutarlılığı.
+4. Yetki sınırları, denetim geçmişi ve gerçek test senaryosu.
+
+## 2026-10-16 yeniden başlatma sonrası doğrulama
+
+- LUMISPAC yerel sunucusu 5001 portunda yeniden başlatıldı ve uygulama tarayıcıda görünür bırakıldı. Derya Koç (TEST) Finans hesabına kullanıcının verdiği güncel parolayla giriş yapıldı.
+- Tam sayfa yenilemesinden sonra oturum korundu; `/api/auth/me`, `/api/finans`, `/api/finans/kasa`, `/api/finans/ozet-kategori`, `/api/finans/trend`, `/api/hesap/dashboard`, `/api/orders` istekleri 200 döndü. Eski “Oturum bulunamadı” toast'ı ilk açılıştaki oturumsuz yüklemeden kalmıştı; yenileme sonrası aktif panelde görünmedi. Önceki nottaki “Finans hâlâ 401” bulgusu bu doğrulamadan sonra güncel değildir.
+- Finans ekranı düzgün yüklendi; gelir/gider/kasa toplamlarının 0,00 ₺ olması endpoint hatası değil, Finans kayıtlarında henüz hareket bulunmaması.
+- Derya Finans rolünde olduğu için dashboard'da kâr/marj alanları görünür; bu mevcut talebe göre beklenen yetkidir.
+- Sipariş ekranında SIP-2026-0001, SIP-2026-0002 ve SIP-2026-0003 üçü de Taslak. 0001 ve 0002 aynı bayi, 450 koli ve 390.420 ₺ toplamla birbirine çok benziyor; muhtemel yinelenen test kaydı, silmeden önce akışta hangisinin kullanılacağı belirlenmeli. 0003: Mehmet Acar / Batman Ambalaj Pazarlama Ltd. Şti., 450 koli, 498.150 ₺, teslim hedefi 21.10.2026.
+- SIP-2026-0003 detayında bayi teyidi yapılmış, 498.150 ₺ tutarında TEST-SIM-2026-0003 havale bildirimi finans doğrulamasını bekliyor. “Banka hareketiyle eşleşti” düğmesi doğrulama onayı istedi; gerçek banka hareketi/ekstre bulunmadığından onaylanmadı ve kayıt beklemede bırakıldı. Uygulamanın banka bağlantısı yok; ödeme doğrulaması taklit edilerek sipariş üretime geçirilmemeli. Bu, test akışının mevcut harici entegrasyon sınırıdır.
+- Ürün maliyet kartlarında 23 ürün için fire, nakliye ve işçilik 0 girilmiş; mevcut marj/maliyet göstergeleri bu giderleri içermediğini açıkça bildiriyor. 4 üründe satış fiyatı yok, 11 ürün %40 hedef marjın altında. Üretim/sipariş akışında seçilen ürünler fiyatlı olsa bile kârlılık ve satın alma/üretim maliyet kararları güvenilir değil; doğru değerler kullanıcıdan/işletmeden gelmeden tahmini değer uydurulmamalı.
+- Açık takip: tekrar eden siparişlerin kaynağı ve kullanılacak kayıt; test finans onayının gerçek banka hareketi yerine ayrı “simülasyon/test” statüsüyle desteklenmesi; fire/nakliye/işçilik maliyet verilerinin doğrulanması; hacim/araç kapasitesi doğrulaması.
+
+## 2026-10-16 simülasyon akışının devamı
+
+- Kullanıcının açık talimatıyla gerçek banka hareketi olmadan yalnızca TEST akışı yürütüldü. SIP-2026-0003 için `TEST-SIM-2026-0003` adlı 498.150 ₺ test havalesi Finans rolündeki Derya Koç tarafından simülasyon olarak doğrulandı; uygulama gerçek para veya banka kaydı oluşturmadı.
+- Derya rolü Siparişler tablosunda durum değiştiremiyor; bu rol sınırı beklenen. Admin hesabında SIP-2026-0003 `Onaylandı` yapıldı. Depo kontrolü 450 koli için stok açığı buldu ve siparişi 21.10.2026 tahmini tarihli üretim açığı kuyruğuna ekledi.
+- Şu anda Admin, Ahmet Demir (Satış), Derya Koç (Finans) dışında kullanıcı hesabı yok. Departman listesinde de Yönetici, Satış, Finans dışında departman bulunmuyor. Üretim, hammadde satın alma ve depo adımlarını doğru rol ekranında test etmek için bu hesap/departmanlar eksik.
+- Güvenli akış gereği yeni üretim/depo hesabı ve hassas operasyon izni oluşturulmadan önce kullanıcıdan işlem anında teyit alınmalı; ilk parola alanlarını kullanıcı kendisi doldurmalı. Bu yetkiler onaylanmadan üretim, stok kabulü veya sevkiyat adımlarına yönetici hesabıyla devam edilmemeli.
+- Ateş/fire, işçilik ve nakliye maliyetleri senaryo varsayımıyla 0 bırakılıyor; satın alma ve hesaplamalarda yalnızca hammadde gideri kullanılacak. Bu varsayım maliyet güvenilirliğini etkiler ve TEST olarak gösterilmelidir.
+
+## 2026-10-16 üretim/depo rolüyle devam
+
+- Kullanıcı onayıyla Üretim (TEST) ve Depo (TEST) departmanları oluşturuldu. Yetki önizlemeleri maliyet/kâr/marj verilerinin kapalı kaldığını gösterdi. Üretim departmanında 4, Depo departmanında 8 modül açıldı.
+- Murat Kaya (TEST) (`murat.kaya.test`) ve Zeynep Arslan (TEST) (`zeynep.arslan.test`) hesapları kullanıcı tarafından girilen ilk parolalarla oluşturuldu. Murat’ın ilk girişi zorunlu parola değiştirme ekranına yönlendiriyor; kullanıcı bu adımı kendi tamamlamalı.
+- Murat rolünde Üretim & Depo ekranında SIP-2026-0003 için altı adet 75 koli iş emri kuyrukta görünüyor. Üretimi başlatmadım.
+- Murat rolünde Hammadde & Satın Alma ekranında hammadde kataloğu, satın alma belgeleri ve reçeteler boş; ekran reçete tanımlanmadığı için üretimde hammadde tüketimi yapılamayacağını belirtiyor. Stok ekranında 23 ürünün tüm giriş/çıkış/kalan değerleri 0 koli.
+- Murat rolüyle Genel Bakış ekranına erişim olmadığı halde “Dashboard verisi ekrana çizilemedi: Yetkiniz yok” toast'ı çıkıyor. Ana ekran izninin kapalı olması beklenen; bu toast kullanıcı deneyimi/izin kontrolü açısından incelenecek.
+- Üretim akışını sürdürmek için her SKU'nun hammadde bileşimi ve kg/koli reçetesi, hammadde türü ve alınacak miktar/fiyatı gerekir. Ürün gramajı tek başına reçete sayılmamalı; fire/işçilik/nakliye dışı, yalnız hammadde gideri uygulanacak. Hammadde satın alma rolü ve yetkisi henüz oluşturulmadı.
+
+## 2026-10-16 satın alma rolü ve reçete yetkisi
+
+- Kullanıcı onayıyla Murat Kaya (TEST)'nın Ürün Reçeteleri yetkisi görüntülemeden işlem yapara yükseltildi. Yetki önizlemesi 1 aktif kullanıcı ve 4 modülün açılacağını, kâr/marj/maliyet verilerinin kapalı kalacağını doğruladı; değişiklik denetim izine kaydedildi.
+- Satın Alma (TEST) departmanı oluşturuldu. Hammadde Kataloğu ve Stok ile Hammadde Tedarik ve Satın Alma işlem yetkileri açık; Hammadde Alım Ödemeleri, Hammadde Depo Kabulü ve Kâr/Marj/Maliyet kapalı.
+- Barış Yıldız (TEST) / `baris.yildiz.test` hesabı bu departmana ve Sistem Yöneticisi'ne bağlandı. İlk parola kullanıcı tarafından girilip kaydedilmesi için formda bekliyor; parola not edilmedi.
+
+## 2026-10-16 Barış (Satın Alma TEST) ekranı
+
+- Kullanıcı `baris.yildiz.test` ile giriş yaptı; ilk giriş parola yenileme ekranını kullanıcı tamamladı. Barış'ın Hammadde & Satın Alma ekranı açıldı. Üretim/depo, finans, ödeme ve depo kabul modülleri görünmüyor. Buna rağmen başlangıçta “Dashboard verisi ekrana çizilemedi: Yetkiniz yok” uyarısı çıktı; kısıtlı kullanıcıda dashboard isteği engellense bile uyarının çıkması tekrarlandı.
+- Barış rolünden `PP-TEST` / “PP Granül (TEST Varsayımı)” hammadde kartı ile “Anadolu Polimer Tedarik (TEST)” tedarikçisi oluşturuldu. Hammadde stoğu 0 kg; satın alma belgesi veya ödeme oluşturulmadı.
+- Üretim siparişindeki 6 SKU × 75 koli için yalnız ürün gramajı ve koli içi adetten hesaplanan teorik net ürün ağırlığı 4.575 kg. Bu hesap tek PP reçetesi, katkısız ürün ve firesiz üretim varsayımıdır; satın alma miktarı/fiyatı veya üretim reçetesi olarak kaydedilmedi.
+- Satın alma belgesi formunda Barış kullanıcısına `rawPurchasePrice` alanı ve “KG × 0,0000 TL/KG” özeti görünür oldu. Ekranda aynı zamanda “Fiyat bilgisi finans yetkililerine açıktır.” yazıyor. Kullanıcının maliyet verilerini yalnız Yönetici/Finans ile sınırlama tercihiyle çelişen yetki/ekran sızıntısı riski; fiyat girmedim ve belgeden taslak oluşturmadım. Sayfa yenilenince satır temizlendi.
+- Kullanıcı onayıyla tüm test kullanıcı parolalarının `[test parolası paylaşılmadı]` olduğu belirtildi. Barış oturumu kapatıldı; Derya Koç (TEST) `derya.koc.test` ile aynı parola kullanılarak giriş yaptı. Finans içindeki Hammadde & Satın Alma bölümü salt okunur görünüyor; PP-TEST kaydı ve “Elle girilen fiyat (TL/kg)” kolonu görünür, satın alma belgesi yok. Dashboard çağrısı yine “Oturum bulunamadi” hatası verdi; Hammadde ve Finans sayfaları gezinince açılıyor. Finans ekranında gelir/gider kayıtları 0 ve henüz kayıt yok.
+
+## 2026-10-16 test satın alma ve depo kabulü
+
+- Kullanıcı onayıyla Finans departmanında “Hammadde Tedarik ve Satın Alma” yetkisi görüntülemeden işlem yapara yükseltildi. Önizleme Finans'taki 1 aktif kullanıcıyı ve 13 modülü gösterdi; kâr/marj/maliyet Finans'ta açık kaldı. Değişiklik denetim izine kaydedildi.
+- Derya Koç (TEST) kendi Finans hesabında `TEST-SENARYO-PP-001` satın alma taslağını oluşturdu: Anadolu Polimer Tedarik (TEST), PP-TEST, 4.575 kg × 60,91 TL/kg = 278.663,25 TL. Birim fiyat, ekrandaki anlık hammadde gösterge değeriydi; doğrulanmış tedarikçi teklifi/fatura değil. Belgeye PDF eklenmedi ve kayıt açıkça TEST olarak numaralandırıldı.
+- Uygulamanın depoya aktarmak için %100 ödeme gerektirdiği görüldü. Derya, tutarın tamamı için “TEST simülasyonu; gerçek banka hareketi yapılmadı” kaynak açıklamalı uygulama içi ödeme kaydı oluşturdu. Sistem bunu ikinci yetkili onayına gönderdi. Kullanıcının eylem bazlı onayından sonra yönetici hesabı `TEST-SENARYO-PP-001` için 278.663,25 TL ödeme talebini onayladı. Bu kayıt dış banka transferi değildir.
+- Onaylar ekranı talebi yalnızca “50.000 ₺ ve üzeri ödeme isteği” diye gösterdi; satın alma belgesi ve test açıklaması listede görünmedi. Önceden not edilen onay ekranı bağlam eksikliği doğrulandı. Gerekçe alanına yazılan test açıklaması da listede “Sistem Yöneticisi · success” şeklinde görünmedi.
+- Depo kabul adımına geçerken `zeynep.arslan.test` ilk girişte zorunlu parola değiştirme ekranına yönlendirildi. Bilgisayar kullanımı yönergesi nedeniyle parola formunu kullanıcı yerine kaydetmedim; kullanıcı mevcut parolayı `[test parolası paylaşılmadı]` olarak girip yeni parolayı kendi kaydetmeli. Ödeme sonrası depo kabulü henüz yapılmadı; stok 0 kg olarak kalıyor.
+- Kullanıcı parola değişikliğini tamamladı; Zeynep Arslan (TEST) hesabıyla giriş doğrulandı. `TEST-SENARYO-PP-001` belgesi depo kabul kuyruğunda Zeynep'e göründü ve “Tümünü kabul et” işlemiyle kabul edildi. Hammadde stoğu 4.575,000 kg olarak yenileme sonrası doğrulandı.
+- Murat Kaya (TEST) hesabında departman ayarlarında Üretim Planlama ve Ürün Reçeteleri “İşlem yapar”, Stok “İşlem yapar”, Kâr/Marj/Maliyet ise kapalı. Buna rağmen kendi hesabıyla “Üretim & Depo” açıldığında “Bu sayfaya erişim yetkiniz yok” çıktı; üretim başlatılmadı.
+- Murat'ın Hammadde & Satın Alma ekranında reçete düzenleme bölümü açılıyor ancak “Ürün seç” listesinde ürün yok. Yönetici ürün kataloğunda 23 ürün mevcut. Reçeteler API/ürün listesi izin veya veri yükleme uyumsuzluğu; ürün reçetesi oluşturulamadığı için üretim hammadde tüketimi doğrulanamıyor.
+- Zeynep'in menüsünde “Siparişler” bulunuyor; açılışta siparişler sayfası 0 kayıt ve “Bu sayfaya erişim yetkiniz yok” gösterdi. Yetkisiz ekran menüde görünmemeli veya siparişlere salt-okunur rol verilmesi gerekip gerekmediği sonradan değerlendirilecek.
+
+## 2026-10-17 kullanıcı arayüzü notu
+
+- Kullanıcı isteği: Bir kullanıcının yetkisi olmayan rapor ve ekranlar kendi hesabında hiç görünmemeli. Menüde/görünür rapor listesinde yer almamalı ve doğrudan erişim denemesinde “Yetkiniz yok” metniyle boş bir bölüm açılmamalı. Menü filtresi, doğrudan URL/ekran erişimi ve API güvenliği ayrı ayrı doğrulanmalı; arka uç erişim denetimi korunmalı.
+- Bu değişiklik henüz uygulanmadı; mevcut gerçek kullanıcı akışındaki yetki/ekran bulguları toplanırken sonraki düzeltme listesine eklendi.
+- Teste devam edilirken Murat Kaya (TEST) hesabında Üretim & Depo ekranındaki altı iş emri (75 koli/ürün) Yenile ile görünüyor. Hammadde stoğu 4.575 kg. Hammadde & Satın Alma ekranında reçete oluşturma alanı görünüyor ancak `rawRecipeProduct` seçicisinde yalnızca “Ürün seç” var; katalogdaki ürünler seçenek olarak yüklenmiyor. Reçete tanımlanmadan üretime başlanmamalı; gramajdan PP reçetesi varsaymak gerçek formül değildir.
+- 17.10 devam kontrolünde Murat'ın hammadde ekranındaki yenileme stok bilgisini korudu (4.575,000 kg) ancak ürün seçiciyi doldurmadı. Ürün listesi API hataları ön yüzde sessizce yutuluyor; konsolda görülebilir uyarı yok. Üretim işleri kuyrukta bırakıldı; reçete/hammadde tüketimi doğrulanamadığı için üretim başlatılmadı.
+- Aynı ekranda Murat'ın yetkisi olmayan “Hammadde alım ödemeleri” ve “Depo kabul kuyruğu” alt bölümleri yine de başlık ve “finans yetkisi gerekli / depo kabul yetkisi yok” metinleriyle görünüyor. Bunlar istenen menü/alt bölüm gizleme düzeltmesinin somut örnekleri. İlgili endpoint yetki denetimleri korunmalı; yalnızca yetkisiz içerik ön yüzde tamamen kaldırılmalı.
+- Murat'ın erişebildiği Üretim & Depo ekranında altı iş emri görünür durumdayken ekranda ayrıca genel “Yetkiniz yok” toast'ı kalıyor. Bu, yetkisiz dashboard çağrısının aktif sayfa deneyimine sızması olabilir; izin verilmeyen genel bakış bileşeni hiç çağrılmamalı veya hata mesajı bu sayfada gösterilmemeli.
+- Kullanıcının “reçetesiz başla” talebiyle ilk 150 CC işindeki “Üretimi başlat” düğmesi denendi. Uygulama “Sipariş üretimi başlatılamadı: ürün için aktif hammadde reçetesi tanımlı değil” uyarısıyla işlemi reddetti. İş emri ve 4.575 kg hammadde stoğu değişmedi. Altı iş de hâlâ queued; sistem reçetesiz üretime izin vermiyor.
+- Kullanıcı üretim tüketim kuralını netleştirdi: ürünlerin hammaddesi PET'tir; PP kullanılmayacak. Ürün detayında bulunan adet başına gram bilgisi tüketim hesabının kaynağıdır: `gram/adet × koli içi adet × üretilen koli ÷ 1.000 = PET kg`. Fire/işçilik/nakliye gideri girilmeyecek; fire oranı/formülü ayrıca belirtilmedi. Ürün detayındaki gramaj zaten mevcutsa kullanıcıdan ayrıca reçete gramı girilmesi istenmemeli; sistem bu bilgiyi kullanıp PET stoğunu otomatik düşmelidir.
+- Uygulama şu an aktif hammadde reçetesi olmadan üretimi başlatmıyor ve reçete ekranında PET/PP türü ile kg/koli satırı bekliyor; ürün seçicisi de ürün kataloğunu yüklemedi. İstenen sade akış için ürün detayındaki gram/adet değerinden PET tüketim reçetesini otomatik türetmek ve ürün listesini düzeltmek gerekiyor.
+- Daha önce oluşturulmuş `PP-TEST` / “PP Granül (TEST Varsayımı)” ve `TEST-SENARYO-PP-001` satın alım/kabulü gerçek ürün malzemesi varsayımıyla çelişiyor. Stokta 4.575 kg bu PP test malzemesi bulunuyor; üretim duraklatılmış durumda ve PET hammaddesi olarak tüketilmemeli. Akış yeniden başladığında test verisini doğru PET malzemesiyle düzeltme/yeniden kurma gereği değerlendirilmeli.
+- Kullanıcı, PP test ürün/stokunun PET'e çevrilmesine açıkça izin verdi ve PP ürün/üretimi olmadığını, yalnız PET ürünleri kullanıldığını belirtti. Yönetici ekranında mevcut hammadde kartı satırında yalnızca “Fiyatı düzenle” var; kart adı/türü ve eldeki stoğu aynı kimlikte güvenli biçimde dönüştüren bir arayüz/işlem görünmüyor. Yeni PET kartı açıp alım/kabul oluşturmak stoğu iki kez yazabileceğinden yapılmadı. Gerekli düzeltme: mevcut hammadde kartını ve bağlı TEST alım satırı açıklamalarını tek işlemde PET olarak yeniden sınıflandırıp 4.575 kg bakiyeyi korumak ve denetim geçmişi bırakmak.
+
+## 2026-10-17 yeni PET test stoğu (PP aktarımı yapılmadı)
+
+- Kullanıcının son yönlendirmesi mevcut PP test stoğunu PET'e aktarmamak ve ayrı yeni PET test stoğu oluşturmaktır. Bu not, önceki “PP kartını PET olarak yeniden sınıflandırma/çevirme” maddesini geçersiz kılar.
+- Admin ekranında `PET-TEST` / “PET Granül (TEST)” kartı açıldı; tür PET, elle girilen test fiyatı 59,37 TL/kg. Önceden var olan `PP-TEST` kaydı ve 4.575 kg bakiyesi değiştirilmedi.
+- Barış Yıldız (Satın Alma TEST) ekranından `TEST-SENARYO-PET-001` belgesi oluşturuldu: Anadolu Polimer Tedarik (TEST), 4.575 kg × 59,37 TL/kg = 271.617,75 TL. Belge/test fiyatı; gerçek fatura eklenmedi.
+- Derya Koç (TEST) üzerinden 271.617,75 TL, aynı para biriminde 1:1 kurla yalnız uygulama içi TEST ödeme kaydı olarak girildi. Gerçek banka hareketi yapılmadı. İkinci yetkili onayı admin tarafından TEST gerekçesiyle verildi.
+- Finans ekranından belge depo kabul kuyruğuna gönderildi; Zeynep Arslan (Depo TEST) kendi ekranında `TEST-SENARYO-PET-001` satırını kabul etti.
+- Kabul sonrası Zeynep'in kataloğunda PET-TEST stoğu 4.575 kg, PP-TEST stoğu 4.575 kg göründü. PET alımı belge durumu `awaiting_receipt` iken kabulden sonra stok güncellendi ve kuyruk boşaldı.
+- Test alım fiyatı ilk kart oluşturulurken ekranda görünen 59,37 TL/kg göstergesinden alındı; sonraki kur/hammadde göstergesi güncellenmişti. Gerçek tedarikçi fiyatı değildir.
+
+## 2026-10-17 devam: üretim reçetesi engeli
+
+- Admin oturumunda Ürünler & Maliyet ekranı 23 ürünü gösteriyor; ürünlerdeki adet başına gramaj ve koli içi adet değerleri mevcut. Mevcut PET-TEST miktarı 4.575 kg; sipariş SIP-2026-0003 için altı iş emrinin toplam teorik net ihtiyacı da gramaj × koli adedi hesabıyla 4.575 kg.
+- Murat Kaya'nın Üretim rolünde ürün kataloğu boş geliyor ve reçete seçicisinde yalnız “Ürün seç” var. Kayıtlı ürünlerin bulunmadığı değil, rol/API/veri yükleme uyumsuzluğu olduğu doğrulandı. Yetkisiz genel bakış isteğinin toast'ı ve sayfa içindeki yetkisiz bölümler daha önce not edilmiş durumda.
+- Tam kaynak kökü `C:\Users\yusuf\OneDrive\Masaüstü\DEPSPEK\ChatGPT geliştirme` olarak doğrulandı. Önceki `work/salesflow` kopyası kısmi analiz kopyasıydı; bu notun devamındaki düzeltmeler artık gerçek kaynak dosyalarına uygulanmıştır.
+- Tam kaynakta reçete yükleme JavaScript'i API hatalarını sessizce yutuyordu (`catch(function(){})`). Reçete API'si ürün kataloğunun tüm ham kayıtlarını ve malzeme fiyatlarını üretim rolüne döndürüyordu; `/api/raw-materials` de maliyet izni olmayan rollere `price_per_kg` alanını sızdırıyordu. Sunucu tarafında bu fiyat alanları kaldırıldı; reçete ürün aktarımı yalnız kod, ad, gram/adet ve koli içi adet alanlarıyla sınırlandırıldı.
+- Üretim tüketimi artık ürün gramajı × koli içi adet / 1.000 ile PET kg/koli değerini hesaplıyor ve gerçek üretilen koli adediyle stoktan düşüyor. Reçete yokken başarıyla devam etme davranışı kaldırıldı; gramaj/adet eksikse, aktif PET hammaddesi yoksa veya birden fazla aday varsa üretim tamamlanması engelleniyor. Aynı üretim anahtarı tekrarlandığında ikinci stok düşümü yapılmadığı hedefli testle doğrulandı.
+- Üretim ekranındaki elle kilogram/reçete girişi kaldırıldı; otomatik hesap açıkça gösteriliyor, reçete API hatası sessizce saklanmıyor. Finans ödeme ve depo kabul bölümleri ilgili yetkisi olmayan rollerden, içerik metni ve başlıklarıyla birlikte gizleniyor.
+- Dört tam kaynak dosyası (hammadde servisi, hammadde ekranı JS'i, hammadde testleri, üretim testleri) çalışma alanı erişim onayıyla güncellendi. Önceki sürümler `work/source_before_pet_fix` altında geri dönüş için saklandı. Kaynak ve test kopyaları SHA-256 ile eşleşiyor.
+- İlgili hammadde/üretim testleri: 20 geçti. Tüm paket: 337 geçti, 3 başarısız. İki SQLite sipariş oluşturma testi tam kaynakta da başarısız; sevk rol testi depo kabulünü yapmadan sevkiyat beklediği için reddediliyor. Bu üç bulgu, PET/reçete test kapsamından ayrı açık işler olarak takip edilmeli.
+- Python sunucusu bellekte eski kodu tutar; canlı uygulamada düzeltmelerin etkinleşmesi için sunucunun yeniden başlatılması gerekir. Tarayıcı açık bırakıldı; test kullanıcı hesabına yeniden kimlik doğrulama yapılmadı.
+- Bu oturumdaki tarayıcı erişilebilirlik görüntüsü admin paneli gösteriyor; aynı anda “Oturum bulunamadi” toast'ı bulunuyor. Bilgisayar kullanımı yönergesi kimlik doğrulama ekranını otomatikleştirmeyi yasakladığından yeni oturum açma/parola doldurma yapılmadı. Üretimi başlatma veya reçetesiz stok düşürme yapılmadı; kullanıcı tarayıcıda tekrar oturum açınca kendi rol akışıyla devam edilmeli.
+
+## 2026-10-17 yeniden deneme
+
+- Tam kaynak klasöründeki LUMISPAC sunucusu `http://127.0.0.1:5001/` yanıt verdi; görünür tarayıcı sekmesi giriş ekranında bırakıldı.
+- Yeni oturumda kullanıcı girişi bulunmadığından rapor ve bildirim istekleri 401 döndü. Bu, oturum açılmadığı için beklenen erişim reddidir; rol bazlı canlı akış bu oturumda henüz doğrulanamadı.
+- Hammadde/PET düzeltmeleri, servis + ekran + iki test dosyası için SHA-256 karşılaştırmasıyla tam kaynak klasörü ve çalışma kopyası eşleşti.
+- Hedefli testler yeniden çalıştırıldı: 20 geçti.
+- Devam için kullanıcı tarayıcıda kendi hesabıyla oturum açmalı; bilgisayar kullanımı yönergesi kimlik doğrulama alanlarını otomatik doldurmaya izin vermiyor.
+
+## 2026-10-17 stok gösterimi notu
+
+- Kullanıcı, stok ekranında koli miktarlarının küsuratlı gösterilmemesini istedi. Stok özetinde `450,00` yerine `450 koli` gösterilecek şekilde arayüz biçimlendirmesi güncellenecek. Koli adedi tam sayı olmalı; stok hareketi ve özet ekranlarında birim açıkça “koli” olarak yazılmalı.
+
+## 2026-10-17 üretim durumu bildirimi notu
+
+- Saha satış personeli, kendi ekranında bağlı olduğu siparişlerin üretim aşamasını görebilmeli: üretim bekliyor/başlamadı, üretimde, üretim tamamlandı, depo kabulü bekliyor, depoya kabul edildi ve sevkiyata hazır. Müşteriye doğru bilgi verebilmesi için durum değişiklikleri sipariş numarası ve güncel zamanla görünmeli; mümkünse uygulama bildirimi de gönderilmeli.
+- Rol/API izinleri korunarak satış rolü yalnızca kendi sorumlu olduğu bayi ve siparişlerin durumunu görmeli; maliyet, kâr ve finans ayrıntıları açılmamalı. Sipariş detayındaki üretim ve depo kabul geçmişi, saha kullanıcısı ekranındaki durumla eşleşecek şekilde incelenecek.
+- Ahmet Demir (TEST) hesabıyla girişte Genel Bakış ekranında kâr marjı, koli kârı, tahmini brüt kâr ve maliyet grafiklerinin başlıkları/alanları görünüyor; değerler `—` ve dashboard yükleme toast'ı “Oturum bulunamadi”. Bu ekranlar saha rolünden tamamen gizlenmeli ve yetkisiz dashboard çağrısı/yanıltıcı hata toast'ı kaldırılmalı. Sipariş listesinde de maliyet/kâr alanlarının satış rolüne sızmadığı ayrıca doğrulanmalı.
+- Ahmet'in Siparişler ekranında SIP-2026-0003 atanmış bayi siparişi olarak görünüyor ve kapsam doğru biçimde kendi bayisiyle sınırlı. Ancak sipariş tablosunda “Tahmini Net Kâr” sütunu saha rolüne yine de görünüyor (değer `—`); sütun tamamen kaldırılmalı. Durum alanında yalnızca “Onaylandı” ve “Depo: Sevkiyata hazır” var; üretim başladı/tamamlandı ve depo kabul adımları ile değişiklik bildirimi saha ekranında gösterilmiyor. Bu, kullanıcının üretim aşamasını müşteriye bildirme ihtiyacının doğrulanmış açığıdır.
+- Ahmet'in bildirim panelinde yalnız “11 ürün hedef marj altında” uyarısı çıktı; siparişin üretim/depo durum değişikliklerine ilişkin bildirim yok. Satış rolüne maliyet/marj uyarısı gösterimi de ayrıca yetki açısından değerlendirilip ilgili olmayan rollerden gizlenmeli.
+- Kullanıcı bildirimleri rol ve iş sorumluluğuna göre kapsamlandırılmalı: hedef marj uyarısını yalnız bu konudan sorumlu/yetkili ekip görmeli; diğer kullanıcılar kendi görevleriyle ilgisiz bildirimleri görmemeli. Bildirim paneli, roldeki yetkisiz uyarı türlerini göstermemeli ve silinen uyarıları tekrar üretme davranışı da ayrı incelenmeli.
+- Döviz kuru kaynağı kararlı olmalı: öncelikli kaynaktan geçerli ve güncel veri alınabildiği sürece aynı kaynak kullanılmalı. Alternatif kaynaklara yalnızca birincil kaynak hata verdiğinde, zaman aşımına uğradığında veya geçersiz/eski veri döndürdüğünde geçilmeli; kaynak değişimi gerekçesi ve kaynağın adı kullanıcıya açıkça gösterilmeli.
+- Ahmet'in SIP-2026-0003 detayında “Tahmini Net Kâr 0,00 ₺” satırı ve sevkiyat bilgisi düzenleme alanları görünüyor. Kâr satırı saha rolünden gizlenmeli; araç/şoför alanlarının satış kullanıcısı tarafından değiştirilebilir olması rol yetkisi açısından denetlenmeli. Sipariş akışı/durum geçmişi hâlâ yalnızca bayi onayı ve havaleyi gösteriyor; üretim başlangıcı, tamamlanması ve depo kabulü bu detayda da yok.
+- Admin'in kullanıcı listesinde 6 hesap var; ayrı lojistik hesabı/departmanı yok. Departman izinlerinde Depo (TEST) rolünde “Sipariş Sevk Yetkisi” ve “Sipariş Depo Kontrolü” işlem yapabilir durumda; sevkiyat adımı Zeynep Arslan'ın depo yetkili ekranından yürütülmeli, yeni lojistik departmanı açmadan önce ihtiyaç ayrıca kararlaştırılmalı.
+- Zeynep Arslan'ın (Depo TEST) sipariş detayındaki sevkiyat bilgilerini kaydetme denemesi sunucu tarafından reddedildi: “Sevkiyat bilgileri hazırlık aşamasında sevk yetkili kullanıcı tarafından değiştirilebilir.” Aynı sipariş listede “Onaylandı” ve “Depo: Sevkiyata hazır” görünüyor; “Hazırlanıyor” sayacı 0 ve kullanıcıya durum işlemi sunulmuyor. Depo kontrolü hazır sonucu üretse de sevk bilgisi için gereken hazırlık durumuna geçiş yolu görünmüyor. Bu akış sevkiyatı durduruyor; doğru durum geçişi ve yetkili eylem ekranı düzeltilmeli. TEST plaka/şoför değerleri kaydedilmedi.
+
+## 2026-10-17 sevkiyat yetkisi düzeltmesi
+
+- Sevkiyat akışını durduran özel departman kontrolü düzeltildi: `Hazırlanıyor` ve `Teslim edildi` geçişleri artık departman adının `depo` olmasına değil, yönetici rolüne veya açık `siparis_depo` yazma yetkisine dayanıyor. Sevk geçişi ve sevkiyat bilgisi kaydı mevcut `siparis_sevk` yazma yetkisini kullanmaya devam ediyor.
+- Ön yüzde özel Depo(TEST) departmanının yetkisi varsa “Hazırlamaya al” ve “Teslim edildi” seçenekleri gösteriliyor; sevk seçeneği de aynı yetki kontrol yardımcısını kullanıyor.
+- Gerçek kaynak klasöründeki üç dosya değişiklikten önce yedeklendi. Yeni özel departman regresyon testi eklendi. Gerçek kaynakta hedefli güvenlik testleri: 2 geçti. Sunucu PostgreSQL ayarlarıyla yeniden başlatıldı; `http://127.0.0.1:5001/` HTTP 200 döndü ve güncel sipariş JavaScript'i sunuluyor. Tarayıcı sekmesi açık bırakıldı; ön yüzde güncel durumu görmek için sekmenin yenilenmesi gerekebilir.
+- Döviz kuru kaynağı davranışı için uygulanacak kural: birincil kaynak geçerli ve güncel veri verdiği sürece kaynak değiştirilmemeli; birincil kaynak hata, zaman aşımı, geçersiz veri veya eskimiş veri durumunda alternatif denenmeli. Kaynak değişiminin nedeni ve kullanılan kaynak kullanıcıya gösterilmeli. Bu not; uygulama kodu henüz değiştirilmedi.
+- Zeynep Arslan (Depo TEST) sipariş detayında sevkiyat bilgileri kaydedildi (TEST plakası `TEST-34-450`, sürücü `Emre Çelik (TEST)`, telefon boş bırakıldı). Aynı detayda “Tahmini Net Kâr 0,00 ₺” satırı depodan gizlenmeli; ayrıca sipariş listesinde “Tahmini Net Kâr” başlığı depo hesabında da görünür. Bu görünürlük açığı finansal bilgi sızıntısıdır.
+- SIP-2026-0003 için üretim panosunda altı ürün işi `accepted`, altı depo kabulü `accepted` ve stok hareketleri işlenmiş görünmesine rağmen “Sevk et” işlemi “Sevkten önce tüm ürünlerin depo kabulünden geçmesi gerekir” mesajıyla reddedildi. Sipariş API’si, başarılı üretim kabulünden sonra `fulfillment.durum=sevkiyata_hazir` olduğunu; `prepare` işleminin bunu `hazirlaniyor` durumuna çevirdiğini doğruladı. Sevk doğrulaması hâlâ yalnızca `sevkiyata_hazir` beklediği için `Hazırlanıyor → Sevk edildi` adımı kendi önceki geçişiyle çelişiyor. Akış engelleyici hata; kaynakta düzelt ve test et.
+- Sevk akışı düzeltildi: sevk önkoşulu artık `Hazırlanıyor` durumunu bekliyor, stok yeterliliğini sevkten hemen önce ayrıca tekrar denetliyor. Kaynak yedeği alındı ve sunucu doğru PostgreSQL ayarlarıyla yeniden başlatıldı. Canlı rol ekranında SIP-2026-0003 `Hazırlanıyor → Sevk edildi → Teslim edildi` oldu. Zeynep'in Stok ekranında altı ürün için +75 koli üretim kabulü, -75 koli sipariş sevki ve 0 kalan stok doğrulandı. Gerçek araç/teslimat yapılmadı; son durum yalnızca uygulama içi test senaryosudur.
+- Canlı sevk testinden sonra `tests/test_security.py::test_siparis_durumlari_bagli_rollerde_ayni_is_akisi_boyunca_guncel` hedef testi test kurulumunda başarısız oldu: önce log dosyasına izin hatası verdi; geçici test veri yolu ayarlandıktan sonra sipariş oluşturma adımı 403 döndürdü. Bu nedenle test otomasyonu sonucu doğrulanmış sayılmamalı; fixture/izin kurulumunu düzeltip yeniden çalıştır.
+- Kullanıcının sonraki düzenleme isteği: sipariş tablosunda “Durum” hücresindeki durum rozeti ve uzun açıklama sıkışarak üst üste biniyor; satır/kolon düzeni sonra iyileştirilecek.
+- PDF oluşturma isteği de incelenecek: yazdır menüsünde sipariş formu, sevk irsaliyesi ve fatura için Önizle/İndir seçenekleri var, ancak kullanıcı PDF öncesi düzenlemesi gereken alanları göremediğini bildirdi. Önizleme/indirme akışı ve alan giriş ekranlarının neden çıkmadığı daha sonra kullanıcıyla birlikte test edilip düzeltilecek.
+
+## 2026-10-17 müşteri tahsilatının finans gelirine yansımaması
+
+- Test siparişi SIP-2026-0003 için müşteri havalesi uygulama içinde kabul edilmiş ve sipariş akışı teslim edildi durumuna kadar ilerlemiş görünüyor (gerçek banka hareketi/teslimat yok).
+- Derya Koç (TEST) Finans ekranında toplam gelir 0,00 TL; gider 550.281,00 TL. Kayıt listesinde müşteri tahsilatına karşılık gelen gelir satırı görünmüyor.
+- Görünen iki gider, aynı tedarikçiye ait ve satın alma belgeleriyle eşleşiyor: TEST-SENARYO-PP-001 278.663,25 TL ve TEST-SENARYO-PET-001 271.617,75 TL. Her ikisi de ödenmiş/accepted.
+- İncelenecek: müşteri ödeme onayı sipariş/ödeme tablosunda kalıp `finance_entries` gelir kaydını oluşturmuyor mu; gelir kaydının oluşması gereken tetikleyici ve rol/onay adımı ne; tahsilat–sipariş–finans kayıtları arasında tekilleştirme/bağlantı nasıl sağlanmalı. Şimdilik kayıt eklenmedi ve hiçbir veri değiştirilmedi.
+- Takip doğrulaması (17.10.2026): SIP-2026-0003 detayında “Bayi onayı: Onaylandı · Ödeme: 498.150,00 ₺ / 498.150,00 ₺” ve durum geçmişinde “Havale onaylandı” görünüyor. Derya Koç (TEST) rolüyle erişilen Finans ekranında kayıt tablosunda yalnızca iki hammadde gideri var; müşteri tahsilatı gelir satırı yok. Dolayısıyla açık bir gelir eşleştirme/oluşturma eksikliği doğrulandı. Kök neden (onay eylemi gelir kaydı yaratmıyor mu, farklı kayıt/trigger mı bekleniyor) kaynak ve uygulama akışında ayrıca izlenecek; şu an finans kaydı elle eklenmedi.
+
+## 2026-10-17 ek rol ve stok doğrulamaları
+
+- Ahmet Demir (TEST) ile girişte Genel Bakış; Ortalama kâr marjı, Ortalama koli kârı, Tahmini brüt kâr kart/grafik başlıklarını gösteriyor (değerler `—`) ve “Dashboard verisi yüklenemedi: Oturum bulunamadi” toast'ı veriyor. Saha rolü finans/maliyet alanlarını hiç görmemeli; dashboard verisi için oturum hatası ayrıca giderilmeli.
+- Ahmet'in Siparişler ekranında sipariş toplamı doğru şekilde görünüyor ve net kâr değeri `—`; buna rağmen “TAHMİNİ NET KÂR” sütun başlığı görünür durumda. Sütun tamamen kaldırılmalı.
+- Ahmet'in Sipariş Oluştur formunda ürün adı, koli içi adet ve satış fiyatı dışında maliyet/kâr görünmedi; ancak kullanıcının görünümünde tır doluluğu 0/90 m³ hesaplaması mevcut. Bu, önceki hacim bilgisi eksikliği notuyla birlikte ürün hacim alanının nereden geldiği ve tutarlılığı bakımından ayrıca gözden geçirilecek.
+- Derya Koç (TEST) Hammadde ekranında PET alım belgesi TEST-SENARYO-PET-001 accepted/paid ve 4.575 KG görünürken PET-TEST stok 0,000 KG; PP-TEST stok ise 4.575,000 KG. PET alımının stok girişine bağlanıp bağlanmadığı ve üretimin hangi malzeme kodunu tükettiği Zeynep'in depo/üretim ekranında ayrıca doğrulanacak. Bu fark şu aşamada olası stok/ham madde eşleştirme sorunu; veri değiştirilmedi.
+- Zeynep Arslan (TEST) ile rol kontrolü: Siparişler bağlantısı menüde görünmesine rağmen tıklandığında “Bu sayfaya erişim yetkiniz yok” toast'ı geliyor ve boş liste gösteriliyor. Kullanıcının istediği gibi izinsiz menü/alan saklanmalı. Üretim & Depo sayfasında ilk açılışta “Sunucu verileri yüklenemedi” toast'ı görüldü; yenileme/sonraki yüklemede işler doğru geldi. Üretim hesabındaki Hammadde & Satın Alma sayfası PP-TEST 4.575,000 KG ve PET-TEST 0,000 KG gösteriyor; satın alma belgeleri ve depo kabul kuyruğu bu hesapta boş/gizli. Bildirim panelinde bildirim yok.
+- Murat Kaya (TEST) (Üretim) hesabında Ürünler & Maliyet menüsü ve Genel Bakıştaki kâr/marj kart başlıkları görünüyor. Ürün listesi yeniden yüklendiğinde 23 ürün için satış fiyatı, gramaj, koli içi adet, hacim ve stok alanları geldi; maliyet/kâr alanı listede görünmedi. “Detay, giderler...” düğmesi ürün ayrıntısını (satış fiyatı dahil) açtı ve gider detayı erişimi “Yetkiniz yok” ile reddedildi. İzin verilmeyen ayrıntı için uyarı/toast yerine alanın hiç görünmemesi isteniyor. Ürün listesi ilk açılışta “Sunucu verileri yüklenemedi” dedi ama Yenile sonrası veriler geldi; hata toast'ı ekranda kalabiliyor.
+- SIP-2026-0003 üretim işi gramajlarıyla hesaplanan teorik PET tüketimi 4.575 KG'dır (75.000×5 g + 75.000×10 g + 45.000×14 g + 45.000×16 g + 30.000×25 g + 45.000×30 g). Altı üretim işi tamamlanmış ve depo kabul edilmiş; ancak üretim işlem geçmişinde hammadde tüketim hareketi görünmüyor. Aynı anda PP-TEST stoğu 4.575 KG, PET-TEST 0 KG; PET satın alma belgesi 4.575 KG accepted/paid. Reçetenin PET'e bağlı olup olmadığı ve üretim kabulünün ham madde stoğunu düşürüp düşürmediği kritik akış kontrolü olarak doğrulanacak. Mevcut veriye elle müdahale edilmedi.
+- Murat Kaya (TEST) üretim hesabında bildirim paneli boş. Üretim panosu tüm altı işi accepted gösteriyor. Her yeni bölümde “Sunucu verileri yüklenemedi”/dashboard yetki toast'ı veri daha sonra gelse bile görünebiliyor; tekrarlanabilir yükleme/toast sorunu.
+
+## 2026-10-17 birleştirilmiş açık kontrol listesi
+
+Aşağıdaki başlıklar mevcut notlardaki tekrarlar birleştirilerek hazırlandı. Öncelik, canlı testte görülen akışı durduran/mali kaydı bozan maddelerdedir. Uygulama verisi üzerinde bu listeyi hazırlamak dışında değişiklik yapılmadı.
+
+### Öncelik 1 — finans ve hammadde mutabakatı
+
+- [ ] SIP-2026-0003 tahsilatının Finans kaydı ve sipariş/ödeme/gelir idempotency bağlantısını doğrula. Eski “gelir kaydı yok” gözlemi artık geçerli değil: 17.10.2026 canlı Finans ekranında 16.10 tarihli FIN-2026-0003 (+498.150 TL) ve 17.10 tarihli FIN-2026-0004 (+498.150 TL) var; Siparişler ekranında SIP-2026-0003 ve SIP-2026-0004 ayrı, teslim edilmiş siparişler ve her ikisinde de 498.150/498.150 TL tahsilat görünüyor. Bu nedenle tutarların iki ayrı siparişe ait olması bekleniyor; doğrudan sipariş-payment-finans FK bağlantısı ayrıca salt okunur olarak doğrulanmalı. Gerçek banka hareketi varsayma.
+- [ ] Üretim öncesi PET reçete/ham madde eşleşmesini doğrula. Ürün gramı × koli içi adet × üretilen koli / 1.000 ile PET kg düşmeli; PP kullanılmamalı. Mevcut ekranda PET-TEST 0, PP-TEST 4.575 KG, PET alım belgesi 4.575 KG accepted/paid. Önceden uygulanan kod düzeltmesinin bu canlı veritabanında gerçekten etkin ve muhasebeleşmiş olduğunu doğrula.
+- [ ] PET alım belgesinin depo kabulü, stok giriş hareketi ve finans gideri arasında tek tek mutabakat kur; accepted/paid durumu stok bakiyesiyle çelişmemeli. Geçmiş PP kayıtlarını silmeden önce kaynak ve miktarları belirle.
+- [ ] Stok hareketleri ve üretim/kalite kabulü için eksik/çift ham madde tüketimi veya mamul giriş/çıkışı olmadığını denetle. SIP-2026-0003 ürünleri stokta +75 ve sevkte -75 koliyle sıfır bakiyede; hareketler idempotent olmalı.
+
+### Öncelik 2 — rol ve gizli bilgi sınırları
+
+- [ ] Admin ve Finans dışındaki kullanıcıların kâr, marj, ürün maliyeti, tahmini net kâr ve finans özetlerini hem API hem ekran düzeyinde tamamen gizle. Ahmet dashboard kartları ve sipariş tablosu kâr başlığı, Murat dashboard başlıkları/Ürünler & Maliyet menüsü; Zeynep'in sipariş listesi ve kâr başlığı tekrar kontrol edilmeli.
+- [ ] Yetkisiz menü/alt bölümleri hiç çizme; “Yetkiniz yok” toast/metinleri yerine alanı gizle. Zeynep'in Siparişler erişimi rol testlerinde boş/403 ve sonra dolu liste arasında değişti; Murat'ta Hammadde alım ödemesi/depo kabul alt bölümleri ve yetki mesajları görünmüştü.
+- [ ] Satış kullanıcısında yalnız ürün adı, koli içi adet ve satış fiyatı kalmalı; maliyet, kâr, marj, gram/ağırlık ve ürün kodu görünürlüğünü tekrar doğrula. Sevkiyat alanları yalnız sevk yetkili role göre düzenlenebilir olmalı.
+- [ ] İşlem/ürün detaylarında maliyet alanına erişim denetimini hem ön yüzde hem API'de doğrula; kullanıcıya yetkisiz alan/uyarı sızmasın.
+
+### Öncelik 3 — tutarlı iş akışı ve ekranlar
+
+- [ ] Sipariş statüleri aynı sipariş numarasıyla saha, satış yönetimi, finans, üretim ve depo hesaplarında aynı ve güncel olmalı. Saha ekranı üretim başladı/tamamlandı, depo kabulü ve sevke hazır aşamalarını göstermeli ve ilgili bildirimleri almalı.
+- [ ] Bildirimleri rol/departman işlerine göre filtrele; Temizle sonrası yeniden oluşan aynı bildirimleri ve hedef marj uyarılarının kimlere gönderildiğini doğrula. Zeynep ve Murat testinde panel boştu; Ahmet'te daha önce ilgisiz marj uyarısı görülmüştü.
+- [ ] Her sayfa ilk açılışında veri yüklenmesini doğrula. Üretim/ürün ekranlarında veriler yenilemeden sonra geldiği halde “Sunucu verileri yüklenemedi” ve “Oturum bulunamadi/Yetkiniz yok” toast'ları ekranda kaldı.
+- [ ] Stok koli adetlerini küsuratsız tam sayı ve “koli” birimiyle göster; 450,00 gibi biçimi kaldır.
+- [ ] Sipariş durum rozetleri/açıklamalarının üst üste binmesini düzelt; PDF/irsaliye/fatura üretirken düzenleme alanlarının çıkmasını doğrula.
+- [ ] Sevkiyat formunda “Tahmini Net Kâr” satırını kaldır; araç/kapasite/hacim verisinin gerçek ve tutarlı kaynakla doğrulandığını test et. Mevcut satış formunda her ürün 0,2 m³ görünüyor; ürün bazında gerçek hacim değerlerinin teyidi gerekiyor.
+- [ ] Kur verisi birincil kaynak sağlıklı olduğu sürece aynı kaynaktan gelsin; sadece hata/zaman aşımı/geçersiz-eski veri olduğunda alternatif kullanıp nedeni göstersin.
+
+### Öncelik 4 — kalan senaryo/veri ve test otomasyonu
+
+- [ ] SIP-2026-0001 ile SIP-2026-0002 taslaklarının yinelenen test siparişi olup olmadığını, hangisinin tutulacağını belirle; silme/iptal yok.
+- [ ] Üretim, depo, satın alma ve admin hesaplarında menü/işlem yetkisi matrisini kullanıcı bazında tamamla; kalite ve lojistik ayrı hesap/departman değilse sorumlulukların mevcut role nasıl verildiğini netleştir.
+- [ ] Kaynak notlarında listelenen 3 otomasyon testi başarısızlığını (iki SQLite sipariş oluşturma testi ve depo kabul koşullu sevk testi) fixture/izin/iş akışı ayrımıyla incele; testleri çalıştırmadan önce geçerlilik koşulunu düzelt.
+- [ ] Gerçek banka, e-fatura/e-irsaliye gönderimi ve harici araç takibi bu test kapsamına dahil değil; bunlar için entegrasyon yokluğu kullanıcıya açıkça gösterilmeli.
+- Barış Yıldız (Satın Alma TEST) rol kontrolü: Hammadde & Satın Alma menüsü açılışta “Bu sayfaya erişim yetkiniz yok” dedi; sayfa Yenile sonrası tedarikçi ve satın alma formu ile iki belge listesi göründü. Bu, ilk render/izin yükleme sırası kaynaklı geçici yanlış reddi olabileceğini gösteriyor. Satın alma rolü fiyat alanı olmayan katalog ve satın alma formunda birim fiyat girişi görüyor; geçmiş belge toplamları `— TL` maskeli. “Hammadde alım ödemeleri · yalnız finans yetkilisi” alt başlık metni yine de erişilebilir ağaçta bulunuyor; tamamı gizlenmeli. Barış ekranında da PET accepted/paid 4.575 KG iken stok 0, PP 4.575 KG; tutarsızlık yeniden doğrulandı.
+- [ ] Arayüzde görünen tüm İngilizce ifadeleri Türkçeleştir: özellikle `accepted` gibi üretim/depo/satın alma durumları; tablo, rozet, bildirim, hata/başarı toast'ı ve geçmiş açıklamaları dahil. Durum kodları API/DB içinde kalabilir; kullanıcıya gösterilen metinler yerelleştirilmeli.
+
+### 2026-10-17 yönetici ekranı ek kontrolü
+
+- Admin hesabı giriş yaptı; Genel Bakışta yöneticiye açık maliyet/kâr kartları, 3 sipariş ve hedef marj uyarıları yüklendi. Bildirim panelinde 11 hedef marj altı ürün uyarısı var; bu yönetici görünümünde beklenen kapsam.
+- Giriş başarılı ve sayfa verileri dolu olmasına rağmen ekranda “Oturum bulunamadi” toast'ı belirdi. Oturum bulunamadı mesajı yanlış/eskimiş; yükleme yarışı ve toast temizliği maddesine eklendi.
+- Yönetici bildirim panelini görüntüledim, değişiklik yapmadan kapattım. İngilizce durum metinleri (`accepted`, `paid`) için önceki yerelleştirme maddesi geçerli; kullanıcıya gösterilen rozet, tablo ve geçmişlerin tamamı Türkçe olmalı.
+- Admin Finans ekranı 2026-10-17 tekrar kontrolünde Toplam Gelir 0,00 TL, Toplam Gider 550.281,00 TL ve iki hammadde gideri (271.617,75 TL + 278.663,25 TL) gösterdi. SIP-2026-0003 müşteri tahsilatı 498.150 TL olmasına rağmen gelir satırı yok; bulgu canlı ekranda hâlâ sürüyor.
+- Admin Siparişler ekranında SIP-2026-0003 “Teslim edildi”; iki 450 koli taslak SIP-2026-0001 ve SIP-2026-0002 hâlâ listede. Mükerrer taslak olup olmadıkları incelenecek, kayıtlar silinmedi. Koli değeri 450 olarak tam sayı gösteriliyor. Bu yönetici ekranında kâr sütunu görünmesi beklenen; diğer roller için gizlilik kontrolü açık kalıyor.
+
+### 2026-10-17 departman sayfası — Geçmiş Kayıt Sahipliği kartı
+
+- Yönetici > Departmanlar altında “Geçmiş Kayıt Sahipliği” kartı bulundu. Açıklaması: sahibi belirsiz kayıtlar satış ekibine açılmaz; önce bayi atanır, ardından bağlı teklif/siparişler aynı kullanıcıya aktarılır.
+- Kart, departman yetki ve tanımlarından farklı bir yönetim işlevi. Şu an sahipsiz görünen SIP-2026-0001 ve SIP-2026-0002 kayıtlarını, Batman Ambalaj (TEST) bayisiyle birlikte Ahmet Demir'e atama seçeneği gösteriyor. Hiçbir atama yapılmadı.
+- İşlev veri erişimi/sorumluluk açısından yararlı; ancak Departmanlar sayfasındaki konumu kafa karıştırıcı. İleride Bayiler altında “Sorumlu kullanıcı ve kayıt sahipliği” bölümüne taşınması veya ayrı bir “Kayıt Sahipliği” yönetim ekranı yapılması değerlendirilecek.
+
+### Kayıt sahipliği ekranı için karar
+
+- Departmanlar içindeki “Geçmiş Kayıt Sahipliği” kartı daha sonra Bayiler menüsü altına ayrı bir yönetici alt menüsü olarak taşınacak: **Kayıt Sahipliği**.
+- Bu ekran sahipsiz bayi/teklif/sipariş kayıtlarını tek yerde listeleyip bayi, kayıt türü ve numarası ile atanacak satış kullanıcısını birlikte göstermeli. Atama öncesi bayi-satış sorumluluğu ve bağlı teklif/sipariş ilişkileri görünür olmalı; yanlışlıkla başka bayinin kayıtları devredilmemeli.
+- Departman tanımları ve yetkileri ekranından kaldırılması önerildi. Bu turda uygulamada menü/atama değişikliği yapılmadı; ürün düzenlemesi olarak not edildi.
+
+### İşlem Onayları ekranı — istek bağlamı eksik
+
+- Yönetici > İşlem Onayları listesinde “50,00 TL üzeri ödeme isteği” gibi genel bir açıklama çıkıyor; hangi ödeme/işlem olduğu, isteğin amacı ve bağlı olduğu kayıt yeterince anlaşılmıyor.
+- Onay kartı/satırı daha fazla bağlam sunmalı: isteyen kullanıcının adı, departmanı ve rolü; işlemin türü ve amacı; ilgili sipariş/tedarikçi/bayi/kayıt numarası; tutar ve para birimi; talep zamanı; açıklama/iptal ya da ödeme gerekçesi; varsa fatura/dekont eki ve iş akışındaki mevcut durum.
+- Onayla/Reddet kararından önce bu ayrıntılar tek ekranda görülebilmeli. Ret için gerekçe alanı; onay kararını veren kişi ve zaman için denetim izi düşünülmeli. Kullanıcının rolünün görmemesi gereken maliyet/kâr gibi ek bilgiler gösterilmemeli.
+- Bu turda yalnız bulgu ve ekran önerisi not edildi; onay kuyruğunda işlem yapılmadı.
+
+### Rol bazlı ekranların gizlenmesi
+
+- Kullanıcıların yetkileri olmayan sayfa ve alt bölümler menüde hiç görünmemeli; doğrudan bağlantı veya geç yükleme yoluyla da içerik/başlık gösterilmemeli. “Yetkiniz yok” metni/toast'ı gösterip ekranı görünür bırakmak istenmiyor.
+- Bu kural sadece ön yüz menülerine değil, alt menü, kart, tablo sütunu ve işlem düğmelerine de uygulanmalı. API tarafında yetki denetimi korunmalı; yetkisiz doğrudan erişim veri sızdırmadan reddedilmeli.
+- İzin verisinin ilk yüklenme sırası nedeniyle yetkili ekranın geçici olarak gizlenmesi veya yetkisiz ekranın anlık görünmesi ayrıca test edilecek.
+
+- Kur verisi ve kurla ilgili ekran/özet/gösterge/kutucuklar yalnız Finans ve Sistem Yöneticisi rollerine açık olmalı. Diğer kullanıcı ve departmanlarda yalnız değerleri maskelemek değil, kur menüsü, bileşenleri ve göstergelerin tamamını hiç göstermemek gerekiyor. Bu, yukarıdaki “yetkisiz ekranların hiç çizilmemesi” kuralının finans/kur kapsamındaki özel maddesidir; doğrudan API erişiminde de rol denetimi uygulanmalı.
+
+## 2026-10-17 önerilen uygulama yol haritası
+
+Bu sıra, mevcut notlardaki tekrarları ve bağımlılıkları birleştirir. Bu planlama adımında uygulama kodu veya iş verisi değiştirilmedi. Tarih/süre tahmini verilmedi; önceki notlarda farklı tarihlerde görülen sonuçlar çelişebildiğinden her faz başında canlı kaynak ve veritabanı durumu tekrar doğrulanmalı.
+
+### Faz 0 — Güvenli başlangıç ve güncel durum tespiti
+
+- [ ] Çalışan uygulamanın gerçek kaynak kodunu, kullanılan PostgreSQL veritabanını ve test ortamı olduğunu doğrula; SQLite test/yan kopyasıyla canlı test verisini karıştırma.
+- [ ] Test veritabanının geri yüklenebilir yedeğini al; açık sipariş, tahsilat, satın alma ve stok kayıtlarını salt okunur envanterle çıkar.
+- [ ] Bu notlardaki eski/çelişen gözlemleri güncel ekran/API kanıtıyla işaretle; geçmişi silme, eski bulguyu güncelmiş gibi kullanma.
+- **Faz çıkış ölçütü:** hangi kodun ve veritabanının test edildiği kesin, geri dönüş noktası hazır.
+
+### Faz 1 — Finans ve stok hareketlerini mutabık hale getirme (kritik)
+
+- [ ] SIP-2026-0003 için onaylanmış 498.150 TL test tahsilatının neden Finans gelir satırı üretmediğini kaynak kod ve kayıt bağlantıları üzerinden bul; düzeltme varsa tekilleştirme/idempotency ile tekrarlı gelir yaratılmasını engelle.
+- [ ] PET-TEST 4.575 kg satın alma, depo kabulü, stok girişi ve SIP-2026-0003 üretim tüketimi arasındaki ürün kodu eşleşmesini bul. PET/PP karışmasını, eksik/çift hareketleri ve mevcut PP-TEST 4.575 kg bakiyesinin kaynağını açıklığa kavuştur.
+- [ ] Üretim reçetesi: her SKU'nun gram/adet değeri ve koli içi adetinden tüketimi hesapla; 4.575 kg yalnız nottaki teorik varsayım olup, gerçek stok düzeltmesini reçete ve hareket kanıtı olmadan yapma.
+- [ ] Satın alma ödemesi, finans gideri, mal kabulü, mamul kabulü ve sevk hareketlerinin sipariş/evrak ID'leriyle tutarlı ve tek seferlik işlendiğini doğrula.
+- **Faz çıkış ölçütü:** tahsilat gelir, tedarikçi gideri, hammadde bakiyesi, üretim tüketimi ve mamul/sevk hareketleri açıklanabilir; yanlış test hareketleri kaynağı saptanmadan silinmez.
+
+### Faz 2 — Yetki matrisi ve hassas bilgi koruması
+
+- [ ] Admin, Finans, Satış, Üretim, Depo ve Satın Alma için sayfa/alt bölüm/işlem/API izin matrisi çıkar; kalite ve lojistik sorumluluklarının hangi mevcut role ait olduğunu belirle.
+- [ ] Yetkisiz sayfa ve bileşenleri (menü, kart, tablo sütunu, buton ve kur göstergeleri dahil) hiç gösterme; doğrudan URL/API erişimini de sunucu tarafında reddet. “Yetkiniz yok” ekranı yerine gizleme uygula.
+- [ ] Maliyet, kâr, marj, tahmini net kâr ve finans/kur bilgileri yalnız Admin ve Finans'ta görünmeli. Diğer kullanıcı/departmanlarda hem ekranda hem API cevabında bulunmamalı; ürün kataloğunda satış için gerekli alanlar kalmalı.
+- [ ] İlk yüklenme ve rol değişiminde yanlış/korunmasız içeriğin anlık görünmediğini test et.
+- **Faz çıkış ölçütü:** her rol yalnız yetkili olduğu işlevi ve veriyi görür; arayüz ve API aynı kurala uyar.
+
+### Faz 3 — İşlem Onayları ve kayıt sahipliği
+
+- [ ] Onay isteğinde isteyen kişi/departman/rol, amaç, bağlı sipariş/tedarikçi/bayi, tutar, zaman, açıklama ve varsa belge/ek görünmeli; ret gerekçesi ve karar veren/zaman denetim izine kaydolmalı.
+- [ ] “Geçmiş Kayıt Sahipliği”ni Departmanlar'dan çıkarıp **Bayiler > Kayıt Sahipliği** yönetici alt menüsüne taşı. Sahipsiz sipariş/teklifin hangi bayiye bağlı olduğu ve atanacak satış kullanıcısı açıkça görülsün; toplu/yanlış bayi atamasını önle.
+- [ ] SIP-2026-0001 ve -0002 taslaklarının mükerrer olup olmadığını araştır; iş amacı belirlenmeden hiçbirini silme veya devretme.
+- **Faz çıkış ölçütü:** yönetici karar öncesi isteğin ne olduğunu ve kime ait olduğunu anlayabilir; sahiplik değişiklikleri izlenebilir.
+
+### Faz 4 — Siparişin uçtan uca rol akışı
+
+- [ ] Temiz/ayrı TEST siparişi saha satış ekranında oluşturulsun; bayi teyidi, Finans ödeme simülasyonu/doğrulama, depo kontrolü, satın alma/hammadde, üretim, kalite, depo kabulü, sevkiyat ve teslim her adımda o rolün kendi ekranından yürüsün.
+- [ ] Tek sipariş numarası, miktarlar, açık/kısmi miktar ve statü tüm rollerde aynı ve güncel kalsın. Üretim başlangıç/tamamlanma ve depo kabulü saha personeline doğru bildirimle iletilsin.
+- [ ] Gerçek tır kapasitesine karar vermeden önce SKU koli hacmi ve 90 m³ araç kapasitesini doğrula; mümkünse ağırlık/aks sınırını da ekle. PDF/irsaliye/fatura alanlarını ancak kapasite ve sevkiyat akışı doğru olduğunda doğrula.
+- [ ] Kısmi üretim/sevk, eksik-hasarlı ürün, iptal ve iade/ters kayıt yollarını ayrı test et; kapalı siparişte yanlış düzenleme yapılmasın.
+- **Faz çıkış ölçütü:** tüm roller aynı siparişin güncel durumunu görür, stok/miktar hesabı her adımda tutar, fiziksel işlem yapılmadan TEST olduğu belli olur.
+
+### Faz 5 — Ekran tutarlılığı, bildirimler ve Türkçeleştirme
+
+- [ ] `accepted`, `paid` ve diğer İngilizce kullanıcı metinlerini tablo, rozet, bildirim, hata/başarı mesajı ve işlem geçmişlerinde Türkçeleştir; teknik API/DB kodları içeride kalabilir.
+- [ ] Hedef marj/kur gibi bildirimleri sadece ilgili yetkili role gönder; “Temizle” sonrası aynı bildirimin yeniden üretilmesini ve sipariş bildirimlerinin rol kapsamını kontrol et.
+- [ ] Başarılı oturumdan sonra kalan “Oturum bulunamadi” toast'ı ve ekran ilk açıldığında yanlış hata verip yenilemede düzelme sorununu çöz.
+- [ ] Koli adetlerini tam sayı ve birimle göster; durum satırlarının taşmasını düzelt; sevkiyat düzenleme ekranından “Tahmini Net Kâr”ı kaldır.
+- [ ] Döviz kurunda sağlıklı birincil kaynak sabit kalsın; yalnız hata/geçersiz/eski veride alternatif kaynağa geçilsin ve kullanıcıya kaynak gösterilsin.
+- **Faz çıkış ölçütü:** her rolde doğru Türkçe metin, doğru sayılar, ilgili bildirimler ve temiz ilk açılış.
+
+### Faz 6 — Otomatik ve regresyon testi, senaryo kapanışı
+
+- [ ] İki SQLite sipariş testi ve depo kabul koşullu sevk testinin fixture/izin/akış nedenlerini düzelt; uygulamanın gerçek PostgreSQL senaryosunu bunlardan ayrı doğrula.
+- [ ] Her rol için olumlu/olumsuz izin kontrollerini; sipariş akışını; finans ve stok tekilleştirmesini; bildirimleri; PDF/kapasiteyi kapsayan regresyon seti oluştur.
+- [ ] Tam senaryoyu bir kez daha yalnız uygulama ekranları üzerinden baştan sona tekrarla ve sipariş, finans, stok, üretim geçmişi, audit log ve her rol ekranı arasında mutabakatı kapat.
+- [ ] Banka API'si, e-fatura/e-irsaliye ve harici araç takibi entegre değilse kapsam dışı ve manuel/test simülasyonu olarak açıkça göster.
+- **Faz çıkış ölçütü:** testler tekrarlanabilir; finans/stok farkı yok; rol sızıntısı yok; kritik akış hatası kalmamış; entegrasyon sınırları açık.
+
+**Önerilen yürütme sırası:** Faz 0 → Faz 1 → Faz 2 → Faz 3 → Faz 4 → Faz 5 → Faz 6. Her fazın çıkış ölçütü sağlanmadan sonraki fazda veriyi değiştiren testlere geçilmemeli.
+
+### Test ortamının kapsamı ve canlıya geçiş sınırı — 2026-10-17
+
+- Kullanıcının açıklaması: mevcut uygulama gerçek iş ortamında kullanılmıyor; sanal/test verileriyle serbestçe senaryo kurup kayıt ekleme, değiştirme ve temizleme yapılabilir. Test sırasında gerekli yerel uygulama kullanıcı/rol yetkileri kullanılabilir.
+- Şu an banka, fatura/e-belge, e-posta veya harici arama entegrasyonu bağlı değil; dış sistemde gerçek para hareketi, fatura gönderimi, e-posta gönderimi veya gerçek müşteri/veri aktarımı oluşmamalı. İşlem ekranlarında bu durum TEST/simülasyon olarak ayırt edilmeli.
+- Fabrika iş kullanımına başlamadan önce test kayıtları sıfırlayacak; gerçek ürün, bayi, kullanıcı, departman, yetki ve şirket verilerini kendisi girecek. Test sırasında açılan kullanıcılar/izinler veya senaryo kayıtları canlı başlangıç verisi kabul edilmemeli.
+- Yol haritasının Faz 0'ı buna göre yorumlanmalı: önce uygulamanın test/simülasyon veritabanı olduğunun teyidi, sıfırlanacak test verisinin kapsamının listelenmesi ve test verisi için geri dönüş noktası hazırlanması; gerçek şirket verisi varsayılmamalı. Canlıya geçişte ayrıca fabrika tarafından fabrika sıfırlaması ve gerçek kullanıcı/veri kurulumu yapılmalı.
+
+## 2026-10-17 birleştirilmiş uygulama takip panosu
+
+Bu pano, önceki tarihlerdeki yol haritaları ve tekrar eden notların güncel durumunu özetler. Eski kayıtlar tarihsel gözlem olarak korunur; aşağıdaki durumlar güncel kod/test ve görünür ekran kanıtına dayanır.
+
+### Tamamlanan uygulamalar
+
+- [x] Sipariş ödeme kabulünde Finans gelir satırını sipariş/ödeme kimliğiyle tekilleştirerek oluşturma; aynı ödemenin ikinci kez gelir yazmasını engelleme. Hedefli finans ve güvenlik testleri geçti. SIP-2026-0003'ün geçmiş tahsilatı, eski akışla kabul edildiği için kaynak bağlantısı olmayan `FIN-2026-0003` test gelir satırı olarak elle uzlaştırıldı; geriye dönük otomatik ilişkilendirme/onarım hâlâ ayrı iş.
+- [x] Siparişe veya hammadde ödemesine bağlı finans kayıtlarının normal silme yoluyla koparılmasını engelleme; ters kayıt gerektirir.
+- [x] Kur kutusu, kayan bant ve kur ana kartını satış/operasyon rollerinden tamamen gizleme; dashboard hızlı eylemlerini kullanıcı izinlerine göre gösterme. Ahmet Demir ekranında canlı kontrol edildi.
+- [x] Rolün göremediği bildirim türlerini sunucu tarafında süzme; `/api/notifications` için rapor iznini zorunlu tutmayıp oturum ve bildirim bazlı yetki uygulama. Özel bildirim testleri 3/3 geçti. Finans/marj bildirimleri Ahmet rolünde görünmüyor.
+- [x] Oturumsuz ilk dashboard çağrısının başarılı giriş sonrası yanıltıcı hata bildirimi bırakmasını önleme.
+- [x] Sipariş detay/sevkiyat kartındaki “Tahmini Net Kâr” satırını kaldırma. Yönetici hesabında detay açılarak canlı ekranda doğrulandı.
+- [x] Sipariş listesinde kâr başlığı ve hücresini yalnızca `yonetici`, `finans` veya `muhasebe` rolü ve `kar_maliyet` izni varsa oluşturma. Ahmet Demir ekranında sütun hiç yok; yönetici ekranında var. Yönetici ve Satış UI kontrolü tamamlandı.
+- [x] Değiştirilen dosyalar önce yedeklendi, kaynak klasörüne kopyalandı ve SHA-256 ile eşleşti. Son hedefli kontroller: bildirim 3 test, sipariş/dashboard 2 test; JS sözdizimi ve Python AST kontrolleri başarılı.
+
+### Açık fazlar — uygulama ve kabul ölçütü
+
+1. **Faz 1, veri mutabakatı (kritik):** SIP-2026-0003 geçmiş finans gelirini ödeme kaydına idempotent bağla veya kontrollü uzlaştır; PET/PP ürün kodu ve 4.575 kg satın alma-kabul-üretim tüketimi uyuşmazlığının kaynağını bul; satın alma gideri, mal kabulü, üretim tüketimi ve sevk stok hareketlerini tek tek eşleştir. Test verisi olduğunu belirten ters/düzeltme hareketi olmadan kayıt silme veya stok bakiyesi uydurma yok. Kabul: sipariş/ödeme/finans/stok ledger mutabık ve tekrar çağrıda çift hareket yok.
+2. **Faz 2, rol matrisi:** Yönetici, Finans, Satış, Üretim, Depo ve Satın Alma için sayfa-alt bölüm-kart-sütun-butonu ve API matrisi tamamla; finans/kur/maliyet alanlarının backend ve UI'da rol dışına çıkmadığını test et. Yetkisiz alan hiç çizilmesin; ilk yükleme anı dahil kontrol et. Kabul: her rolün yalnız işi için gereken ekran/verisi var.
+3. **Faz 3, onaylar ve sahiplik:** işlem onayına isteyen kişi/departman, neden, bağlı kayıt, tutar ve belge bilgisi; ret gerekçesi ve karar denetim izi ekle. “Geçmiş Kayıt Sahipliği”ni Departmanlar'dan Bayiler > Kayıt Sahipliği'ne taşı; kayıt atamasını bayi/sipariş ilişkisiyle koru. SIP-2026-0001/-0002 mükerrerliği netleşene kadar silme.
+4. **Faz 4, rol bazlı sipariş senaryosu:** temiz yeni TEST siparişini saha hesabından başlat; bayi teyidi, finans simülasyonu, depo, satın alma, üretim, kalite, mamul kabulü, sevkiyat ve teslimi her sorumlu rol ekranından yürüt. Gerçek ödeme/teslimat yok. Ürün hacmi ve araç kapasitesi ölçülmeden tıra sığma onayı verme. Kabul: tüm rollerde aynı sipariş no, miktar ve güncel durum.
+5. **Faz 5, arayüz ve iş bildirimleri:** üretim/depo statü bildirimlerini bayi/saha sahibine ekle; koli tam sayısı gösterimi, durum taşması, PDF/irsaliye alanları, tüm görünen İngilizce durumların Türkçeleştirilmesi, “Temizle” sonrası yinelenen bildirim davranışı ve birincil kur kaynağı kararlılığını çöz. Sevkiyat kâr satırı tamamlandı.
+6. **Faz 6, test/regresyon:** SQLite sipariş ve depo kabul koşullu sevk testlerini fixture/iş akışına göre düzelt; tüm kritik uçtan uca senaryoyu PostgreSQL test ortamında, sonra her rolde ekran üzerinden tekrar et. Kabul: tekrarlanabilir test, sıfır yetki sızıntısı, finance/stok mutabakatı.
+
+### Altyapı ve kalite geliştirme önerileri
+
+Bunlar uygulama notlarındaki iş akışından ayrı teknik sertleştirme işleri; faz 1-2'yi tamamladıktan sonra devreye alınmalı:
+
+- [ ] Şema değişikliklerini tekrar çalıştırılabilir ve sürümlü veritabanı migration'larıyla yönet; SQLite test ve PostgreSQL çalışma ortamı farklarını CI'da görünür tut.
+- [ ] Yedekleme/geri yükleme prosedürü tanımla ve yedek dosyası üretmekle kalmayıp düzenli geri yükleme provası yap. Fabrika başlangıç sıfırlamasından önce ayrı test yedeği al.
+- [ ] Yüksek riskli iş adımlarında (sipariş ödeme, stok hareketi, üretim tüketimi, kabul ve sevk) tek transaction, foreign key/unique kısıtları ve idempotency anahtarları kullan.
+- [ ] Kritik arama/rapor sorgularını ölç; gerçek sorgu planına göre indeks ekle. Ölçüm olmadan indeks ekleyip yazma performansını düşürme.
+- [ ] Yetki, doğrulama hatası, tekrarlı istek ve stok/finans mutabakatı için yapılandırılmış log ve korelasyon kimliği ekle; parola/token ve hassas verileri loglama.
+- [ ] API giriş verisi şema doğrulaması, boyut sınırı, güvenli hata cevapları ve oturum/CSRF denetimini merkezileştir; rol testleriyle negatif yetki senaryolarını otomatikleştir.
+- [ ] Kod değişikliklerinde otomatik statik kontrol ve hedefli testleri CI'da çalıştır; tam test paketini periyodik/ön sürüm kapısı yap.
+- [ ] Uygulama sağlığı, bağımlılık/bağlantı durumu, yedek yaşı ve yavaş endpointleri ölçen küçük bir sağlık/operasyon görünümü oluştur.
+
+**Mevcut uygulama sırası:** önce Faz 1 mutabakat ve Faz 2 yetki matrisi açıklarını tamamla; ardından Faz 3-5 iş akışını/ekranı bitir; Faz 6 regresyonla kapat. Altyapı maddeleri kritik transaction/backup işleri için beklemeden ele alınabilir; performans ve operasyon panosu ise ölçüm ihtiyacı netleşince yapılmalı.
+
+### 2026-10-17 PostgreSQL mutabakat ilerlemesi
+
+- [x] PostgreSQL çalışma veritabanı yalnızca salt okunur oturumla incelendi. SIP-2026-0003 için 498.150 TL onaylı havale vardı; Finans'taki `FIN-2026-0003` aynı tutar ve bayi adına zaten tek gelir satırıydı ancak ödeme/sipariş kaynak kimlikleri eksikti.
+- [x] Eski gelir satırını ikinci gelir oluşturmadan bağlamak için Finans/Yönetici erişimli, açık Finans kayıt ID'si gerektiren bir mutabakat endpoint'i ve servis fonksiyonu eklendi. Sadece kabul edilmiş ödeme; aynı tutar, bayi ve boş/mevcut uyumlu bağlantılar kabul edilir. Uyumsuz ve mükerrer bağlı kayıtlar reddedilir; tekrar çağrı idempotenttir.
+- [x] Önceden kod yedeği alındı: gerçek kaynak `yedekler_v2/tahsilat_mutabakati_oncesi_20261017_071126`; PostgreSQL yedeği `%LOCALAPPDATA%/LUMISPAC/backups/lumispac_full_20261017_reconcile_before.dump` (113.423 bayt).
+- [x] SIP-2026-0003'te `FIN-2026-0003` hizmet katmanı üzerinden ödeme `2e04ebf7e91a` ve siparişe bağlandı. Sonuç: bir eşleşmiş gelir, tek gelir satırı, toplam gelir 498.150 TL; tekrar çalıştırmada yeni kayıt üretilmedi.
+- [x] PET-TEST alım girişi 4.575 kg; altı üretim tüketim hareketi toplam 4.575 kg ve PET bakiyesi 0 kg. Üretilen 450 koli için PET bakiyesi tutarlı. PP-TEST bakiyesi 4.575 kg, ayrı `TEST-SENARYO-PP-001` satın alımından kaynaklanıyor; kullanıcının PET-only kararına rağmen bu eski TEST kaydı bu turda silinmedi veya PET'e aktarılmadı. İleride test verisi temizliğinde açıkça ters hareketle kapatılmalı.
+- [x] Gerçek OneDrive kaynak klasöründe güvenlik, hammadde, üretim ve PostgreSQL testleri: 71 geçti. Bir eski testteki büyük/küçük harf duyarlı Türkçe kontrol düzeltildi. Sunucu kök sayfası HTTP 200 verdi; tarayıcı sekmesi CUA görünümünde bulunmadığından uygulama paneli `open_in_codex` ile açılmak üzere kuyruğa alındı.
+- [x] Gerçek uygulama sunucusu güncel OneDrive kaynak koduyla yeniden başlatıldı; 5001 ana sayfa HTTP 200 verdi. Yeni mutabakat endpoint'i oturumsuz isteğe 401 döndürerek yüklendiğini doğruladı; tarayıcı pencereleri kapatılmadı. Finans/Yönetici ekranında görünür kontrol için geçerli kullanıcı oturumu gerektiğinden bu görsel kontrol bekliyor.
+- [ ] PP-TEST'teki 4.575 kg eski, PET dışı test alımını fabrika PET kapsamından ayır; test alımını silmeden/aktarımı yapmadan önce ters stok hareketi ve test giderinin iadesi/iptali mantığını değerlendir.
+
+### 2026-10-17 LUMISPAC SQLite sipariş oluşturma sağlamlaştırması
+
+- [x] İzole testlerde sipariş oluşturma ve eşzamanlı numara üretimi iki regresyon verdi. Kök neden: `order_service.siparis_ekle` bayi listesini doğrudan JSON dosyasından okuyordu; SQLite modunda bayiler ilişkisel tablodan ve emekliye ayrılmış aynasız kaynaktan okunmalı.
+- [x] `services/order_service.py` bayi sorgusu `data_repository.list_dealers(path=DEALER_FILE)` üzerinden çalışacak şekilde düzeltildi. Test fixture'ları sahipli bir TEST bayisi ve gerekli TEST ürün alanlarıyla gerçek akış koşuluna uygun hale getirildi; bayi fixture'ı JSON aynasını emekliye ayıran ilişkisel kayıt yolunu kullanıyor.
+- [x] İki hedefli SQLite testi geçti. Tam kalite kapısı: Python sözdizimi 109 dosya, JavaScript sözdizimi 32 dosya, 345 test geçti.
+- [ ] Görsel test bekliyor: 5001 portunda dinleyen uygulama bulunmadı; açılan tarayıcı oturum açma ekranında ve kimliği doğrulanmış kullanıcı oturumu yok. Görsel rol kontrolleri uygulama yeniden erişilebilir olduğunda kullanıcı oturumu üzerinden sürdürülmeli.
+
+### 2026-10-17 SQLite belge erişimi ve bayi geçmişi koruması
+
+- [x] Sipariş oluşturma sırasında bayi okuması `data_repository.list_dealers` üzerinden yapılıyor; bayi aynası kaldırılmış SQLite senaryosunda sahipli test siparişi ve eşzamanlı sipariş numaraları regresyon testleri geçti.
+- [x] Sipariş sevkiyat alanı güncellemesi artık aktif sipariş repository'sini kullanıyor. Teklif/sipariş PDF uçları eski JSON dosyasından okumak yerine repository yardımcılarından okuyor; PDF endpoint regresyonu eklendi.
+- [x] Bayi silme ve toplu bayi listesi kaydı, sipariş/teklifle ilişkili bayiyi yönetici için de koruyor. Bağlı kayıt yoksa silme/geri alma testi çalışmaya devam ediyor.
+- [x] Son kalite kapısı: Python 109 dosya sözdizimi, JavaScript 32 dosya sözdizimi, 348 test geçti.
+- [ ] Canlı görsel test için hâlâ 5001'de sunucu yok; kullanıcı rol ekranlarında kontrol tamamlanmadı. Kaynakta düzeltilen değişikliklerin kullanıcı uygulamasında görünmesi için çalışma uygulamasının doğru kaynak kökünden yeniden başlatılması gerekir.
+
+### 2026-10-17 Kâr/maliyet ve kur erişimi rol sınırı
+
+- [x] Eski muhasebe departmanındaki varsayılan ve kişi bazlı `kar_maliyet` izinleri etkin izin hesabında kapatıldı. Kâr/maliyet yetkisi yalnız `yonetici` ve `finans` departmanlarına verilebilir; kullanıcı ve departman düzenleme ekranları da aynı kuralı gösteriyor.
+- [x] Kur API'si, ilk kur yüklemesi, arka plan sorgusu, yenileme düğmesi, kur göstergeleri ve sipariş kâr sütunu yönetici/finans dışında kapatıldı.
+- [x] Muhasebenin ödeme/borç kapatma iş akışı korunurken satın alma listesinde fatura toplamı ve ödeme bakiyesi görünüyor; birim alış fiyatı ve marj hesabına girebilecek girdiler gizli. API regresyon testi bu ayrımı doğruluyor.
+- [x] Tam kalite kapısı: Python 110, JavaScript 32 dosya başarılı; 352 test geçti.
+- [ ] Canlı görsel rol kontrolü bekliyor: çalışma kopyasının sunucusu açıldı; tarayıcı giriş ekranında, oturum açılmış değil.
+
+### 2026-10-17 Hassas kâr/marj arayüzü kapsamı
+
+- [x] Bayi panelinde toplam kâr, kâr marjı, sipariş kâr sütunu ve kâr grafiği serisi yalnızca yönetici/finans rolü ve `kar_maliyet` yetkisi birlikte varsa çiziliyor.
+- [x] Genel bakış ayarlarında hassas kâr/maliyet kartlarının kişisel görünürlük seçenekleri de yetkisiz rollerde gizlendi; bu kartların doğrudan DOM'da görünmesi tercihle geri açılamıyor.
+- [x] Bayi paneli için API regresyonu eklendi: saha rolünden kâr/marj özeti ve sipariş kârı saklanıyor; yönetici rolünde korunuyor.
+- [x] Son kalite kapısı: 350 test, Python sözdizimi 109 dosya, JavaScript sözdizimi 32 dosya başarılı.
+- [ ] Ekran gözlemi için bu çalışma kopyasının yerel sunucusu 5001'de açık ve tarayıcı giriş ekranı görünüyor. Rol bazlı görsel doğrulama oturum gerektirdiğinden bekliyor.
+
+### 2026-10-17 İşlem onayı ayrıntıları
+
+- [x] Onay kuyruğu artık istek gövdesini veya dahili API yolunu istemciye döndürmeden izin listeli ayrıntılar sunuyor. Sipariş ödeme/silme isteğinde sipariş kimliği, no, bayi/müşteri ve durum; varsa tutar, kur, referans ve açıklama gösterilebiliyor. İsteyen departman da listeleniyor.
+- [x] Sipariş silme işlemi arayüzünde en az üç karakterlik gerekçe alınıyor; API katmanı da gerekçe olmadan ikinci onay kaydı oluşturmayı reddediyor. Böylece doğrudan API çağrıları aynı koşula tabi.
+- [x] Birim testleri ve izole SQLite uçtan uca testi geçti. Tam kalite kapısı: 352 test, Python 110 dosya ve JavaScript 32 dosya başarılı.
+- [ ] Onay ekranının görsel rol kontrolü oturum gerektirdiğinden bekliyor. Tarayıcı login ekranında; bu turda kimlik doğrulama otomasyonu yapılmadı.
+
+### 2026-10-17 Kayıt sahipliği gezinme düzeni
+
+- [x] “Geçmiş Kayıt Sahipliği” kartı Departmanlar sayfasından çıkarıldı; yönetici için Bayiler sayfasında “Kayıt Sahipliği” alt paneli olarak yerleştirildi. Panel açılınca atanmamış kayıtlar yükleniyor; satış ve diğer roller düğmeyi görmüyor.
+- [x] Tam kalite kapısı tekrar geçti: 352 test, Python 110 dosya, JavaScript 32 dosya başarılı. API'de sahiplik listeleme/atama yetkisi mevcut güvenlik testleriyle korunuyor.
+- [ ] Panelin yönetici ve saha rollerinde görsel doğrulaması oturum gerektiriyor ve bekliyor.
+
+### 2026-10-17 Rapor dashboard hassas alanları
+
+- [x] Raporlar > Dashboard içindeki ortalama marj ve tahmini toplam kâr KPI'ları artık Finans/Yönetici yetkisi olmayan kullanıcılar için oluşturulmuyor; en iyi marj grafiği ve kur-maliyet grafiği alanları da ilk çizimden itibaren gizli.
+- [x] Hedef marj ayarı Finans/Yönetici dışındaki kullanıcılardan gizlendi. Satış rolünde `/api/reports/overview` yanıtının hassas alan içermediğini doğrulayan test eklendi.
+- [x] Son tam kalite kapısı: 353 test, Python 110 dosya ve JavaScript 32 dosya başarılı.
+- [ ] Yerel sunucu güncel kodla yeniden başlatıldı ve tarayıcıdaki LUMISPAC login görünümü doğrulandı. Kimlik doğrulanmış rollerin ekran testi bekliyor.
+
+### 2026-10-17 Tam veritabanı geri yükleme güvenliği
+
+- [x] Tam veritabanı geri yüklemesinden önce alınan güvenlik yedeği artık dosya mevcutluğu yanında sıfır bayt olmama koşuluyla da kontrol ediliyor.
+- [x] Seçilen yedek geri yüklemesi hata verirse önceki güvenlik yedeği otomatik olarak geri yükleniyor. Güvenlik yedeğinin geri alınması da başarısız olursa API belirsiz veritabanı durumunu açıkça bildirip 500 dönüyor.
+- [x] Regresyon testleri: seçilen yedeğin başarısız olmasında otomatik geri alma, boş güvenlik yedeğini reddetme ve yedek üretimi başarısız olduğunda geri yüklemeyi durdurma. Tam kalite kapısı: 355 test; Python 110 dosya, JavaScript 32 dosya başarılı.
+- [x] Yerel sunucu aktif çalışma kopyasından yeniden başlatıldı; mevcut tarayıcı sekmesi açık ve giriş ekranı görünüyor.
+- [x] Bildirim temizleme anahtarı artık tür/adet yanında başlık ve açıklamayı da içeriyor. Aynı sayıda fakat başka siparişe/olaya ait yeni bildirim artık önceki temizlemeden dolayı gizlenmiyor; aynı aktif bildirim yinelenen kontrolde gizli kalıyor.
+- [x] Üretim ve hammadde satın alma/ödeme durumlarının arayüz etiketleri Türkçeleştirildi. Node davranış kontrolünde bildirim anahtarının kararlılığı/farklı olay ayrımı ve dört durum etiketi geçti.
+- [x] Stok ekranındaki koli toplamı ve stok hareketleri artık tam adet ve “koli” birimiyle gösteriliyor; manuel koli hareketi alanının adım değeri 1 oldu.
+- [x] Node ile 8 istemci davranış kontrolü geçti. Son tam kalite kapısı: 355 test; Python 110 dosya, JavaScript 32 dosya başarılı.
+- [ ] Tarayıcıdaki 5001 smoke sayfası 85/85 eski test gösteriyor; çalışma kopyasına eklenen yeni smoke testleri ve çeviri değişiklikleri bu ekranda henüz görünmedi. Ekrandaki sunucunun hangi kaynak kopyasını kullandığı ve güncel kopyaya bağlanması çözülmeli. Sunucuya shell üzerinden HTTP erişimi güvenlik yalıtımı nedeniyle doğrulanamadı.
+- [ ] Geri yüklemeyi gerçek SQLite/PostgreSQL örneği üzerinde prova et ve başarısızlık senaryosunda yedek dosyasından uygulama verisine kadar tam geri dönüşü doğrula. Şu anki testler adapter davranışını kontrollü stub ile doğruluyor.
+- [ ] Kimliği doğrulanmış Finance/Yönetici ve saha/üretim/depo kullanıcı ekranlarında görsel rol testleri bekliyor; mevcut tarayıcı smoke ekranında, rol oturumu yok.
+
+### 2026-10-17 OneDrive uygulama kaynağına uygulama ve canlı ekran kontrolü
+
+- [x] Ekrandaki LUMISPAC smoke sayfasının OneDrive `DEPSPEK\ChatGPT geliştirme` kaynağını sunduğu doğrulandı; değişiklikler bu gerçek kaynak klasörüne ayrı ayrı işlendi. Daha önceki aktif çalışma kopyası bu kaynakla aynı değildi.
+- [x] Tam veritabanı geri yüklemesinde boş güvenlik yedeği reddediliyor; seçili yedek hata verirse güvenlik yedeği otomatik geri alınıyor; güvenlik yedeği de geri alınamazsa API 500 ve yönetici kontrol mesajı döndürüyor.
+- [x] Stok özeti tam koli adedi gösteriyor; giriş/çıkış/kalan/eşik başlıklarında koli birimi var, hareket miktarı da “koli” ile görünüyor.
+- [x] Güvenli yedekleme hedef testleri: 4 geçti. Gerçek OneDrive kaynak tam kalite kapısı: 366 test; Python 111 dosya, JavaScript 32 dosya başarılı.
+- [x] 5001 sunucusu doğrulanmış LUMISPAC Python sürecinden OneDrive kaynak klasörüyle yeniden başlatıldı; tarayıcı sekmesi kapatılmadan smoke ekranı yeniden yüklendi ve 86/86 test geçti.
+- [x] Tarayıcı smoke testine stok özeti, koli başlıklı stok tablosu ve hareket miktarı için tam sayı “koli” gösterim kontrolleri eklendi; açık ekranda tekrar 86/86 geçti.
+- [x] Smoke ekranındaki eski `127.0.0.1:5000` açıklaması kaldırıldı; sayfa artık çalışan sunucunun adresini kullanmayı söylüyor. Düzenleme sonrası açık tarayıcıda yeniden yüklendi ve 86/86 test, 0 başarısızlık doğrulandı.
+- [x] Onay özeti, finans hareketi ve hammadde ödeme hareketlerinde durum/ödeme yöntemi artık Türkçe etiketleniyor; `accepted`, `pending`, `havale_eft`, `bank_transfer`, `cash` ve `check` karşılıkları smoke testine eklendi.
+- [x] Bu UI değişikliklerinden sonra gerçek OneDrive kaynağında tam kalite kapısı: 366 test, Python 111 dosya ve JavaScript 32 dosya başarılı. Açık tarayıcı ekranında yeni testler dahil 88/88, 0 başarısızlık doğrulandı.
+- [x] Aynı etiketleyici sipariş listesi, ana panel son siparişler ve gelişmiş rapor listesine de uygulandı; toast durum mesajı da Türkçe etiket gösteriyor. Son tam kalite kapısı yine 366 test ve 0 hata; tarayıcı smoke ekranı 88/88.
+- [x] Sipariş detayındaki durum geçmişinde kalan ham etiket de Türkçeleştirildi. Durum hücresi satır kaydırma CSS'i kaynakta zaten mevcuttu.
+- [x] İrsaliye PDF'sinde sevk tarihi, araç plakası, şoför ve telefon bilgisi yoksa bu alanlar artık boş yazma çizgileriyle basılıyor. Test PDF'si Poppler ile PNG'ye çevrilip görsel kontrol edildi; alanlar hizalı ve okunaklı.
+- [x] PDF regresyon testi eklendi. Son tam kalite kapısı: 367 test, Python 112 dosya, JavaScript 32 dosya başarılı; açık smoke ekranı 88/88.
+- [x] Tahsilat akışının gerçek kaynak kodu ve rol akış testi gözden geçirildi: Finans tahsilatı onaylarken ödeme ile gelir kaydı aynı belge mutasyonunda yazılıyor; ödeme kimliği tekilleştirme anahtarı ve yinelenen onay reddediliyor. `tests/test_security.py` izole rol senaryosu, 240 TL test tahsilatının gelir/kasa özetine bir kez işlendiğini doğruluyor.
+- [ ] Eski SIP-2026-0003 için 498.150 TL tahsilatın canlı test verisinde gelir kaydı olup olmadığını ve varsa eski kaydın mutabakat durumunu doğrula. Kod yolu yeni onaylarda çalışıyor; tarihsel kayıt veri düzeyinde ayrıca kontrol edilmeli, otomatik ikinci gelir yaratılmamalı.
+- [ ] Kullanıcı oturumu ile yönetici/finans/saha/üretim/depo ekranlarını ve gerçek rol bazlı sipariş akışını tarayıcıdan doğrula. Şu anda ekranda smoke test sonucu açık; oturum açılmadı.
+
+### 2026-10-17 son canlı PostgreSQL kontrolü
+
+- [x] Masaüstü başlatıcısının doğru PostgreSQL ayarlarıyla çalışan 5001 sürecini yeniden açtığı doğrulandı. Mevcut tarayıcı sekmesinde görünür smoke testi 88/88 başarılı, 0 başarısız.
+- [x] SIP-2026-0003: kabul edilmiş 498.150 TL havale ile FIN-2026-0003 tek Tahsilat gelir kaydı bağlı; çift gelir yok. Önceki “veri düzeyinde doğrula” maddesi tamamlandı.
+- [x] PET alımı 4.575 kg; altı üretim işi PET'ten toplam 4.575 kg tüketti. 450 koli depo kabulü ve 450 koli sevk çıkışı kalem kalem mutabık, PET net bakiye 0 kg.
+- [x] Depo kabulinden sonra `accepted` üretim işi aktif üretim kuyruğundan çıkıyor; “Üretim işlem geçmişi” bölümünde denetim izi olarak kalıyor. Bu mevcut tasarım ve ilgili regresyon testiyle doğrulandı.
+- [ ] Ayrı PP-TEST senaryosu: 4.575 kg stok ve 278.663,25 TL hammadde gideri. PET stoğuna aktarılmadı/silinmedi; PET-only kararına göre kontrollü ters hareket veya test kayıtlarının daha sonraki sıfırlamasında ele alınmalı.
+- [ ] SIP-2026-0001 ve -0002 aynı beş ürün × 90 koli içeriğinde iki taslak sipariş. Stok/sevk etkileri yok; önceki “mükerrerliği netleşmeden silme” kararı nedeniyle değiştirilmedi.
+- [ ] Teslim edilmiş SIP-2026-0003, kataloğun 23 ürünü yerine altı ürün içeriyor. Tüm katalog üretimi ayrı test senaryosu olmalı.
+- [ ] Kimlik doğrulanmış rol ekranlarının görünür testi ayrıca bekliyor; bu turdaki açık görünür ekran smoke testi.
+
+### 2026-10-17 canlı kontrol ve regresyon kapanışı
+
+- [x] Uygulama ekranındaki görünür JS smoke testi: 88/88 başarılı, 0 başarısız (5001, masaüstü PostgreSQL başlatıcısı).
+- [x] Tam kalite kapısı yeniden çalıştırıldı: 367/367 Python testi geçti; Python sözdizimi 112 dosya, JavaScript sözdizimi 32 dosya, depolama sınırı kontrolü başarılı.
+- [x] Canlı PostgreSQL'de sipariş/ödeme/finans ve PET alım/tüketim/kabul/sevk mutabakatı doğrulandı; üretim kabul kuyruğundan çıkış regresyonu mevcut testte doğrulandı.
+- [ ] Kullanıcı oturumlarıyla ekran bazlı rol kontrolü ayrıca bekliyor. Aktif tarayıcıda smoke sayfası açık olduğundan, rol ekranı için yeni oturum açılmadı.
+
+### 2026-10-17 Ödeme onay özeti yerelleştirmesi
+
+- [x] Kritik ödeme onay özeti, tutarı Türkçe sayı biçiminde gösteriyor (ör. `75.000,00 TL`); bilinen yöntem kodları Türkçe etikete çevriliyor (ör. `havale_eft` → `Havale / EFT`). Sipariş/bayi veya satın alma belgesi/tedarikçi bağlamı korunuyor.
+- [x] Hedefli onay özeti testleri: 4/4. Tam kalite kapısı: 368/368 test; Python sözdizimi 112 dosya, JavaScript 32 dosya ve storage-boundary başarılı.
+- [x] Kaynak dosyaları öncesi kopya `work/backups/approval-payment-localization-20261017` altında. Güncel kod masaüstü PostgreSQL başlatıcısında yüklenmek üzere yeniden başlatıldı (5001 PID 25304).
+- [x] Kullanıcının açık tarayıcı sekmesi kapatılmadı; görünür smoke ekranı yeniden yüklendi ve 88/88 başarılı, 0 başarısız.
+
+- [x] Onay kuyruğu için ek kapsam testi: oluşturulan ödeme özeti `gerekce_detay` olarak saklanıyor; yönetici listesi isteyen kullanıcı/departman ve ayrıntıyı aynı içerikle alıyor. Hedefli onay bağlamı testleri artık 5/5; güncel tam kalite kapısı 369/369, Python 112 / JavaScript 32 / depolama sınırı başarılı.
+
+### 2026-10-17 Seçili depo kabul taleplerini toplu işleme
+
+- [x] Üretimden çıkan birden fazla bekleyen mamul kabul talebi için depo ekranına çoklu seçim ve tek işlemle kabul eklendi. Tekli kabul de aynı servis mantığına yönlendirildi.
+- [x] API yalnız `uretim_depo` yazma yetkisini kabul ediyor; 1-100 benzersiz talep sınırı, geçerli bekleyen durum ve güncel üretim çalışması denetleniyor. Tüm stok hareketleri, siparişin sevkiyata hazır durumu ve üretim geçmişi aynı belge transaction’ında yazılıyor.
+- [x] Tekrar gönderimde mükerrer stok hareketi oluşmuyor. Bir seçili talep geçersizse diğer talepler de kısmen kabul edilmiyor.
+- [x] Üretim/depo hedefli testler 16/16; toplu kabul, idempotent tekrar, yetkisiz erişim reddi ve karışık-geçersiz partide atomiklik doğrulandı. Tam kalite kapısı 372/372; Python sözdizimi 112, JavaScript 32 ve storage-boundary başarılı.
+- [x] Masaüstü LUMISPAC sunucusu kaynak güncellemesi için yeniden başlatıldı (5001 PID 19404); ana sayfa ve smoke test HTTP 200. Açık tarayıcı sekmesinde güncel görünür smoke ekranı 90/90, 0 hata.
+- [ ] Canlı PostgreSQL’de bekleyen depo kabul talebi olmadığından, toplu kabul butonuna oturumlu gerçek depo ekranında tıklama henüz yapılmadı. API iş kuralı izole akışta; istemci fonksiyonlarının yüklenmesi görünür smoke’ta doğrulandı. Kullanıcı oturumuyla rol ekranı E2E kontrolü açık iş.
+
+### 2026-10-17 Bildirim temizleme yarış durumu
+
+- [x] Bildirimleri ilk API yoklaması bitmeden temizleyince aktif kayıt anahtarları boş kalabiliyordu; sonraki yoklama aynı bildirimleri tekrar gösterebiliyordu. Temizleme onayından sonra güncel bildirim listesi tekrar alınıyor, kullanıcıya özel gizleme kayıtları birleştiriliyor ve bildirim sayacı/paneli temizleniyor. API erişilemezse son başarılı liste yedek olarak kullanılıyor.
+- [x] Tam kalite kapısı 372/372, Python 112, JavaScript 32 ve storage-boundary başarılı. Görünür smoke test 91/91, 0 hata.
+- [ ] Gerçek kullanıcı tarayıcı oturumunda temizle → sonraki 30 saniyelik yoklama zincirini görsel olarak doğrula; smoke ortamı üretim bildirimi yaratmıyor.
+
+### 2026-10-17 Tır/sipariş özetinden net kâr satırının kaldırılması
+
+- [x] Sepet / tır ve sipariş özeti içindeki “İskonto sonrası net kâr” satırı ve ona yazan DOM güncellemesi kaldırıldı. Sipariş verisi hesaplama ve finans/yönetici yetkili ekranları korunuyor.
+- [x] Kâr satırının tır özetinde bulunmadığını ve siparişler tablosundaki “Tahmini net kâr” alanının sadece yönetici/finans koşuluyla açıldığını kontrol eden iki regresyon eklendi.
+- [x] Tam kalite kapısı 374/374; Python sözdizimi 113, JavaScript 32 ve storage-boundary başarılı.
+- [x] Güncel PostgreSQL sunucusunda yönetici oturumu açıldı; tarayıcıda “Sipariş Oluştur” ekranı açılarak “Tır ve sipariş özeti” doğrulandı. “İskonto sonrası net kâr” satırı yok; sipariş kaydı veya sepet verisi değiştirilmedi.
+- [ ] Satış rolünde aynı ekranın maliyet/kâr sütunlarının görünmediğini ayrı kullanıcı oturumuyla doğrula; bu oturum kontrolü sırada.
+
+### 2026-10-17 Görünür rol testi ve satış kataloğu düzeltmesi
+
+- [x] Görünür uygulamada Ahmet Demir (Satış) hesabının sipariş ekranında ürün listesi boştu. Sayfa ürün yönetimi yetkisi isteyen `/api/hesap/urunler-stok` yolunu çağırıyordu; satış rolü o yolu haklı olarak alamıyordu. Satış sepeti artık satış kataloğu `/api/products` yolunu çağırıyor. Bu uç nokta satış için sunucu tarafında yalnız `id`, `name`, `qty`, `sale` alanlarını döndürüyor; ürün kodu, gramaj, maliyet ve marj tarayıcıya gönderilmiyor. `renderProducts()` da ürün yönetim yetkisi olmayan rolde çizilmiyor.
+- [x] Satış hesabında ekran yenilenip sipariş sayfası açıldı: 23 katalog seçeneği ve Batman test bayisi yüklendi; sepet boş kaldı ve kayıt oluşturulmadı. Maliyet/kâr alanı yok. Aynı adlı farklı fiyatlı / fiyatsız ürün seçenekleri listede yineleniyor; ürün adlandırma/SKU ayırımı veri kalitesi notu olarak kaldı.
+- [x] Barış Yıldız (Satın Alma) görünür rol testi: sadece “Benim Sayfam” ve “Hammadde & Satın Alma” menüsü var; Finans, kur, maliyet ve rapor menüleri görünmüyor. Hammadde stok ve satın alma belgeleri görüntüleniyor, tutar/fiyat saklı. Hesap doğru bölümde açılıyor.
+- [x] PET-TEST 0 kg görünümü ile TEST-SENARYO-PET-001 “Depoya kabul edildi” belgesi çelişki değil: önceki canlı stok defteri mutabakatında 4.575 kg girişin tamamının altı üretim işi tarafından tüketildiği doğrulandı. 4.575 kg PP-TEST senaryosu ise ayrı test verisi olarak kaldı; PET'e aktarılmadı/silinmedi.
+- [x] Satış kataloğu ve dashboard rol kapısı UI regresyonu eklendi. Gerçek OneDrive kaynak kalite kapısı: **376/376 test geçti**, Python 113 ve JavaScript 32 dosya sözdizimi başarılı; storage boundary ve SQLite geçiş testleri başarılı.
+- [x] Satış panosundaki “son/en çok satılan ürün” kartlarını Ahmet Demir (TEST) hesabında kontrol ettim; ürün gramajı görünmüyor.
+- [ ] PP-TEST test stoğu ve ona bağlı 278.663,25 TL ödeme/gider, PET-only senaryosunda sonraki test sıfırlamasında temizlenecek/geri alınacak. Ayrı PET alımının üretim tüketim mutabakatı bozulmasın.
+- [ ] Finans, yönetici ve satın alma dışındaki departmanların tüm özel ekran/uyarı gizlilik kontrolleri rol bazında sürüyor. Bağlantılı sipariş senaryosunu yeni test verisi oluşturmadan önce test kayıtlarının gerçekçi adlandırma/benzersizlik koşullarıyla tekrar yürüt.
+
+### 2026-10-17 Satış gramaj gizleme ve görünür doğrulama
+
+- [x] Satış panosu `son_satilan_urunler` ve `en_cok_satan` API alanlarından gramaj ve ürün kodu çıkarıldı; kartlar yalnız ürün adı ve koli sayısı çiziyor. Yönetici/finans içeriği korunuyor.
+- [x] `tests/test_hesap_dashboard.py` satış rolü testine gramaj/kodun JSON yanıtında bulunmadığı kontrolü eklendi.
+- [x] Güncel PostgreSQL ortamında masaüstü başlatıcısıyla uyumlu `LUMISPAC_STORAGE=postgresql`, `LUMISPAC_DATABASE_URL` ve `PGPASSFILE` ortamı kullanılarak sunucu yeniden başlatıldı; `/` HTTP 200. İlk denemede başlatıcı ortamı olmadan açılan geçici JSON süreçte giriş reddedildi; PostgreSQL ayarlarıyla yeniden başlatınca Ahmet ve Derya test hesapları giriş yaptı. Veritabanı içeriğinde değişiklik yapılmadı.
+- [x] Görünür test: Satış panosunda 23 ürün/satış metrikleri yüklendi, son ve çok satan ürün kartlarında gramaj/kod yok. Sipariş sayfasında 23 katalog seçeneği ve test bayisi yüklendi; sepet boş, teklif/sipariş kaydı yaratılmadı. Ürün seçeneği alanlarında maliyet, marj ve ürün gramajı yok.
+- [x] Görünür test: Derya Koç (Finans) hesabında kur kartı/ticker, marj uyarısı, finans metrikleri ve ürün-maliyet raporları var. Barış Yıldız (Satın Alma) hesabında yalnız Benim Sayfam ve Hammadde & Satın Alma menüsü var; kur/finans/rapor bağlantısı yok, maliyet alanları gösterilmiyor.
+- [x] Tam kalite kapısı **376/376 test geçti**; Python 113, JavaScript 32, storage boundary ve SQLite geçiş kontrolü başarılı.
+- [ ] Satış kataloğunda ürün adı/koli adedi/fiyat aynı olsa bile aynı adlı 23 seçenek içinde fiyatı boş ve fiyatı farklı tekrarlar bulunuyor. Satışta yanlış ürünü seçme riskini gidermek için ürün adı/SKU ayrımı ve fiyatı boş ürünlerin seçilebilirliği ayrıca ele alınmalı.
+
+### 2026-10-17 Bildirim kullanıcı kapsamı ve üretim rolü kontrolü
+
+- [x] Bildirim tercihleri, geçmişi ve temizleme/gizleme listesi tarayıcıda ortak anahtarlarda tutuluyordu. Yerel ayarları `kullanıcı ID` kapsamına aldım; bir hesap diğer bölüm hesabının bildirimlerini temizleyemez veya bildirim tercihlerini değiştiremez.
+- [x] JavaScript yalıtım senaryosu: kullanıcı 1 ayar/geçmiş/gizleme kaydı oluşturdu, kullanıcı 2 varsayılan/boş durum gördü, kullanıcı 1'e dönünce kendi kayıtları geri geldi.
+- [x] Üretim hesabı Murat Kaya (TEST) ile görünür kontrol: yalnız Genel Bakış, Benim Sayfam, Ürün Bilgileri, Üretim & Depo, Hammadde & Satın Alma ve Stok menüleri görünüyor; finans, kur, rapor ve yönetim menüleri gizli. Üretim kuyruk ve kabul geçmişi yüklendi; altı kabul edilmiş ürün kaydı üretim kuyruğunda görünmüyor, geçmişte duruyor.
+- [x] Üretim hesabı bildirim panelinde “Şu an bildirilecek bir şey yok”; marj/hedef altı uyarısı görünmüyor.
+- [x] Hedefli bildirim ve onay testleri 2/2 geçti; JavaScript sözdizimi kalite adımı başarılı.
+- [ ] Tam kalite kapısı bu çalışma ortamında 97 testi Windows sandbox geçici klasörüne yazamadığı için başarısız oldu (`PermissionError`); 258 test geçti, kalan başarısızlıkların çoğu dosya yazma yetkisi kaynaklı. Uygulama kaynak hatası olduğuna dair kanıt yok; normal kullanıcı geçici dizininde tekrar çalıştır.
+- [ ] Bildirim temizleme 30 saniyelik yoklama sonrası davranışını bildirim üreten bir yönetici/finans oturumunda gerçek tarayıcı akışında görsel olarak doğrula; üretim hesabında bildirim bulunmadığından temizleme düğmesine basılmadı.
+
+### 2026-10-17 Üretim adımlarının saha satışa bildirilmesi
+
+- [x] Masaüstü uygulamasının OneDrive kaynağındaki `siparis_uretim` bildirimlerinde saha hesabı artık yalnız `owner_user_id` kendisine ait siparişleri alıyor; üretim durum bildirimleri de departman kapsamı filtresinden geçiyor.
+- [x] Bildirim ayrıntıları sipariş no, bayi, ürün adı ve koli miktarını içeriyor. Çok ürünlü siparişler ürün bazında bildirim alabiliyor; sıradaki ürün önce gösteriliyor.
+- [x] Bildirim hedef testleri canlı kaynakta 5/5, üretim regresyonları 22/22 ve tam test paketi **417/417** geçti.
+- [x] Aynı üretim işi duraklatılıp yeniden başlatıldığında geçmişteki olay sayısı bildirim anahtarına ekleniyor; daha önce temizlenmiş “Üretimde” bildirimi yeni olayın bildirimini gizlemiyor. Bu dönüş davranışı için regresyon testi eklendi.
+- [x] 5001 sunucusu doğrulanmış LUMISPAC Python süreci olarak güncel kaynakla yenilendi; açık tarayıcı sekmesi korunup tekrar giriş yapıldı. Ahmet Demir (TEST) hesabında sipariş listesi ve boş bildirim paneli görüntülendi. Mevcut sipariş teslim edilmiş olduğundan aktif üretim bildirimi olmaması beklenen sonuç; yeni test siparişi oluşturulmadı.
+- [ ] Siparişe ayrıca kopyalanmış ürün bazlı `uretim_gecmisi` alanı çalışma kopyasında deneme amaçlı uygulanmıştı; canlı kaynak ise bildirimi üretim işinin mevcut durum/geçmiş sayısından türetiyor. Mevcut davranış test edildi. İleride sipariş geçmişiyle ayrı bir iş gerekirse önce çift kaynak yaratmadan tasarla.
+
+### 2026-10-17 Fiyatsız ürünlerin siparişe girmemesi
+
+- [x] Ahmet Demir (TEST) sipariş formunda ürün seçiciyi açıp 23 seçeneği gördüm. Fiyatı boş dört ürün seçicide devre dışı ve “Fiyat yok” etiketiyle görünüyor. Sepet boş kaldı; yeni sipariş/teklif oluşturulmadı.
+- [x] Sunucu servisinde fiyatı olmayan/0 olan ürün API sipariş isteğinde de reddediliyor. Bu korumaya özel regresyon testi eklendi ve geçti.
+- [x] Canlı OneDrive kaynak kodunun önceki tam kalite kapısı **416/416 test geçti**; bildirim olay anahtarı düzeltmesinden sonraki son kapı **417/417 test geçti**.
+- [x] Satış seçicisinde ad, koli içi adet ve satış fiyatı aynı olan ürünler “Seçenek 1/2” gibi tarafsız etiketlerle ayrılıyor; etiket ürün kodu veya gramajı açığa çıkarmıyor. Aynı ürün etiketi sepet satırında da korunuyor. Fiyatı farklı ürünler fiyatıyla ayrışıyor; fiyatsız dört ürün devre dışı kalıyor.
+
+### 2026-10-17 AI rapor boş durumu ve rapor rol güvenliği
+
+- [x] AI tahmin ürün/kategori grafiklerinde yeterli veri olmadığında boş eksen yerine Türkçe açıklama gösteriliyor. Yalnız güvenilir tahmini olan ürün ve kategoriler çiziliyor.
+- [x] Grafik hizası canlı Ahmet Demir (TEST) hesabında kontrol edildi: 12 geçmiş ay + 3 gelecek ay aynı zaman çizgisinde; tek satış ayından geleceğe sahte tahmin üretilmiyor. Gerçek satış çizgisi Ekim 2026'da 450 koli; 23 ürün için tahmin yetersizliği açıkça bildiriliyor.
+- [x] API taramasında satış rolüne açık kategori, dönem karşılaştırma, kâr projeksiyonu, rapor özeti ve Excel rapor dışa aktarma uçlarında maliyet/kâr/marj verisi olduğu görüldü. Sunucu yetkileri yönetici/finans ile sınırlandı. Satış rolünde trend, bayi, ABC satış ve teklif raporu yanıtları maliyet/kâr/marj ile ürün kodu/gramaj alanlarını çıkartıyor.
+- [x] Satış kullanıcısının sol menüsündeki “Kategori Dağılımı” da gizlendi. Canlı ekran kontrolünde Müşteri menüsünde yalnız Müşteri Analizi ve ABC Analizi görünüyor; maliyet, kâr/marj, gramaj, kur ve yönetim bağlantısı yok.
+- [x] Rol testleri: maliyetli rapor uçları satış ve finans yetkisi olmayan rolde 403; yöneticiye açık. Trend satış raporu 200 döner ama hassas alanlar JSON'dan çıkarılır. Tam kalite kapısı **426/426 test geçti**; ilgili JavaScript ve Python sözdizimi kontrolleri başarılı.
+- [x] Güncel PostgreSQL masaüstü uygulaması yeniden başlatıldı (5001 PID 15412, HTTP 200); görünür tarayıcıdaki Ahmet Demir (TEST) oturumu yenilendi.
+- [x] Ürün hacimleri doğrulanmadığı için sevkiyat raporu 450 koli için 90,00 m³ / %100 doluluk varsayımı üretiyordu; bu durum 2026-10-17 kaydında giderildi.
+
+### 2026-10-17 Canlı ABC raporu ve son yetki doğrulaması
+
+- [x] Ahmet Demir (TEST) hesabında ABC satış raporunun boş kalma nedeni canlı ekrandan bulundu: yenileme eski yan menü raporunu seçmiyor, ABC yükleyicisi de raporun gerçek alanlarıyla uyuşmuyordu. Yenileme görünür paneli seçiyor; ABC yükleyici altı ürünün ad/koli/satış ve sınıf verisini gösteriyor, Pareto ve A/B/C grafiklerini dolduruyor.
+- [x] API'de maliyet/kâr/marj/kod alanları satış rolü için sunucu tarafında çıkarılıyor. Ayrıca ABC tablosunda `hidden` niteliğinin tablo hücre CSS'i tarafından ezildiği görüldü; açık CSS kuralı ile Kod/Kâr/Marj sütunları hem görsel hem erişilebilirlik ağacında tamamen gizlendi.
+- [x] Satış hesabında ekranda görülenler: 6 ürün, A/B/C sınıfı, satış toplamı 415.125 TL, ürün adı, 75 koli ve satış tutarı. Kod, maliyet, kâr, marj ve gramaj görünmüyor. Pareto satış grafiği ve sınıf donut grafiği dolu.
+- [x] Kaynak kod kontrolü: Node JavaScript sözdizim kontrolü başarılı; hedef UI gizlilik testleri 29/29 ve tam test paketi **428/428 geçti**.
+- [x] Son sürüm doğru PostgreSQL ayarlarıyla 5001 portunda yeniden başlatıldı, HTTP 200. Eski tarayıcı sekmesi kapatıldı; güncel satış oturumu ve ABC raporu kullanıcı ekranında önde bırakıldı.
+- [x] Sevkiyat raporunun varsayılan 0,2 m³/koli hesabı kaldırıldı; doğrulanmamış hacim artık “Doğrulanmadı”, doluluk ve tır adedi “Belirlenemedi” gösteriliyor.
+
+### 2026-10-17 Rapor yetki taramasının devamı
+
+- [x] Rapor API taramasında maliyet simülatörünün finans yetkisi olmadan çağrılabildiği bulundu; artık yalnız `kar_maliyet` rolü kullanabiliyor. Satış ve finans yetkisi olmayan rol 403, yönetici 200 regresyonu eklendi.
+- [x] Ürün yaşam döngüsü raporunun kod/gramaj ve kârlılık türevleri içerdiği, stok tahmininin tüm ürün stoklarını döndürdüğü görüldü. Yaşam döngüsü finans yetkisine, stok tahmini stok yetkisine bağlandı. Saha rolünde rapor menüsünden yaşam döngüsü ve stok raporu da görünmüyor.
+- [x] Kod taramasında kârlılık raporu JS'inde var olmayan `rptFinansYetkisiVar()` çağrısı ve yanlışlıkla oraya yazılmış ABC sütun yan etkisi bulundu. Doğru `rptKarMaliyetGorunur()` kullanıldı, ilişkisiz yan etki kaldırıldı ve fonksiyona özel test eklendi.
+- [x] Canlı Derya Koç (TEST) finans hesabında kâr/marj/maliyet paneli açıldı; finans rolüne uygun metrikler göründü. Ardından Ahmet Demir (TEST) saha hesabına dönüldü.
+- [x] Ahmet'in canlı ABC ekranında 6 satır, satış grafiği ve A/B/C dağılımı yüklü. Satış rolünde görünen sütunlar sadece sınıf, sıra, ürün adı, koli, satış ve kümülatif katkı; kod, gramaj, kâr ve marj yok. Operasyon rapor menüsünde saha hesabına yalnız Sevkiyat Takibi ve Teklif Takibi sunuluyor.
+- [x] Çalışan sunucu PostgreSQL ayarlarıyla yeniden başlatıldı (5001 PID 15004, HTTP 200); eski sekme kapalı ve güncel Ahmet Demir (TEST) oturumu ABC raporunda görünür durumda.
+- [x] Son tam kalite kapısı: **428 test geçti**, 0 başarısız; `reports-main.js` ve `auth.js` Node sözdizim kontrolleri başarılı. İlgili hedef gruplar: güvenlik 56 ve UI gizliliği 29 test.
+- [ ] Finansal rapor gezinmesinde ayrı maliyet/kârlılık sayfaları yeni menüde görünür değil; rapor endpointleri ve rol kapsamı güvenli. Bu sayfalar finans için ürün akışında kullanılacaksa sonraki ekran turunda menü/erişim tasarımı ayrıca ele alınmalı.
+
+### 2026-10-17 Finans rapor menüsü, yenileme ve bildirim kontrolü
+
+- [x] Finans oturumu yeni rapor menüsüne ilk girişinde “Maliyet” grubu görünmüyordu. Rapor menüsü oturum açılmadan önce yetkisiz görünümle bir kez oluşturulup önbelleğe alınmıştı. Oturum yetkileri oluşunca menü yenilemesi eklendi; Ahmet (Satış) için Maliyet grubu gizli, Derya (Finans) için Maliyet Detayı, Kâr Analizi ve Fiyat Duyarlılığı canlı ekranda görüldü.
+- [x] Saha rolünde ABC raporu “Yenile” düğmesinde `_rptYukleniyor is not defined` hatası nedeniyle boş kalıyordu. Yenileme kilidi başlatıldı ve kaynak önbellek anahtarı güncellendi. Canlı ekranda yenileme başarılı: 6 ürün, 415.125 TL satış; tablo yalnız sınıf, sıra, ürün, koli, satış ve kümülatif katkı gösteriyor. Yeni hata kaydı oluşmadı.
+- [x] Bildirim panelindeki 2 finans uyarısı temizlendi; 30 saniyelik otomatik yoklama sonrasında sayaç boş kaldı ve panel “Şu an bildirilecek bir şey yok” gösterdi.
+- [x] `test_ui_privacy.py`: 31/31 geçti. `ui-menu.js`, `auth.js`, `reports-core.js` Node sözdizim kontrolleri başarılı.
+- [ ] Tam test paketi JSON varsayılanıyla OneDrive günlük dosyasına yazma izni olmadığı için önce toplama aşamasında durdu. İzole SQLite ayarıyla koşan tam paket 319 geçti /111 başarısız verdi; bu sonuç backend'i değiştirerek çalıştırıldığı için ürün regresyonu kanıtı sayılmıyor. Test günlüğünü çalışma alanına yönlendiren JSON denemesi 55% sonrasında uzun süre ilerlemedi ve durduruldu. Günlük yolu/uygulama sahibi izinleri çözüldükten sonra tam kalite kapısı tekrar çalıştırılmalı.
+
+## 2026-10-17 — Kur kartı ve işlem onayları görünümü
+
+- [x] Yönetici ana ekranının ilk yüklemesinde üst kur kartı ve ana kur kartı sayaç animasyonları nedeniyle geçici olarak farklı rakamlar gösteriyordu; yatay bant ise yeni değeri anında çiziyordu. Kur göstergeleri artık animasyonsuz, aynı kur yanıtını doğrudan gösteriyor. Ekran yenilenip kontrol edildi: üst kart, yatay bant ve ana kart eşleşiyor (49,5091 TL; Yahoo Finance yanıtı). Sonraki tam yüklemede kaynak önceliği güncel Harem Altın verisini verdi; üç gösterge yine aynı değerde kaldı.
+- [x] İşlem Onayları tablosu genel tablo `min-width` kuralı yüzünden ana içerik alanından taşıyordu. Boş son sütun kaldırıldı; onay tablosuna sabit yerleşim, oranlı sütunlar ve satır içi metin kaydırma eklendi. Tarayıcıda yönetici ekranı yenilendi: talep ayrıntıları ve karar gerekçeleri yatay sayfa kaydırması olmadan görünüyor.
+- [x] Canlı onay listesinde iki eski ödeme talebi görüldü; ikisi de sonuçlanmış ve ayrıntıları (isteyen/departman, tutar, yöntem, belge/tedarikçi, sonuç gerekçesi) görünür. Bekleyen hareket silme talebi yoktu; bu nedenle hiçbir onay/ret veya kayıt değişikliği yapılmadı. Silme talebinin canlı görünüm kontrolü yeni bekleyen istek bulunana kadar açık kalıyor.
+- [x] Kur ve onay tablosu için hedefli UI regresyonları sırasıyla 32/32 ve 33/33 geçti; tam kalite kapısı 432/432 geçti. `scenario.js` ve `approvals.js` Node sözdizimi denetimleri başarılı.
+### 2026-10-17 SIP-2026-0004 bütünleşik akış testi devamı
+
+- [x] Zeynep Arslan (Depo TEST) hesabında SIP-2026-0004 için altı üretim kabul talebi tek işlemde kabul edildi; sipariş 450 koli olarak sevkiyata hazır göründü.
+- [x] Depo kullanıcısı siparişi “Hazırlanıyor” yaptı; test plakası `TEST-34-450` ve sürücü `Emre Çelik (TEST)` kaydedildi; gerçek telefon numarası veya gerçek banka hareketi kullanılmadı.
+- [x] Depo hesabında “Sevk edildi” ve ardından “Teslim edildi” durumları işlendi. Planlanan teslim tarihi 20.10.2026 iken test kaydı 17.10.2026 oluşturuldu (üç gün erken test teslimi).
+- [x] Sipariş geçmişi: Taslak → bayi onayı → tahsilat onayı → Onaylandı → Hazırlanıyor → Sevk edildi → Teslim edildi. Ahmet Demir (Satış) ekranı da siparişi “Teslim edildi” olarak gösterdi.
+- [x] Stok, yenilemeden önce eski 75 koli bakiyesini gösterdi; stok ekranındaki “Yenile” sonrasında altı ilgili ürünün her birinde 150 koli giriş, 150 koli çıkış ve 0 kalan doğrulandı. SIP-2026-0004 kaynaklı altı adet −75 koli hareketi, ürün bazında kayıtlı.
+- [x] Derya Koç (Finans) ekranında SIP-2026-0004 için `FIN-2026-0004` tahsilat geliri 498.150 TL olarak göründü. SIP-2026-0003 tahsilatı da ayrı 498.150 TL gelir kaydı. Hammadde gideri görünen kayıtlar üç ayrı satın alma belgesine karşılık geliyor; iki 271.617,75 TL PET kaydı belge numarası farklı iki alım, mükerrer hareket oldukları doğrulanmadı.
+- [x] Hammadde ekranında aktif SIP-0004 satın alımının 4.575 kg PET girişi ve üretim tüketimi sonrası PET stoğunun 0 kg olduğu doğrulandı. Önceki testten kalan 4.575 kg PP stoğu değiştirilmedi; kullanıcı PP→PET aktarımı istemedi.
+- [ ] Satış rolü sipariş ayrıntısı, `/api/orders` yanıtından gelen ürün kodu ve gramajı (ör. `LUM-20261016-0001`, `5g`) gösteriyor. Maliyet/kâr/marj görünmüyor; yine de onaylanmış sınırlı katalog kuralına göre sipariş ayrıntısı ve satış PDF/teklif çıktılarından kod/gramajı gizle, API yanıtında da bu alanları satış rolü için çıkar.
+- [ ] Hammadde sayfası ilk açılışta kısa süre yalnız başlık/kart gösterdi; sonraki yüklemede katalog, tedarikçiler, satın alma, ödeme ve stok verileri geldi. Hammadde ekranı için yükleniyor/hata/boş durumları ve gecikmeli render davranışını incele.
+- [ ] “Depo kabul talepleri” ve stok hareketi açıklamaları sipariş no yerine teknik kimlik kısaltması gösterebiliyor. Sipariş numarası ve bayi bağlamını kart/hareket listesine ekle.
+
+### 2026-10-17 Satış gizli ürün alanları ve yükleme durumu
+
+- [x] Canlı satış ekranı SIP-2026-0004 ayrıntısında SKU/kod ve ürün gramajının görünmesi düzeltildi. Satış rolü sipariş/teklif API satırlarında `code/product_code/sku/ean`, gramaj/ağırlık ve hacim alanlarını artık almaz; isim, koli/adet ve müşteri fiyatı korunur.
+- [x] Satış rolündeki sipariş ayrıntı tablosundan kod sütunu ve gramaj kaldırıldı. Teklif/sipariş yazdırma çıktılarında kod/gramaj gizlendi; sipariş/irsaliye/fatura PDF dönüştürücüsünde satış hesabına iç ürün alanları aktarılmıyor.
+- [x] Canlı Derya Koç (Finans) test rolünde 56 güvenlik testi geçti; yeni kod/gramaj/hacim regresyon testi de geçti. Python ve JavaScript sözdizimi denetimleri başarılı.
+- [x] Ahmet Demir (Satış) hesabında SIP-2026-0004 ayrıntısı görünür doğrulandı: ürün adı, koli/adet ve satış fiyatları duruyor; kod ve gramaj sütunu/içeriği yok.
+- [x] Hammadde ekranı yüklenirken artık “Hammadde ve satın alma verileri yükleniyor…” ve bölüm bazlı yükleniyor durumu gösteriliyor. Önceden sessizce yutulan katalog, tedarikçi, satın alma, depo kabul ve reçete API hataları bölümde hata olarak gösteriliyor; boş veri gibi görünmüyor.
+- [x] Derya Koç (Finans) hesabında hammadde/satın alma verileri yüklenirken durum görüldü, ardından PET/PP stokları, tedarikçi ve satın alma belgeleri ekranda yüklendi. Hammadde testleri 9/9 geçti.
+- [x] Finans ekranında SIP-2026-0004 için `FIN-2026-0004` tahsilat geliri 498.150 TL listede ve kasa özetinde yer alıyor. SIP-2026-0003 için ayrı 498.150 TL gelir de kayıtlı; bunlar farklı siparişler. Ekran toplamları: gelir 996.300 TL, gider 821.898,75 TL, bakiye 174.401,25 TL. Gelir-gider bağlantısı mevcut test kayıtlarında çalışıyor.
+- [ ] Satış/teklif PDF önizleme akışı ekranda popup engeline takılabileceği için görünür belge doğrulaması tamamlanmadı. Kod/gramaj dönüşümünün otomatik regresyonu var; SIP-0004 sipariş, irsaliye ve fatura çıktılarını ayrıca görünür test et.
+- [ ] Depo kabul kuyruğu ve stok hareketi açıklamalarında sipariş no/bayi yerine kısaltılmış teknik ID görünebiliyor. Sipariş ve bayi bağlamını ekle.
+
+### 2026-10-17 Stok hareketlerinde sipariş bağlamı — görünür doğrulama
+
+- [x] Depo kullanıcısının kendi stok ekranında “Sipariş / bayi” sütunu artık sevkiyat ve üretim kabul hareketlerinde sipariş no ile müşteri/bayi metnini gösteriyor; örnekler SIP-2026-0004 ve SIP-2026-0003. Eski teknik ID açıklaması muhasebe/stok geçmişinde tutuluyor, ama bağlantı sütunu okunur sipariş bağlamını veriyor.
+- [x] Bayi yönetimi uç noktası depo rolüne kapalı kaldı; stok ekranı izinli sipariş ve üretim API yanıtlarını birleştiriyor. Yetki kapsamı genişletilmedi.
+- [x] Üretim kabul bağlamı üretim işinin sipariş_no/iş ilişkisi üzerinden çözümleniyor. Stok/üretim hedef testleri 52/52 geçti; Python AST ve JavaScript `node --check` başarılı.
+- [x] SIP-2026-0004 için bayi unvanı eksikliği, bayi API izni açılmadan sipariş okuma yanıtına bağlı bayi unvanı eklenerek giderildi; yeni siparişler de unvanı snapshot eder. Ayrıntı ve canlı doğrulama: 2026-10-17 sipariş bayi adı düzeltme notu.
+
+
+### 2026-10-17 Sipariş bayi adı snapshot düzeltmesi
+
+- [x] Yeni siparişe bayi unvanı `dealerName` olarak güvenilir sunucu kaynağından snapshot ediliyor; eski siparişler listelenirken ilişkili bayi unvanı yalnızca yanıta ekleniyor, kayıt kalıcı olarak sessizce değiştirilmeden. Satış sahibine ait bayi listesi kapsamı korunuyor.
+- [x] Sipariş listesi, özet ve detayında bayi unvanı ile müşteri/ilgili kişi yan yana gösteriliyor; arama iki alanı da kapsıyor.
+- [x] SQL depo siparişi oluşturma + tarihsel kayıt okuma regresyon testi geçti. Stok/üretim/sipariş hedef grubu uygun JSON test ortamında **53/53 geçti**. Python ve JavaScript sözdizim denetimleri başarılı.
+- [x] Önceki denemede uygulama sekmesi eski sunucu sürecine bağlıydı. 5001 dinleyicisinin `pythonw.exe lumispac_app.py` olduğu doğrulanıp güncel kaynakla yeniden başlatıldı; oturum Zeynep Arslan (TEST) depo kullanıcısında yenilendi. API ve görünür sipariş listesi SIP-2026-0004 için `Batman Ambalaj Pazarlama Ltd. Şti. (TEST) · Mehmet Acar (TEST)`, SIP-2026-0003 için tekrarsız `Batman Ambalaj Pazarlama Ltd. Şti. (TEST) · Mehmet Acar` gösteriyor. Uygulama ana sekmesi açık bırakıldı.
+
+
+### 2026-10-17 Canlı sipariş bayi bağlamı son doğrulaması
+
+- [x] `dealerName` yeni sipariş snapshot'ında sunucu tarafında kaydediliyor; tarihsel siparişin unvanı okuma yanıtına ekleniyor. Depo dizini API erişimi açılmadı.
+- [x] Zeynep Arslan (TEST) sipariş tablosunda SIP-2026-0004 ve SIP-2026-0003 bayi ve müşteri kişisi görünür doğrulandı. SIP-0003 müşteri alanında şirket adının daha önce bulunması nedeniyle tekrar eden unvan kaldırıldı. Ekran görüntüsü görsel olarak kontrol edildi.
+- [x] Hedef servis/test kapısı 53/53; `node --check static/js/modules/orders.js` ve bayi/müşteri örnek etiket denemesi başarılı.
+- [x] Güncel PostgreSQL sunucusu 5001'de çalışıyor, depo hesabı açık oturumda; uygulama sekmesi kullanıcı için açık bırakıldı.
+
+### 2026-10-17 Sevkiyat gizliliği ve depo kontrolü kapısı
+
+- [x] Satış kullanıcısının sipariş detayında sevkiyat kartı ve sürücü/araç iletişim alanları artık `siparis_sevk` izni yoksa görünmüyor. `/api/orders` yanıtında plaka, sürücü ve telefon da çıkarılıyor; sunucu tarafındaki sevkiyat yazma izni korunuyor.
+- [x] Depo uygunluk kontrolü hem arayüzde hem API'de bayi teyidi ve ödemenin tamamlanmasını şart koşuyor. Teyitsiz veya ödenmemiş sipariş üretim/depo kuyruğuna giremiyor.
+- [x] Canlı Zeynep Arslan (TEST) Depo ekranında SIP-2026-0001 ve SIP-2026-0002 taslak siparişlerinde “Depo Kontrolü” düğmesi görünmüyor. SIP-0003/0004 teslim edilmiş statüde. Ahmet Demir satış ekranında sipariş ürün gramajı ve sevkiyat kartı görünmüyor.
+- [x] Önceki sevkiyat geçmişi kontrolünde “Teslim edildi” kaydı ayrıntı penceresinin aşağısında kalmıştı; kaydırınca kayıt ve zamanı mevcuttu. Statü tutarsızlığı bulunmadı.
+- [x] İlgili güvenlik/UI regresyon grubu 40/40 geçti; JavaScript ve Python sözdizimi kontrolleri başarılı. Önceki sevkiyat gizliliği grubu 35/35 geçmişti.
+- [ ] PDF önizlemesinin görünür kontrolü tamamlanmadı; tarayıcı `blob:` sekmesini açma/inceleme politikasına izin vermedi. Başka yoldan erişmeye çalışmadan, yetkili UI üzerinden belge çıktısı ayrıca doğrulanmalı.
+- [ ] Sevkiyat raporunda ürün hacmi doğrulanmadan 0,2 m³/koli varsayımı 90 m³ ve tır doluluk hesabı üretebiliyor. Ürün hacimleri kesinleştirilene kadar rapor ve takvimde doğrulanmamış hacim/doluluk/tır sayısı gösterilmemeli; hacim bilinmiyor durumu açıkça gösterilmeli.
+
+### 2026-10-17 Sevkiyat hacim hesabı doğruluk düzeltmesi
+
+- [x] Ürünlerdeki varsayılan `0,2 m³/koli` değeri ölçüm/doğrulama kanıtı olmadığından tır doluluğu hesabında kullanılmıyor. Rapor yalnız ürün kartında `volume_verified` açıkça doğru olduğunda hesap yapar.
+- [x] Sevkiyat özetinde hacim doğrulanmamışsa m³, doluluk ve tahmini tır sayısı `null` döner; takvim/rapor ekranı bu alanları sıfır veya tahmin gibi sunmadan “Doğrulanmadı / Belirlenemedi” gösterir. Konfigürasyondaki 90 m³ araç kapasitesi ayrı bir ayar bilgisi olarak kalır.
+- [x] Regresyonlar: hacmi doğrulanmamış, varsayılan 0,2 içeren ürün; doğrulanmış hacim; sevkiyat takvimi bilinmiyor durumu. `tests/test_shipping_volume_quality.py` + UI gizliliği grubu **38/38 geçti**. Python ve JavaScript sözdizimi kontrolleri başarılı.
+- [x] Canlı ekranda Sistem Yöneticisi ile sevkiyat raporu yenilendi: 0001/0002 taslak ve 0003/0004 teslim edilmiş siparişlerde m³ “Doğrulanmadı”, doluluk “—”, tır “Belirlenemedi”; aktif toplam “Doğrulanmadı”. 450 koli verisi duruyor. Ekran görüntüsü görsel olarak kontrol edildi.
+- [x] Uygulama güncel kaynakla başlatıldı, PostgreSQL verisi korundu ve tarayıcıda sevkiyat raporu açık bırakıldı. Test API yanıtı ve canlı ekrandaki değerler eşleşiyor.
+- [x] Sipariş sepetinde de aynı varsayılan hacimden sahte tır doluluğu/boş alan üretilebiliyordu. Sepet hesabı artık yalnız doğrulanmış ürün hacimlerini topluyor; hacim bilinmiyorsa doluluk çubuğu ve kalan hacim gösterilmiyor, “Hacim doğrulanmadı” açıklaması çıkıyor. Sipariş kalemi anlık görüntüsüne de doğrulanmamış hacim yazılmıyor.
+- [x] Tarayıcı eski açık oturumdaki JS'yi kullanmaya devam ettiği için ilk canlı denemede eski sonuç görüldü. Tam sayfa yenilemesinden sonra 1 koli geçici olarak eklendi; ekranda “Hacim doğrulanmadı / 90 m³ kapasite” ve “1 üründe koli hacmi doğrulanmadı; tır doluluğu hesaplanmıyor” göründü. Sipariş kaydedilmedi; geçici sepet temizlendi.
+- [x] Canlı Finans ekranında iki farklı teslim edilmiş siparişin her biri için ayrı +498.150 TL tahsilat kaydı, iki hammadde belgesinin her biri için ayrı gider kaydı görünüyor. Sipariş detayındaki tam tahsilat tutarları ve belge tarihleriyle tutarlı; eski “gelir oluşmadı” bulgusu geçersiz. Sipariş/payment/finance kimliklerinin doğrudan veritabanı bağı ayrıca incelenmeli.
+- [x] Canlı Hammadde & Satın Alma ekranında SIP-2026-0003 ve SIP-2026-0004 için ayrı ayrı 4.575 kg PET satın alma belgesi, tam ödenmiş ve depoya kabul edilmiş durumda. Her iki sipariş de 75'er koli × altı ürün; ürün gramaj reçetesiyle her sipariş için PET tüketimi 4.575 kg hesaplanıyor. PET bakiyesi 0 kg olması bu iki üretimle tutarlı. `TEST-SENARYO-PP-001` ayrı PP deneme alımıdır; 4.575 kg PP stoğu ve 278.663,25 TL test gideri duruyor; bunu PET'e aktarmayın, gelecekte test verisi sıfırlanırken ayrı ele alın.
+- [x] 17.10 canlı UI tekrarında Finans ve Hammadde sayfalarının verileri Yenile'ye basmadan kendiliğinden yüklendi; ilk erişilebilirlik görüntüsünde boş alanlar vardı, yaklaşık 5 sn içinde doldu. Hammadde görünür yükleniyor metni gösteriyordu; Finans boş görünüyordu. `static/js/modules/finans.js` için başlangıç/yükleme/hata durumları eklendi; kasa özeti ve kayıt listesi `Promise.allSettled` ile bağımsız sonuçlanıyor, tekrar eden isteklerde eski yanıt yeni ekranı ezemiyor. `index.html` Finans script cache sürümü güncellendi. `node --check` başarılı. Canlı tarayıcıda yüklenirken “Kasa özeti yükleniyor…” ve “Finans kayıtları yükleniyor…” göründü; 4 sn sonra kasa, 5 kayıt ve grafikler geldi. Hammadde tarafında da 5 sn içinde katalog, belgeler ve reçeteler Yenile gerektirmeden geldi. İlk açılışın backend/API gecikmesi ayrıca ölçülmeli; bu UI düzenlemesi süreyi kısaltmıyor.
+- [x] Üretim ürünü tablosu ve ayrıntısı eski varsayılan `0,2 m³` değerini gerçek hacimmiş gibi gösteriyordu. `volume_verified` yokken tablo/ayrıntı artık “Doğrulanmadı” gösteriyor; tır planlamasında kullanılmıyor. Üretim hesabında 23 ürün satırının tamamında yanlış `0,200` yerine bu metin ve ilk ürün ayrıntısında “Hacim doğrulanmadı” canlı ekranda doğrulandı. `node --check static/js/modules/products.js` başarılı; ürün script cache sürümü yenilendi. Veritabanındaki eski değerler silinmedi, yalnızca doğrulanmamış kabul edilip gösterilmiyor.
+- [x] Ahmet Demir'in sevkiyat raporunda yalnız teslim edilmiş siparişler varken “Gerekli Tır (Aktif): 1” gösteriliyordu. Operasyon raporundaki aktif hacim 0 olduğunda gerekli tır sayısı artık 0; boş aktif sipariş seti için regresyon testi eklendi. `test_shipping_volume_quality.py` + `test_ui_privacy.py`: **39/39 geçti**; Python derleme ve rapor JavaScript sözdizimi kontrolleri başarılı. PostgreSQL başlatıcısı (`LUMISPAC_STORAGE=postgresql`, yerel PGPASSFILE) kullanılarak uygulama yeniden başlatıldı; Ahmet'in gerçek PostgreSQL hesabıyla giriş yapıp raporu ekranda yeniledim: aktif sipariş 0, gerekli tır 0, iki teslim edilmiş siparişte hacim doğrulanmadı. Browser tab 38 kullanıcıya açık bırakıldı.
+- [x] Ahmet Demir'in sipariş oluşturma ekranında test amaçlı 1 koli geçici sepet kalemi eklendi: ürün listesi yalnız ürün adı, koli içi adet ve satış fiyatını; sepet tablosu yalnız ürün, koli, adet ve satış (KDV hariç) alanlarını gösterdi. Maliyet, gramaj/ağırlık, ürün kodu ve kâr görünmedi. Tır özeti doğrulanmamış hacmi uyardı. Sipariş kaydedilmedi; yerel sepet temizlendi.
+
+### 2026-10-17 Canlı mutabakat ve saha raporu rol kontrolü
+
+- [x] Salt okunur PostgreSQL sorgusuyla SIP-2026-0003 ve SIP-2026-0004 tahsilatları tek tek doğrulandı. Her siparişte `order_payments.finance_entry_id`, finans kaydının `order_id` ve `payment_id` değerleriyle eşleşiyor; her birinde tek `gelir` kaydı ve 498.150 TL tutar var. Önceki notlardaki “kimlik bağı ayrıca incelenecek / kimlik eksikti” durumu güncel veride çözülmüş; yeni gelir veya test hareketi oluşturulmadı.
+- [x] Saha satış hesabında Raporlar > Satış Trendi ekranı görsel/erişilebilirlik ağacından kontrol edildi: toplam sipariş, KDV hariç satış ve sipariş başı ortalama tutar var; maliyet, brüt/net kâr ve marj alanı yok. Müşteri Analizi ekranı satış sıklığı ve net satış tutarıyla sınırlı; maliyet/marj göstermiyor. Bu ekranlar yetki dahilindeki satış raporları olduğundan görünür durumda bırakıldı.
+- [x] Saha hesabında dashboard da ayrıca doğrulandı: sipariş adedi ve satış hacmi yer alıyor; maliyet/kâr kartı, kur göstergesi veya finans menüsü görünmüyor.
+- [x] Gerçek kullanıcı ekranında saha hesabına gelen “Bugün 1 yeni sipariş” bildirimi bağlamsızdı. `reports_api.py` yeni sipariş sayacı yerine bu satış sorumlusunun kendi siparişleri için sipariş numarası, bayi/müşteri ve durum içeren ayrı bilgi bildirimi üretiyor; kapsamı `_raporlar()` içindeki kullanıcı/bayi filtresiyle sınırlı.
+- [x] Önce `reports_api.py` ve bildirim test dosyası dar kapsamlı yedeklendi. Yeni regresyon testinde bugünün yalnız sahipli siparişi seçiliyor; başka kullanıcı ve eski tarih dışarıda, fiyat/tutar bildirime eklenmiyor. `tests/test_notifications.py` **6/6 geçti**, Python derlemesi başarılı.
+- [x] Güncel kaynak PostgreSQL yapılandırması korunarak 5001'de yeniden başlatıldı; Ahmet Demir (TEST) hesabıyla tekrar giriş yapıldı. Bildirim panelinde `SIP-2026-0004 · Yeni sipariş` ve `Mehmet Acar (TEST) — Durum: Teslim edildi` görünür biçimde doğrulandı. Uygulama sekmesi kullanıcı için açık bırakıldı.
+- [x] Ahmet'in gerçek bildirim panelinde temizle → 30 saniyelik yoklama → sunucu yeniden başlatma/giriş döngüsü denendi. Temizlenen sipariş bildirimi yoklama sonrasında, sayfa yenilenince ve tekrar girişten sonra geri gelmedi. İlk anda rozet kısa süre eski sayıyı gösteriyordu; `bildirimTemizle()` artık paneli boşaltırken rozeti de aynı anda sıfırlıyor. `node --check` ve sayaç/panel durumunu denetleyen küçük JS davranış kontrolü geçti; sayfa cache anahtarı güncellendi.
+- [x] Ahmet'in Sipariş Oluştur ekranındaki ürün seçicisi kontrol edildi. Katalog satış kullanıcısına ürün adı, koli içi adet ve fiyat gösteriyor; gramaj ve ürün kodu görünmüyor. Satış fiyatı tanımsız dört ürün seçenek olarak gri/devre dışı görünüyor. Sepete ekle ön kontrolü ile sunucu tarafında `siparis_ekle` fiyat doğrulaması mevcut; buna ilişkin güvenlik regresyonu `tests/test_security.py` içinde bulunuyor. Hiç ürün seçilmedi, sepete veya sipariş verisine değişiklik yapılmadı.
+- [x] Ek hedefli regresyonlar: fiyatsız ürünü API siparişinde reddetme ve saha dashboard'ında şirket geneli maliyet/kâr alanlarını gizleme **2/2 geçti**; canlı ekranda da aynı satış rolü sınırı doğrulandı.
+- [x] Birleşik güvenlik/bildirim kapısı son değişikliklerden sonra yeniden çalıştırıldı: `tests/test_security.py` + `tests/test_notifications.py` **64/64 geçti**.
+- [ ] PDF/irsaliye/fatura blob önizlemeleri tarayıcı güvenlik politikası bu içerik türünü incelemeye kapattığı için bu turda okunamadı; kullanıcı ekranındaki yetkili PDF akışını başka bir yolla aşmaya çalışmadan, görünür doğrulama açık kalıyor.
+
+### 2026-10-17 Stok hareketi silme onayı — canlı UI ve geçmiş bağlam
+
+- [x] Zeynep Arslan (TEST, Depo) kendi rolünden `/api/stok` ekranındaki mevcut SIP-2026-0004 çıkış hareketi için silme isteği oluşturdu. Yönetici onayında ürün adı/kodu, giriş/çıkış, miktar, sipariş, bayi, tarih, kaynak, açıklama, isteyen kullanıcı/departman ve talep gerekçesi görünür.
+- [x] Silme onayı penceresi artık açıkça “Onaya gönder” diyor ve kayıt yöneticinin incelemesine kadar silinmeyeceğini bildiriyor. Talep nedeni formdan alınarak onay bağlamına ekleniyor.
+- [x] Önceden açılmış eksik bağlamlı stok onayları da ekrandaki hareket verisinden zenginleştiriliyor; onay geçmişindeki kayıt belgesi değiştirilmeden gösteriliyor.
+- [x] İki UI doğrulama talebi gerekçeyle reddedildi; ilişkili stok hareketleri silinmedi. Sonuç ekranında her iki kaydın da reddedilmiş olduğu ve ret gerekçesi doğrulandı.
+- [x] Regresyonlar `tests/test_approval_context.py` + `tests/test_security.py`: **66/66 geçti**. PostgreSQL sunucusu doğrulanarak yeniden başlatıldı (5001 HTTP 200). Güncel admin onay ekranı tarayıcıda açık.
+
+## 2026-10-17 — Açık işlerin hızlı kapanış turu
+
+- [x] Kullanıcıya görünen iş akışı durum etiketleri ortak `durumEtiketi()` içinde genişletildi. `paid`, `accepted`, `in_transit`, `delivered`, `preparing` gibi durumlar Türkçe karşılık alıyor; bilinmeyen teknik İngilizce anahtarları ham halde göstermiyor. `index.html` script önbellek anahtarı yenilendi.
+- [x] Son tam kalite kapısı: **454/454 geçti**; Python 115 dosya, JavaScript 32 dosya sözdizimi ve depolama sınırı başarılı. `test_ui_privacy.py` 37/37 geçti.
+- [x] v20 PostgreSQL migration öncesi yedek alınıp `pg_restore --list` ile doğrulandı; konum/özet PostgreSQL runbook'unda. İzole geçici şemada siparişten teslimata PostgreSQL E2E geçti.
+- [x] Canlı test PostgreSQL v19→v20 yükseltildi. 8 ertelenmiş FK kısıtı mevcut; yeniden mutabakat `status=ok`, sahipsiz kayıt 0, sipariş toplam farkı 0, 1.076 satır ve belge bütünlüğü `ok`.
+- [ ] İrsaliye/fatura PDF'lerinin tarayıcıda görünür önizlemesi bu turda tamamlanmadı. Uç nokta, PDF düzeni ve yetki testleri tam kalite kapısından geçti; görsel belge kontrolü ayrı kalıyor.
+- [ ] Eski PET dışı `TEST-SENARYO-PP-001`: 4.575 kg PP ve 278.663,25 TL gider/ödeme. PET'e aktarılmadı; stok ve finans geçmişini koruyarak uygun test ters kayıt işlemi henüz yapılmadı.
+- [ ] SIP-2026-0001/-0002 taslakları aynı bayi, ürünler, miktar ve tutarda; SIP-0002 saha notu taşıyor. Hangisinin iptal edileceği/korunacağı uygulama verisinde değiştirilmedi.
+- [ ] Bütün kullanıcı/departman menüleri ve ekranlarının tam görsel matrisi kapatılmadı. 5001 yerel sunucu bu turda dinlemiyordu; API/regresyon ve önceki rol ekranı kontrolleri mevcut, yeni canlı oturum doğrulaması yapılmadı.
+- [ ] v20 ve UI değişiklikleri dosyalara uygulandı; yerel uygulama kapalı olduğu için tarayıcıya yüklenip görsel olarak yenilenmedi. Uygulama başlatıldığında güncel kodu alır.
+
+## 2026-10-17 — PDF son görsel kontrolü ve kalite kapısı
+
+- [x] PDF önizleme notunun irsaliye örneği görsel olarak kontrol edildi: boş teslim tarihi, plaka, şoför ve telefon alanları tek sayfada yazılabilir ve hizalı.
+- [x] Fatura önizlemesinde satış rolü için boş “Ürün Kodu” sütunu ve PDF fontunda kare görünen kilit simgesi bulundu. Ürün kodu yalnız belge satırlarında gerçekten varsa gösteriliyor; ödeme koşulları başlığındaki simge kaldırıldı.
+- [x] Güncel sentetik fatura yeniden render edilip görsel kontrol edildi: tek sayfa, sütun/özet hizası düzgün; 415.125,00 TL ara toplam + 83.025,00 TL KDV = 498.150,00 TL genel toplam. Sipariş veya finans verisi oluşturulmadı/değiştirilmedi.
+- [x] PDF testleri 5/5; son tam kalite kapısı **456/456 geçti**, Python 115, JavaScript 32 ve storage-boundary kontrolleri başarılı.
+- [ ] PET dışı PP alımı ile yinelenen SIP-2026-0001/-0002 taslak kayıtları değiştirilmedi; önceki test geçmişini koruma notu geçerli.
+- [ ] Bütün rol ekranlarının canlı görsel matrisi bu turda tamamlanmadı. 5001 sunucusu kontrolde kapalıydı; bu nedenle UI sunucusu başlatılmadı ve tarayıcı oturumu yenilenmedi.
+
+## 2026-10-17 — Son durum düzeltmesi (üstteki eski durum notlarının yerine geçer)
+
+- [x] Fatura PDF görseli sentetik veriyle üretildi ve kontrol edildi; boş ürün kodu sütunu ve PDF'de kare görünen kilit simgesi düzeltildi. İrsaliye görseli de alan hizaları için kontrol edildi. Canlı sipariş/finans kaydı eklenmedi.
+- [x] Önceki satır yalnızca çalışma alanındaki eski `work/active_lumispac_source` aynasında bulunan `work/backups/` kopyaları içindi; o ayna için yerel kalite betiği düzeltildi. OneDrive'daki gerçek kaynak kökünde `work/` dizini yok ve onun `tools/check_quality.py` dosyası değiştirilmedi. Gerçek kaynağın izole doğrulama kopyasındaki güncel kapı sonucu son bölümde 457/457 olarak kaydedildi.
+- [x] Son UI değişiklikleri bayi sipariş durum ipucunu da Türkçe etiketliyor; `test_ui_privacy.py` bu ek regresyonu içeriyor.
+- [x] PostgreSQL v20, 8 FK, mutabakat `ok`, 0 sahipsiz kayıt, 0 sipariş toplam farkı ve `integrity_check=ok` olarak son doğrulama notunda.
+- [ ] PP alımı (`TEST-SENARYO-PP-001`) ile yinelenen SIP-2026-0001/-0002 taslakları korunuyor; silme/ters kayıt için güvenli bir iş akışı olmadan veri değiştirilmedi.
+- [ ] Bütün rollerin canlı, görsel ekran matrisi tamamlanmadı. Bu çalışma ortamında yerel 5001'e yapılan son HTTP kontrolü kısıtlı soket erişimi nedeniyle doğrulanamadı; backend'in halen açık olduğu iddiası doğrulanmış sayılmamalı.
+
+## 2026-10-17 — Gerçek uygulama rol ve test matrisi son kontrolü
+
+- [x] Kullanıcı yönetim ekranında 6 aktif hesap doğrulandı: Sistem Yöneticisi (`admin`), Ahmet Demir (Satış), Derya Koç (Finans), Murat Kaya (Üretim), Zeynep Arslan (Depo), Barış Yıldız (Satın Alma). Yerel uygulama sekmesi `http://127.0.0.1:5001/` yanıt verdi ve gerçek PostgreSQL verisiyle yüklendi.
+- [x] Yönetici ve Finans dashboard'larında şirket maliyet/marj ve kur alanları görünüyor; her iki rolün menü kapsamı kendi yönetim/finans işlerine göre doğrulandı.
+- [x] Satış ekranında Ahmet yalnızca kendi iki siparişini gördü. Sipariş tablosunda satış toplamı var; maliyet/marj/kur yok. Sipariş ayrıntısında ürün kodu ve gramaj alanları gizli; ürün, koli/adet ve satış fiyatı kalıyor.
+- [x] Üretim ekranında Murat'ın üretim, depo kabul ve siparişe bağlı geçmiş kayıtları; stok ekranında ürün/koli giriş-çıkış/kalan ve sipariş/bayi bağlamı doğrulandı. Finans/maliyet/marj/kur menü ve verisi görünmüyor. Koli adetleri ondalıksız gösteriliyor.
+- [x] Depo ekranında Zeynep'in siparişleri, teslim/üretim durumları, sevkiyat alanları ve stok hareketi doğrulandı; maliyet/marj/kur yok. 450 koli ve 75 koli miktarları tam sayı. Üretim kabulü ile sevk hareketleri sipariş no/bayi üzerinden bağlı.
+- [x] Satın Alma ekranında Barış yalnızca Hammadde & Satın Alma menüsünü görüyor. Fiyat/ödeme/maliyet alanları Finans'a ayrılmış; kur ve kâr/marj görünmüyor. `PP-TEST` 4.575 kg ile `PET-TEST` 0 kg ve üç alım belgesi ekranda doğrulandı; kayıtlar değiştirilmedi.
+- [x] Test ve UI oturumları bitince tarayıcı Derya Koç (Finans) oturumuna geri alındı.
+- [x] OneDrive gerçek kaynak ağacının yedeklerden ayrı çalışma kopyasında standart `tools/check_quality.py` kapısı **457/457 test** ile geçti; Python 115, JavaScript 32 sözdizim taraması ve depolama sınırı kontrolü başarılı. İlk izole koşudaki iki dashboard testi, test kopyasına `lumispac_users.json` departman fixture'ı alınmadığı için başarısız olmuştu; dosya izole kopyaya eklendikten sonra hedef testler 5/5 ve tam kapı 457/457 geçti. Canlı iş kayıtları bu testlerde değişmedi.
+- [ ] PP geçmiş alımı `TEST-SENARYO-PP-001` (4.575 kg ve 278.663,25 TL test gider/ödemesi) mevcut. PET'e aktarılmadı; stok/finans bağlantılı güvenli ters kayıt akışı olmadan değiştirilmeyecek.
+- [ ] SIP-2026-0001/-0002 aynı kalem ve miktarlı taslaklar; iş amacı karara bağlanmadığı için hiçbiri silinmedi veya iptal edilmedi.
+- [ ] Gerçek uygulama PDF blob önizlemesini tarayıcı güvenlik politikası incelemeye kapattı. Sentetik PDF çıktılarının dosya/render kontrolü geçti; canlı kullanıcı PDF önizlemesinin görsel kontrolü ayrı açık kaldı.
+
+## 2026-10-17 — Satışta aynı görünen katalog ürünlerini ayırma
+
+- [x] Gerçek uygulamanın ürün seçicisinde iki “1000 CC SIZDIRMAZ” kaydı aynı koli adedi ve satış fiyatıyla görünüyordu; satış rolünde gramaj ve ürün kodunu açmadan bunları ayırt etmek mümkün değildi.
+- [x] `static/js/modules/cart.js` yalnızca izinli alanlardan (ürün adı, koli içi adet, satış fiyatı) oluşan gösterim anahtarına göre tam aynı görünen ürünlere kararlı “Seçenek 1/2” etiketi ekliyor. Seçilen ürün sepette de aynı tarafsız etiketle gösteriliyor; gramaj ve ürün kodu gösterim etiketi içinde kullanılmıyor.
+- [x] Satış rolü katalog gizlilik regresyonuna bu davranışın kontrolü eklendi. İzole gerçek kaynak kopyasında `tests/test_ui_privacy.py` **39/39 geçti**; `node --check` ve Node ile iki çakışan ürün + bir tekil ürün davranış kontrolü başarılı.
+- [x] Doğrulanmış `cart.js`, OneDrive gerçek kaynak ağacına dosya yedeği alınarak aktarıldı; canlı kaynak ile izole doğrulama kopyasının SHA-256 özeti aynı: `9059672749BB70D35264FC90C6858431CE019F08D3A313E4A39D04C8D458DD0B`.
+- [ ] Canlı UI'da son değişikliği görmek için sayfa yenilemesi ve Satış hesabında iki aynı etiketli ürünü sepete ayrı ayrı ekleyerek görsel kontrol hâlâ yapılmalı; test siparişi kaydedilmemeli.

@@ -1,0 +1,72 @@
+C:\Users\yusuf\AppData\Local\Programs\Python\Python310\lib\site-packages\fs\__init__.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  __import__("pkg_resources").declare_namespace(__name__)  # type: ignore
+.............FFFFFFFF................................................... [ 14%]
+........................................................................ [ 29%]
+...........................FFFF......................................... [ 44%]
+....................FFFF................................................ [ 59%]
+....................................FFFF................................ [ 74%]
+.............................F....................................FF.FFF [ 89%]
+F.FFFFFFFFFFFFFFFFFFF.FFFFFFFFFFF...................                     [100%]
+=========================== short test summary info ===========================
+FAILED .pytest-baseline-infra/tests/test_approval_context.py::test_order_delete_approval_summary_contains_order_and_reason
+FAILED .pytest-baseline-infra/tests/test_approval_context.py::test_order_delete_approval_summary_marks_missing_reason
+FAILED .pytest-baseline-infra/tests/test_approval_context.py::test_large_order_payment_summary_contains_customer_and_method
+FAILED .pytest-baseline-infra/tests/test_approval_context.py::test_payment_approval_formats_turkish_currency_and_known_methods
+FAILED .pytest-baseline-infra/tests/test_approval_context.py::test_approval_list_preserves_payment_context_for_approver
+FAILED .pytest-baseline-infra/tests/test_approval_context.py::test_legacy_payment_approval_rebuilds_missing_context_without_changing_history
+FAILED .pytest-baseline-infra/tests/test_approval_context.py::test_stock_movement_delete_approval_summary_contains_product_order_dealer_and_reason
+FAILED .pytest-baseline-infra/tests/test_approval_context.py::test_legacy_stock_approval_refreshes_existing_partial_detail_without_rewriting_history
+FAILED .pytest-baseline-infra/tests/test_pdf_layout.py::test_irsaliye_eksik_sevkiyat_bilgilerini_yazilabilir_alanlarla_gosterir
+FAILED .pytest-baseline-infra/tests/test_pdf_layout.py::test_siparis_pdf_units_toplamini_koli_ici_adede_cevirir
+FAILED .pytest-baseline-infra/tests/test_pdf_layout.py::test_pdf_lines_legacy_quantity_field_stays_per_box
+FAILED .pytest-baseline-infra/tests/test_pdf_layout.py::test_sales_invoice_hides_empty_internal_product_code_column_and_renders_payment_heading
+FAILED .pytest-baseline-infra/tests/test_rate_sources.py::test_kur_yenileme_her_zaman_yapilandirilan_ana_kaynagi_once_dener
+FAILED .pytest-baseline-infra/tests/test_rate_sources.py::test_ana_kaynak_hata_verince_yedek_kaynak_kullanilir
+FAILED .pytest-baseline-infra/tests/test_rate_sources.py::test_ana_kaynak_iyilestiginde_yedekten_ana_kaynaga_doner
+FAILED .pytest-baseline-infra/tests/test_rate_sources.py::test_bilinmeyen_onceki_kaynakta_varsayilan_sira_korunur
+FAILED .pytest-baseline-infra/tests/test_shipping_volume_quality.py::test_unverified_default_volume_does_not_produce_capacity_estimate
+FAILED .pytest-baseline-infra/tests/test_shipping_volume_quality.py::test_verified_product_volume_can_be_used_for_capacity_estimate
+FAILED .pytest-baseline-infra/tests/test_shipping_volume_quality.py::test_shipping_calendar_marks_volume_unknown_instead_of_zero_point_two_default
+FAILED .pytest-baseline-infra/tests/test_shipping_volume_quality.py::test_no_active_orders_means_zero_required_trucks
+FAILED .pytest-baseline-infra/tests/test_sqlite_store.py::test_integrity_check_reports_workflow_parent_reference_violations
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_sepet_tir_ozetinde_net_kar_alani_yoktur
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_kur_gostergeleri_animasyonsuz_tek_deger_gosterir
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_yetkisiz_rol_baslangicta_dashboard_api_cagrisi_yapmaz
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_satis_siparis_katalogu_maliyet_yetkisi_olmadan_yuklenir
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_satis_katalogu_ayni_gorunen_urunleri_gizli_alan_acmadan_ayirir
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_gramaj_raporu_menu_ogesi_maliyet_yetkisi_olmayanlardan_gizlenir
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_report_refresh_lock_is_initialized_before_first_use
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_siparis_listesi_veri_yuklenirken_bos_gorunmez_ve_hatada_yineleme_sunar
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_uretim_gecmisi_ham_ingilizce_islem_kodlarini_gostermez
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_urun_menusu_maliyet_yetkisine_gore_adlandirilir
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_urun_duzenleme_yetkisi_olmayanlarda_urun_girdileri_salt_okunur
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_anomali_raporu_maliyet_yetkisi_olmayanlardan_gizlenir
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_rapor_panelleri_kari_marji_olmayan_rollerden_gizler
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_satis_trendinde_kar_ve_marj_grafikleri_sadece_yetkili_rolde
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_rapor_grafikleri_chartjs_erisiminde_sinirli_yedek_gorunum_sunar
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_pdf_onizleme_ve_indirme_oturumlu_fetch_kullanir
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_satinalma_odeme_karti_ilk_yukumde_gizli_ve_finans_olmayanlara_cizilmez
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_hammadde_alt_paneller_yetkisiz_rollere_gosterilmez
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_satinalma_formu_fiyatsiz_talep_finansa_fiyatlandirma_akisi_sunar
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_stok_durum_etiketleri_turkcedir
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_satis_siparis_satiri_uretim_asamasini_maliyetsiz_gosterir
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_uretim_gecmisi_tarihlerini_kullanici_saat_dilimine_cevirir
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_uretim_receteleri_kodu_ve_tuketimi_birlikte_hizalar
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_islem_onay_tablosu_yatay_tasmayi_onler
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_onay_ekrani_eski_ingilizce_sonuc_kodlarini_turkcelestirir
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_ai_tahmin_satis_rolunde_kod_gramaj_yerine_satisa_uygun_varyant_gosterir
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_ai_tahmin_uyarisi_minimum_aktif_ayi_belirtir
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_ai_tahmin_grafigi_gecmis_ve_gelecek_aylari_hizalar
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_ai_tahmin_bos_grafikler_acik_veri_yetersizligi_gosterir
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_abc_satis_raporunda_maliyet_marj_ve_kod_sutunlari_yoktur
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_rapor_yenile_aktif_yan_menu_raporunu_kullanmaya_devam_eder
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_satis_siparis_detayinda_sevkiyat_erisimine_gore_gosterilir
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_depo_kontrolu_sadece_onayli_ve_tam_odenmis_v2_sipariste_gorunur
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_benim_sayfam_navigation_requires_general_overview_permission
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_status_labels_translate_common_workflow_states_and_hide_unknown_english_codes
+FAILED .pytest-baseline-infra/tests/test_ui_privacy.py::test_dealer_order_status_tooltip_is_translated
+57 failed, 427 passed in 17.36s
+Exception ignored in: <function Console.__del__ at 0x000001838E37F010>
+Traceback (most recent call last):
+  File "C:\Users\yusuf\AppData\Local\Programs\Python\Python310\lib\site-packages\pyreadline3\console\console.py", line 254, in __del__
+OSError: [WinError -1073741816] Windows Error 0xc0000008

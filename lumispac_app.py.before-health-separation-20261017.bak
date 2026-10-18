@@ -1,0 +1,319 @@
+"""
+LUMISPAC — Maliyet ve Sipariş Yönetimi (v2 - 6 Katmanlı Kur Sistemi)
+Otomatik güncellendi: 2026-10-11 20:51:50
+"""
+from users_ui import USERS_CSS, USERS_HTML, USERS_JS
+import auth_module  # Kimlik ve yetki modulu
+
+
+import os, io, re, json, uuid, shutil, logging, threading, webbrowser, time
+import html as html_lib
+from collections import deque
+from datetime import datetime
+from logging.handlers import RotatingFileHandler
+import requests
+from flask import Flask, jsonify, request, Response, send_file, send_from_directory
+from pdf_module import teklif_pdf, siparis_pdf, irsaliye_pdf, fatura_pdf
+# ==== YENI: Ortak moduller ====
+from utils import (
+    f, read_json, write_json, num, fmt, TL, int_f,
+    yeni_id, hash_sifre, sifre_dogrula,
+    simdi_iso, bugun_str, tarih_parse,
+    temizle, kisalt, guvenli_ad,
+)
+from config import (
+    BASE, DATA_FILE, SET_FILE, QUOTE_FILE, DEALER_FILE, ORDER_FILE,
+    LOG_FILE, USERS_FILE, BACKUP_DIR,
+    STATUSES, DEFAULT_SETTINGS, DEFAULT_VOLUME,
+    POLL_SECONDS, HTTP_TIMEOUT, USER_AGENT,
+    SEED_PRODUCTS, VAT_DEFAULT, TRUCK_M3_DEFAULT,
+)
+
+# SQL depolama etkinse JSON belgelerini içe aktar ve bütünlüğü doğrula;
+# başarısızlıkta sunucu başlamaz, boş varsayılanlarla veri ezilmez.
+from storage_adapter import get_storage_adapter
+_storage_adapter = get_storage_adapter()
+if _storage_adapter is not None:
+    _storage_adapter.ensure_initialized()
+
+# ==== YENI: helpers modulu ====
+from services import hesap_service
+from helpers import (
+    normalize, validate, sig, same,
+    calc, parse_num, norm_dealer, order_lines, xlsx_response,
+    _api_load_orders, _api_load_quotes, _api_load_dealers,
+    _yeni_token, _session_al, _session_bilgi,
+)
+# ==== /YENI ====
+
+# ==== STATE MODULU ====
+from state import (
+    setup_logging, push_error, save_rate, update_rate, rate_poller,
+    daily_backup, backup_poller, stamp_backup, load_products, load_settings,
+    get_lock, get_rate_cache, get_errors, clear_errors,
+    startup_seed, merge_seed,
+)
+# ==== /STATE MODULU ====
+
+
+# ==== /YENI ====
+
+# ==== helpers'dan geri donen fonksiyonlar ====
+# === startup_seed ===
+# === merge_seed ===
+# ==== AYARLAR ====
+BACKUP_DIR = os.path.join(BASE, 'yedekler')
+BK_RE = re.compile(r'^lumispac_data_\d{8}(_\d{6})?\.json$')
+
+setup_logging()
+
+# ==== HATA GEÇMİŞİ (RAM'de halka tampon, log dosyasına yazmaz) ====
+recent_errors = deque(maxlen=100)
+recent_errors_lock = threading.Lock()
+
+# ==== KUR MOTORU (rate_sources.py'den gelir) ====
+try:
+    from rate_sources import fetch_rate, health_snapshot, SOURCES as RATE_SOURCES
+except ImportError as e:
+    logging.error('rate_sources.py bulunamadi: %s', e)
+    def fetch_rate(last=0.0):
+        return {'v': 0.0, 'bid': 0.0, 'hi': 0.0, 'lo': 0.0, 'market': '', 'mdate': '',
+                'source': '', 'fallback': False, 'all_failed': True, 'errors': ['modul yok']}
+    def health_snapshot():
+        return []
+    RATE_SOURCES = []
+
+# ==== UYGULAMA DURUMU ====
+app = Flask(__name__)
+from api.security import register_authorization
+register_authorization(app)
+from api.approvals import bp as approvals_bp
+app.register_blueprint(approvals_bp, url_prefix="/api")
+lock = threading.RLock()
+rate_cache = {
+    'rate': 0.0, 'prev': 0.0, 'status': 'Kur bekleniyor', 'source': '',
+    'checked_at': None, 'ok_at': 0.0, 'error': None,
+    'history': deque(maxlen=120),
+    'bid': 0.0, 'hi': 0.0, 'lo': 0.0, 'market': '', 'mdate': '',
+    'fallback': False, 'elapsed_ms': 0, 'sources': [],
+}
+
+# [KULLANILMIYOR - ILK TANIM] DEFAULT_SETTINGS = {'raw_usd': 1.23, 'vat': 20.0, 'truck_m3': 90.0, 'rate': 0.0, 'target_margin': 30.0,
+# [KULLANILMIYOR - ILK TANIM]                     'company': 'LUMİSPAC AMBALAJ SANAYİ', 'iban': '',
+# [KULLANILMIYOR - ILK TANIM]                     'note': 'Ödeme %50 peşin, bakiye sevkiyat günü alınır.'}
+DEFAULT_VOLUME = 0.20
+
+# ==== HTTP SESSION (kur kaynaklari ve genel istekler icin) ====
+UA = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+                  'Chrome/128 Safari/537.36',
+    'Accept-Language': 'tr-TR,tr;q=0.9',
+}
+
+SESSION = requests.Session()
+SESSION.headers.update(UA)
+SESSION.headers.update({'Cache-Control': 'no-cache', 'Pragma': 'no-cache'})
+
+# ==== KUR GÜNCELLEME DÖNGÜSÜ ====
+_saved = {'t': 0.0, 'v': 0.0}
+
+DEFAULT_SETTINGS = {'raw_usd': 1.23, 'vat': 20.0, 'truck_m3': 90.0, 'rate': 0.0, 'target_margin': 30.0,
+                    'company': 'LUMİSPAC AMBALAJ SANAYİ', 'iban': '',
+                    'note': 'Ödeme %50 peşin, bakiye sevkiyat günü alınır.',
+                    'vkn': '', 'tax_office': '', 'address': ''}
+DEFAULT_VOLUME = 0.20  # m3 / koli (tahmini; ürün bazında düzeltin)
+
+# pet.xlsx dosyasındaki 23 ürün (kod, ad, gramaj, koli adedi, koli satış fiyatı)
+@app.get('/api/system/health')
+def system_health():
+    """Administrator-only, read-only application and storage health snapshot."""
+    started = time.monotonic()
+    checked_at = datetime.now().isoformat(timespec='seconds')
+    database = {'engine': str(getattr(__import__('config'), 'STORAGE_BACKEND', 'json')).upper(),
+                'connected': False, 'integrity': 'error', 'schema_version': None,
+                'rows': None, 'table_count': None}
+    try:
+        adapter = get_storage_adapter()
+        if adapter is None:
+            database.update({'connected': True, 'integrity': 'legacy-json'})
+        else:
+            check = adapter.integrity_check()
+            database.update({'connected': True, 'integrity': check.get('integrity', 'error'),
+                             'schema_version': check.get('schema_version'), 'rows': check.get('rows')})
+            conn = adapter.connect(__import__('config').DATABASE_URL) if hasattr(adapter, 'connect') else adapter._connect()
+            try:
+                catalog_query = ("SELECT COUNT(*) FROM information_schema.tables WHERE table_schema=current_schema() AND table_type='BASE TABLE'"
+                                 if getattr(adapter, "__name__", "") == "postgres_store"
+                                 else "SELECT COUNT(*) FROM sqlite_master WHERE type='table'")
+                database['table_count'] = conn.execute(catalog_query).fetchone()[0]
+            finally:
+                conn.close()
+            database['connected'] = bool(check.get('ok'))
+    except Exception:
+        database['connected'] = False
+        logging.exception('Yönetici sağlık kontrolü başarısız')
+    backup_dir = __import__('config').BACKUP_DIR
+    backup = {'name': None, 'age_hours': None, 'size_bytes': None, 'status': 'missing'}
+    try:
+        os.makedirs(backup_dir, exist_ok=True)
+        candidates = []
+        for name in os.listdir(backup_dir):
+            if re.fullmatch(r'lumispac_full_\d{8}(?:_\d{6})?\.(?:dump|backup|sqlite3)', name):
+                path = os.path.join(backup_dir, name)
+                if os.path.isfile(path) and os.path.getsize(path) > 0:
+                    candidates.append((os.path.getmtime(path), name, path))
+        if candidates:
+            stamp, name, path = max(candidates)
+            age_hours = max(0, (time.time() - stamp) / 3600)
+            backup.update({'name': name, 'age_hours': round(age_hours, 1),
+                           'size_bytes': os.path.getsize(path), 'status': 'ok' if age_hours <= 26 else 'stale'})
+    except Exception:
+        logging.exception('Yönetici yedek kontrolü başarısız')
+    disk = shutil.disk_usage(backup_dir)
+    free_gb = round(disk.free / (1024 ** 3), 2)
+    ok = database['connected'] and database['integrity'] in ('ok', 'legacy-json') and backup['status'] == 'ok' and free_gb >= 1
+    return jsonify({'status': 'ok' if ok else 'warning', 'checked_at': checked_at,
+                    'database': database, 'backup': backup,
+                    'storage': {'free_gb': free_gb, 'total_gb': round(disk.total / (1024 ** 3), 2)},
+                    'elapsed_ms': round((time.monotonic() - started) * 1000)})
+
+
+@app.get('/')
+def home():
+    return send_from_directory(
+        os.path.join(BASE, 'app', 'templates'),
+        'index.html',
+        mimetype='text/html'
+    )
+
+
+# =========================================================
+# KIMLIK VE YETKI API
+# =========================================================
+
+import secrets as _secrets
+_sessions = {}
+_sessions_lock = threading.Lock()
+
+
+# =========================================================
+# RAPORLAMA API ENTEGRASYONU (13 endpoint)
+# =========================================================
+
+try:
+    from reports_api import register_reports_api
+    register_reports_api(
+        app,
+        hesap_service.tum_urunler_stok,
+        _api_load_orders,
+        _api_load_quotes,
+        _api_load_dealers,
+        load_settings,
+        recent_errors,
+        rate_cache,
+    )
+    logging.info('Raporlama API kaydedildi (13 endpoint)')
+except ImportError as e:
+    logging.error('reports_api.py yüklenemedi: %s', e)
+except Exception as e:
+    logging.exception('Raporlama API kayıt hatası: %s', e)
+
+
+# ==== GLOBAL ERROR HANDLER ====
+@app.errorhandler(404)
+def hata_404(e):
+    """Bulunamayan endpoint."""
+    return jsonify({
+        'status': 'error',
+        'kod': 404,
+        'mesaj': 'Sayfa veya endpoint bulunamadi',
+        'yol': request.path
+    }), 404
+
+
+@app.errorhandler(500)
+def hata_500(e):
+    """Beklenmeyen sunucu hatasi."""
+    import traceback
+    tb = traceback.format_exc()
+    # Log'a yaz
+    try:
+        logging.error(f"[500] {request.method} {request.path}\n{tb}")
+    except Exception:
+        pass
+    # Kullaniciya ozet don
+    return jsonify({
+        'status': 'error',
+        'kod': 500,
+        'mesaj': 'Sunucu hatasi olustu. Lutfen tekrar deneyin.',
+        'yol': request.path
+    }), 500
+
+
+@app.errorhandler(Exception)
+def hata_genel(e):
+    """Yakalanmayan tum hatalar."""
+    from werkzeug.exceptions import HTTPException
+    # HTTP hatasi ise (404, 403 gibi) normal akisa birak
+    if isinstance(e, HTTPException):
+        return e
+    # Beklenmeyen hata
+    import traceback
+    tb = traceback.format_exc()
+    try:
+        logging.error(f"[EXC] {request.method} {request.path}\n{tb}")
+    except Exception:
+        pass
+    return jsonify({
+        'status': 'error',
+        'kod': 500,
+        'mesaj': 'Beklenmeyen hata',
+        'yol': request.path
+    }), 500
+# ==== /GLOBAL ERROR HANDLER ====
+
+
+# ==== BLUEPRINT KAYIT ====
+from api.products import bp as products_bp
+app.register_blueprint(products_bp, url_prefix="/api")
+from api.orders import bp as orders_bp
+app.register_blueprint(orders_bp, url_prefix="/api")
+from api.quotes import bp as quotes_bp
+app.register_blueprint(quotes_bp, url_prefix="/api")
+from api.dealers import bp as dealers_bp
+app.register_blueprint(dealers_bp, url_prefix="/api")
+from api.backups import bp as backups_bp
+app.register_blueprint(backups_bp, url_prefix="/api")
+from api.help import bp as help_bp
+app.register_blueprint(help_bp, url_prefix="/api")
+from api.pdf import bp as pdf_bp
+app.register_blueprint(pdf_bp, url_prefix="/api")
+from api.auth import bp as auth_bp
+app.register_blueprint(auth_bp, url_prefix="/api")
+from api.users import bp as users_bp
+app.register_blueprint(users_bp, url_prefix="/api")
+from api.finans import bp as finans_bp
+app.register_blueprint(finans_bp, url_prefix="/api")
+from api.stok import bp as stok_bp
+app.register_blueprint(stok_bp, url_prefix="/api")
+from api.production import bp as production_bp
+app.register_blueprint(production_bp, url_prefix="/api")
+from api.raw_materials import bp as raw_materials_bp
+app.register_blueprint(raw_materials_bp, url_prefix="/api")
+from api.hesap import bp as hesap_bp
+from api.benim import bp as benim_bp
+app.register_blueprint(hesap_bp, url_prefix="/api")
+app.register_blueprint(benim_bp, url_prefix="/api")
+from api.audit import bp as audit_bp, register_request_audit
+app.register_blueprint(audit_bp, url_prefix="/api")
+register_request_audit(app)
+# ==== /BLUEPRINT KAYIT ====
+
+if __name__ == '__main__':
+    # Daily backup is idempotent by date and records failures in the app error log.
+    daily_backup()
+    # startup_seed()  # TEST: KAPALI
+    threading.Thread(target=rate_poller, daemon=True, name='lumispac-rate-poller').start()
+    threading.Thread(target=backup_poller, daemon=True, name='lumispac-backup-poller').start()
+    # threading.Timer(1.2, lambda: webbrowser.open('http://127.0.0.1:5001')).start()  # TEST: KAPALI
+    app.run(host='127.0.0.1', port=5001, debug=False, use_reloader=False)

@@ -1,0 +1,19 @@
+{
+  "kayitlar": [],
+  "kategoriler": {
+    "gelir": [
+      "Satis",
+      "Tahsilat",
+      "Diger Gelir"
+    ],
+    "gider": [
+      "Hammadde",
+      "Iscilik",
+      "Kira",
+      "Fatura",
+      "Nakliye",
+      "Vergi",
+      "Diger Gider"
+    ]
+  }
+}

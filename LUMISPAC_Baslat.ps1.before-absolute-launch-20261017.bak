@@ -1,0 +1,77 @@
+$ErrorActionPreference = 'Stop'
+$project = 'C:\Users\yusuf\OneDrive\Masaüstü\DEPSPEK\ChatGPT geliştirme'
+$python = 'C:\Users\yusuf\AppData\Local\Programs\Python\Python310\pythonw.exe'
+$pythonConsole = 'C:\Users\yusuf\AppData\Local\Programs\Python\Python310\python.exe'
+$chrome = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
+$port = 5001
+$profile = Join-Path $env:LOCALAPPDATA 'LUMISPAC\ChromeProfile'
+$logDir = Join-Path $env:LOCALAPPDATA 'LUMISPAC\logs'
+$server = $null
+$browser = $null
+$mutex = $null
+$ownsMutex = $false
+function Show-Message([string]$message, [string]$title, [System.Windows.Forms.MessageBoxButtons]$buttons, [System.Windows.Forms.MessageBoxIcon]$icon) {
+  [System.Windows.Forms.MessageBox]::Show($message, $title, $buttons, $icon) | Out-Null
+}
+function Test-Port([int]$number) {
+  $client = [System.Net.Sockets.TcpClient]::new()
+  try { $client.Connect('127.0.0.1', $number); return $true }
+  catch { return $false }
+  finally { $client.Dispose() }
+}
+try {
+  Add-Type -AssemblyName System.Windows.Forms
+  $mutex = [System.Threading.Mutex]::new($false, 'Local\LUMISPACDesktopLauncher')
+  try { $ownsMutex = $mutex.WaitOne(0) } catch [System.Threading.AbandonedMutexException] { $ownsMutex = $true }
+  if (-not $ownsMutex) { Show-Message 'LUMISPAC zaten bu kısayoldan açık.' 'LUMISPAC' 'OK' 'Information'; exit }
+  if (-not (Test-Path -LiteralPath (Join-Path $project 'lumispac_app.py'))) { throw 'Uygulama dosyası bulunamadı. ChatGPT geliştirme klasörünü kontrol edin.' }
+  if (-not (Test-Path -LiteralPath $python)) { throw 'Python 3.10 bulunamadı. Python kurulumunu kontrol edin.' }
+  if (-not (Test-Path -LiteralPath $chrome)) { throw 'Google Chrome bulunamadı.' }
+  if (Test-Port $port) {
+    $listeners = @(Get-NetTCPConnection -LocalAddress '127.0.0.1' -LocalPort $port -State Listen -ErrorAction Stop | Select-Object -ExpandProperty OwningProcess -Unique)
+    if (-not $listeners.Count) { throw '5001 portunda çalışan sunucunun sahibi belirlenemedi; güvenlik için durdurmadım.' }
+    $owners = @($listeners | ForEach-Object { Get-Process -Id $_ -ErrorAction Stop })
+    if (@($owners | Where-Object { $_.ProcessName -notin @('python','pythonw') -or $_.Path -notin @($python,$pythonConsole) }).Count) {
+      throw '5001 portunu bu Python kurulumu dışındaki bir program kullanıyor. Başka bir programa dokunmadım.'
+    }
+    $choice = [System.Windows.Forms.MessageBox]::Show('5001 portunda eski bir Python sunucusu açık. Güncel uygulama dosyalarını yüklemek için yalnızca bu portu kullanan Python sürecini yeniden başlatmam gerekiyor. Açık formlarda kaydedilmemiş bilgi varsa kaybolabilir. Devam edilsin mi?', 'LUMISPAC ilk açılış', 'YesNo', 'Question')
+    if ($choice -ne [System.Windows.Forms.DialogResult]::Yes) { exit }
+    foreach ($owner in $owners) { Stop-Process -Id $owner.Id -Force -ErrorAction Stop }
+    for ($i = 0; $i -lt 20 -and (Test-Port $port); $i++) { Start-Sleep -Milliseconds 250 }
+    if (Test-Port $port) { throw 'Eski sunucu kapanmadı. Bu yüzden yeni sunucuyu başlatmadım.' }
+  }
+  New-Item -ItemType Directory -Path $logDir -Force | Out-Null
+  New-Item -ItemType Directory -Path $profile -Force | Out-Null
+  $stdout = Join-Path $logDir 'server-out.log'
+  $stderr = Join-Path $logDir 'server-error.log'
+  $env:LUMISPAC_STORAGE = 'postgresql'
+$env:LUMISPAC_DATABASE_URL = 'postgresql://lumispac_app@127.0.0.1:5432/lumispac'
+$env:PGPASSFILE = Join-Path $env:LOCALAPPDATA 'LUMISPAC\postgresql\pgpass.conf'
+if (-not (Test-Path -LiteralPath $env:PGPASSFILE)) { throw 'PostgreSQL bağlantı ayar dosyası bulunamadı.' }
+  $server = Start-Process -FilePath $python -ArgumentList 'lumispac_app.py' -WorkingDirectory $project -RedirectStandardOutput $stdout -RedirectStandardError $stderr -WindowStyle Hidden -PassThru
+  $ready = $false
+  for ($i = 0; $i -lt 40; $i++) {
+    Start-Sleep -Milliseconds 500
+    if ($server.HasExited) {
+      $details = if (Test-Path $stderr) { (Get-Content $stderr -Tail 12) -join "`n" } else { '' }
+      throw "Sunucu başlatılamadı. Ayrıntı: $details"
+    }
+    if (Test-Port $port) { $ready = $true; break }
+  }
+  if (-not $ready) { throw 'Sunucu 20 saniyede hazır olmadı. Hata günlüğü LUMISPAC\logs klasöründe.' }
+  $browserArgs = @('--app=http://127.0.0.1:5001/', "--user-data-dir=$profile", '--no-first-run', '--disable-background-mode', '--disable-features=Translate')
+  $browser = Start-Process -FilePath $chrome -ArgumentList $browserArgs -WorkingDirectory $project -PassThru
+  $browser.WaitForExit()
+}
+catch {
+  Show-Message $_.Exception.Message 'LUMISPAC' 'OK' 'Error'
+}
+finally {
+  if ($server -and -not $server.HasExited) {
+    Stop-Process -Id $server.Id -Force -ErrorAction SilentlyContinue
+    try { $server.WaitForExit(5000) | Out-Null } catch { }
+  }
+  if ($ownsMutex -and $mutex) { try { $mutex.ReleaseMutex() } catch { } }
+  if ($mutex) { $mutex.Dispose() }
+}
+

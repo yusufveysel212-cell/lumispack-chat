@@ -1,0 +1,127 @@
+{
+  "hareketler": [
+    {
+      "id": "TEST-DEMO-STOCK-OPENING",
+      "urunId": "TEST-READY-01",
+      "urunAd": "TEST - Stoklu Numune",
+      "tip": "giris",
+      "miktar": 12,
+      "tarih": "2026-10-15",
+      "kaynak": "TEST - Açılış stoğu",
+      "aciklama": "TEST - demo başlangıç stoğu",
+      "demo_tag": "TEST -"
+    },
+    {
+      "id": "TEST-DEMO-STOCK-SHIP-01",
+      "urunId": "TEST-READY-01",
+      "urunAd": "TEST - Stoklu Numune",
+      "tip": "cikis",
+      "miktar": 1,
+      "tarih": "2026-10-15",
+      "kaynak": "TEST - Hazırlanmış sevk senaryosu",
+      "aciklama": "TEST - önceden hazırlanmış sevk",
+      "idempotency_key": "TEST-DEMO-STOCK-SHIP-01",
+      "demo_tag": "TEST -"
+    },
+    {
+      "id": "TEST-DEMO-STOCK-SHIP-02",
+      "urunId": "TEST-READY-01",
+      "urunAd": "TEST - Stoklu Numune",
+      "tip": "cikis",
+      "miktar": 1,
+      "tarih": "2026-10-15",
+      "kaynak": "TEST - Hazırlanmış sevk senaryosu",
+      "aciklama": "TEST - önceden hazırlanmış sevk",
+      "idempotency_key": "TEST-DEMO-STOCK-SHIP-02",
+      "demo_tag": "TEST -"
+    },
+    {
+      "id": "TEST-DEMO-STOCK-SHIP-03",
+      "urunId": "TEST-READY-01",
+      "urunAd": "TEST - Stoklu Numune",
+      "tip": "cikis",
+      "miktar": 1,
+      "tarih": "2026-10-15",
+      "kaynak": "TEST - Hazırlanmış sevk senaryosu",
+      "aciklama": "TEST - önceden hazırlanmış sevk",
+      "idempotency_key": "TEST-DEMO-STOCK-SHIP-03",
+      "demo_tag": "TEST -"
+    },
+    {
+      "id": "TEST-DEMO-STOCK-SHIP-04",
+      "urunId": "TEST-READY-01",
+      "urunAd": "TEST - Stoklu Numune",
+      "tip": "cikis",
+      "miktar": 1,
+      "tarih": "2026-10-15",
+      "kaynak": "TEST - Hazırlanmış sevk senaryosu",
+      "aciklama": "TEST - önceden hazırlanmış sevk",
+      "idempotency_key": "TEST-DEMO-STOCK-SHIP-04",
+      "demo_tag": "TEST -"
+    },
+    {
+      "id": "3399811ddc",
+      "urunId": "TEST-PRODUCTION-01",
+      "urunAd": "TEST - Üretim Gereken Numune",
+      "tip": "giris",
+      "miktar": 5000.0,
+      "tarih": "2026-10-15",
+      "kaynak": "Üretim kabul",
+      "aciklama": "Üretim kabul talebi receipt-853d8b426af64119",
+      "kayit_tarihi": "2026-10-15T07:54:10",
+      "idempotency_key": "production-receipt:receipt-853d8b426af64119"
+    },
+    {
+      "id": "cbb072dd42",
+      "urunId": "TEST-READY-01",
+      "urunAd": "TEST - Stoklu Numune",
+      "tip": "giris",
+      "miktar": 1.0,
+      "tarih": "2026-10-15",
+      "kaynak": "Siparis",
+      "aciklama": "Siparis iptal (TEST-DEMO-ORDER-UNPAID)",
+      "kayit_tarihi": "2026-10-15T09:01:35",
+      "idempotency_key": "order:TEST-DEMO-ORDER-UNPAID:giris:0"
+    },
+    {
+      "id": "bfa50dd33b",
+      "urunId": "TEST-READY-01",
+      "urunAd": "TEST - Stoklu Numune",
+      "tip": "giris",
+      "miktar": 1.0,
+      "tarih": "2026-10-15",
+      "kaynak": "Siparis",
+      "aciklama": "Siparis iptal (TEST-DEMO-ORDER-PARTIAL)",
+      "kayit_tarihi": "2026-10-15T09:01:38",
+      "idempotency_key": "order:TEST-DEMO-ORDER-PARTIAL:giris:0"
+    },
+    {
+      "id": "4fc8c2ea10",
+      "urunId": "TEST-READY-01",
+      "urunAd": "TEST - Stoklu Numune",
+      "tip": "giris",
+      "miktar": 1.0,
+      "tarih": "2026-10-15",
+      "kaynak": "Siparis",
+      "aciklama": "Siparis iptal (TEST-DEMO-ORDER-FULL)",
+      "kayit_tarihi": "2026-10-15T09:01:46",
+      "idempotency_key": "order:TEST-DEMO-ORDER-FULL:giris:0"
+    },
+    {
+      "id": "0a607aec88",
+      "urunId": "TEST-READY-01",
+      "urunAd": "TEST - Stoklu Numune",
+      "tip": "cikis",
+      "miktar": 1.0,
+      "tarih": "2026-10-16",
+      "kaynak": "Siparis",
+      "aciklama": "Siparis onaylandi (TEST-DEMO-ORDER-UNPAID)",
+      "kayit_tarihi": "2026-10-16T04:03:57",
+      "idempotency_key": "order:TEST-DEMO-ORDER-UNPAID:cikis:0"
+    }
+  ],
+  "esikler": {
+    "TEST-READY-01": 10,
+    "TEST-PRODUCTION-01": 5
+  }
+}

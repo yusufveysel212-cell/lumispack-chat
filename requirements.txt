@@ -1,0 +1,5 @@
+Flask==3.0.2
+requests==2.31.0
+reportlab==5.0.1
+pytest==9.1.1
+websocket-client==1.8.0

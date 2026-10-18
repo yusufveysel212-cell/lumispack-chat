@@ -1,0 +1,69 @@
+# LUMISPAC PostgreSQL İşletim ve Sağlamlaştırma Planı
+
+Tek bilgisayarlı kurulum: PostgreSQL 18, `lumispac` veritabanı, uygulama rolü `lumispac_app`, yalnızca `127.0.0.1:5432`. Parola proje dosyasında tutulmaz; Windows kullanıcı alanındaki ACL korumalı `pgpass.conf` kullanılır.
+
+## Fazların durumu
+
+1. **Geri yükleme provası — geçti.** `postgres_verified_20261016_133359.dump`, canlı veritabanından ayrı, geçici PostgreSQL 18 kümesine geri yüklendi. Şema 18, 43 tablo ve 596 satır; `integrity_check` başarılı, uygulama ana sayfası HTTP 200. Test kümesi kapatılıp kaldırıldı.
+2. **Otomatik yedek ve saklama — geçti.** Uygulama açılışında günlük tam yedek alınır; uygulama açıkken saatlik kontrol, gece yarısını kaçıran çalıştırmaları yakalar. Yalnızca adlandırma kuralına uyan otomatik günlük yedekler 30 gün tutulur. Elle alınan zaman damgalı ve aktarım öncesi yedekler bu temizlikten etkilenmez. 16 Ekim 2026 günlük yedeği `lumispac_full_20261016.dump` oluşturuldu ve 99.031 bayt olarak doğrulandı.
+3. **Yönetici sistem sağlığı — geçti.** Ayarlar → Hakkında altında veritabanı bağlantısı/bütünlüğü, şema ve satır/tablo sayısı, en yeni tam yedek yaşı ve disk boş alanı görünür. `/api/system/health` yalnız sistem yöneticisine açıktır; bağlantı hatasında veriyi açmak yerine uyarı verir.
+4. **İş verisi mutabakatı — geçti; ilişki bütünlüğü uyarıları ayrıştırıldı.** Araç temel adetleri ve sipariş toplamlarını denetledi; sipariş, teklif, satın alma, reçete ve üretim iş akışlarında sahipsiz çocuk kayıt yok. Ardından canlı veritabanında 36 aday ilişki salt okunur tarandı. Aktif ana/çocuk ilişki kontrollerinde sahipsiz kayıt bulunmadı. 10 stok hareketindeki product_id alanı ürün kimliği değil ürün kodu tutuyor ve 10’unun tümü products.code ile eşleşiyor. Tarihsel denetim/geri alma referanslarından 104 denetim kaydı, 54 geri alma kaydı, 8 geri alma olayındaki kullanıcı kimliği ve 8 geri alma olayındaki undo_id artık ana tabloda bulunmuyor; kullanıcı adı/istek sahibi anlık görüntüleri bu kayıtları koruyor. Bir onay isteğinde de silinmiş kullanıcıya ait istek sahibi anlık görüntüsü var. Bu geçmiş referansları silinmiş kullanıcı ve geri alma kayıtlarına bağlayacak FK kısıtları eklemek geçmişi kaybettirebilir. Ayrıca sqlite_store._sync_relational_documents() ürün, kullanıcı ve diğer projeksiyon tablolarını topluca silip yeniden yazıyor; FK’ler bu mevcut eşitleme akışını bozabilir. Bu nedenle canlı şemaya kısıt eklenmedi. Güvenli FK çalışması önce artımlı eşitleme ve tarihsel kayıt saklama politikasını tasarlayıp izole PostgreSQL’de doğrulamayı gerektirir.
+5. **Yetki ve denetim E2E — geçti.** Gerçek PostgreSQL’in rastgele geçici şemasında teklif/sipariş, stok, satın alma/ödeme, finans ve üretim planı-başlatma-tamamlama-depo kabulü; departmanlar arası finans/üretim redleri ve `audit_events` kalıcılığı doğrulandı. Fixture veritabanı 42 tablo/112 satırda temizlendi.
+6. **Kesinti ve yeniden bağlanma — geçti.** İzole küme durdurulunca sağlık kontrolü `warning`/bağlantısız duruma geçti; aynı uygulama süreci sunucu yeniden başladığında `ok` durumuna döndü. Yeni PostgreSQL bağlantı denemeleri varsayılan olarak 5 saniyede zaman aşımına uğrar; DSN’de açıkça verilen süre korunur.
+7. **Performans ve indeks incelemesi — geçti.** Siparişler, sipariş satırları/ödemeleri, üretim işleri, satın alma kalemleri, finans ve denetim tablolarında birincil/iş sorgusu indeksleri bulundu. Mevcut veri hacmi küçük olduğundan gereksiz indeks eklenmedi. Foreign key eksikliği bir sonraki kontrollü migration için açık madde.
+8. **Masaüstü kabul kontrolü — kısmi.** Güncel başlatıcı yerel uygulamayı açtı, giriş ekranı yüklendi ve tarayıcı konsolunda JavaScript hatası görülmedi. Oturum açma adımı otomatikleştirilmedi; girişten sonraki canlı ekranlar bunun yerine PostgreSQL E2E ve regresyon testleriyle doğrulandı.
+9. **Sürüm geri alma — prosedür hazır.** Her kod değişikliğinden önce dosya kopyaları `yedekler_v2` altında saklandı; canlı DB için doğrulanmış dump ve aktarım öncesi SQLite kopyası korunuyor. Güncelleme öncesi yeni dump al, önce geçici kümeye yükle ve kontrol et. Geri yükleme canlı DB’de bütün kayıtları yedek tarihine döndürür; yalnızca uygulama durdurulup doğru hedef/son yedek doğrulandıktan sonra bakım işlemi olarak yürütülmeli. Güncel yedek: `%LOCALAPPDATA%\LUMISPAC\backups\lumispac_full_20261016.dump`.
+10. **Çok bilgisayarlı büyüme planı — hazır, ağ açılmadı.** Tek bilgisayar kullanımında PostgreSQL yalnız localhost’ta kalır. Birden fazla bilgisayar gerektiğinde ayrı sunucu/host, TLS, ayrı en az yetkili uygulama rolü, yalnız fabrika LAN’ına firewall izni, ACL korumalı sır dağıtımı, uzaktan yedek hedefi ve eşzamanlı yazma yük testi birlikte planlanmalı. Bu adımlar yapılmadan 5432 dış ağa açılmamalı.
+
+## Günlük kullanma ve sorun giderme
+
+- Başlatıcı uygulama sunucusunu ve tarayıcı penceresini birlikte yönetir. Sunucu hata verirse önce `%LOCALAPPDATA%\LUMISPAC\logs\server-error.log` ve `lumispac_hata.log` incelenir.
+- Yönetici, Ayarlar → Hakkında → Sistem sağlığı bölümünden durum ve son yedeği yenileyebilir.
+- Salt okunur veri mutabakatı: proje kökünde `python tools/postgres_reconcile.py` (PostgreSQL DSN ve PGPASSFILE ortamı gerekir).
+- Geri yükleme provası canlıya uygulanmaz; benzersiz geçici PostgreSQL kümesinde yapılır. Her prova sonunda küme durdurulur ve yalnızca işaretli geçici dizin kaldırılır.
+- Açılışta günlük yedek alınır; uygulama bir günden uzun kapalı kalırsa kapalı olduğu sırada yedek üretilemez. Yeniden açılışta günlük yedek kontrolü yapılır.
+
+## Mutabakat takibi
+
+Canlı sipariş kimliği `TEST-DEMO-ORDER-CHECK` görünüyor. Tutarlar tutarlı ve bağlı kayıtları sağlam; bu kaydın iş amaçlı mı test amaçlı mı olduğu veritabanından anlaşılamadığı için silinmedi veya değiştirilmedi. Yönetici, iş kayıtları ekranından iş anlamını teyit edebilir.
+
+## Güncel durum — 17 Ekim 2026 (şema 19)
+
+- Idempotency anahtarları için kısmi benzersiz indeksler eklendi: `raw_purchase_payments.idempotency_key` ve `raw_material_stock_movements.idempotency_key` yalnızca dolu anahtarlarda benzersizdir.
+- Migration, indeksleri kurmadan önce yinelenen dolu anahtarları denetler; çakışma varsa veriyi değiştirmeden güvenli biçimde durur. Canlı ön kontrolde iki tabloda da çakışma yoktu.
+- Canlı veritabanı migration öncesi yedeklendi: `%LOCALAPPDATA%\LUMISPAC\backups\lumispac_before_schema_v19_20261017_163854.dump`; `pg_restore --list` doğrulaması geçti. SHA-256: `3bbb7ad6235e9121cb08355ac13390acfc18da6d6fbc911fb2e892a817fcd90f`.
+- Migration sonrası `schema_version=19`, iki indeks mevcut, PostgreSQL `integrity_check=ok`; 1.076 satır ve bozuk belge yok.
+- Güncel kaynakta tam test paketi **451 geçti**. Ayrı PostgreSQL izole şema E2E, test fixture aktarımı, iş akışı/rol kontrolleri ve temizlik adımı geçti. İzole şema test sonunda kaldırıldı.
+- Canlı mutabakat: 23 ürün, 6 kullanıcı, 1 bayi, 4 sipariş, 22 sipariş satırı, 2 ödeme, 5 finans kaydı, 2 hammadde, 3 satın alma, 12 üretim işi ve 12 depo kabulü, 420 denetim kaydı. Kontrol edilen sahipsiz kayıt ve sipariş toplamı uyuşmazlığı yok.
+- Mutabakatın tek uyarısı `foreign_key_constraints: 0`. Henüz FK eklenmedi; mevcut toplu projeksiyon eşitlemesi ve tarihsel denetim/geri alma kayıtlarının saklama davranışı nedeniyle FK tasarımı ayrı, izole bir faz olarak açık tutuluyor.
+- Kaynak güncel kodla yüklenmesi için yalnız yerel LUMISPAC arka plan sunucusu yeniden başlatıldı. HTTP ana sayfa 200; tarayıcı sekmesi açılmadı/kapatılmadı.
+
+
+## Bağlantılı satıştan teslimata E2E — 17 Ekim 2026
+
+- PostgreSQL izole E2E aracına tek bir yeni test siparişini saha satış → bayi onayı → finans tahsilat onayı → stok açığı/üretim kuyruğu → siparişe bağlı PET tüketimi → üretim bitişi → depo kabulü → uygunluk kontrolü → yönetici sipariş onayı → hazırlık/sevkiyat/teslim adımlarından geçiren senaryo eklendi.
+- Aynı siparişin satış, yönetici, depo ve finans rolü sorgularında `Teslim edildi` / `teslim_edildi` görünmesi; tahsilatın tek gelir kaydı üretmesi doğrulandı.
+- İzole E2E geçti; ardından tam regresyon paketi **451/451** geçti. Son canlı mutabakat schema 19 ve aynı canlı adetleri gösterdi; test şeması artığı 0, ana sayfa HTTP 200.
+- Bu testte kullanım amacıyla yalnızca geçici test şemasına kayıt yazılır. Canlı iş siparişleri değişmez.
+
+### E2E kapsamının güçlendirilmesi
+
+- Bağlantılı E2E her ara aşamada (taslak, üretim bekliyor, sevkiyata hazır, onaylandı, hazırlanıyor, sevk edildi, teslim edildi) saha satış, yönetici, depo ve finans için ayrı oturumlarla sipariş durumunu karşılaştırıyor.
+- Siparişe bağlı üretim tamamlamasında PET tüketimi `ürün gramajı × koli içi adet × koli miktarı ÷ 1.000` formülünün beklenen KG değeriyle karşılaştırılıyor.
+- Son tekrar başarılı: PostgreSQL fixture aktarımı 42 tablo/112 satır; API E2E çıkışı 0; test şeması cleanup sonrası yok. Canlı `postgres_reconcile.py` sayımları E2E öncesiyle aynı kaldı, canlı ana sayfa 200.
+
+## Son güncelleme — 17 Ekim 2026 (şema 20)
+
+Bu bölüm, yukarıdaki 19. şema durumu kaydını günceller.
+
+- Canlı yerel PostgreSQL şeması 19'dan 20'ye yükseltildi. Migration öncesi tam yedek `%LOCALAPPDATA%\LUMISPAC\backups\lumispac_before_schema_v20_20261017.dump` konumunda alındı; `pg_restore --list` başarılı. SHA-256: `3dfcd1afbeed59c1a0e27a60618681116bae18ce036dea32d5fd48f1ecd44c71`.
+- Sipariş kalem/ödemesi, teklif kalemleri, satın alma kalem/ödemesi, üretim çalışmaları ve üretim geçmişi ilişkileri için 8 ertelenmiş yabancı anahtar kısıtı eklendi. Migration ön kontrolleri sahipsiz çocuk kayıt bulmadı.
+- Tam kalite kapısı: **456/456 geçti**; Python 115 dosya, JavaScript 32 dosya ve depolama sınırı kontrolleri başarılı.
+- Geçici PostgreSQL şemasında bağlantılı saha satışından teslimata E2E geçti; sipariş, finans, PET tüketimi ve rol kontrolleri tamamlandı. Test şeması temizlendi; canlı iş kayıtlarına test siparişi yazılmadı.
+- Canlı mutabakat sonucu: şema 20, 8 FK, sahipsiz kayıt 0, sipariş toplam farkı 0, 1.076 satır, uygulama belge bütünlüğü `ok`.
+- Yerel 5001 uygulama sunucusu bu kontrolde kapalıydı. Kod dağıtımı ve görsel rol ekranı yenilemesi, uygulama kullanıcı tarafından açıldığında yapılacak.
+
+- Son UI/PDF güncellemesinden sonraki kalite kapısı **456/456 geçti** (17 Ekim 2026); Python 115 ve JavaScript 32 dosya sözdizimi, depolama sınırı başarılı. Fatura/irsaliye görsel örnekleri uygulama verisine yazmadan render edildi.
+## 2026-10-17 gerçek kaynak doğrulaması (son ek)
+
+OneDrive gerçek kaynak ağacının yedeklerden ve kullanıcı verilerinden ayrılmış izole doğrulama kopyasında `tools/check_quality.py` başarılı tamamlandı: 457/457 test, Python 115 dosya, JavaScript 32 dosya ve depolama sınırı kontrolü geçti. Testler `LUMISPAC_STORAGE=json` ile koştu; canlı PostgreSQL verisine yazmadı. Yerel uygulama sekmesi açık ve işlevsel bulundu; admin, satış, finans, üretim, depo ve satın alma test hesaplarında rol menüleri/ekranları kontrol edildi. Finans dışı test rolleri şirket maliyet/marj/kur bilgisi görmedi. Canlı PostgreSQL şema 20, 8 FK, mutabakat `ok`, sahipsiz kayıt ve sipariş toplam farkı 0, bütünlük `ok` olarak kaldı. PP-TEST alımı ile SIP-2026-0001/-0002 taslakları korunuyor. Canlı blob PDF önizlemesini tarayıcı güvenlik politikası incelemeye kapattığı için görsel kontrol açık kaldı.

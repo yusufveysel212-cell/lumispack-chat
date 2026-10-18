@@ -1,0 +1,3 @@
+# Optional PostgreSQL backend driver. SQLite remains the default single-PC backend.
+-r requirements.txt
+psycopg[binary]>=3.2,<4

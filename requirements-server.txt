@@ -1,0 +1,4 @@
+-r requirements-postgresql.txt
+waitress==3.0.2
+psycopg_pool==3.3.3
+openpyxl==3.1.5

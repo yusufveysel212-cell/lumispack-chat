@@ -1,0 +1,403 @@
+{
+  "schema_version": 1,
+  "machine": {
+    "id": "machine-1",
+    "name": "Makine 1"
+  },
+  "mold": {
+    "id": "mold-1",
+    "name": "Kalıp 1"
+  },
+  "downtime_reasons": [
+    {
+      "id": "50c2dcff758a",
+      "name": "TEST - Kalıp ayarı",
+      "active": true,
+      "created_at": "2026-10-15T07:41:23",
+      "created_by": "52c79cd319c6"
+    }
+  ],
+  "reason_history": [
+    {
+      "islem": "reason_create",
+      "kullanici_id": "52c79cd319c6",
+      "kullanici": "Sistem Yöneticisi",
+      "zaman": "2026-10-15T07:41:23",
+      "miktar": 0.0,
+      "onceki_durum": "yok",
+      "yeni_durum": "active",
+      "gerekce": "TEST - Kalıp ayarı"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "min-0d29d5b871864808",
+      "source_type": "minimum_stock",
+      "product_code": "TEST-PRODUCTION-01",
+      "product_name": "TEST - Üretim Gereken Numune",
+      "planned_qty": 5.0,
+      "status": "accepted",
+      "machine": {
+        "id": "machine-1",
+        "name": "Makine 1"
+      },
+      "mold": {
+        "id": "mold-1",
+        "name": "Kalıp 1"
+      },
+      "history": [
+        {
+          "islem": "plan_create",
+          "kullanici_id": "52c79cd319c6",
+          "kullanici": "Sistem Yöneticisi",
+          "zaman": "2026-10-15T07:41:54",
+          "miktar": 5.0,
+          "onceki_durum": "queued",
+          "yeni_durum": "queued",
+          "gerekce": "Minimum stok seviyesini tamamlama planı"
+        },
+        {
+          "islem": "start",
+          "kullanici_id": "TEST-DEMO-USER-PROD",
+          "kullanici": "TEST - Üretim Şefi",
+          "zaman": "2026-10-15T07:46:50",
+          "miktar": 5.0,
+          "onceki_durum": "queued",
+          "yeni_durum": "running",
+          "gerekce": "Üretim başlatıldı"
+        },
+        {
+          "islem": "complete",
+          "kullanici_id": "TEST-DEMO-USER-PROD",
+          "kullanici": "TEST - Üretim Şefi",
+          "zaman": "2026-10-15T07:47:20",
+          "miktar": 5.0,
+          "onceki_durum": "running",
+          "yeni_durum": "completed",
+          "gerekce": "Üretim tamamlandı; miktarlar kullanıcı tarafından girildi"
+        },
+        {
+          "islem": "receipt_request",
+          "kullanici_id": "TEST-DEMO-USER-PROD",
+          "kullanici": "TEST - Üretim Şefi",
+          "zaman": "2026-10-15T07:50:05",
+          "miktar": 5.0,
+          "onceki_durum": "completed",
+          "yeni_durum": "awaiting_acceptance",
+          "gerekce": "Tamamlanan miktarın tamamı için depo kabul talebi"
+        },
+        {
+          "islem": "receipt_rejected",
+          "kullanici_id": "TEST-DEMO-USER-WH",
+          "kullanici": "TEST - Depo Sorumlusu",
+          "zaman": "2026-10-15T07:51:09",
+          "miktar": 5.0,
+          "onceki_durum": "awaiting_acceptance",
+          "yeni_durum": "rework_required",
+          "gerekce": "TEST - miktar düzeltmes"
+        },
+        {
+          "islem": "resume",
+          "kullanici_id": "TEST-DEMO-USER-PROD",
+          "kullanici": "TEST - Üretim Şefi",
+          "zaman": "2026-10-15T07:53:16",
+          "miktar": 5.0,
+          "onceki_durum": "rework_required",
+          "yeni_durum": "running",
+          "gerekce": "Üretime devam edildi"
+        },
+        {
+          "islem": "complete",
+          "kullanici_id": "TEST-DEMO-USER-PROD",
+          "kullanici": "TEST - Üretim Şefi",
+          "zaman": "2026-10-15T07:53:39",
+          "miktar": 5000.0,
+          "onceki_durum": "running",
+          "yeni_durum": "completed",
+          "gerekce": "Üretim tamamlandı; miktarlar kullanıcı tarafından girildi"
+        },
+        {
+          "islem": "receipt_request",
+          "kullanici_id": "TEST-DEMO-USER-PROD",
+          "kullanici": "TEST - Üretim Şefi",
+          "zaman": "2026-10-15T07:53:41",
+          "miktar": 5000.0,
+          "onceki_durum": "completed",
+          "yeni_durum": "awaiting_acceptance",
+          "gerekce": "Tamamlanan miktarın tamamı için depo kabul talebi"
+        },
+        {
+          "islem": "receipt_accepted",
+          "kullanici_id": "TEST-DEMO-USER-WH",
+          "kullanici": "TEST - Depo Sorumlusu",
+          "zaman": "2026-10-15T07:54:10",
+          "miktar": 5000.0,
+          "onceki_durum": "awaiting_acceptance",
+          "yeni_durum": "accepted",
+          "gerekce": "Talep edilen miktarın tamamı kabul edildi"
+        }
+      ],
+      "runs": [
+        {
+          "id": "165d8a6198804f31",
+          "produced_qty": 5.0,
+          "scrap_qty": 0.0,
+          "usable_qty": 5.0,
+          "created_at": "2026-10-15T07:47:20",
+          "created_by": "TEST-DEMO-USER-PROD"
+        },
+        {
+          "id": "e9e1c6f668a54df5",
+          "produced_qty": 5000.0,
+          "scrap_qty": 0.0,
+          "usable_qty": 5000.0,
+          "created_at": "2026-10-15T07:53:39",
+          "created_by": "TEST-DEMO-USER-PROD"
+        }
+      ],
+      "created_at": "2026-10-15T07:41:54",
+      "created_by": "52c79cd319c6",
+      "updated_at": "2026-10-15T07:54:10",
+      "updated_by": "TEST-DEMO-USER-WH",
+      "last_run_id": "e9e1c6f668a54df5",
+      "produced_qty": 5000.0,
+      "scrap_qty": 0.0,
+      "usable_qty": 5000.0
+    },
+    {
+      "id": "min-1110ed9414b1498e",
+      "source_type": "minimum_stock",
+      "product_code": "TEST-READY-01",
+      "product_name": "TEST - Stoklu Numune",
+      "planned_qty": 2.0,
+      "status": "awaiting_acceptance",
+      "machine": {
+        "id": "machine-1",
+        "name": "Makine 1"
+      },
+      "mold": {
+        "id": "mold-1",
+        "name": "Kalıp 1"
+      },
+      "history": [
+        {
+          "islem": "plan_create",
+          "kullanici_id": "52c79cd319c6",
+          "kullanici": "Sistem Yöneticisi",
+          "zaman": "2026-10-15T08:56:06",
+          "miktar": 2.0,
+          "onceki_durum": "queued",
+          "yeni_durum": "queued",
+          "gerekce": "Minimum stok seviyesini tamamlama planı"
+        },
+        {
+          "islem": "start",
+          "kullanici_id": "52c79cd319c6",
+          "kullanici": "Sistem Yöneticisi",
+          "zaman": "2026-10-15T09:05:18",
+          "miktar": 2.0,
+          "onceki_durum": "queued",
+          "yeni_durum": "running",
+          "gerekce": "Üretim başlatıldı"
+        },
+        {
+          "islem": "pause",
+          "kullanici_id": "52c79cd319c6",
+          "kullanici": "Sistem Yöneticisi",
+          "zaman": "2026-10-15T09:05:25",
+          "miktar": 2.0,
+          "onceki_durum": "running",
+          "yeni_durum": "paused",
+          "gerekce": "TEST - Kalıp ayarı"
+        },
+        {
+          "islem": "resume",
+          "kullanici_id": "52c79cd319c6",
+          "kullanici": "Sistem Yöneticisi",
+          "zaman": "2026-10-15T09:05:30",
+          "miktar": 2.0,
+          "onceki_durum": "paused",
+          "yeni_durum": "running",
+          "gerekce": "Üretime devam edildi"
+        },
+        {
+          "islem": "pause",
+          "kullanici_id": "52c79cd319c6",
+          "kullanici": "Sistem Yöneticisi",
+          "zaman": "2026-10-15T09:05:34",
+          "miktar": 2.0,
+          "onceki_durum": "running",
+          "yeni_durum": "paused",
+          "gerekce": "TEST - Kalıp ayarı"
+        },
+        {
+          "islem": "resume",
+          "kullanici_id": "52c79cd319c6",
+          "kullanici": "Sistem Yöneticisi",
+          "zaman": "2026-10-15T09:05:40",
+          "miktar": 2.0,
+          "onceki_durum": "paused",
+          "yeni_durum": "running",
+          "gerekce": "Üretime devam edildi"
+        },
+        {
+          "islem": "pause",
+          "kullanici_id": "52c79cd319c6",
+          "kullanici": "Sistem Yöneticisi",
+          "zaman": "2026-10-15T09:06:45",
+          "miktar": 2.0,
+          "onceki_durum": "running",
+          "yeni_durum": "paused",
+          "gerekce": "TEST - Kalıp ayarı"
+        },
+        {
+          "islem": "resume",
+          "kullanici_id": "52c79cd319c6",
+          "kullanici": "Sistem Yöneticisi",
+          "zaman": "2026-10-15T23:35:18",
+          "miktar": 2.0,
+          "onceki_durum": "paused",
+          "yeni_durum": "running",
+          "gerekce": "Üretime devam edildi"
+        },
+        {
+          "islem": "complete",
+          "kullanici_id": "52c79cd319c6",
+          "kullanici": "Sistem Yöneticisi",
+          "zaman": "2026-10-15T23:35:42",
+          "miktar": 2000.0,
+          "onceki_durum": "running",
+          "yeni_durum": "completed",
+          "gerekce": "Üretim tamamlandı; miktarlar kullanıcı tarafından girildi"
+        },
+        {
+          "islem": "receipt_request",
+          "kullanici_id": "52c79cd319c6",
+          "kullanici": "Sistem Yöneticisi",
+          "zaman": "2026-10-15T23:35:45",
+          "miktar": 2000.0,
+          "onceki_durum": "completed",
+          "yeni_durum": "awaiting_acceptance",
+          "gerekce": "Tamamlanan miktarın tamamı için depo kabul talebi"
+        }
+      ],
+      "runs": [
+        {
+          "id": "12466d7a96594b1e",
+          "produced_qty": 2000.0,
+          "scrap_qty": 0.0,
+          "usable_qty": 2000.0,
+          "created_at": "2026-10-15T23:35:42",
+          "created_by": "52c79cd319c6",
+          "material_consumption": []
+        }
+      ],
+      "created_at": "2026-10-15T08:56:06",
+      "created_by": "52c79cd319c6",
+      "updated_at": "2026-10-15T23:35:45",
+      "updated_by": "52c79cd319c6",
+      "pause_reason_id": "50c2dcff758a",
+      "last_run_id": "12466d7a96594b1e",
+      "produced_qty": 2000.0,
+      "scrap_qty": 0.0,
+      "usable_qty": 2000.0
+    }
+  ],
+  "receipts": [
+    {
+      "id": "receipt-92e101d2a9a74f47",
+      "job_id": "min-0d29d5b871864808",
+      "run_id": "165d8a6198804f31",
+      "product_code": "TEST-PRODUCTION-01",
+      "product_name": "TEST - Üretim Gereken Numune",
+      "quantity": 5.0,
+      "status": "rejected",
+      "created_at": "2026-10-15T07:50:05",
+      "created_by": "TEST-DEMO-USER-PROD",
+      "history": [
+        {
+          "islem": "receipt_request",
+          "kullanici_id": "TEST-DEMO-USER-PROD",
+          "kullanici": "TEST - Üretim Şefi",
+          "zaman": "2026-10-15T07:50:05",
+          "miktar": 5.0,
+          "onceki_durum": "yok",
+          "yeni_durum": "pending",
+          "gerekce": "Tamamlanan miktarın tamamı için depo kabul talebi"
+        },
+        {
+          "islem": "receipt_reject",
+          "kullanici_id": "TEST-DEMO-USER-WH",
+          "kullanici": "TEST - Depo Sorumlusu",
+          "zaman": "2026-10-15T07:51:09",
+          "miktar": 5.0,
+          "onceki_durum": "pending",
+          "yeni_durum": "rejected",
+          "gerekce": "TEST - miktar düzeltmes"
+        }
+      ],
+      "decided_at": "2026-10-15T07:51:09",
+      "decided_by": "TEST-DEMO-USER-WH"
+    },
+    {
+      "id": "receipt-853d8b426af64119",
+      "job_id": "min-0d29d5b871864808",
+      "run_id": "e9e1c6f668a54df5",
+      "product_code": "TEST-PRODUCTION-01",
+      "product_name": "TEST - Üretim Gereken Numune",
+      "quantity": 5000.0,
+      "status": "accepted",
+      "created_at": "2026-10-15T07:53:41",
+      "created_by": "TEST-DEMO-USER-PROD",
+      "history": [
+        {
+          "islem": "receipt_request",
+          "kullanici_id": "TEST-DEMO-USER-PROD",
+          "kullanici": "TEST - Üretim Şefi",
+          "zaman": "2026-10-15T07:53:41",
+          "miktar": 5000.0,
+          "onceki_durum": "yok",
+          "yeni_durum": "pending",
+          "gerekce": "Tamamlanan miktarın tamamı için depo kabul talebi"
+        },
+        {
+          "islem": "receipt_accept",
+          "kullanici_id": "TEST-DEMO-USER-WH",
+          "kullanici": "TEST - Depo Sorumlusu",
+          "zaman": "2026-10-15T07:54:10",
+          "miktar": 5000.0,
+          "onceki_durum": "pending",
+          "yeni_durum": "accepted",
+          "gerekce": "Talep edilen miktarın tamamı kabul edildi"
+        }
+      ],
+      "decided_at": "2026-10-15T07:54:10",
+      "decided_by": "TEST-DEMO-USER-WH"
+    },
+    {
+      "id": "receipt-0b85a32b7f374430",
+      "job_id": "min-1110ed9414b1498e",
+      "run_id": "12466d7a96594b1e",
+      "product_code": "TEST-READY-01",
+      "product_name": "TEST - Stoklu Numune",
+      "quantity": 2000.0,
+      "status": "pending",
+      "created_at": "2026-10-15T23:35:45",
+      "created_by": "52c79cd319c6",
+      "history": [
+        {
+          "islem": "receipt_request",
+          "kullanici_id": "52c79cd319c6",
+          "kullanici": "Sistem Yöneticisi",
+          "zaman": "2026-10-15T23:35:45",
+          "miktar": 2000.0,
+          "onceki_durum": "yok",
+          "yeni_durum": "pending",
+          "gerekce": "Tamamlanan miktarın tamamı için depo kabul talebi"
+        }
+      ]
+    }
+  ],
+  "recycled_stock": {},
+  "recycled_movements": []
+}

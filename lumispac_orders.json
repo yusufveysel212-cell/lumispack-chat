@@ -1,0 +1,126 @@
+[
+  {
+    "id": "TEST-DEMO-ORDER-CHECK",
+    "no": "TEST - SIP-CEK",
+    "date": "2026-10-15T07:14",
+    "dealerId": "TEST-DEMO-DEALER-READY",
+    "owner_user_id": "TEST-DEMO-USER-SALES",
+    "customer": "TEST - Hazır Stok Bayisi",
+    "quoteNo": "",
+    "status": "Teslim edildi",
+    "history": [
+      {
+        "s": "Hazırlanıyor",
+        "at": "2026-10-15T07:14",
+        "by": "TEST-DEMO-USER-ADMIN",
+        "gerekce": "TEST - hazır senaryo"
+      },
+      {
+        "s": "Sevk edildi",
+        "at": "2026-10-15T07:19",
+        "by": "52c79cd319c6",
+        "action": "ship"
+      },
+      {
+        "s": "Teslim edildi",
+        "at": "2026-10-15T09:00",
+        "by": "52c79cd319c6",
+        "action": "deliver"
+      }
+    ],
+    "delivery": {
+      "date": "2026-10-15",
+      "note": "TEST - demo teslimat"
+    },
+    "lines": [
+      {
+        "code": "TEST-READY-01",
+        "name": "TEST - Stoklu Numune",
+        "weight": 1,
+        "qty": 10,
+        "volume": 0.01,
+        "boxes": 1,
+        "koli": 1,
+        "unit": 100.0,
+        "sale": 100.0,
+        "cost": 0,
+        "profit": 100,
+        "price": 100.0,
+        "total": 100
+      }
+    ],
+    "d": 0,
+    "vatRate": 0,
+    "sale": 100,
+    "disc": 0,
+    "vat": 0,
+    "grand": 100,
+    "cost": 0,
+    "profit": 100,
+    "paid_total": 100,
+    "payments": [
+      {
+        "id": "TEST-DEMO-PAY-CHECK",
+        "amount": 100,
+        "method": "cek",
+        "accepted": true,
+        "status": "kabul edildi",
+        "due_date": "2099-12-31",
+        "date": "2026-10-15",
+        "created_by": "TEST-DEMO-USER-FIN",
+        "demo_tag": "TEST -"
+      }
+    ],
+    "plate": "TEST-ARAC-01",
+    "driver": "TEST - Sürücü 01",
+    "driver_phone": "",
+    "fulfillment": {
+      "durum": "sevkiyata_hazir",
+      "kontrol_zamani": "2026-10-15T07:18:00",
+      "kontrol_eden": "52c79cd319c6",
+      "satirlar": [
+        {
+          "urunId": "TEST-READY-01",
+          "istenen": 1.0,
+          "mevcut": 8.0,
+          "eksik": 0.0
+        }
+      ],
+      "uretim_aciklari": [],
+      "tahmini_tarih": null,
+      "gerekce": "Sipariş için depo stok uygunluk kontrolü",
+      "gecmis": [
+        {
+          "kullanici": "52c79cd319c6",
+          "zaman": "2026-10-15T07:17:57",
+          "miktar": [
+            {
+              "urunId": "TEST-READY-01",
+              "istenen": 1.0,
+              "mevcut": 8.0,
+              "eksik": 0.0
+            }
+          ],
+          "onceki_durum": "kontrol_edilmedi",
+          "yeni_durum": "sevkiyata_hazir",
+          "gerekce": "Sipariş için depo stok uygunluk kontrolü"
+        },
+        {
+          "kullanici": "52c79cd319c6",
+          "zaman": "2026-10-15T07:18:00",
+          "miktar": [
+            {
+              "urunId": "TEST-READY-01",
+              "istenen": 1.0,
+              "mevcut": 8.0,
+              "eksik": 0.0
+            }
+          ],
+          "onceki_durum": "sevkiyata_hazir",
+          "yeni_durum": "sevkiyata_hazir",
+          "gerekce": "Sipariş için depo stok uygunluk kontrolü"
+        }
+      ]
+    }
+  }
+]

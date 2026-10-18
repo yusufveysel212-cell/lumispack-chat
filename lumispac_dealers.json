@@ -1,0 +1,35 @@
+[
+  {
+    "id": "TEST-DEMO-DEALER-74-UNASSIGNED",
+    "name": "TEST - Faz 7-4 İkinci Atanmış Bayi",
+    "contact": "",
+    "phone": "",
+    "city": "",
+    "address": "",
+    "discount": 0.0,
+    "prices": {},
+    "owner_user_id": "TEST-DEMO-USER-SALES"
+  },
+  {
+    "id": "TEST-DEMO-DEALER-74-OTHER",
+    "name": "TEST - Faz 7-4 Başka Bayi",
+    "contact": "",
+    "phone": "",
+    "city": "",
+    "address": "",
+    "discount": 0.0,
+    "prices": {},
+    "owner_user_id": "TEST-DEMO-USER-SALES"
+  },
+  {
+    "id": "TEST-DEMO-DEALER-READY",
+    "name": "TEST - Hazır Stok Bayisi",
+    "contact": "",
+    "phone": "",
+    "city": "",
+    "address": "",
+    "discount": 0.0,
+    "prices": {},
+    "owner_user_id": "TEST-DEMO-USER-SALES"
+  }
+]

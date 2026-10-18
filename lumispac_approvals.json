@@ -1,0 +1,15 @@
+[
+  {
+    "id": "db54e010-93e3-4846-9f67-ece2ee6049c9",
+    "durum": "bekliyor",
+    "payload_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "olusturma": "2026-10-16T05:46:34+03:00",
+    "isteyen_id": "seller1",
+    "isteyen": "Seller 1",
+    "isteyen_departman": "satis",
+    "method": "DELETE",
+    "path": "/api/orders/order-a",
+    "body": {},
+    "ozet": "Sipariş silme isteği"
+  }
+]

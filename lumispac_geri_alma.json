@@ -1,0 +1,7002 @@
+[
+  {
+    "id": "e284b8e9a4ac4538bb643585174b6b08",
+    "zaman": "2026-10-17T08:19:46+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "4b8e642798704ae1819b27460680ebe7",
+    "zaman": "2026-10-17T08:19:46+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "2fe7c7bcbbec4d00a09dbfdbb61ec869",
+    "zaman": "2026-10-17T08:19:46+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "address",
+          "city",
+          "discount",
+          "phone",
+          "contact",
+          "prices"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "35bb7d883c6b4d8b9e0d34fd2d56d219",
+    "zaman": "2026-10-17T08:21:40+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "577e5d0038cd43d4be7c45aa344927f3",
+    "zaman": "2026-10-17T08:21:40+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "b06349969c844bf38a043828276c2760",
+    "zaman": "2026-10-17T08:21:40+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "contact",
+          "prices",
+          "discount",
+          "address",
+          "city",
+          "phone"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "e2500b7ce1374714982ae3fe42a15aac",
+    "zaman": "2026-10-17T08:24:29+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "eaa9d8e2d6684e769384b223ae8aa0c5",
+    "zaman": "2026-10-17T08:24:29+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "6d59fd67f06349dab256b6c5624f56b0",
+    "zaman": "2026-10-17T08:24:29+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "prices",
+          "contact",
+          "discount",
+          "phone",
+          "address",
+          "city"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "3b6ebcf4fad6482785f893ae1b108f77",
+    "zaman": "2026-10-17T08:26:16+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "de88b2346af5447ca7dbf49cdf516786",
+    "zaman": "2026-10-17T08:26:16+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "f0c137cec04f4239acabcdfc2ff600e4",
+    "zaman": "2026-10-17T08:26:16+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "city",
+          "discount",
+          "address",
+          "phone",
+          "contact",
+          "prices"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "21c5c16cf80c413abcd13cbb2f1a8878",
+    "zaman": "2026-10-17T08:27:35+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "64f85dd1dde641f59ae7e31d2f7dd713",
+    "zaman": "2026-10-17T08:27:35+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "1b79ccfc3ce44c54a7c3f831b911a7d2",
+    "zaman": "2026-10-17T08:27:35+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "city",
+          "prices",
+          "contact",
+          "phone",
+          "discount",
+          "address"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "c5c359a6b3d74f2e95a98cf761660e8b",
+    "zaman": "2026-10-17T09:07:52+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "f284fafb5c934c3f8f5eae2a0c14519e",
+    "zaman": "2026-10-17T09:07:52+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "121ab3a523e345c284a573f6b2993cf6",
+    "zaman": "2026-10-17T09:07:52+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "discount",
+          "prices",
+          "phone",
+          "city",
+          "address",
+          "contact"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "38ca095c3f26483d9bb5da5d0bef68ef",
+    "zaman": "2026-10-17T09:10:41+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "3ebcf13695884364a52c83d0464b5a4d",
+    "zaman": "2026-10-17T09:10:41+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "3d4bfbaf6cef4f14aa14a38fe26a4a6f",
+    "zaman": "2026-10-17T09:10:41+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "phone",
+          "contact",
+          "city",
+          "address",
+          "prices",
+          "discount"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "fbff8ff3c13e460c93c51261a7710221",
+    "zaman": "2026-10-17T09:15:49+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "dacd816950834c5fb0907d47de58d2c4",
+    "zaman": "2026-10-17T09:15:49+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "e0d6f5907fb746f19fb06603df481b78",
+    "zaman": "2026-10-17T09:15:49+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "city",
+          "discount",
+          "phone",
+          "prices",
+          "address",
+          "contact"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "d292377e14da4ac88e9ad315fae42971",
+    "zaman": "2026-10-17T09:17:12+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "19a59af8c4d14a63bbea10925c1c45c3",
+    "zaman": "2026-10-17T09:17:12+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "ee34871a058c49da92f9990024f1b487",
+    "zaman": "2026-10-17T09:17:12+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "contact",
+          "address",
+          "discount",
+          "phone",
+          "prices",
+          "city"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "ba2e4e8fcc7847b7bd9c4d403729f499",
+    "zaman": "2026-10-17T09:19:22+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "8d8f861abf654f67a02361d2927b3bef",
+    "zaman": "2026-10-17T09:19:22+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "fd3670ab211d4dfa9209dddb10fce22e",
+    "zaman": "2026-10-17T09:19:22+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "prices",
+          "address",
+          "discount",
+          "contact",
+          "city",
+          "phone"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "5e5d851289a144739c20f0d6b5fd7d01",
+    "zaman": "2026-10-17T09:21:06+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "2356256d47a9405c96f48a254a4e8100",
+    "zaman": "2026-10-17T09:21:06+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "5f79d71f07b248b29d8f2587d28e129d",
+    "zaman": "2026-10-17T09:21:06+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "prices",
+          "phone",
+          "contact",
+          "address",
+          "city",
+          "discount"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "14a0db10900943d4b1677cbfdb0b4fca",
+    "zaman": "2026-10-17T09:28:25+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "bacfa4171f6244eb8ffaab356615e434",
+    "zaman": "2026-10-17T09:28:25+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "f122e62b852d4b7a947d9fe95c221652",
+    "zaman": "2026-10-17T09:28:25+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "city",
+          "phone",
+          "prices",
+          "address",
+          "discount",
+          "contact"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "61b50455e3dd41c8b6e6b934f701c775",
+    "zaman": "2026-10-17T09:28:52+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "ebd70b640844421f933d9fcc46f572c0",
+    "zaman": "2026-10-17T09:28:52+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "f6374c24377241db9031bf4864b773f5",
+    "zaman": "2026-10-17T09:28:52+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "discount",
+          "contact",
+          "prices",
+          "phone",
+          "address",
+          "city"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "d8fd8dc3d128427fbd0bfb129049754d",
+    "zaman": "2026-10-17T09:30:42+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "f89800d3efb5432e91bfe2af2fb77ad5",
+    "zaman": "2026-10-17T09:30:42+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "f1a50bde0a164d21adad0f8e241da6c5",
+    "zaman": "2026-10-17T09:30:42+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "prices",
+          "address",
+          "discount",
+          "city",
+          "contact",
+          "phone"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "220a3d5d093d48c38d65c89cef11560b",
+    "zaman": "2026-10-17T09:32:28+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "9ee548ac4e6f42cba1d80648ff11bbd4",
+    "zaman": "2026-10-17T09:32:28+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "fff24555731c45beb30da7f80b1989cc",
+    "zaman": "2026-10-17T09:32:28+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "discount",
+          "contact",
+          "city",
+          "prices",
+          "phone",
+          "address"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "c710b009ddae4262911c9d2393441405",
+    "zaman": "2026-10-17T09:36:51+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "7c81a5cc79b2449988084563d788be19",
+    "zaman": "2026-10-17T09:36:52+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "9254e95d57bf4780a9f8b9f3eeb7e71b",
+    "zaman": "2026-10-17T09:36:52+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "discount",
+          "contact",
+          "prices",
+          "phone",
+          "city",
+          "address"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "e6fbb608863c48d281a451fbcec3e0e3",
+    "zaman": "2026-10-17T09:37:38+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "c5e33fff516e4966a40ce611a2d7fe39",
+    "zaman": "2026-10-17T09:37:38+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "5bf83391aa0a43d19ffa606ba02cb7dc",
+    "zaman": "2026-10-17T09:37:38+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "prices",
+          "city",
+          "discount",
+          "contact",
+          "address",
+          "phone"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "1612fca3ecb647bc84fcd585f4a50372",
+    "zaman": "2026-10-17T09:41:11+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "2b0ba29fa24748dbb04dd71dd1707613",
+    "zaman": "2026-10-17T09:41:11+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "ff01011097e84605bfb23e70d73eb358",
+    "zaman": "2026-10-17T09:41:11+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "contact",
+          "address",
+          "city",
+          "prices",
+          "discount",
+          "phone"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "06ddf8a2d4e34725a718f0734c2dfb63",
+    "zaman": "2026-10-17T09:43:35+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "0b056777ecf449138ac9d46cd5cb43d0",
+    "zaman": "2026-10-17T09:43:35+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "d17e4f17c3dd45b6b19dec8a096a2d8e",
+    "zaman": "2026-10-17T09:43:35+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "address",
+          "city",
+          "phone",
+          "prices",
+          "discount",
+          "contact"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "9466da55c75f430296447f86d70bdbc4",
+    "zaman": "2026-10-17T09:49:27+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "4ee31b6a0e134aba8670952a330fee77",
+    "zaman": "2026-10-17T09:49:27+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "0d7f4ae0055f40d085b476516ab19c23",
+    "zaman": "2026-10-17T09:49:27+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "prices",
+          "address",
+          "city",
+          "contact",
+          "phone",
+          "discount"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "eb63d57604c14019af217266bf92770e",
+    "zaman": "2026-10-17T09:53:11+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "27ac3ba592634d1290de6df93e34feeb",
+    "zaman": "2026-10-17T09:53:11+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "a646c55a90f2428c9273335e550af81b",
+    "zaman": "2026-10-17T09:53:11+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "discount",
+          "prices",
+          "address",
+          "phone",
+          "city",
+          "contact"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "2798046ba6664da98f608fd24dca25af",
+    "zaman": "2026-10-17T09:54:46+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "1496b46b419142b6beac3d7807e7ff5d",
+    "zaman": "2026-10-17T09:54:46+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "d1528e59e2ac46e193d7ddf3c0af22b8",
+    "zaman": "2026-10-17T09:54:46+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "contact",
+          "address",
+          "discount",
+          "prices",
+          "phone",
+          "city"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "5c88c2f0a853479ebb0ecc6bb0e19da7",
+    "zaman": "2026-10-17T09:58:42+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "93a786cb4ae34ee98c1a05697eeb74b9",
+    "zaman": "2026-10-17T09:58:42+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "3a23e2889d134c0a9afc623899528785",
+    "zaman": "2026-10-17T09:58:42+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "address",
+          "discount",
+          "phone",
+          "city",
+          "prices",
+          "contact"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "2a72a7df046d4da6a8b509c1cc38390b",
+    "zaman": "2026-10-17T10:01:29+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "84e988ec09674bde8c95e735f8936597",
+    "zaman": "2026-10-17T10:01:29+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "082ee1e8dcca414e8a3aa2231532fcff",
+    "zaman": "2026-10-17T10:01:29+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "discount",
+          "city",
+          "phone",
+          "prices",
+          "address",
+          "contact"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "1c0682deaca3402ebc9f92c814dfa072",
+    "zaman": "2026-10-17T10:04:45+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "070d1b29f59548a780c950fd721bad45",
+    "zaman": "2026-10-17T10:04:45+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "4eca057324824c338c7cad68e9e206a7",
+    "zaman": "2026-10-17T10:04:45+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "phone",
+          "contact",
+          "city",
+          "address",
+          "prices",
+          "discount"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "8449459ad2cb4791b0dcc5a2ef3d6b13",
+    "zaman": "2026-10-17T10:08:49+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "4d83909c0abc46b9a116e812482d2a6a",
+    "zaman": "2026-10-17T10:08:49+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "d6e55e6fdb7f452f98fc17c0034682cf",
+    "zaman": "2026-10-17T10:08:49+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "phone",
+          "address",
+          "prices",
+          "contact",
+          "discount",
+          "city"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "1d74d2c1d3384b26a10dda121225b992",
+    "zaman": "2026-10-17T10:11:33+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "0b3ff1e4480443e3a71b099eea048b56",
+    "zaman": "2026-10-17T10:11:34+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "11ab55858b9949ddaf4734414ff2c2e7",
+    "zaman": "2026-10-17T10:11:34+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "city",
+          "address",
+          "phone",
+          "contact",
+          "discount",
+          "prices"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "898c3adbc778483d91fad8fdebe5b81e",
+    "zaman": "2026-10-17T10:12:59+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "feefd1476381488ead1715c4d1b774c8",
+    "zaman": "2026-10-17T10:12:59+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "d51a06b1f1e147bbac4a978200eca2c6",
+    "zaman": "2026-10-17T10:12:59+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "address",
+          "contact",
+          "phone",
+          "city",
+          "discount",
+          "prices"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "40a9eaf958ea4058ac7f9c48546acdf7",
+    "zaman": "2026-10-17T10:15:07+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "4db9ebf63fb2406aa04e8796d94010b0",
+    "zaman": "2026-10-17T10:15:07+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "3e8886dbd8564a7e8e9b9c18d14affd0",
+    "zaman": "2026-10-17T10:15:07+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "discount",
+          "phone",
+          "contact",
+          "address",
+          "prices",
+          "city"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "c6fa1bccddea4e218e8995a101b99db7",
+    "zaman": "2026-10-17T10:15:55+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "1197ec8cf63d47fb96a582ed8650e94e",
+    "zaman": "2026-10-17T10:15:55+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "bd70bebfa81a405daa49708a769389da",
+    "zaman": "2026-10-17T10:15:55+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "address",
+          "discount",
+          "city",
+          "phone",
+          "contact",
+          "prices"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "63a566dd26ac43d3b919d4e78797984b",
+    "zaman": "2026-10-17T10:18:18+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "ce7c3287c4e04748b8623ff54df2a260",
+    "zaman": "2026-10-17T10:18:19+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "eeb6e536664a4999a39d1b4829901932",
+    "zaman": "2026-10-17T10:18:19+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "prices",
+          "address",
+          "phone",
+          "contact",
+          "city",
+          "discount"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "bbf02ec8c18f40008b17903594fdfd9d",
+    "zaman": "2026-10-17T10:19:53+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "4019fdc31c634221bde2ceeab68fb218",
+    "zaman": "2026-10-17T10:19:53+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "27b454c941ed46cabcd056154f8040c7",
+    "zaman": "2026-10-17T10:19:53+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "phone",
+          "city",
+          "prices",
+          "contact",
+          "address",
+          "discount"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "670b5fd7b180443cb44d7dc395ef1e44",
+    "zaman": "2026-10-17T10:30:51+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "3ea8e6753a5340198b8d598cf589013b",
+    "zaman": "2026-10-17T10:30:51+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "4fb01170fad3470185ba144808a91231",
+    "zaman": "2026-10-17T10:30:51+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "address",
+          "discount",
+          "contact",
+          "prices",
+          "city",
+          "phone"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "1456911ccf724e7c9c6d784b58ae2b07",
+    "zaman": "2026-10-17T10:31:04+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "63e768dd70f34a28b5938e3fc7581006",
+    "zaman": "2026-10-17T10:31:04+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "08f1d978ee4343f4889b7592a16cc2a9",
+    "zaman": "2026-10-17T10:31:04+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "discount",
+          "address",
+          "city",
+          "prices",
+          "phone",
+          "contact"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "6847a926bd16402d9400d880ce9d8d25",
+    "zaman": "2026-10-17T10:35:59+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "034fcbd5ceca42548897b008f4991b39",
+    "zaman": "2026-10-17T10:35:59+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "97953b854dbd4888ac0a1757cf52479e",
+    "zaman": "2026-10-17T10:35:59+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "discount",
+          "prices",
+          "city",
+          "contact",
+          "address",
+          "phone"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "d2ba115cf61c4055875447395c4b09d3",
+    "zaman": "2026-10-17T10:41:15+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "4963e86a4cf4490d9030f6afcfbf58eb",
+    "zaman": "2026-10-17T10:41:15+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "e53ed88db7534e84aa87f3933f237926",
+    "zaman": "2026-10-17T10:41:15+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "address",
+          "contact",
+          "city",
+          "discount",
+          "prices",
+          "phone"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "7f6cdc23a8d340e2a72b61913f56ad89",
+    "zaman": "2026-10-17T10:42:08+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "254d14a74ff442bc9c739b32f637e797",
+    "zaman": "2026-10-17T10:42:08+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "c82812c94c1d4be8ae4507597154d42d",
+    "zaman": "2026-10-17T10:42:08+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "prices",
+          "contact",
+          "discount",
+          "address",
+          "phone",
+          "city"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "01009f0b3b0741d983e593ab846667be",
+    "zaman": "2026-10-17T10:42:23+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "14d08e4bbbce48d6b9fa125a63bf8507",
+    "zaman": "2026-10-17T10:42:23+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "c441069b9c9f4e26a70af3d2f9ba76bf",
+    "zaman": "2026-10-17T10:42:23+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "phone",
+          "address",
+          "city",
+          "discount",
+          "contact",
+          "prices"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "699793a6ed6a4d63ba141c8d6b5e9df2",
+    "zaman": "2026-10-17T10:42:37+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "bd69c084d9454a50a70c11ee3cf4d30c",
+    "zaman": "2026-10-17T10:42:37+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "f3f86c2d6caf4a0fa90d21684a9b73e7",
+    "zaman": "2026-10-17T10:42:37+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "city",
+          "address",
+          "contact",
+          "discount",
+          "prices",
+          "phone"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "ef8180b945d34ca8b2cd012fff510846",
+    "zaman": "2026-10-17T10:45:28+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "b17c4a49cdbe40fd887005bd79a45561",
+    "zaman": "2026-10-17T10:45:28+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "f3b6f8ebf8ed4fb39bb8649608438c4c",
+    "zaman": "2026-10-17T10:45:29+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "prices",
+          "discount",
+          "contact",
+          "address",
+          "phone",
+          "city"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "dafe6a6b8e4e40299ee04cd8bf3f9ace",
+    "zaman": "2026-10-17T10:45:37+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "fe0dae5c649b40afa1866839543200d6",
+    "zaman": "2026-10-17T10:45:37+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "b65ddc131ed640498a68014341fc9db2",
+    "zaman": "2026-10-17T10:45:37+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "city",
+          "address",
+          "phone",
+          "contact",
+          "prices",
+          "discount"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "85474e8d91bd42428a32bef5e7e6d67e",
+    "zaman": "2026-10-17T10:47:58+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "4922a04603c04866b92ac3c47c3cd5e2",
+    "zaman": "2026-10-17T10:47:58+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "e6c93a3da6b8463d9da554c6679f2343",
+    "zaman": "2026-10-17T10:47:58+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "discount",
+          "phone",
+          "city",
+          "contact",
+          "prices",
+          "address"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "2df895197fbd4ac1a7128b2a47886cbd",
+    "zaman": "2026-10-17T10:48:08+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "8e38b48bd600496787d480352f173780",
+    "zaman": "2026-10-17T10:48:08+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "8b66c79da6a94af2988abe6560369c47",
+    "zaman": "2026-10-17T10:48:08+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "contact",
+          "city",
+          "discount",
+          "phone",
+          "address",
+          "prices"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "cb47cb8cf3684851a140a8d1e8c1933c",
+    "zaman": "2026-10-17T10:50:36+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "444c1d173de044ddb8010b201388f45e",
+    "zaman": "2026-10-17T10:50:36+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "804dcaf19e5947adafefe477de70dd3b",
+    "zaman": "2026-10-17T10:50:36+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "contact",
+          "address",
+          "prices",
+          "phone",
+          "city",
+          "discount"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "bd57bfb5d32d4ae0a088f055d8e6eac5",
+    "zaman": "2026-10-17T10:50:52+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "9816a22dc17b4397a5783fd178c0a78c",
+    "zaman": "2026-10-17T10:50:52+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "2f6e2631122f4bebabeda0f37fda0235",
+    "zaman": "2026-10-17T10:50:52+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "city",
+          "discount",
+          "contact",
+          "phone",
+          "prices",
+          "address"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "add3646cd93845a5a2b158163815f217",
+    "zaman": "2026-10-17T10:56:14+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "2873a10f153a4278be04933fe67d5b03",
+    "zaman": "2026-10-17T10:56:14+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "f3dc02026eaa4c2aa00687edea23ea39",
+    "zaman": "2026-10-17T10:56:14+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "city",
+          "address",
+          "phone",
+          "contact",
+          "prices",
+          "discount"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "56954da5ed0b470ab5a21c81621da6ae",
+    "zaman": "2026-10-17T11:02:50+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "b83d2ba59b05470084056bed6e3c0929",
+    "zaman": "2026-10-17T11:02:50+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "be7909bebff94ed9a302a1d2c1877d0a",
+    "zaman": "2026-10-17T11:02:50+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "contact",
+          "city",
+          "discount",
+          "address",
+          "phone",
+          "prices"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "17987dd0622e4cf1ba8b0df20b7bfa29",
+    "zaman": "2026-10-17T11:06:23+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "2ba3f6c0460a4576b60c33c705d3e5ed",
+    "zaman": "2026-10-17T11:06:23+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "bac0798e9a6c4f82bd5098471ecfcf41",
+    "zaman": "2026-10-17T11:06:23+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "phone",
+          "prices",
+          "discount",
+          "city",
+          "contact",
+          "address"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "e3c6ff801726419d86d981ebc5e90004",
+    "zaman": "2026-10-17T11:11:46+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "070432096d9f4a8eacd0c1679402d792",
+    "zaman": "2026-10-17T11:11:46+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "82d3bcff29674bfd8db81b3174a603d3",
+    "zaman": "2026-10-17T11:11:46+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "discount",
+          "city",
+          "phone",
+          "prices",
+          "contact",
+          "address"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "584b01ab159a4cca8499c38f0c4c6dcf",
+    "zaman": "2026-10-17T11:15:26+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "dff18e1a341b470c96b008dd9d74b6c7",
+    "zaman": "2026-10-17T11:15:27+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "498909d353164e23af513494407e7c8e",
+    "zaman": "2026-10-17T11:15:27+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "prices",
+          "discount",
+          "address",
+          "contact",
+          "phone",
+          "city"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "06c18377e1854d5888a8389fc041ac02",
+    "zaman": "2026-10-17T11:15:45+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "10b817a604c447e7bef3e16a3283ec03",
+    "zaman": "2026-10-17T11:15:45+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "bd4dc9ed17b748db8fa2d7676f33be66",
+    "zaman": "2026-10-17T11:15:45+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "city",
+          "phone",
+          "discount",
+          "address",
+          "prices",
+          "contact"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "3e50c30669e2419abd08fe4d2a9b4179",
+    "zaman": "2026-10-17T11:18:47+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "5d850e9b6f7a45aabde0c2023918d7e6",
+    "zaman": "2026-10-17T11:18:47+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "b634dbe07c8c4b7886857e22e7aada17",
+    "zaman": "2026-10-17T11:18:47+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "contact",
+          "address",
+          "discount",
+          "phone",
+          "prices",
+          "city"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "bce2f46a1cde4c2a8f9605439e21268f",
+    "zaman": "2026-10-17T11:20:29+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "1f02d2756ec94acc8afd64bf8f6ab822",
+    "zaman": "2026-10-17T11:20:29+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "5b0d9310167444bb8396eb7c16a904c2",
+    "zaman": "2026-10-17T11:20:29+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "phone",
+          "contact",
+          "city",
+          "discount",
+          "address",
+          "prices"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "86695ff841be48da860b91c7fb995bc9",
+    "zaman": "2026-10-17T11:23:49+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "71b03fbcf60149ad932ff28a2fd6067e",
+    "zaman": "2026-10-17T11:23:49+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "67d96bf9353a4ae9833a5b6d2f5aea38",
+    "zaman": "2026-10-17T11:23:49+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "prices",
+          "discount",
+          "phone",
+          "contact",
+          "address",
+          "city"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "b0cf65b52d9a4e88b74d9fc9764c9293",
+    "zaman": "2026-10-17T11:28:56+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "4af857f9eaf040089b54cd23a6d246e5",
+    "zaman": "2026-10-17T11:28:56+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "9eadb8714b804883a7cac855b60039a1",
+    "zaman": "2026-10-17T11:28:56+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "contact",
+          "phone",
+          "address",
+          "city",
+          "prices",
+          "discount"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "9aa6cf8ca32b4a4898ca9c957750da85",
+    "zaman": "2026-10-17T11:32:42+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "37a10a5abaaf4d7f91f1c95d558c7448",
+    "zaman": "2026-10-17T11:32:42+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "cd1628e47c9b451c854fb9888b68ab1f",
+    "zaman": "2026-10-17T11:32:42+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "phone",
+          "contact",
+          "discount",
+          "address",
+          "city",
+          "prices"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "f0e2bc44f1814c9d811339a4d4302b5a",
+    "zaman": "2026-10-17T11:34:05+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "af9e01edf74d48bb9ffc76652c519190",
+    "zaman": "2026-10-17T11:34:05+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "5a5cd863888343d4bd946f9b5be3ce03",
+    "zaman": "2026-10-17T11:34:05+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "address",
+          "city",
+          "contact",
+          "phone",
+          "discount",
+          "prices"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "8f8fc299e0214b2692112ffd22842410",
+    "zaman": "2026-10-17T11:37:58+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "b8381d0dd9fb45ac94542937d29b8ec3",
+    "zaman": "2026-10-17T11:37:58+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "8302e41b99e5410a9e0ad9044964eeb9",
+    "zaman": "2026-10-17T11:37:58+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "address",
+          "contact",
+          "city",
+          "prices",
+          "phone",
+          "discount"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "51260bd159df44e18647d302656dc696",
+    "zaman": "2026-10-17T11:40:55+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "1a11e47593484d27b8a6e93dc02dd319",
+    "zaman": "2026-10-17T11:40:55+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "58cb5de15c8544d5b51de5b355dd1324",
+    "zaman": "2026-10-17T11:40:55+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "contact",
+          "address",
+          "city",
+          "prices",
+          "phone",
+          "discount"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "4bab5b22b309496bbe024d3c40a42a98",
+    "zaman": "2026-10-17T11:45:01+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "fddf42fe6e4746aa8274b08a67cac0dc",
+    "zaman": "2026-10-17T11:45:01+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "c000339b947443e38f99e224bb385427",
+    "zaman": "2026-10-17T11:45:01+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "address",
+          "city",
+          "discount",
+          "contact",
+          "prices",
+          "phone"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "0eb2ad362313428ebb41e487ad8869e2",
+    "zaman": "2026-10-17T11:46:12+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "b9973a1ce6844f2ea0866c34ad34d634",
+    "zaman": "2026-10-17T11:46:12+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "7f670ddcce5d4fda942319aa66b16728",
+    "zaman": "2026-10-17T11:46:12+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "contact",
+          "discount",
+          "city",
+          "address",
+          "phone",
+          "prices"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "bbe08aec85b542aebe088e0b3dc63770",
+    "zaman": "2026-10-17T11:47:49+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "56c3c54e8673441aaef7d696640e2e79",
+    "zaman": "2026-10-17T11:47:49+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "725de1252efb464bbd8243976e9d9b34",
+    "zaman": "2026-10-17T11:47:49+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "phone",
+          "discount",
+          "prices",
+          "city",
+          "contact",
+          "address"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "700b911785584095a477a81e51be5607",
+    "zaman": "2026-10-17T11:50:49+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "c3d6c2f0e51c4f86acf528d4a9f78631",
+    "zaman": "2026-10-17T11:50:49+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "072aefde722d41cc87c8233bd3666a04",
+    "zaman": "2026-10-17T11:50:49+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "prices",
+          "phone",
+          "discount",
+          "address",
+          "contact",
+          "city"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "34e5b3fc04a84bfcb4f47898b2a24430",
+    "zaman": "2026-10-17T11:55:58+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "b7805062f0c34d8c896568503685535c",
+    "zaman": "2026-10-17T11:55:58+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "d0bf8295a901463e837d20b5e2946e4a",
+    "zaman": "2026-10-17T11:55:58+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "discount",
+          "city",
+          "contact",
+          "address",
+          "prices",
+          "phone"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "7636eea2028046c9957b952320c64004",
+    "zaman": "2026-10-17T12:02:08+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "4ba807ceccbf4267ad7038d2b44516cf",
+    "zaman": "2026-10-17T12:02:08+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "8dd98bf09a4e4a2eb2896baa83838051",
+    "zaman": "2026-10-17T12:02:08+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "contact",
+          "city",
+          "address",
+          "prices",
+          "discount",
+          "phone"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "64240f76c12c4da99f84ebf5a1708a67",
+    "zaman": "2026-10-17T12:05:03+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "29b84ca7390e4f19b6743d9cf4e250f1",
+    "zaman": "2026-10-17T12:05:03+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "05d285d3963547499b675fe1dd922438",
+    "zaman": "2026-10-17T12:05:03+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "contact",
+          "discount",
+          "city",
+          "address",
+          "prices",
+          "phone"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "25d02077c2d446d98b4bc9812d95a35e",
+    "zaman": "2026-10-17T12:08:29+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "3050a44040da437696489969a8a2e07f",
+    "zaman": "2026-10-17T12:08:29+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "f68d3b2a58bf4a65b10bf4a228b2f437",
+    "zaman": "2026-10-17T12:08:29+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "address",
+          "prices",
+          "phone",
+          "discount",
+          "contact",
+          "city"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "9308a6be80014d4a8c7b9d4eea81b35f",
+    "zaman": "2026-10-17T12:10:58+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "c066e72b07954d2892b08ed915fe4182",
+    "zaman": "2026-10-17T12:10:58+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "5ca3fbc4270c4ef8923212abdb113310",
+    "zaman": "2026-10-17T12:10:58+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "city",
+          "phone",
+          "address",
+          "prices",
+          "discount",
+          "contact"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "f08fd411eb124f28b97b1aa9317b2727",
+    "zaman": "2026-10-17T12:14:25+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "0b8f5f2a96534f8c98ff9c5b3ea0c58b",
+    "zaman": "2026-10-17T12:14:25+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "2444b2296cbb42df9bb24fb9b0914a6a",
+    "zaman": "2026-10-17T12:14:25+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "prices",
+          "discount",
+          "phone",
+          "address",
+          "contact",
+          "city"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "02da0c1c692642dc9a212f36a61ffb87",
+    "zaman": "2026-10-17T12:16:38+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "f0116414084441df93f88ee92e8f9e03",
+    "zaman": "2026-10-17T12:16:38+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "b08c02528b1e492fab590034b66e15e7",
+    "zaman": "2026-10-17T12:16:38+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "phone",
+          "discount",
+          "address",
+          "city",
+          "contact",
+          "prices"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "64a23de61b9a4c4d9cf03aaa07342151",
+    "zaman": "2026-10-17T12:19:33+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "9c20ef3655b94566bd90a24533c14547",
+    "zaman": "2026-10-17T12:19:33+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "dc9e84636717452c9c4d29e9a6c02473",
+    "zaman": "2026-10-17T12:19:33+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "phone",
+          "discount",
+          "city",
+          "prices",
+          "address",
+          "contact"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "64b253da03ea461c97158e000c007659",
+    "zaman": "2026-10-17T12:22:59+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "ceb61b191bfb4d0b94d9d9c66663504c",
+    "zaman": "2026-10-17T12:22:59+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "e351331c15ba419683141562ad9ea773",
+    "zaman": "2026-10-17T12:22:59+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "prices",
+          "contact",
+          "discount",
+          "phone",
+          "city",
+          "address"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "89304db2b4d7487a96a1991c61fa08c6",
+    "zaman": "2026-10-17T12:23:36+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "03dcc9980257447fa57ca7e314fcf6ff",
+    "zaman": "2026-10-17T12:23:36+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "d1fcba4b9ca741be8634265dddfd4602",
+    "zaman": "2026-10-17T12:23:36+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "contact",
+          "prices",
+          "city",
+          "discount",
+          "phone",
+          "address"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "9701ec5c384e445ca51367712cfefd29",
+    "zaman": "2026-10-17T12:31:06+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "5f77e90eeaaf44488181f155053ffe2a",
+    "zaman": "2026-10-17T12:31:06+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "25b40e7345d64ecf9093f93b9276d863",
+    "zaman": "2026-10-17T12:31:06+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "phone",
+          "contact",
+          "address",
+          "city",
+          "discount",
+          "prices"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "9ba2383838c14872b61add6d7c45e92e",
+    "zaman": "2026-10-17T12:33:00+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "4ca590b05a3a4eebb9125f8a25083131",
+    "zaman": "2026-10-17T12:33:00+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "886a1a4a34824e61a112fb534180cab0",
+    "zaman": "2026-10-17T12:33:00+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "phone",
+          "city",
+          "prices",
+          "discount",
+          "address",
+          "contact"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "398c9f47d94c4af7a78d274c068b8c6a",
+    "zaman": "2026-10-17T12:35:23+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "480c0b9a709344e49d5c53065c154980",
+    "zaman": "2026-10-17T12:35:24+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "117ad794a5644d4c916645f1b99aad5a",
+    "zaman": "2026-10-17T12:35:24+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "phone",
+          "city",
+          "discount",
+          "prices",
+          "address",
+          "contact"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "f7fd03ac9b284baba7f86cb813b12856",
+    "zaman": "2026-10-17T12:49:25+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "779761914a59484b840cfcd36c16f35a",
+    "zaman": "2026-10-17T12:49:25+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "4c8ffa3611594e839c497b24bea7d07c",
+    "zaman": "2026-10-17T12:49:25+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "address",
+          "discount",
+          "phone",
+          "contact",
+          "city",
+          "prices"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "36b7d87b1a924e668d7e52c04e1eceef",
+    "zaman": "2026-10-17T12:52:02+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "16007a91e76d4096a7d12c63f73a9a1b",
+    "zaman": "2026-10-17T12:52:02+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "2d17f6ca59bf4d44834503b6c065a19b",
+    "zaman": "2026-10-17T12:52:02+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "address",
+          "discount",
+          "phone",
+          "city",
+          "contact",
+          "prices"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "45d0a514ad824623b183f753aa6f1c18",
+    "zaman": "2026-10-17T12:54:35+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "2332edf2a80b4bfc9fe35975e49bf01c",
+    "zaman": "2026-10-17T12:54:35+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "52ce3257cc054f90b15f7535a6807d81",
+    "zaman": "2026-10-17T12:54:35+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "prices",
+          "phone",
+          "discount",
+          "address",
+          "contact",
+          "city"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "0e7dca1d27d448e8af37759908f66b23",
+    "zaman": "2026-10-17T13:02:15+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "6f14f5950cd2484697de4228192778b1",
+    "zaman": "2026-10-17T13:02:15+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "21aa4a0458ec4809ae441d5b66abf4ee",
+    "zaman": "2026-10-17T13:02:15+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "city",
+          "phone",
+          "discount",
+          "contact",
+          "prices",
+          "address"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "2d80aa0350b64261a2aab7b94db47f4e",
+    "zaman": "2026-10-17T13:06:40+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "3ff18093165b459bae472403f00600b2",
+    "zaman": "2026-10-17T13:06:40+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "461004a56bd449768204d44722900ae3",
+    "zaman": "2026-10-17T13:06:41+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "city",
+          "prices",
+          "discount",
+          "phone",
+          "contact",
+          "address"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "885d0f843c5f4802b5aa6d37cf90c9fc",
+    "zaman": "2026-10-17T13:08:44+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "a052f035c94b4adb94e5584fe9c2ce38",
+    "zaman": "2026-10-17T13:08:44+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "81051e38568c41df8c25fb4625f0f13f",
+    "zaman": "2026-10-17T13:08:44+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "address",
+          "prices",
+          "city",
+          "contact",
+          "phone",
+          "discount"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "c971ed8baae546fb9ad17b366d868123",
+    "zaman": "2026-10-17T13:11:33+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "d8da86ab32d3464b9ac0c6ccf8f957c9",
+    "zaman": "2026-10-17T13:11:33+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "feda473832e84ff190439e392d3ccb56",
+    "zaman": "2026-10-17T13:11:33+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "discount",
+          "city",
+          "address",
+          "phone",
+          "prices",
+          "contact"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "39fcc41c86e0436f9f53c407972ca075",
+    "zaman": "2026-10-17T13:17:56+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "84008b5d9919438abc0bac3ff675d816",
+    "zaman": "2026-10-17T13:17:57+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "93412e64fd394c348b2d3fcf2d7f8da6",
+    "zaman": "2026-10-17T13:17:57+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "phone",
+          "prices",
+          "discount",
+          "contact",
+          "city",
+          "address"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "a9f88be472324b72abaff60e3c940bdb",
+    "zaman": "2026-10-17T13:18:25+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "625c6d5d577d40c3a54c725ac67b397e",
+    "zaman": "2026-10-17T13:18:25+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "4a93ee72c7d7448aa52262969bc3bbf6",
+    "zaman": "2026-10-17T13:18:25+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "address",
+          "phone",
+          "contact",
+          "prices",
+          "discount",
+          "city"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "e46906682d844e65884e4bb0e6e12117",
+    "zaman": "2026-10-17T13:21:31+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "d37b9f9256ef47349729a0e294b87dad",
+    "zaman": "2026-10-17T13:21:31+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "5f8fbf8a69bc4350955d81d0a2f180d6",
+    "zaman": "2026-10-17T13:21:31+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "city",
+          "prices",
+          "phone",
+          "contact",
+          "address",
+          "discount"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "b265737ea940440e82c19cb50f459fc4",
+    "zaman": "2026-10-17T13:23:58+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "20dc4351ad55443cb0846755f576f1f8",
+    "zaman": "2026-10-17T13:23:58+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "45e64e430ca34bfeae6670d73d5f717d",
+    "zaman": "2026-10-17T13:23:58+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "discount",
+          "address",
+          "prices",
+          "contact",
+          "phone",
+          "city"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "c6326796d158427fa9c1da10f48be743",
+    "zaman": "2026-10-17T13:25:35+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "56186e35c02d4540b86597a2dfef721f",
+    "zaman": "2026-10-17T13:25:35+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "768f94a241aa4176a0ed2519671e5c17",
+    "zaman": "2026-10-17T13:25:35+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "address",
+          "discount",
+          "phone",
+          "contact",
+          "city",
+          "prices"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "8214902d33534fd6aa76ed64a3d96a46",
+    "zaman": "2026-10-17T13:26:58+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "72ec59dea29047cfa83246b48597085e",
+    "zaman": "2026-10-17T13:26:58+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "43ced14ba5dc449fa4f53646b3422954",
+    "zaman": "2026-10-17T13:26:58+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "prices",
+          "address",
+          "city",
+          "contact",
+          "phone",
+          "discount"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "ce139f9878b84f35a35a3ddab6f8b108",
+    "zaman": "2026-10-17T13:29:45+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "f6532043c7ca4fd6a5194ef73c0726b8",
+    "zaman": "2026-10-17T13:29:45+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "27f5d2522357427ca9697eee738672d1",
+    "zaman": "2026-10-17T13:29:45+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "address",
+          "contact",
+          "prices",
+          "phone",
+          "discount",
+          "city"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "ab25ea0cfbe644a4962055f760a6a09f",
+    "zaman": "2026-10-17T13:31:11+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "57b354bdcbec45d08208c1bf0013c070",
+    "zaman": "2026-10-17T13:31:11+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "f3c6044411304657ab39cfd8cc6d9e2e",
+    "zaman": "2026-10-17T13:31:11+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "discount",
+          "phone",
+          "prices",
+          "contact",
+          "address",
+          "city"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "ada13c0a8b1240ec93d126afe8e97298",
+    "zaman": "2026-10-17T13:36:51+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "d6d98fdd1175420ba70d661f94993e84",
+    "zaman": "2026-10-17T13:36:51+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "ebf3d919f8f54165bd075c251adaf0da",
+    "zaman": "2026-10-17T13:36:51+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "address",
+          "prices",
+          "phone",
+          "discount",
+          "city",
+          "contact"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "b523958dc0284254b1f49c99c0848337",
+    "zaman": "2026-10-17T13:37:09+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "560bb69143b54e18a0bf765b0d21d342",
+    "zaman": "2026-10-17T13:37:09+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "1502ab24981d4342b28bbf9513abfaec",
+    "zaman": "2026-10-17T13:37:09+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "prices",
+          "discount",
+          "address",
+          "contact",
+          "city",
+          "phone"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "b401ae0d3d2847b492e31efd7f116924",
+    "zaman": "2026-10-17T13:38:43+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "4c3748cb3f754a01a6d0ddfe0a4cce11",
+    "zaman": "2026-10-17T13:38:43+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "20b768f151b2433095b1fb630e3db740",
+    "zaman": "2026-10-17T13:38:43+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "discount",
+          "prices",
+          "address",
+          "city",
+          "contact",
+          "phone"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "b5b4ce1f40024f7aa9a729d60acac291",
+    "zaman": "2026-10-17T13:39:03+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "be56aa778143416f96a24e3aa2f07daf",
+    "zaman": "2026-10-17T13:39:03+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "1659365c6ce44416ae633ea1e9658047",
+    "zaman": "2026-10-17T13:39:03+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "prices",
+          "address",
+          "discount",
+          "contact",
+          "phone",
+          "city"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "58415306ad0b4bb2b7f93955b3341a02",
+    "zaman": "2026-10-17T13:39:16+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "b20ff40c6e38428db1550143d96c186f",
+    "zaman": "2026-10-17T13:39:16+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "16a30387126f497faf4ab2b10da5e344",
+    "zaman": "2026-10-17T13:39:16+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "phone",
+          "discount",
+          "city",
+          "contact",
+          "prices",
+          "address"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "a8e100a8032c4837a8535964a41eb048",
+    "zaman": "2026-10-17T13:41:19+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "3f9b55fc192344bea33f5c3184dd8553",
+    "zaman": "2026-10-17T13:41:19+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "431ca072d352434d9eb425d1d20034a2",
+    "zaman": "2026-10-17T13:41:19+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "discount",
+          "address",
+          "phone",
+          "prices",
+          "city",
+          "contact"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "a23d307dfe1f4aebb61202ff1506114c",
+    "zaman": "2026-10-18T05:02:43+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "f578af76b6af442f9d1359afc3fe4721",
+    "zaman": "2026-10-18T05:02:43+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "24ecc27bf1d34d46af9c1ce22302b567",
+    "zaman": "2026-10-18T05:02:43+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "prices",
+          "contact",
+          "phone",
+          "city",
+          "discount",
+          "address"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "881b1ff260eb444d86b6d438f17032fa",
+    "zaman": "2026-10-18T05:23:15+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "cd26d715e9a4430e8e66a4ec1830a8e0",
+    "zaman": "2026-10-18T05:23:15+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "972c6ac1fe914cb699d8cb4e639f7d0b",
+    "zaman": "2026-10-18T05:23:15+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "address",
+          "prices",
+          "contact",
+          "city",
+          "discount",
+          "phone"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  },
+  {
+    "id": "8e4375112b444560b9fd19a54568d76c",
+    "zaman": "2026-10-18T05:31:01+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "01e43a964e074dbf93c9ad408d03306c",
+    "zaman": "2026-10-18T05:31:01+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi sorumlusu değiştirildi",
+    "kullanici_id": "admin1",
+    "kullanici_adi": "Admin",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-legacy",
+        "onceki_sira": 2,
+        "sonraki_sira": 2,
+        "onceki_degerler": {},
+        "onceki_olmayanlar": [
+          "owner_user_id"
+        ],
+        "sonraki_hash": "3c733ef0b9f113ce0e816dd5cc34ab21423c075587d49a3d8b9523dd2395d211"
+      }
+    ]
+  },
+  {
+    "id": "3f73745a88fb4f69856d4d8d86d872b5",
+    "zaman": "2026-10-18T05:31:01+03:00",
+    "tur": "dealer",
+    "aciklama": "Bayi bilgileri kaydedildi (1 kayıt)",
+    "kullanici_id": "seller1",
+    "kullanici_adi": "Seller 1",
+    "durum": "hazir",
+    "degisiklikler": [
+      {
+        "kayit_id": "dealer-a",
+        "onceki_sira": 0,
+        "sonraki_sira": 2,
+        "onceki_degerler": {
+          "name": "Assigned A"
+        },
+        "onceki_olmayanlar": [
+          "contact",
+          "prices",
+          "city",
+          "phone",
+          "address",
+          "discount"
+        ],
+        "sonraki_hash": "1642cf14a245e5caa4634db31a07fd1ede8fcf1216e3922a7d49770cabe8ab33"
+      }
+    ]
+  }
+]

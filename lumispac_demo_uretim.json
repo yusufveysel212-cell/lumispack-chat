@@ -1,0 +1,47 @@
+{
+  "demo_tag": "TEST -",
+  "machine": {
+    "id": "TEST-DEMO-MACHINE-1",
+    "name": "TEST - Makine 1",
+    "status": "hazir"
+  },
+  "mold": {
+    "id": "TEST-DEMO-MOLD-1",
+    "name": "TEST - Kalıp 1"
+  },
+  "raw_materials": [
+    {
+      "id": "TEST-DEMO-RAW-PET",
+      "name": "TEST - PET Granül",
+      "quantity": 100,
+      "unit": "kg",
+      "recycled": false
+    },
+    {
+      "id": "TEST-DEMO-RAW-RECYCLED",
+      "name": "TEST - Geri Dönüşüm Granülü",
+      "quantity": 0,
+      "unit": "kg",
+      "recycled": true
+    }
+  ],
+  "minimum_stock": {
+    "TEST-READY-01": 10,
+    "TEST-PRODUCTION-01": 5
+  },
+  "downtime_reasons": [
+    {
+      "id": "TEST-DEMO-STOP-CHANGEOVER",
+      "name": "TEST - Kalıp değişimi"
+    },
+    {
+      "id": "TEST-DEMO-STOP-MAINTENANCE",
+      "name": "TEST - Bakım"
+    },
+    {
+      "id": "TEST-DEMO-STOP-MATERIAL",
+      "name": "TEST - Hammadde bekleme"
+    }
+  ],
+  "notice": "TEST - Referans veri; mevcut üretim/depo arayüzü bu dosyayı henüz kullanmıyor."
+}

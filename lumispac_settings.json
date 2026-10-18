@@ -1,0 +1,23 @@
+{
+  "raw_usd": 1.2,
+  "vat": 20.0,
+  "truck_m3": 90.0,
+  "rate": 49.5091,
+  "target_margin": 45.0,
+  "company": "LUMİPACK AMBALAJ SANAYİ LİMİTED ŞİRKETİ",
+  "iban": "",
+  "note": "",
+  "vkn": "",
+  "tax_office": "",
+  "address": "",
+  "default_plate": "",
+  "default_driver": "",
+  "default_driver_phone": "",
+  "seed_v1": true,
+  "quote_seq_2026": 7,
+  "order_seq_2026": 12,
+  "phone": "",
+  "email": "",
+  "website": "",
+  "tour_seen": true
+}
